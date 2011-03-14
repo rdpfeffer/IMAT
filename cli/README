@@ -1,0 +1,13 @@
+This is the top project directory for the Ginsu command line interface to ginsu. The ginsu command
+line tool will be able to do the following things...
+
+-Initialize The Environment to make sure that any and all testing tools can work together.
+
+-Kickstart a project using auto-generation tools. This will allow testers to get their project set
+up faster, using proven design and testing patterns
+
+-Generate object UI Maps 
+
+-abstract away the use of multiple tools and processes (like XCode's Instruments, The Selenium RC 
+server) and orchestrate them to initialize the tests, run them, and report on them using a common
+standard of JUnit Reports.
