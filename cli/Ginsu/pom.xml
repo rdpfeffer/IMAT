@@ -2,9 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>com.intuit.code.build</groupId>
+    <artifactId>cic-parent-pom</artifactId>
+    <version>1.0.15</version>
+  </parent>
+
   <groupId>com.intuit.ginsu</groupId>
   <artifactId>Ginsu</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Ginsu</name>
