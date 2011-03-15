@@ -33,11 +33,9 @@
     	<version>1.2</version>
     </dependency>
     <dependency>
-    	<groupId>com.intuit.ias.bhp.4-0-5-GA.jboss</groupId>
-    	<artifactId>log4j</artifactId>
-    	<version>1.8.3.1</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.15</version>
     </dependency>
   </dependencies>
 </project>
