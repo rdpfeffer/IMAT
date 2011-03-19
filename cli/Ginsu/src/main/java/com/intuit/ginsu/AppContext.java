@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -19,6 +19,11 @@ import java.io.PrintWriter;
  * The Application context is used to store runtime applicaiton configurations.
  * It provides a consistent interface accross the cli applicaiton to set and 
  * get the app wide shared objects and configurations.
+ * 
+ * Examples: The Printwriter object we use to write to the console is set in
+ * the app context. 
+ * 
+ * Note: This also allows us to send to a byte array  while we unit test
  *
  */
 public class AppContext {
@@ -28,13 +33,17 @@ public class AppContext {
 	private PrintWriter printWriter; 
 	
 	/**
-	 * 
+	 * Default Constructor for the Application Context
 	 */
 	protected AppContext()
 	{
 		this.printWriter = new PrintWriter(System.out, true);
 	}
 	
+	/**
+	 * Get an instance of the AppContext singleton object
+	 * @return the singleton instance of {@link AppContext}
+	 */
 	public static AppContext getInstance()
 	{
 		if (instance == null)

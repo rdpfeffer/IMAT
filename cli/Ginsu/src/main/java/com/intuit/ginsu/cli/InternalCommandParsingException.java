@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ package com.intuit.ginsu.cli;
 public class InternalCommandParsingException extends Exception {
 
 	/**
-	 * 
+	 * The UID for this exception
 	 */
 	private static final long serialVersionUID = 1849263877730901463L;
 

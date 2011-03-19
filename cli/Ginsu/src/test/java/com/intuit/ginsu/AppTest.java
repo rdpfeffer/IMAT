@@ -1,5 +1,9 @@
 package com.intuit.ginsu;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,16 +11,11 @@ import java.io.PrintWriter;
 import com.intuit.ginsu.cli.HelpTextGenerator;
 import com.intuit.ginsu.cli.InvalidMainArgumentArray;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
  
 	private ByteArrayOutputStream stubOutputStream;
@@ -29,18 +28,11 @@ public class AppTest
      */
     public AppTest( String testName )
     {
-        super( testName );
+        //super( testName );
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-    
-    public void setUp()
+    @BeforeMethod()
+	public void setUp()
     {
     	//Set up the application with the fixture that we can query later
     	this.stubOutputStream = new ByteArrayOutputStream();
@@ -54,48 +46,53 @@ public class AppTest
     	
     }
     
-    public void tearDown()
+    @AfterMethod()
+	public void tearDown()
     {
     	try {
     		this.stubOutputStream.flush();
     		this.stubOutputStream.close();
     		this.helpTextGenerator = null;
 		} catch (IOException e) {
-			assertTrue(e.getMessage(), false);
+			AssertJUnit.assertTrue(e.getMessage(), false);
 		}
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testInitEnvCommand()
+    @Test()
+	public void testInitEnvCommand()
     {
-        assertTrue( true );
+        AssertJUnit.assertTrue( true );
         //TODO: Start this later
     }
     
     /**
      * Test to make sure that we can generate
      */
-    public void testGenerateCommand()
+    @Test()
+	public void testGenerateCommand()
     {
-        assertTrue( true );
+        AssertJUnit.assertTrue( true );
         
     }
     
     /**
      * Test to make sure we can test in all of the appropriate conditions
      */
-    public void testExecuteCommand()
+    @Test()
+	public void testExecuteCommand()
     {
-        assertTrue( true );
+        AssertJUnit.assertTrue( true );
         //TODO: once we start running tests with ginsu this will be important!
     }
     
     /**
      * Test to make sure help comes out in the right way
      */
-    public void testHelpCommand()
+    @Test()
+	public void testHelpCommand()
     {
     	
     }
@@ -103,7 +100,8 @@ public class AppTest
     /**
      * Test all of the 
      */
-    public void testIncorrectUsageNoArguments()
+    @Test()
+	public void testIncorrectUsageNoArguments()
     {
     	//Test no arguments (empty array)
     	//shell$	ginsu
@@ -112,21 +110,23 @@ public class AppTest
     		+ this.helpTextGenerator.getUsage();
 
     	App.main(args);
-    	assertEquals(expectedMessage, this.stubOutputStream.toString());
+    	AssertJUnit.assertEquals(expectedMessage, this.stubOutputStream.toString());
     }
     
-    public void testIncorrectUsageNullArguments()
+    @Test()
+	public void testIncorrectUsageNullArguments()
     {
     	//Test null arguments
     	//shell$	ginsu
     	String expectedMessage = (new InvalidMainArgumentArray()).getMessage() + "\n" 
     		+ this.helpTextGenerator.getUsage();
     	App.main(null);
-    	assertEquals(expectedMessage, this.stubOutputStream.toString());
+    	AssertJUnit.assertEquals(expectedMessage, this.stubOutputStream.toString());
     }
     
     
-    public void testIncorrectUsageBogusArguments()
+    @Test()
+	public void testIncorrectUsageBogusArguments()
     {
     	//Test Bogus arguments
     	//shell$	ginsu foobar
