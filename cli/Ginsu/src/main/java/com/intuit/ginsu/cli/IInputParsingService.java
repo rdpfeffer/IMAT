@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2011 Intuit, Inc.
+* Copyright (c) 2009 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -10,28 +10,33 @@
 *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import com.intuit.ginsu.commands.ICommand;
+
 /**
  * @author rpfeffer
- * @dateCreated Mar 13, 2011
+ * @dateCreated Mar 25, 2011
  *
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public class InternalCommandParsingException extends Exception {
+public interface IInputParsingService {
 
 	/**
-	 * The UID for this exception
+	 * Parse and validate the input from the user
+	 * @param input An Array of strings representing the user's input
 	 */
-	private static final long serialVersionUID = 1849263877730901463L;
+	public void parseInput(String[] input);
+	
+	/**
+	 * Get he command we parsed from the user's input
+	 * @return an {@link ICommand} to be run.
+	 */
+	public ICommand getCommand();
 
 	/**
-	 * 
+	 * Get the main command context under which the parsed command will run.
+	 * @return an {@link ICommand} representing the Command Context
 	 */
-	public String getMessage()
-	{
-		return "An internal command parsing exception has occured that "
-		+ "should not happen. Please report this bug to the maintainers " 
-		+ "of ginsu along with a copy of the command that was used to "
-		+ "generate the exception";
-	}
+	public ICommand getMainCommandContext();
+	
 }

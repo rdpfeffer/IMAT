@@ -10,20 +10,12 @@
 *******************************************************************************/
 package com.intuit.ginsu;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-
-import com.intuit.ginsu.cli.CommandHelper;
-import com.intuit.ginsu.cli.CommandNotFoundException;
-import com.intuit.ginsu.cli.InvalidCommandException;
-import com.intuit.ginsu.cli.HelpTextGenerator;
-import com.intuit.ginsu.cli.InternalCommandParsingException;
-import com.intuit.ginsu.cli.InvalidMainArgumentArray;
-import com.intuit.ginsu.cli.OptionsFactory;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.intuit.ginsu.cli.IInputParsingService;
+import com.intuit.ginsu.commands.ICommand;
+import com.intuit.ginsu.commands.ICommandDispatchService;
+import com.intuit.ginsu.config.IConfigurationService;
 
 /**
  * 
@@ -36,40 +28,29 @@ public class App
 {
     public static void main( String[] args )
     {
-    	//declare the options for the command passed in.
-    	Options options = null;
-    	
     	//get a reference to the AppContext Singleton object.
     	AppContext appContext = AppContext.getInstance();
+    	Injector injector = Guice.createInjector(appContext.getAppModule());
     	
-    	//initialize the helpTextGenerator
-    	HelpTextGenerator helpTextGenerator = new HelpTextGenerator(
-    			appContext.getPrintWriter());
-    	try
+    	//Load and parse the Input from the user 
+    	IInputParsingService inputService = injector.getInstance(IInputParsingService.class);
+    	inputService.parseInput(args);
+    	ICommand mainCommand = inputService.getMainCommandContext();
+    	ICommand command  = inputService.getCommand();
+    	
+    	//Load the configuration
+    	IConfigurationService configService = injector.getInstance(IConfigurationService.class);
+    	configService.loadConfiguration();//load configs from ginsu home and project home in that order
+    	configService.loadConfigurationOverride(mainCommand);  //TODO Use reflection here on the main command
+    	if(command.isRunnable())
     	{
-    		// create the parser
-    	    CommandLineParser parser = new GnuParser();
-    	    
-	    	//First pull apart the command from the arguments
-	    	String command = CommandHelper.getCommandFromMainArgs(args);
-	    	
-	    	//These are the actual arguments we want to parse for options
-	    	String cmdArgs[] = CommandHelper.getCommandOptionsFromMainArgs(args);
-	    	
-	    	OptionsFactory optionsFactory = new OptionsFactory();
-	    	options = optionsFactory.generateCommandOptions(command);
-    		CommandLine commandLine = parser.parse( options, cmdArgs );
-	    	
-    	} catch (ParseException e) {
-			//TODO use a help generator class to print the right help message
-    		HelpFormatter helpFormatter = new HelpFormatter();
-			
-		} catch (InternalCommandParsingException e) {
-			appContext.getPrintWriter().println(e.getMessage());
-			e.printStackTrace();
-		} catch (Exception e) {
-			appContext.getPrintWriter().println(e.getMessage());
-    		helpTextGenerator.printUsage();
-		}
+    		configService.initialize();//we will check for accepting licence agreement here etc.
+    	}
+    	//TODO: Set the Configuration on the command
+
+    	//run the loaded command using the command dispatch service
+    	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);
+    	commandDispatchService.dispatch(command);
+    	command.cleanUp();
     }
 }

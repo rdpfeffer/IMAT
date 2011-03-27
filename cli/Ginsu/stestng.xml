@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="none">
+  <test name="Test" preserve-order="false">
+    <classes>
+      <class name="com.intuit.ginsu.cli.OptionsFactoryTest"/>
+      <class name="com.intuit.ginsu.cli.CommandHelperTest"/>
+      <class name="com.intuit.ginsu.AppTest"/>
+    </classes>
+  </test>
+</suite>

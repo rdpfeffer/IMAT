@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 Intuit, Inc.
+ * Copyright (c) 2009 Intuit, Inc.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,27 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu;
+package com.intuit.ginsu.commands;
 
 /**
  * @author rpfeffer
- * @dateCreated Mar 11, 2011
+ * @dateCreated Mar 26, 2011
  * 
- *              Contains all of the App Level Constants for the Ginsu
- *              {@link App}.
+ *              //TODO Explain why this file exists and how it is used.
+ * 
  */
-public class Constants {
+public class CommandDispatchServiceImpl implements ICommandDispatchService {
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.intuit.ginsu.commands.ICommandDispatchService#dispatch(com.intuit
+	 * .ginsu.commands.ICommand)
+	 */
+	public void dispatch(ICommand command) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
