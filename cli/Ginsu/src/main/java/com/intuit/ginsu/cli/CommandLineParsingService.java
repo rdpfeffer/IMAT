@@ -70,7 +70,7 @@ public class CommandLineParsingService implements IInputParsingService {
 		try
 		{
 			this.jCommander.parse(input);
-			this.command = this.supportedCommands.get(this.jCommander.getParsedCommand());
+			this.command = this.getParsedCommand();
 		}
 		catch (Throwable e)
 		{
@@ -99,6 +99,16 @@ public class CommandLineParsingService implements IInputParsingService {
 	public ICommand getMainCommandContext() {
 		// TODO Auto-generated method stub
 		return this.mainCommand;
+	}
+	
+	private ICommand getParsedCommand() throws Exception
+	{
+		ICommand parsedCommand = this.supportedCommands.get(this.jCommander.getParsedCommand());
+		if(parsedCommand == null)
+		{
+			throw new Exception("You must supply at least one supported command.");
+		}
+		return parsedCommand;
 	}
 
 }

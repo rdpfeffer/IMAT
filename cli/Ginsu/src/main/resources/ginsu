@@ -1,6 +1,4 @@
 #! /bin/bash
 dir=$(dirname $0)
-echo $dir
-export CLASSPATH=${CLASSPATH}${CLASSPATH:+:}${dir}/bin/\*
-echo using CLASSPATH=$(printenv CLASSPATH) > /dev/stderr
-exec java com.intuit.ginsu.App "$@"
+export CLASSPATH=${CLASSPATH}${CLASSPATH:+:}${dir}/lib/\*
+exec java -jar Ginsu-1.0.0-SNAPSHOT.jar "$@"
