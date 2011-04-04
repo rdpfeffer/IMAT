@@ -36,7 +36,7 @@ import com.intuit.ginsu.commands.ICommand;
 public class CommandLineParsingService implements IInputParsingService {
 
 	// According to the best practices listed at:
-	// http://code.​google.com/​docreader/#p=​google-guice&​s=​google-guice&​t=​Minimize​Mutability
+	// http://code.google.com/docreader/#p=google-guice&s=google-guice&t=MinimizeMutability
 	// we should try keep all injected objects immutable
 	private final JCommander jCommander;
 	private final MainArgs mainArgs;
