@@ -10,17 +10,25 @@
 *******************************************************************************/
 package com.intuit.ginsu.config;
 
-import com.intuit.ginsu.commands.ICommand;
+import java.util.Hashtable;
+import java.util.Properties;
+
+import com.beust.jcommander.IDefaultProvider;
+import com.google.inject.Singleton;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This class provides a property file based implementation of the
+ *              {@link IConfigurationService}.
+ * 
  */
-public class PropertyFileConfigurationService implements IConfigurationService {
+@Singleton
+public class PropertyFileConfigurationService implements IConfigurationService, IDefaultProvider {
 
+	
+	
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.config.IConfigurationService#loadConfiguration()
 	 */
@@ -32,7 +40,7 @@ public class PropertyFileConfigurationService implements IConfigurationService {
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.config.IConfigurationService#loadConfigurationOverride(com.intuit.ginsu.commands.ICommand)
 	 */
-	public void loadConfigurationOverride(ICommand command) {
+	public void loadConfiguration(Hashtable<String, Object> configurationOverride) {
 		// TODO Auto-generated method stub
 
 	}
@@ -40,14 +48,24 @@ public class PropertyFileConfigurationService implements IConfigurationService {
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.config.IConfigurationService#getConfiguration()
 	 */
-	public Configuration getConfiguration() {
+	public Properties getConfiguration() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void initialize() {
+	public void doFirstTimeInitialization() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean isNotInitialized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getDefaultValueFor(String arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

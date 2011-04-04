@@ -11,6 +11,8 @@
 package com.intuit.ginsu.commands;
 
 import java.io.File;
+import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.intuit.ginsu.cli.converters.FileConverter;
@@ -22,8 +24,11 @@ import com.intuit.ginsu.cli.converters.FileConverter;
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public class CommandInitEnv implements ICommand{
+public class CommandInitEnv extends Command implements ICommand{
 
+	public CommandInitEnv(PrintWriter printwriter, Logger logger) {
+		super(printwriter, null);
+	}
 	public static final String NAME = "init-env";
 	
 	public static final String TEMPLATE = "-template";
@@ -31,10 +36,14 @@ public class CommandInitEnv implements ICommand{
 			description = "The instruments trace template file to use when "
 				+ "running iOS Automation.", required = true)
 	File template;
-	public void run() {
+	
+	public int run() {
+		int exitStatus  = 0;
 		// TODO Auto-generated method stub
 		
+		return exitStatus;
 	}
+	
 	public void cleanUp() {
 		// TODO Auto-generated method stub	
 	}
@@ -48,7 +57,7 @@ public class CommandInitEnv implements ICommand{
 	public boolean equals(Object command)
 	{
 		return (command != null &&
-				command.getClass() == this.getClass() &&
+				command instanceof CommandInitEnv &&
 				((CommandInitEnv)command).getName() == this.getName());
 	}
 	public boolean isRunnable() {

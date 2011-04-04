@@ -12,11 +12,12 @@ package com.intuit.ginsu.cli;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
+import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
 import com.google.inject.Inject;
-import com.intuit.ginsu.commands.CommandMain;
 import com.intuit.ginsu.commands.CommandNull;
 import com.intuit.ginsu.commands.ICommand;
 
@@ -34,13 +35,11 @@ import com.intuit.ginsu.commands.ICommand;
  */
 public class CommandLineParsingService implements IInputParsingService {
 
-	public static final String HELP_COMMAND = "help";
-	public static final String INIT_ENV_COMMAND = "init-env";
-	public static final String GENERATE_PROJECT = "generate-project";
-	public static final String RUN_TESTS = "run-tests";
-
+	// According to the best practices listed at:
+	// http://code.​google.com/​docreader/#p=​google-guice&​s=​google-guice&​t=​Minimize​Mutability
+	// we should try keep all injected objects immutable
 	private final JCommander jCommander;
-	private final ICommand mainCommand;
+	private final MainArgs mainArgs;
 	private final PrintWriter printWriter;
 	private final Map<String, ICommand> supportedCommands;
 	private ICommand command;
@@ -48,10 +47,10 @@ public class CommandLineParsingService implements IInputParsingService {
 
 	@Inject
 	public CommandLineParsingService(PrintWriter printWriter, 
-			JCommander jCommander, CommandMain commandMain,
+			JCommander jCommander, MainArgs mainArgs,
 			HashMap<String, ICommand> supportedCommands) {
 		this.printWriter = printWriter;
-		this.mainCommand = commandMain;
+		this.mainArgs = mainArgs;
 		this.jCommander = jCommander;
 		this.supportedCommands = supportedCommands;
 
@@ -96,9 +95,9 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * 
 	 * @see com.intuit.ginsu.cli.IInputParsingService#getMainCommand()
 	 */
-	public ICommand getMainCommandContext() {
+	public Hashtable<String, Object> getConfigurationOverride() {
 		// TODO Auto-generated method stub
-		return this.mainCommand;
+		return this.mainArgs.getConfigurationOverride();
 	}
 	
 	private ICommand getParsedCommand() throws Exception
@@ -109,6 +108,10 @@ public class CommandLineParsingService implements IInputParsingService {
 			throw new Exception("You must supply at least one supported command.");
 		}
 		return parsedCommand;
+	}
+
+	public void setDefaultProvider(IDefaultProvider defaultProvider) {
+		this.jCommander.setDefaultProvider(defaultProvider);
 	}
 
 }

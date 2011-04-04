@@ -10,6 +10,10 @@
 *******************************************************************************/
 package com.intuit.ginsu.commands;
 
+import java.io.PrintWriter;
+
+import java.util.logging.*;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -17,16 +21,23 @@ package com.intuit.ginsu.commands;
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public class CommandHelp implements ICommand {
+public class CommandHelp extends Command implements ICommand {
+
+	
+	public CommandHelp(PrintWriter printwriter, Logger logger) {
+		super(printwriter, null);
+	}
 
 	public static final String NAME = "help";
 	
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
-	public void run() {
+	public int run() {
+		int exitStatus  = 0;
 		// TODO Auto-generated method stub
-
+		
+		return exitStatus;
 	}
 
 	/* (non-Javadoc)
@@ -46,7 +57,7 @@ public class CommandHelp implements ICommand {
 	public boolean equals(Object command)
 	{
 		return (command != null &&
-				command.getClass() == this.getClass() &&
+				command instanceof CommandHelp &&
 				((CommandHelp)command).getName() == this.getName());
 	}
 

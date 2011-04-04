@@ -10,6 +10,10 @@
 *******************************************************************************/
 package com.intuit.ginsu.commands;
 
+import java.io.PrintWriter;
+
+import java.util.logging.*;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
@@ -17,13 +21,19 @@ package com.intuit.ginsu.commands;
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public class CommandRunTests implements ICommand{
+public class CommandRunTests extends Command implements ICommand{
+
+	public CommandRunTests(PrintWriter printwriter, Logger logger) {
+		super(printwriter, null);
+	}
 
 	public static final String NAME = "run-tests";
 	
-	public void run() {
+	public int run() {
+		int exitStatus  = 0;
 		// TODO Auto-generated method stub
 		
+		return exitStatus;
 	}
 
 	public void cleanUp() {
@@ -40,7 +50,7 @@ public class CommandRunTests implements ICommand{
 	public boolean equals(Object command)
 	{
 		return (command != null &&
-				command.getClass() == this.getClass() &&
+				command instanceof CommandRunTests &&
 				((CommandRunTests)command).getName() == this.getName());
 	}
 

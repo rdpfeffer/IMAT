@@ -3,8 +3,8 @@
 <suite name="Suite" parallel="none">
   <test name="Test" preserve-order="false">
     <classes>
-      <class name="com.intuit.ginsu.cli.OptionsFactoryTest"/>
-      <class name="com.intuit.ginsu.cli.CommandHelperTest"/>
+      <class name="com.intuit.ginsu.cli.CommandLineParsingServiceTest"/>
+      <class name="com.intuit.ginsu.cli.GinsuCLIModuleTest"/>
       <class name="com.intuit.ginsu.AppTest"/>
     </classes>
   </test>

@@ -38,7 +38,7 @@
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-              				<mainClass>com.intuit.ginsu.App</mainClass>
+              				<mainClass>com.intuit.ginsu.cli.App</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Bundle-Version>${project.version}</Bundle-Version>
@@ -78,5 +78,13 @@
 		  <artifactId>guice</artifactId>
 		  <version>2.0</version>
 		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>com.google.code.sli4j</groupId>
+			<artifactId>sli4j-log4j</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		-->
 	</dependencies>
 </project>

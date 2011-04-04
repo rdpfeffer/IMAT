@@ -19,5 +19,9 @@ package com.intuit.ginsu.commands;
  */
 public interface ICommandDispatchService {
 
+	/**
+	 * Dispatch the given command
+	 * @param command - The {@link ICommand} to execute.
+	 */
 	public void dispatch(ICommand command);
 }

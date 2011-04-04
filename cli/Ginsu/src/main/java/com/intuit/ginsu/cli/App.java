@@ -8,11 +8,10 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu;
+package com.intuit.ginsu.cli;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.intuit.ginsu.cli.IInputParsingService;
+import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.commands.ICommand;
 import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.config.IConfigurationService;
@@ -28,29 +27,30 @@ public class App
 {
     public static void main( String[] args )
     {
-    	//get a reference to the AppContext Singleton object.
+    	//get a reference to the AppContext Singleton object and initialize the CLI module.
     	AppContext appContext = AppContext.getInstance();
-    	Injector injector = Guice.createInjector(appContext.getAppModule());
+    	appContext.setAppModule(new GinsuCLIModule());
+    	Injector injector = appContext.getInjector();
     	
     	//Load and parse the Input from the user 
     	IInputParsingService inputService = injector.getInstance(IInputParsingService.class);
     	inputService.parseInput(args);
-    	ICommand mainCommand = inputService.getMainCommandContext();
     	ICommand command  = inputService.getCommand();
     	
     	//Load the configuration
     	IConfigurationService configService = injector.getInstance(IConfigurationService.class);
-    	configService.loadConfiguration();//load configs from ginsu home and project home in that order
-    	configService.loadConfigurationOverride(mainCommand);  //TODO Use reflection here on the main command
-    	if(command.isRunnable())
+    	
+    	//If we have a runnable command 
+    	if(command.isRunnable() && configService.isNotInitialized())
     	{
-    		configService.initialize();//we will check for accepting licence agreement here etc.
+    		//run the first time initialization
+    		configService.doFirstTimeInitialization();//we will check for accepting license agreement here etc.
     	}
-    	//TODO: Set the Configuration on the command
 
     	//run the loaded command using the command dispatch service
     	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);
     	commandDispatchService.dispatch(command);
-    	command.cleanUp();
+    	
+    	//TODO after the command has run, dispatch the update command in the background and exit
     }
 }

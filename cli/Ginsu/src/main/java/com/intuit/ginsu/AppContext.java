@@ -11,34 +11,25 @@
 package com.intuit.ginsu;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+import com.intuit.ginsu.cli.GinsuCLIModule;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 12, 2011
  * 
- *              The Application context is used to store runtime applicaiton
- *              configurations. It provides a consistent interface accross the
- *              cli applicaiton to set and get the app wide shared objects and
- *              configurations.
- * 
- *              Examples: The Printwriter object we use to write to the console
- *              is set in the app context.
- * 
- *              Note: This also allows us to send to a byte array while we unit
- *              test
+ *              The Application context is used to store runtime application
+ *              configurations modules. Combined with the Google Guice injection
+ *              framework, it provides a consistent interface across the
+ *              application to set and get the app-wide shared configurations.
  * 
  */
 public class AppContext {
 
 	private static AppContext instance;
-	private AbstractModule appModule;
-
-	/**
-	 * Default Constructor for the Application Context
-	 */
-	protected AppContext() {
-		this.setAppModule(new GinsuModule());
-	}
+	private Module appModule;
 
 	/**
 	 * Get an instance of the AppContext singleton object
@@ -55,16 +46,21 @@ public class AppContext {
 	/**
 	 * @return the appModule
 	 */
-	public AbstractModule getAppModule() {
+	public Module getAppModule() {
 		return appModule;
 	}
 
 	/**
-	 * @param appModule
+	 * @param module
 	 *            the appModule to set
 	 */
-	public void setAppModule(AbstractModule appModule) {
-		this.appModule = appModule;
+	public void setAppModule(Module module) {
+		this.appModule = module;
+	}
+	
+	public Injector getInjector()
+	{
+		return Guice.createInjector(this.getAppModule());
 	}
 
 }

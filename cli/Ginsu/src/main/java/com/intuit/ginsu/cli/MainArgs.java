@@ -8,9 +8,9 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu.cli;
 
-import java.io.PrintWriter;
+import java.util.Hashtable;
 
 import com.beust.jcommander.Parameter;
 import com.google.inject.Singleton;
@@ -23,7 +23,7 @@ import com.google.inject.Singleton;
  * 
  */
 @Singleton
-public class CommandMain implements ICommand{
+public class MainArgs {
 
 	public static final String NAME = "main";
 	
@@ -52,36 +52,12 @@ public class CommandMain implements ICommand{
 			+ "the CLI tool when it runs.")
 	public boolean autoUpdateOff = false;
 	
-	private final PrintWriter printWriter;
-	
-	public CommandMain(PrintWriter printWriter)
+	public Hashtable<String, Object> getConfigurationOverride()
 	{
-		this.printWriter = printWriter;
-	}
-
-	public void run() {
-		//do nothing
-		
-	}
-
-	public void cleanUp() {
-		//do nothing
-	}
-	
-	public String getName()
-	{
-		return CommandMain.NAME;
-	}
-	
-	@Override
-	public boolean equals(Object command)
-	{
-		return (command != null &&
-				command.getClass() == this.getClass() &&
-				((CommandMain)command).getName() == this.getName());
-	}
-
-	public boolean isRunnable() {
-		return true;
+		Hashtable<String, Object> config = new Hashtable<String, Object>();
+		config.put(MainArgs.LOG_LEVEL, this.logLevel);
+		config.put(MainArgs.VERBOSE, this.verbose);
+		config.put(MainArgs.AUTO_UPDATE_OFF, this.autoUpdateOff);
+		return config;
 	}
 }

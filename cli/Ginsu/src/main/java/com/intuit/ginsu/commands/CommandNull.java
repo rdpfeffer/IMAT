@@ -1,55 +1,79 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.commands;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              The null command is not actually a command. Instead, it is a
+ *              place holder implementation following the null object pattern
+ *              for the ICommand interface. By that, we mean that it implements
+ *              all of the expected methods in the ICommand interface but none
+ *              of those methods actually do anything. This reduces the
+ *              conditional logic and allows the application to complete
+ *              normally even when there is a parsing error.
+ * 
  */
 public class CommandNull implements ICommand {
 
 	public static final String NAME = "null";
-	
-	/* (non-Javadoc)
+	private static final int NULL_COMMAND_ERROR_CODE = 1;
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
-	public void run() {
-		//Do nothing
+	public int run() {
+		return this.getExitStatus();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#cleanUp()
 	 */
 	public void cleanUp() {
-		//Do nothing
+		// Do nothing
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return CommandNull.NAME;
 	}
-	
+
 	@Override
-	public boolean equals(Object command)
-	{
-		return (command != null &&
-				command.getClass() == this.getClass() &&
-				((CommandNull)command).getName() == this.getName());
+	public boolean equals(Object command) {
+		return (command != null && command instanceof CommandNull && ((CommandNull) command)
+				.getName() == this.getName());
 	}
 
 	public boolean isRunnable() {
 		return false;
+	}
+
+	public int getExitStatus() {
+		// Always return an error code, as the null command only gets created in
+		// error states
+		return NULL_COMMAND_ERROR_CODE;
+	}
+
+	public String getErrorMessage() {
+		// Note we rely on the application to surface the correct error message.
+		// Note: this should only happen during input parsing
+		return "";
+	}
+
+	public boolean isCommandComplete() {
+		return true;
 	}
 
 }

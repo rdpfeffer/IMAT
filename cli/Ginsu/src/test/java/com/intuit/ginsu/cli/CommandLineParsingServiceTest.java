@@ -14,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
@@ -24,12 +25,11 @@ import org.testng.annotations.Test;
 import com.beust.jcommander.JCommander;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.util.Modules;
 import com.intuit.ginsu.AppContext;
-import com.intuit.ginsu.GinsuTestModule;
 import com.intuit.ginsu.commands.CommandGenerateProject;
 import com.intuit.ginsu.commands.CommandHelp;
 import com.intuit.ginsu.commands.CommandInitEnv;
-import com.intuit.ginsu.commands.CommandMain;
 import com.intuit.ginsu.commands.CommandNull;
 import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommand;
@@ -42,7 +42,7 @@ import com.intuit.ginsu.commands.SupportedCommandCollection;
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public class CommandLineParsingServiceTests {
+public class CommandLineParsingServiceTest {
 
 	
 	private ByteArrayOutputStream outputStreamFixture;
@@ -50,13 +50,15 @@ public class CommandLineParsingServiceTests {
 	private File tempFile;
 	private JCommander jCommander;
 	private Injector injector;
+	private Logger logger;
 	
 	@BeforeClass
 	protected void setUpContext()
 	{
 		AppContext appContext = AppContext.getInstance();
-		appContext.setAppModule(new GinsuTestModule());
+		appContext.setAppModule(Modules.override( new GinsuCLIModule()).with(new GinsuTestModuleOverride()));
 		this.injector = Guice.createInjector(appContext.getAppModule());
+		this.logger = injector.getInstance(Logger.class);
 	}
 	
 	/* (non-Javadoc)
@@ -98,21 +100,21 @@ public class CommandLineParsingServiceTests {
 	public void testParseInputWithValidCommands()
 	{
 		String[][] testData = new String[][]  {
-				new String[] {CommandLineParsingService.HELP_COMMAND},
-				new String[] {CommandLineParsingService.INIT_ENV_COMMAND, 
+				new String[] {CommandHelp.NAME},
+				new String[] {CommandInitEnv.NAME, 
 						"-template",  tempFile.getAbsolutePath()},
-				new String[] {CommandLineParsingService.GENERATE_PROJECT},
-				new String[] {CommandLineParsingService.RUN_TESTS},
+				new String[] {CommandGenerateProject.NAME},
+				new String[] {CommandRunTests.NAME},
 		};
 		
 		ICommand[] expectedCommands = new ICommand[]  {
-				new CommandHelp(),
-				new CommandInitEnv(),
-				new CommandGenerateProject(),
-				new CommandRunTests(),
+				new CommandHelp(printWriter, logger),
+				new CommandInitEnv(printWriter, logger),
+				new CommandGenerateProject(printWriter, logger),
+				new CommandRunTests(printWriter, logger),
 		};
 		
-		CommandMain expectedMainCommand = injector.getInstance(CommandMain.class);
+		MainArgs mainArgs = injector.getInstance(MainArgs.class);
 		
 		
 		for (int i = 0; i < testData.length; i++)
@@ -124,10 +126,10 @@ public class CommandLineParsingServiceTests {
 			this.jCommander = injector.getInstance(JCommander.class);
 			SupportedCommandCollection cmdCollection = injector.getInstance(SupportedCommandCollection.class);
 			CommandLineParsingService parsingService = new CommandLineParsingService(
-					this.printWriter, this.jCommander, expectedMainCommand, cmdCollection);
+					this.printWriter, this.jCommander, mainArgs, cmdCollection);
 			parsingService.parseInput(args);
 			AssertJUnit.assertEquals(expectedCommands[i], parsingService.getCommand());
-			AssertJUnit.assertEquals(expectedMainCommand, parsingService.getMainCommandContext());
+			AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(), parsingService.getConfigurationOverride());
 			AssertJUnit.assertEquals("", this.outputStreamFixture.toString());
 		}
 	}
@@ -139,13 +141,14 @@ public class CommandLineParsingServiceTests {
 	@Test()
 	public void testParseInputWithInvalidCommands()
 	{
+		//Set up the specifics for this test
 		String[] testData = new String[] {"foobar"};
 		ICommand expectedCommand = new CommandNull();
-		CommandMain expectedMainCommand = injector.getInstance(CommandMain.class);
+		MainArgs mainArgs = injector.getInstance(MainArgs.class);
 		this.jCommander = injector.getInstance(JCommander.class);
 		SupportedCommandCollection cmdCollection = injector.getInstance(SupportedCommandCollection.class);
 		CommandLineParsingService parsingService = new CommandLineParsingService(
-				this.printWriter, this.jCommander, expectedMainCommand, cmdCollection);
+				this.printWriter, this.jCommander, mainArgs, cmdCollection);
 
 		StringBuilder exepectedUsageString = new StringBuilder();
 		this.jCommander.usage(exepectedUsageString);
@@ -153,9 +156,12 @@ public class CommandLineParsingServiceTests {
 			+ System.getProperty("line.separator") 
 			+ exepectedUsageString.toString(); 
 		
+		//parse the test data
 		parsingService.parseInput(testData);
+		
+		//Validate the results
 		AssertJUnit.assertEquals(expectedCommand, parsingService.getCommand());
-		AssertJUnit.assertEquals(expectedMainCommand, parsingService.getMainCommandContext());
+		AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(), parsingService.getConfigurationOverride());
 		AssertJUnit.assertEquals(expectedOutput.trim(), this.outputStreamFixture.toString().trim());
 	}
 }

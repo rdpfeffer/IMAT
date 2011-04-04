@@ -10,6 +10,9 @@
 *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import java.util.Hashtable;
+
+import com.beust.jcommander.IDefaultProvider;
 import com.intuit.ginsu.commands.ICommand;
 
 /**
@@ -37,6 +40,6 @@ public interface IInputParsingService {
 	 * Get the main command context under which the parsed command will run.
 	 * @return an {@link ICommand} representing the Command Context
 	 */
-	public ICommand getMainCommandContext();
+	public Hashtable<String, Object> getConfigurationOverride();
 	
 }
