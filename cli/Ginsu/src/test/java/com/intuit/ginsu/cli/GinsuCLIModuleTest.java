@@ -3,6 +3,7 @@ package com.intuit.ginsu.cli;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -95,7 +96,7 @@ public class GinsuCLIModuleTest {
 
 	@Test
 	public void testOutputStreamBinding() {
-		assert injector.getInstance(OutputStream.class) == System.out;
+		AssertJUnit.assertEquals(System.out, injector.getInstance(OutputStream.class));
 	}
 
 	@Test
