@@ -5,7 +5,7 @@
     <classes>
       <class name="com.intuit.ginsu.cli.CommandLineParsingServiceTest"/>
       <class name="com.intuit.ginsu.cli.GinsuCLIModuleTest"/>
-      <class name="com.intuit.ginsu.AppTest"/>
+      <class name="com.intuit.ginsu.cli.AppTest"/>
     </classes>
   </test>
 </suite>
