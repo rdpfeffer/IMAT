@@ -12,26 +12,8 @@ package com.intuit.ginsu.cli;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.Map;
 
-import com.beust.jcommander.JCommander;
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.intuit.ginsu.annotations.AppName;
-import com.intuit.ginsu.cli.CommandLineParsingService;
-import com.intuit.ginsu.cli.MainArgs;
-import com.intuit.ginsu.cli.IInputParsingService;
-import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
-import com.intuit.ginsu.commands.CommandGenerateProject;
-import com.intuit.ginsu.commands.CommandHelp;
-import com.intuit.ginsu.commands.CommandInitEnv;
-import com.intuit.ginsu.commands.CommandRunTests;
-import com.intuit.ginsu.commands.ICommand;
-import com.intuit.ginsu.commands.ICommandDispatchService;
-import com.intuit.ginsu.commands.SupportedCommandCollection;
-import com.intuit.ginsu.config.IConfigurationService;
-import com.intuit.ginsu.config.PropertyFileConfigurationService;
 
 /**
  * @author rpfeffer

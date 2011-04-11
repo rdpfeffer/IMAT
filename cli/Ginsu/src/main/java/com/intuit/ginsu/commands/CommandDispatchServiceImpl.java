@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.intuit.ginsu.commands;
 
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -27,8 +28,7 @@ public class CommandDispatchServiceImpl implements ICommandDispatchService {
 	 * .ginsu.commands.ICommand)
 	 */
 	public void dispatch(ICommand command) {
-		// TODO Auto-generated method stub
-
+		command.run();
 	}
 
 }

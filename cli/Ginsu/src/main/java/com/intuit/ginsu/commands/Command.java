@@ -11,8 +11,9 @@
 package com.intuit.ginsu.commands;
 
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
-import java.util.logging.*;;
+import com.beust.jcommander.Parameter;
 
 /**
  * @author rpfeffer
@@ -24,12 +25,18 @@ import java.util.logging.*;;
 public abstract class Command implements ICommand {
 
 	private static final int UNSET_EXIT_STATUS = -1;
+
+	private static final int PRINT_HELP_EXIT_STATUS = 0;
+	
 	private static final String UNSET_ERROR_MESSAGE = "";
 	protected final PrintWriter printWriter;
 	protected final Logger logger;
 	protected int exitStatus;
 	protected String errorMessage;
 
+	@Parameter(names={"-help"}, description="Print the usage for this command.")
+	public boolean help = false;
+	
 	public Command(PrintWriter printwriter, Logger logger) {
 		this.printWriter = printwriter;
 		this.logger = logger;
@@ -50,6 +57,19 @@ public abstract class Command implements ICommand {
 	public boolean isCommandComplete()
 	{
 		return (this.exitStatus != UNSET_EXIT_STATUS);
+	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#shouldPrintCommandUsage()
+	 */
+	public boolean shouldRenderCommandUsage() {
+		if(this.help)
+		{
+			this.exitStatus = PRINT_HELP_EXIT_STATUS;
+		}
+		return this.help;
 	}
 
 	private void assertCommandComplete() throws IncompleteCommandException {

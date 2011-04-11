@@ -76,4 +76,9 @@ public class CommandNull implements ICommand {
 		return true;
 	}
 
+	public boolean shouldRenderCommandUsage() {
+		// there is now help for this command so we will always return false here
+		return false;
+	}
+
 }

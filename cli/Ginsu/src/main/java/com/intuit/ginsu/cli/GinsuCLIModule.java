@@ -12,7 +12,6 @@ package com.intuit.ginsu.cli;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import com.beust.jcommander.IDefaultProvider;
@@ -25,7 +24,6 @@ import com.intuit.ginsu.commands.CommandGenerateProject;
 import com.intuit.ginsu.commands.CommandHelp;
 import com.intuit.ginsu.commands.CommandInitEnv;
 import com.intuit.ginsu.commands.CommandRunTests;
-import com.intuit.ginsu.commands.ICommand;
 import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 import com.intuit.ginsu.config.IConfigurationService;
@@ -79,17 +77,11 @@ public class GinsuCLIModule extends AbstractModule {
 	 */
 	@Provides JCommander provideJCommander(@AppName String appName, 
 			MainArgs mainArgs, 
-			SupportedCommandCollection supportedCommands,
 			IDefaultProvider defaultProvider)
 	{
 		JCommander jCommander = new JCommander(mainArgs); 
 		jCommander.setProgramName(appName);
 		jCommander.setDefaultProvider(defaultProvider);
-		// add all of the commands in our collection of supported commands
-		for (Map.Entry<String, ICommand> entry : supportedCommands
-				.entrySet()) {
-			jCommander.addCommand(entry.getKey(), entry.getValue());
-		}
 		return jCommander;
 	}
 	

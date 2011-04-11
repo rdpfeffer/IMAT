@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.util.logging.Logger;
 
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
 import com.intuit.ginsu.cli.converters.FileConverter;
 
 /**
@@ -24,6 +25,8 @@ import com.intuit.ginsu.cli.converters.FileConverter;
  * //TODO Explain why this file exists and how it is used.
  *
  */
+@Parameters(commandDescription = "Run this command after downloading Ginsu for"
+	+" the first time.")
 public class CommandInitEnv extends Command implements ICommand{
 
 	public CommandInitEnv(PrintWriter printwriter, Logger logger) {
@@ -31,10 +34,12 @@ public class CommandInitEnv extends Command implements ICommand{
 	}
 	public static final String NAME = "init-env";
 	
+	/**
+	 */
 	public static final String TEMPLATE = "-template";
 	@Parameter(names = {TEMPLATE, "-t"}, converter = FileConverter.class,
 			description = "The instruments trace template file to use when "
-				+ "running iOS Automation.", required = true)
+				+ "running iOS Automation.")
 	File template;
 	
 	public int run() {

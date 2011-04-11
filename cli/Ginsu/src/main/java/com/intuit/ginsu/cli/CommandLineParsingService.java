@@ -11,7 +11,6 @@
 package com.intuit.ginsu.cli;
 
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -20,6 +19,7 @@ import com.beust.jcommander.JCommander;
 import com.google.inject.Inject;
 import com.intuit.ginsu.commands.CommandNull;
 import com.intuit.ginsu.commands.ICommand;
+import com.intuit.ginsu.commands.SupportedCommandCollection;
 
 /**
  * @author rpfeffer
@@ -48,12 +48,15 @@ public class CommandLineParsingService implements IInputParsingService {
 	@Inject
 	public CommandLineParsingService(PrintWriter printWriter, 
 			JCommander jCommander, MainArgs mainArgs,
-			HashMap<String, ICommand> supportedCommands) {
+			SupportedCommandCollection supportedCommands) {
 		this.printWriter = printWriter;
 		this.mainArgs = mainArgs;
 		this.jCommander = jCommander;
 		this.supportedCommands = supportedCommands;
-
+		
+		//Setup The JCommanderObject with the Supported Commands 
+		this.loadSupportedCommands();
+		
 		//until we successfully call parse, this will be the object we get back
 		this.command = new CommandNull();
 	}
@@ -69,7 +72,20 @@ public class CommandLineParsingService implements IInputParsingService {
 		try
 		{
 			this.jCommander.parse(input);
-			this.command = this.getParsedCommand();
+			ICommand parsedCommand = this.getParsedCommand();
+			if(parsedCommand.shouldRenderCommandUsage())
+			{
+				StringBuilder stringBuilder = new StringBuilder();
+				this.jCommander.usage(parsedCommand.getName(), stringBuilder);
+				this.printWriter.println(stringBuilder.toString());
+			}
+			else
+			{
+				//Since we are not printing usage, we will set the current 
+				//command to the one that was parsed and override the CommandNull 
+				//object
+				this.command = parsedCommand;
+			}
 		}
 		catch (Throwable e)
 		{
@@ -99,7 +115,20 @@ public class CommandLineParsingService implements IInputParsingService {
 		// TODO Auto-generated method stub
 		return this.mainArgs.getConfigurationOverride();
 	}
+
+	/**
+	 * 
+	 * @param defaultProvider
+	 */
+	public void setDefaultProvider(IDefaultProvider defaultProvider) {
+		this.jCommander.setDefaultProvider(defaultProvider);
+	}
 	
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	private ICommand getParsedCommand() throws Exception
 	{
 		ICommand parsedCommand = this.supportedCommands.get(this.jCommander.getParsedCommand());
@@ -109,9 +138,17 @@ public class CommandLineParsingService implements IInputParsingService {
 		}
 		return parsedCommand;
 	}
-
-	public void setDefaultProvider(IDefaultProvider defaultProvider) {
-		this.jCommander.setDefaultProvider(defaultProvider);
+	
+	/**
+	 * load the commands that we support into the jCommander object. 
+	 */
+	private void loadSupportedCommands()
+	{
+		// add all of the commands in our collection of supported commands
+		for (Map.Entry<String, ICommand> entry : supportedCommands
+				.entrySet()) {
+			jCommander.addCommand(entry.getKey(), entry.getValue());
+		}
 	}
 
 }

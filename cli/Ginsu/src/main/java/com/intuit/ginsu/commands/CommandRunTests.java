@@ -11,8 +11,10 @@
 package com.intuit.ginsu.commands;
 
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
-import java.util.logging.*;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
 
 /**
  * @author rpfeffer
@@ -21,8 +23,17 @@ import java.util.logging.*;
  * //TODO Explain why this file exists and how it is used.
  *
  */
+@Parameters(commandDescription = "Use this command to run your tests.")
 public class CommandRunTests extends Command implements ICommand{
 
+	/**
+	 * TODO: Replace this Parameter with an actual parameter that we are going to use.
+	 */
+	public static final String PLACEHOLDER = "-placeholder";
+	@Parameter(names = {PLACEHOLDER},
+			description = "This is just a placeholder until we implement more of this class")
+	public boolean placeholder;
+	
 	public CommandRunTests(PrintWriter printwriter, Logger logger) {
 		super(printwriter, null);
 	}

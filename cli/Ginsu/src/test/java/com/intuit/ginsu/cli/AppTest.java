@@ -1,7 +1,6 @@
 package com.intuit.ginsu.cli;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;

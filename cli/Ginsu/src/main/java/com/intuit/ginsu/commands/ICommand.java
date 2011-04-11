@@ -68,6 +68,12 @@ public interface ICommand {
 	 *             when called before the command has completed.
 	 */
 	public String getErrorMessage() throws IncompleteCommandException;
+	
+	/**
+	 * Returns the name of the command.
+	 * @return {@link String} the name of the command.
+	 */
+	public String getName();
 
 	/**
 	 * Although the run() method returns the exit status of the command, it may
@@ -76,7 +82,20 @@ public interface ICommand {
 	 * This method provides an interface for monitoring that state in those
 	 * instances.
 	 * 
-	 * @return true after the command has completed and false up until that point
+	 * @return true after the command has completed and false up until that
+	 *         point
 	 */
 	public boolean isCommandComplete();
+
+	/**
+	 * This hook is called before a command is run. It will give the command a
+	 * chance to return usage information back to the user. For example when
+	 * this command returns true, the CommandDispatchServiceImpl class will not
+	 * run the command, but rather print its usage out to the console. In other
+	 * implementations of the ICommandDispatchService it may cause the help to 
+	 * be displayed in other ways.
+	 * 
+	 * @return
+	 */
+	public boolean shouldRenderCommandUsage();
 }

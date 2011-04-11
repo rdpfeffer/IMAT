@@ -1,9 +1,9 @@
 package com.intuit.ginsu.cli;
 
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 
-import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,8 +12,8 @@ import com.beust.jcommander.JCommander;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
-import com.intuit.ginsu.commands.CommandGenerateProject;
 import com.intuit.ginsu.commands.CommandHelp;
+import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 import com.intuit.ginsu.config.IConfigurationService;
@@ -29,13 +29,18 @@ public class GinsuCLIModuleTest {
 	}
 
 	@Test
-	public void testAppNameAnnotation() {
+	public void testAppNameAnnotationWithJCommanderProvider() {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		JCommander jCommander = injector.getInstance(JCommander.class);
-		jCommander.parse(new String[] { CommandGenerateProject.NAME });
+		SupportedCommandCollection supportedCommands = injector.getInstance(SupportedCommandCollection.class);
+		jCommander.addCommand(CommandRunTests.NAME, supportedCommands.get(CommandRunTests.NAME));
 		jCommander.usage(stringBuilder);
 		assert stringBuilder.toString().contains("Ginsu");
+		
+		// Just for safe measure, also make sure that we are always getting a
+		// new instance of JCommander when we ask for it.
+		assert jCommander != injector.getInstance(JCommander.class);
 	}
 
 	@Test
@@ -96,7 +101,7 @@ public class GinsuCLIModuleTest {
 
 	@Test
 	public void testOutputStreamBinding() {
-		AssertJUnit.assertEquals(System.out, injector.getInstance(OutputStream.class));
+		assert injector.getInstance(OutputStream.class) instanceof PrintStream;
 	}
 
 	@Test
@@ -109,21 +114,6 @@ public class GinsuCLIModuleTest {
 		assert injector.getInstance(PrintWriter.class) instanceof PrintWriter;
 		// TODO: Figure out a way to validate that this contains a reference to
 		// System.out
-	}
-
-	@Test
-	public void testJCommanderProvider() {
-		// if we run the parse command and are able to get the parsed command
-		// then we can be sure that the injected JCommander object was delivered
-		// by the provider method
-		JCommander jCommander = injector.getInstance(JCommander.class);
-		jCommander.parse(new String[] { CommandGenerateProject.NAME });
-		String parsedCommand = jCommander.getParsedCommand();
-		assert parsedCommand.equals(CommandGenerateProject.NAME);
-
-		// Just for safe measure, also make sure that we are always getting a
-		// new instance of JCommander when we ask for it.
-		assert jCommander != injector.getInstance(JCommander.class);
 	}
 
 	@Test

@@ -10,11 +10,9 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.intuit.ginsu.cli.GinsuCLIModule;
 
 /**
  * @author rpfeffer

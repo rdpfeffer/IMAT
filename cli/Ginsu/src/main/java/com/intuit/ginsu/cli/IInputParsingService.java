@@ -12,7 +12,6 @@ package com.intuit.ginsu.cli;
 
 import java.util.Hashtable;
 
-import com.beust.jcommander.IDefaultProvider;
 import com.intuit.ginsu.commands.ICommand;
 
 /**
@@ -31,7 +30,7 @@ public interface IInputParsingService {
 	public void parseInput(String[] input);
 	
 	/**
-	 * Get he command we parsed from the user's input
+	 * Get the command we parsed from the user's input
 	 * @return an {@link ICommand} to be run.
 	 */
 	public ICommand getCommand();

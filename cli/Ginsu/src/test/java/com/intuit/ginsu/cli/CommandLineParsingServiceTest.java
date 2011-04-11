@@ -164,4 +164,49 @@ public class CommandLineParsingServiceTest {
 		AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(), parsingService.getConfigurationOverride());
 		AssertJUnit.assertEquals(expectedOutput.trim(), this.outputStreamFixture.toString().trim());
 	}
+	
+	@Test()
+	public void testParseInputWithCommandHelp()
+	{
+		String[][] testArgs = new String[][]  {
+				/*new String[] {CommandHelp.NAME, "-help"},*/
+				new String[] {CommandInitEnv.NAME, 
+						"-template",  tempFile.getAbsolutePath(), "-help"},
+				new String[] {CommandGenerateProject.NAME, "-help"},
+				new String[] {CommandRunTests.NAME, "-help"},
+		};
+		
+		String[] expectedHelpNeedles = new String[]  {
+				/*"Print out this help text.",*/
+				CommandInitEnv.TEMPLATE,
+				CommandGenerateProject.TARGET_DIR,
+				CommandRunTests.PLACEHOLDER,
+		};
+		
+		MainArgs mainArgs = injector.getInstance(MainArgs.class);
+		
+		for (int i = 0; i < testArgs.length; i++)
+		{
+			String[] args = testArgs[i];
+			
+			//The JCommander Object gains state when you invoke its "parse()" method,
+			//so we need to keep recreating new ones in the loop.
+			this.jCommander = injector.getInstance(JCommander.class);
+			SupportedCommandCollection cmdCollection = injector.getInstance(SupportedCommandCollection.class);
+			CommandLineParsingService parsingService = new CommandLineParsingService(
+					this.printWriter, this.jCommander, mainArgs, cmdCollection);
+			parsingService.parseInput(args);
+			
+			//try to force the flushing of the text from the printwriter
+			this.printWriter.flush();
+			
+			String outputValue = this.outputStreamFixture.toString().trim();
+			assert outputValue.contains(expectedHelpNeedles[i]) : "Output Value is: " + outputValue 
+				+ " when we were looking for \"" + expectedHelpNeedles[i] + "\""; 
+			
+			//reset the byte array output stream to make sure we arent getting any false positives
+			this.outputStreamFixture = new ByteArrayOutputStream();
+			this.printWriter = new PrintWriter(this.outputStreamFixture, true);
+		}
+	}
 }

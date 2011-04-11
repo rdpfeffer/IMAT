@@ -14,6 +14,9 @@ import java.io.PrintWriter;
 
 import java.util.logging.*;
 
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -21,8 +24,17 @@ import java.util.logging.*;
  * //TODO Explain why this file exists and how it is used.
  *
  */
+@Parameters(commandDescription = "Print out this help text.")
 public class CommandHelp extends Command implements ICommand {
 
+	/**
+	 * TODO: Replace this Parameter with an actual parameter that we are going to use.
+	 */
+	public static final String PLACEHOLDER = "-placeholder";
+	@Parameter(names = {PLACEHOLDER},
+			description = "This is just a placeholder until we implement more of this class",
+			hidden = true)
+	public boolean placeholder;
 	
 	public CommandHelp(PrintWriter printwriter, Logger logger) {
 		super(printwriter, null);
@@ -34,9 +46,10 @@ public class CommandHelp extends Command implements ICommand {
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
 	public int run() {
-		int exitStatus  = 0;
+		
 		// TODO Auto-generated method stub
 		
+		int exitStatus  = 0;
 		return exitStatus;
 	}
 
