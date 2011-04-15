@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Copyright (c) 2009 Intuit, Inc. * All rights reserved. This program 
+	and the accompanying materials * are made available under the terms of the 
+	Eclipse Public License v1.0 * which accompanies this distribution, and is 
+	available at * http://www.opensource.org/licenses/eclipse-1.0.php * * Contributors: 
+	Intuit, Inc - initial API and implementation 
+-->
+
+<!--
+	@file This is the Ant script for Generating a new Ginsu Project 
+	@author rpfeffer 
+	@dateCreated Apr 12, 2011
+  -->
+<project default="execute" basedir="." >
+	<!-- 
+	Copy files from the resources template directory to the target directory,
+	and filter all files for tokens and replace them with the specified values
+	from the command.
+	-->
+	<target name="execute">
+		<copy toDir="${target.dir}">
+			<fileset dir="${project.dir}">
+				<include name="**/*.js"/>
+				<include name="**/*.properties"/>
+			</fileset>
+			<filterset>
+				<filter token="GLOBAL_OBJECT" value="${global.object.var}" />
+				<filter token="PATH_TO_GINSU" value="${path.to.ginsu}" />
+			</filterset>
+		</copy>
+	</target>
+</project>
