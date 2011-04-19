@@ -14,7 +14,10 @@ import java.util.Hashtable;
 import java.util.Properties;
 
 import com.beust.jcommander.IDefaultProvider;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.io.IApplicationResourceService;
 
 /**
  * @author rpfeffer
@@ -27,7 +30,39 @@ import com.google.inject.Singleton;
 @Singleton
 public class PropertyFileConfigurationService implements IConfigurationService, IDefaultProvider {
 
+	private AppContext appContext = AppContext.getInstance();
 	
+	private final IApplicationResourceService resourceService;
+	
+	/**
+	 * Create a new PropertyFileConfigurationService
+	 * @param resourceService
+	 *            The {@link IApplicationResourceService} to use when retrieving
+	 *            application resource files
+	 */
+	@Inject
+	public PropertyFileConfigurationService(IApplicationResourceService resourceService)
+	{
+		this.resourceService = resourceService;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.intuit.ginsu.config.IConfigurationService#doFirstTimeInitialization()
+	 */
+	public void doFirstTimeInitialization() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.intuit.ginsu.config.IConfigurationService#isNotInitialized()
+	 */
+	public boolean isNotInitialized(String homeDir) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.config.IConfigurationService#loadConfiguration()
@@ -35,6 +70,15 @@ public class PropertyFileConfigurationService implements IConfigurationService, 
 	public void loadConfiguration() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.intuit.ginsu.config.IConfigurationService#storeConfiguration(java.util.Hashtable)
+	 */
+	public void storeConfiguration(Hashtable<String, String> configuration) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/* (non-Javadoc)
@@ -53,17 +97,11 @@ public class PropertyFileConfigurationService implements IConfigurationService, 
 		return null;
 	}
 
-	public void doFirstTimeInitialization() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public boolean isNotInitialized() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public String getDefaultValueFor(String arg0) {
+	/*
+	 * (non-Javadoc)
+	 * @see com.beust.jcommander.IDefaultProvider#getDefaultValueFor(java.lang.String)
+	 */
+	public String getDefaultValueFor(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}

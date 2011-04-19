@@ -20,8 +20,9 @@ import com.intuit.ginsu.config.IConfigurationService;
  * 
  * @author rpfeffer
  * @dateCreated Mar 11, 2011
- *
- * This is the main Class used to execute all of the ginsu command line interface.
+ * 
+ *              This is the main Class used to execute all of the ginsu command
+ *              line interface.
  */
 public class App 
 {
@@ -37,15 +38,23 @@ public class App
     	inputService.parseInput(args);
     	ICommand command  = inputService.getCommand();
     	
-    	//Load the configuration
+    	//Get the configuration
     	IConfigurationService configService = injector.getInstance(IConfigurationService.class);
     	
-    	//If we have a runnable command 
-    	if(command.isRunnable() && configService.isNotInitialized())
+    	//If we have a runnable command and the applicaiton is not initialized...
+    	if(command.isRunnable() && configService.isNotInitialized(inputService.getConfigurationOverride().get(AppContext.APP_HOME_KEY)))
     	{
-    		//run the first time initialization
-    		configService.doFirstTimeInitialization();//we will check for accepting license agreement here etc.
+    		//run the first time initialization...
+    		
+    		//load the main config override so that we can get access to the home directory.
+    		appContext.overrideProperties(inputService.getConfigurationOverride());
+    		
+    		//TODO: we will check for accepting license agreement here etc.
+    		configService.doFirstTimeInitialization();
     	}
+    	//TODO: load the configuration files into the Application Context.
+    	configService.loadConfiguration();
+    	appContext.overrideProperties(inputService.getConfigurationOverride());
 
     	//run the loaded command using the command dispatch service
     	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);

@@ -12,7 +12,7 @@
 	@author rpfeffer 
 	@dateCreated Apr 12, 2011
   -->
-<project default="execute" basedir="." >
+<project default="execute" >
 	<!-- 
 	Copy files from the resources template directory to the target directory,
 	and filter all files for tokens and replace them with the specified values

@@ -19,7 +19,8 @@ import com.beust.jcommander.Parameter;
  * @author rpfeffer
  * @dateCreated Apr 3, 2011
  * 
- *              //TODO Explain why this file exists and how it is used.
+ *              This is the base class for all commands. It provides a partial
+ *              implementation of the ICommand interface.
  * 
  */
 public abstract class Command implements ICommand {
@@ -34,9 +35,18 @@ public abstract class Command implements ICommand {
 	protected int exitStatus;
 	protected String errorMessage;
 
+	
+	/**
+	 * The flag used in the command line client for specifying when the the help
+	 * text for this command should be printed.
+	 */
 	@Parameter(names={"-help"}, description="Print the usage for this command.")
 	public boolean help = false;
 	
+	/**
+	 * @param printwriter
+	 * @param logger
+	 */
 	public Command(PrintWriter printwriter, Logger logger) {
 		this.printWriter = printwriter;
 		this.logger = logger;
@@ -44,16 +54,25 @@ public abstract class Command implements ICommand {
 		this.errorMessage = UNSET_ERROR_MESSAGE;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getExitStatus()
+	 */
 	public int getExitStatus() throws IncompleteCommandException {
 		this.assertCommandComplete();
 		return this.exitStatus;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getErrorMessage()
+	 */
 	public String getErrorMessage() throws IncompleteCommandException {
 		this.assertCommandComplete();
 		return this.errorMessage;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#isCommandComplete()
+	 */
 	public boolean isCommandComplete()
 	{
 		return (this.exitStatus != UNSET_EXIT_STATUS);
@@ -72,6 +91,9 @@ public abstract class Command implements ICommand {
 		return this.help;
 	}
 
+	/**
+	 * @throws IncompleteCommandException when the Command is not complete and it should be.
+	 */
 	private void assertCommandComplete() throws IncompleteCommandException {
 		if (!this.isCommandComplete()) {
 			throw new IncompleteCommandException(this, Thread.currentThread()

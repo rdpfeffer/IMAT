@@ -12,24 +12,36 @@ package com.intuit.ginsu.commands;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Hashtable;
 import java.util.logging.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.cli.converters.FileConverter;
+import com.intuit.ginsu.cli.validators.JavaScriptVariableValidator;
+import com.intuit.ginsu.io.PathAnalyzer;
+import com.intuit.ginsu.scripts.IScriptLauncher;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
  * 
- *              //TODO Explain why this file exists and how it is used.
+ *              This class is represents the command to be executed in order
+ *              generate a project directory structure. It exists as the main
+ *              executor of the command and does all of the heavy lifting to
+ *              make the project generation happen.
  * 
  */
 @Parameters(commandDescription = "Generate the basic project files to start a new Ginsu automation project.")
-public class CommandGenerateProject extends Command implements ICommand {
+public class CommandGenerateProject extends ScriptedCommand implements ICommand {
 
-	public CommandGenerateProject(PrintWriter printwriter, Logger logger) {
-		super(printwriter, null);
+	private PathAnalyzer pathAnalyzer;
+	
+
+	public CommandGenerateProject(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
+		super(printwriter, logger, scriptLauncher);
+		this.pathAnalyzer = new PathAnalyzer(printwriter);
 	}
 
 	/**
@@ -52,7 +64,9 @@ public class CommandGenerateProject extends Command implements ICommand {
 
 	public static final String GLOBAL_OBJECT_VAR = "-globalObjVar";
 	public static final String GLOBAL_OBJECT_VAR_DEFAULT_VAL = "AUTO";
-	@Parameter(names = { GLOBAL_OBJECT_VAR, "-g" }, description = 
+	@Parameter(names = { GLOBAL_OBJECT_VAR, "-g" }, 
+			validateWith = JavaScriptVariableValidator.class,
+			description = 
 			 "The variable  name of the global object which will hold "
 			+"reference to all objects that are created within the JavaScript "
 			+"source of your automation project. In JavaScript, it is good "
@@ -75,7 +89,7 @@ public class CommandGenerateProject extends Command implements ICommand {
 			+"validatoin error will occur:                                      "
 			+"1) anything that starts with a number                       "
 			+"2) text that has anything but alphanumeric characters and the"
-			+"   characters \"_\" and/or \"-\".                           ")
+			+"   characters \"$\", \"_\" and/or \"-\".                   ")
 	String globalObjectVar = GLOBAL_OBJECT_VAR_DEFAULT_VAL;
 
 	/*
@@ -85,7 +99,23 @@ public class CommandGenerateProject extends Command implements ICommand {
 	 */
 	public int run() {
 		int exitStatus = 0;
-		// TODO Auto-generated method stub
+		
+		//set up the propertes
+		Hashtable<String, String> properties = new Hashtable<String, String>();
+		properties.put("target.dir", this.targetDir.getAbsolutePath());
+		properties.put("global.object.var", this.globalObjectVar);
+		String pathToGinsuHome = AppContext.getInstance().getProperty(AppContext.APP_HOME_KEY);
+		String pathToGinsu = this.pathAnalyzer.getRelativePath(this.targetDir, pathToGinsuHome);
+		properties.put("path.to.ginsu", pathToGinsu);
+		
+		//the only reason we are setting this here, and not in the script is if for any
+		//reason, this path became dynamic, we wanted the opportunity to set it.
+		properties.put("project.dir", ".."+File.separator+"templates"+File.separator+"Project"); 
+		
+		IScriptLauncher scriptLauncher = this.getScriptLauncher();
+		scriptLauncher.setScript("generateProject.xml");
+		scriptLauncher.setProperties(properties);
+		scriptLauncher.runScript();
 
 		return exitStatus;
 	}
@@ -126,8 +156,22 @@ public class CommandGenerateProject extends Command implements ICommand {
 	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
 	 */
 	public boolean isRunnable() {
-		// TODO Auto-generated method stub
 		return true;
+	}
+	
+
+	/**
+	 * @return the pathAnalyzer
+	 */
+	public PathAnalyzer getPathAnalyzer() {
+		return pathAnalyzer;
+	}
+
+	/**
+	 * @param pathAnalyzer the pathAnalyzer to set
+	 */
+	public void setPathAnalyzer(PathAnalyzer pathAnalyzer) {
+		this.pathAnalyzer = pathAnalyzer;
 	}
 
 }

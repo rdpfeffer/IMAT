@@ -111,23 +111,28 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * 
 	 * @see com.intuit.ginsu.cli.IInputParsingService#getMainCommand()
 	 */
-	public Hashtable<String, Object> getConfigurationOverride() {
+	public Hashtable<String, String> getConfigurationOverride() {
 		// TODO Auto-generated method stub
 		return this.mainArgs.getConfigurationOverride();
 	}
 
 	/**
+	 * Set the default provider on the CommandLineParsingService.
 	 * 
 	 * @param defaultProvider
+	 *            The object which provides default values for objects passed
+	 *            via the command line.
 	 */
 	public void setDefaultProvider(IDefaultProvider defaultProvider) {
 		this.jCommander.setDefaultProvider(defaultProvider);
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the command parsed from the arguments passed in.
+	 * @return the {@link ICommand} that was parsed from the consuming class. 
 	 * @throws Exception
+	 *             When more or less than one of the supported commands is
+	 *             parsed from the input given by the consuming class
 	 */
 	private ICommand getParsedCommand() throws Exception
 	{

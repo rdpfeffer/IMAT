@@ -46,6 +46,7 @@
 				<include>config/**</include>
 				<include>templates/**</include>
 				<include>js/**</include>
+				<include>scripts/**</include>
 			</includes>
 		</fileSet>
 		<fileSet>

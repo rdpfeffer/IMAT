@@ -21,14 +21,13 @@ import java.util.Properties;
  *              to define an interface for initializing Ginsu configuration.
  * 
  *              The {@link IConfigurationService} also provides an interface for
- *              loading and overriding properties of the runtime configuration.
- *              This is is main responsibility throughout the lifetime of an
- *              installation of ginsu. Although the data structure for accessing
- *              the values of the configuration is a {@link Properties} object,
- *              we leave it up to the implementer as to how these properties
- *              should be stored. For example, the easiest way to store them
- *              would be in a file on disk, but they could also be stored in a
- *              database, XML file, or otherwise...
+ *              loading and storing properties of the runtime configuration.
+ *              Although the data structure for accessing the values of the
+ *              configuration is a {@link Properties} object, we leave it up to
+ *              the implementer as to how these properties should be stored. For
+ *              example, the easiest way to store them would be in a file on
+ *              disk, but they could also be stored in a database, retrieved
+ *              from a service, or otherwise...
  * 
  */
 public interface IConfigurationService {
@@ -51,43 +50,32 @@ public interface IConfigurationService {
 	 * case. Therefore, we have named this from the perspective of the consuming
 	 * code so that it would read easier within a conditional:
 	 * </p>
-	 * <code>
+	 * <pre>
 	 * ...
 	 * if ( configService.isNotInitialized() && ...)
 	 * {
-	 * 		configService.doFirstTimeInitialization();
+	 * 	configService.doFirstTimeInitialization();
 	 * }
 	 * ...
-	 * </code>
-	 * <p>
-	 * ... 
-	 * </p>
+	 * </pre>
 	 * @return true if ginsu has not been initialized, false if it has.
 	 */
-	public boolean isNotInitialized();
+	public boolean isNotInitialized(String homeDir);
 
 	/**
-	 * Load the configuration from the default configuration store.
+	 * Load the configuration from the default configuration store(s). 
 	 */
 	public void loadConfiguration();
 
 	/**
-	 * Load the configuration from the default configuration store and override
+	 * Store the configuration from the default configuration store and override
 	 * the default configuration properties with those passed in.
 	 * 
 	 * @param configurationOverride
 	 *            The {@link Properties} object containing properties which will
-	 *            override that which is default configuration store.
+	 *            be stored on the base properties file.
 	 */
-	public void loadConfiguration(
-			Hashtable<String, Object> configurationOverride);
-
-	/**
-	 * Get the current configuration
-	 * 
-	 * @return a {@link Properties} object representing the current
-	 *         configuration
-	 */
-	public Properties getConfiguration();
+	public void storeConfiguration(
+			Hashtable<String, String> configuration);
 
 }

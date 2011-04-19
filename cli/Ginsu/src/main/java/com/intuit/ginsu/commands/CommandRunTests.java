@@ -35,7 +35,7 @@ public class CommandRunTests extends Command implements ICommand{
 	public boolean placeholder;
 	
 	public CommandRunTests(PrintWriter printwriter, Logger logger) {
-		super(printwriter, null);
+		super(printwriter, logger);
 	}
 
 	public static final String NAME = "run-tests";

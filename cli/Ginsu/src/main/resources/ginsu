@@ -11,5 +11,5 @@
 ###############################################################################/
 
 dir=$(dirname $0)
-export CLASSPATH=${CLASSPATH}${CLASSPATH:+:}${dir}/lib/\ 
-exec java -jar Ginsu-1.0.0-SNAPSHOT.jar "$@"
+export CLASSPATH=${CLASSPATH}${CLASSPATH:+:}${dir}/\*
+exec java -jar ${dir}/Ginsu-1.0.0-SNAPSHOT.jar -home ${dir} "$@"

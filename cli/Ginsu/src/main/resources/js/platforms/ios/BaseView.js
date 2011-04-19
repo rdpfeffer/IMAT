@@ -93,9 +93,6 @@ GINSU.BaseView = Class.create({
 			}
 			else
 			{
-				// catch and throw again, making sure that validation exceptions all have a common
-				// Prefix.
-				// throw QBM.errors.VALIDATION_FAILURE + e;
 				throw "Validation Error" + e;
 			}
 		}

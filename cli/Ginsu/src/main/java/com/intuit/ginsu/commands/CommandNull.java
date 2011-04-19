@@ -46,6 +46,9 @@ public class CommandNull implements ICommand {
 		// Do nothing
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getName()
+	 */
 	public String getName() {
 		return CommandNull.NAME;
 	}
@@ -56,26 +59,41 @@ public class CommandNull implements ICommand {
 				.getName() == this.getName());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
+	 */
 	public boolean isRunnable() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getExitStatus()
+	 */
 	public int getExitStatus() {
 		// Always return an error code, as the null command only gets created in
 		// error states
 		return NULL_COMMAND_ERROR_CODE;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getErrorMessage()
+	 */
 	public String getErrorMessage() {
 		// Note we rely on the application to surface the correct error message.
 		// Note: this should only happen during input parsing
 		return "";
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#isCommandComplete()
+	 */
 	public boolean isCommandComplete() {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#shouldRenderCommandUsage()
+	 */
 	public boolean shouldRenderCommandUsage() {
 		// there is now help for this command so we will always return false here
 		return false;

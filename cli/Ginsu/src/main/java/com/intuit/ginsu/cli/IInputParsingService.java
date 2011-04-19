@@ -17,9 +17,10 @@ import com.intuit.ginsu.commands.ICommand;
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This Interface defines an interface for how user input should be
+ *              interpreted.
+ * 
  */
 public interface IInputParsingService {
 
@@ -39,6 +40,6 @@ public interface IInputParsingService {
 	 * Get the main command context under which the parsed command will run.
 	 * @return an {@link ICommand} representing the Command Context
 	 */
-	public Hashtable<String, Object> getConfigurationOverride();
+	public Hashtable<String, String> getConfigurationOverride();
 	
 }

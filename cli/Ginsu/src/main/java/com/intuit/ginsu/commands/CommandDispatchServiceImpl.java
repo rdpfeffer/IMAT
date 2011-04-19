@@ -10,12 +10,13 @@
  *******************************************************************************/
 package com.intuit.ginsu.commands;
 
-
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
  * 
- *              //TODO Explain why this file exists and how it is used.
+ *              The {@link CommandDispatchServiceImpl} runs commands set up by
+ *              the applicaiton. This simple command dispatch service simply
+ *              runs the command on the same thread and does nothing else
  * 
  */
 public class CommandDispatchServiceImpl implements ICommandDispatchService {

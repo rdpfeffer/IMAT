@@ -95,7 +95,7 @@ public interface ICommand {
 	 * implementations of the ICommandDispatchService it may cause the help to 
 	 * be displayed in other ways.
 	 * 
-	 * @return
+	 * @return true when the Command usage information should be rendered.
 	 */
 	public boolean shouldRenderCommandUsage();
 }

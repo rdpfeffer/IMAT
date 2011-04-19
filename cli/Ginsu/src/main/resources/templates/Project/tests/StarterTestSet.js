@@ -1,7 +1,7 @@
-${GLOBAL_OBJECT}.StarterTests = Class.extend(GINSU.BaseTest, {
+@GLOBAL_OBJECT@.StarterTestSet = Class.extend(GINSU.BaseTest, {
 	
 	//All tests
-	title: "StarterTests",
+	title: "StarterTestSet",
 	/**
 	 * Initializes the MetaTest Class object.
 	 */
@@ -42,7 +42,7 @@ ${GLOBAL_OBJECT}.StarterTests = Class.extend(GINSU.BaseTest, {
 		//tests in this test set are run.
 		
 		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new ${GLOBAL_OBJECT}.StarterView();
+		this.viewContext = new @GLOBAL_OBJECT@.StarterView();
 	},
 	
 	tearDownTestSet: function()
@@ -73,4 +73,4 @@ ${GLOBAL_OBJECT}.StarterTests = Class.extend(GINSU.BaseTest, {
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.
-GINSU.suiteRunner.addTestSet( new ${GLOBAL_OBJECT}.StarterTests());
+GINSU.suiteRunner.addTestSet( new @GLOBAL_OBJECT@.StarterTestSet());

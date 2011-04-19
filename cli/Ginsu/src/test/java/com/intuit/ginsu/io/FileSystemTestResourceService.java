@@ -15,21 +15,34 @@ import java.io.FileNotFoundException;
 
 /**
  * @author rpfeffer
- * @dateCreated Apr 14, 2011
- * 
- *              This Interface defines how project resource files can be
- *              retrieved. Whereas the IApplicationResourceService deals with
- *              Application Resource FIles, this interface deals only with
- *              resource files that are specific to a particular ginsu
- *              automation project.
- * 
+ * @dateCreated Apr 17, 2011
+ *
+ * //TODO Explain why this file exists and how it is used.
+ *
  */
-public interface IProjectResourceService {
+public class FileSystemTestResourceService extends FileSystemResourceService {
 
-	/**
-	 * Return a file found in the user's project as a {@link File}.
-	 * @param fileName The name of the file to look for.
-	 */
-	public File getProjectResourceFile(String fileName) throws FileNotFoundException;
+	@Override
+	public File getAppScript(String scriptName) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		return this.getAppResourceFile(scriptName, true);
+	}
 	
+	@Override
+	protected String getTargetDir()
+	{
+		return "";
+	}
+	
+	@Override
+	protected String getDevResourcesDir()
+	{
+		return "";
+	}
+	
+	@Override
+	protected String getScriptsDir()
+	{
+		return this.getDevResourcesDir();
+	}
 }

@@ -1,28 +1,14 @@
 /**
- * BaseFunctionalTests.js
- *
- * @creator Ryan Pfeffer. 09/28/2010
- * @version $Author: wshu $ $DateTime: 2011/02/02 11:03:10 $ $Revision: #15 $
- *
- * Copyright 2010 Intuit Inc. All rights reserved. 
- * Unauthorized reproduction is a violation of applicable law. 
- * This material contains certain confidential and proprietary information and trade secrets of Intuit Inc.
- */
-
-//The inherited test
-
-
-/**
  * This class handles things common to all Functional Tests
  */
-QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
+@GLOBAL_OBJECT@.BaseFunctionalTests = Class.extend(GINSU.BaseTest, {
 	
 	alertManager : {
 	
 		handleDefaultAlertWithTitle : function(title) {
 			UIATarget.onAlert = function onAlert(alert) {
 				
-				QBM.log_debug("Handling alert named: '" + title + "'");
+				@GLOBAL_OBJECT@.log_debug("Handling alert named: '" + title + "'");
 				
 				// if the name field exists then check that
 				var alertTitle = null;
@@ -44,7 +30,7 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 			UIATarget.onAlert = function onAlert(alert) {
 				ref.handleDefaultAlertWithTitle(title);
 				
-				QBM.log_debug("Tapping Alert Button: '" + buttonName + "'");
+				@GLOBAL_OBJECT@.log_debug("Tapping Alert Button: '" + buttonName + "'");
 				// tap tap taparoo that button with the given name
 				alert.buttons()[buttonName].tap();
 				return true;
@@ -85,8 +71,8 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 	 */
 	setUp: function()
 	{
-		this.viewContext = new QBM.LoginView();
-		QBM.log_trace("Setup Complete.");
+		this.viewContext = new @GLOBAL_OBJECT@.StarterView();
+		@GLOBAL_OBJECT@.log_trace("Setup Complete.");
 	},
 	
 	/**
@@ -100,7 +86,7 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 	setUpTestSet: function()
 	{
 		
-		this.viewContext = new QBM.LoginView();
+		this.viewContext = new @GLOBAL_OBJECT@.StarterView();
 	},
 	
 	tearDownTestSet: function()
@@ -130,7 +116,7 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 			{
 				do
 				{
-					QBM.log_debug("Escaping from view: " + this.viewContext.viewName);
+					@GLOBAL_OBJECT@.log_debug("Escaping from view: " + this.viewContext.viewName);
 					this.viewContext = this.viewContext.escapeAction();
 				}
 				while(this.viewContext && this.viewContext.viewName != this.getBaseStateViewName());
@@ -138,19 +124,11 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 				//we should now be at the login view. If we are not, trying to instantiate one here
 				// will throw an exception and cause us to try again.
 				this.viewContext = this.getBaseView();
-				
-				//Deactivate the app for 1 second before we begin the next test.
-				// Not sure if we need this, but It might be a good fallback.
-				// 
-				// Upon further investigation I am almost certainly sure this is not needed.
-				// lets leave it commented out until we are entirely sure it is needed.
-				//UIATarget.localTarget().deactivateAppForDuration(1);
 			}
 			catch (e)
 			{
-				QBM.log_debug("Escape failed when attempt count was " + attemptCount);
-				//TODO try to recover the viewContext using the QBM.StemView class
-				stemView = new QBM.StemView();
+				@GLOBAL_OBJECT@.log_debug("Escape failed when attempt count was " + attemptCount);
+				stemView = new @GLOBAL_OBJECT@.StemView();
 				this.viewContext = stemView.getSpecializedView();
 				//make a recursive call to doCleanup and increment the attemptCount
 				this.doCleanup(++attemptCount);
@@ -158,17 +136,17 @@ QBM.BaseFunctionalTests = Class.extend(QBM.BaseTest, {
 		}
 		else
 		{
-			QBM.log_error("Automation failed cleanup more than 5 times in a row.");
+			@GLOBAL_OBJECT@.log_error("Automation failed cleanup more than 5 times in a row.");
 		}
 	},
 	
 	getBaseStateViewName: function()
 	{
-		return	"LoginView";
+		return	"StarterView";
 	},
 	
 	getBaseView: function()
 	{
-		return new QBM.LoginView();
+		return new @GLOBAL_OBJECT@.StarterView();
 	}
 });

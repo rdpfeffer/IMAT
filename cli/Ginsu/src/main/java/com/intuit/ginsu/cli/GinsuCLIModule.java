@@ -11,6 +11,7 @@
 package com.intuit.ginsu.cli;
 
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
 
@@ -28,6 +29,11 @@ import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 import com.intuit.ginsu.config.IConfigurationService;
 import com.intuit.ginsu.config.PropertyFileConfigurationService;
+import com.intuit.ginsu.io.FileSystemResourceService;
+import com.intuit.ginsu.io.IApplicationResourceService;
+import com.intuit.ginsu.io.IProjectResourceService;
+import com.intuit.ginsu.scripts.AntScriptLauncher;
+import com.intuit.ginsu.scripts.IScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -51,9 +57,13 @@ public class GinsuCLIModule extends AbstractModule {
 	protected void configure() {
 		bind(String.class).annotatedWith(AppName.class).toInstance("Ginsu");
 		bind(IInputParsingService.class).to(CommandLineParsingService.class);
-		bind(IConfigurationService.class).to(PropertyFileConfigurationService.class).asEagerSingleton();
+		bind(IConfigurationService.class).to(PropertyFileConfigurationService.class)
+			.asEagerSingleton();
 		bind(ICommandDispatchService.class).to(CommandDispatchServiceImpl.class);
+		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
+		bind(IProjectResourceService.class).to(FileSystemResourceService.class);
 		bind(IDefaultProvider.class).to(PropertyFileConfigurationService.class);
+		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
 		bind(OutputStream.class).toInstance(System.out);
 		bind(MainArgs.class);
 	}
@@ -66,6 +76,11 @@ public class GinsuCLIModule extends AbstractModule {
 	@Provides PrintWriter providePrintWriter(OutputStream outputStream)
 	{
 		return new PrintWriter(outputStream, true);
+	}
+	
+	@Provides PrintStream providePrintStream(OutputStream outputStream)
+	{
+		return new PrintStream(outputStream);
 	}
 	
 	/**
@@ -93,15 +108,34 @@ public class GinsuCLIModule extends AbstractModule {
 	 * 
 	 * @return a {@link SupportedCommandCollection} of Commands that we support.
 	 */
-	@Provides SupportedCommandCollection provideSupportedCommands(PrintWriter printWriter, Logger logger)
+	@Provides SupportedCommandCollection provideSupportedCommands(PrintWriter printWriter, 
+			Logger logger, IScriptLauncher scriptLauncher)
 	{
 		// Keep reference to our commands so we can return the one we want later
 		SupportedCommandCollection supportedCommands = new SupportedCommandCollection();
 		supportedCommands.put(CommandHelp.NAME, new CommandHelp(printWriter, logger));
 		supportedCommands.put(CommandInitEnv.NAME, new CommandInitEnv(printWriter, logger));
-		supportedCommands.put(CommandGenerateProject.NAME, new CommandGenerateProject(printWriter, logger));
+		supportedCommands.put(CommandGenerateProject.NAME, 
+				new CommandGenerateProject(printWriter, logger, scriptLauncher));
 		supportedCommands.put(CommandRunTests.NAME, new CommandRunTests(printWriter, logger)); 
 		return supportedCommands;
+	}
+	
+	/**
+	 * Create an {@link IScriptLauncher} object that will launch the ant scripts for
+	 * Ginsu.
+	 * 
+	 * @param printStream
+	 *            a {@link PrintStream} which the script launcher object will
+	 *            write to as it executes
+	 * @param resourceService The {@link IApplicationResourceService} used to retrive the scripts
+	 * @return an instance of {@link IScriptLauncher} that runs ant scripts.
+	 */
+	@Provides IScriptLauncher provideScriptLauncher(PrintStream printStream, IApplicationResourceService resourceService)
+	{
+		AntScriptLauncher antScriptLauncher = new AntScriptLauncher(resourceService);
+		antScriptLauncher.setProjectListener(printStream);
+		return antScriptLauncher;
 	}
 
 }

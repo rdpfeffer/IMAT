@@ -34,6 +34,8 @@ import com.intuit.ginsu.commands.CommandNull;
 import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommand;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
+import com.intuit.ginsu.io.FileSystemResourceService;
+import com.intuit.ginsu.scripts.AntScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -110,7 +112,7 @@ public class CommandLineParsingServiceTest {
 		ICommand[] expectedCommands = new ICommand[]  {
 				new CommandHelp(printWriter, logger),
 				new CommandInitEnv(printWriter, logger),
-				new CommandGenerateProject(printWriter, logger),
+				new CommandGenerateProject(printWriter, logger, new AntScriptLauncher(new FileSystemResourceService())),
 				new CommandRunTests(printWriter, logger),
 		};
 		

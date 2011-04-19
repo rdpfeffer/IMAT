@@ -1,7 +1,12 @@
 /**
- * TODO: Rename this file to the first view in the app.
+ * TODO: Now that this file has been generated, if you wish to modify its name to something like
+ * LoginView or HomeView to match the first view in your mobile app, you should do the following 
+ * things:
+ *		1) Rename This file to match the name of the new view
+ *		2) update the import reference in views_inc.js
+ *		3) change this.viewName to match the name of the new view.
  */
-${GLOBAL_OBJECT}.StarterView = Class.extend(GINSU.BaseView, {
+@GLOBAL_OBJECT@.StarterView = Class.extend(GINSU.BaseView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -10,24 +15,29 @@ ${GLOBAL_OBJECT}.StarterView = Class.extend(GINSU.BaseView, {
 	initialize: function()
 	{
 		// **** Important Note for those ramping up on JavaScript ****
-		// One major difference between JS inheritance we are using and classical inheritance is 
-		// that when we say "parent" in a function that we are overriding, we are referring to that
-		// parent's method, not the parent itself.
+		// One major difference between inheritance we are using and classical inheritance is 
+		// that when we say "parent()" in a function that we are overriding, we are referring to that
+		// parent's method, not the parent object itself.
 		//
 		// Also note that parent() is not a construct of the javascript language, but rather a 
-		// reference set up by the inheritance model we have set up in Ginsu.
+		// reference set up by the inheritance model we are using in Ginsu.
 		//
-		// In java the line below would look like super.initialize(view)
+		// In java the line below would look like this: "super(view);"
 		this.parent();
 		
-		//The next two lines can be removed. They are here just to let you know what is going on.
-		GINSU.log_debug("initializing ${GLOBAL_OBJECT}.StarterView");
+		
 		
 		//All Views should have a name. This helps with logging and is used to determine if a filter
 		//matches a test
 		this.viewName = "StarterView";
+		
 		//If you wanted to keep reference to something on a view for convenience, that should be 
 		//done here.
+		//this.button = /* get reference to button here. */
+		
+		//The next line can be removed. They are here just to let you know what is going on
+		//during the first time that you run the tests
+		GINSU.log_debug("initializing @GLOBAL_OBJECT@." + this.viewName);
 		
 		//Log element tree is your best friend. Pay close attention to her. She will get you through 
 		//the day. :-)

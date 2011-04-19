@@ -14,12 +14,17 @@ import java.util.Hashtable;
 
 import com.beust.jcommander.Parameter;
 import com.google.inject.Singleton;
+import com.intuit.ginsu.AppContext;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
  * 
- *              //TODO Explain why this file exists and how it is used.
+ *              This object holds the main arguments set by the user of the
+ *              command line interface for ginsu. When the input is parsed, all
+ *              of the main otions get loaded into this class. These options can
+ *              then be passed off somewhere else so that they can override the
+ *              default configuration
  * 
  */
 @Singleton
@@ -52,12 +57,17 @@ public class MainArgs {
 			+ "the CLI tool when it runs.")
 	public boolean autoUpdateOff = false;
 	
-	public Hashtable<String, Object> getConfigurationOverride()
+	public static final String HOME = "-home";
+	@Parameter(names = HOME, hidden = true)
+	public String home = ".";
+	
+	public Hashtable<String, String> getConfigurationOverride()
 	{
-		Hashtable<String, Object> config = new Hashtable<String, Object>();
-		config.put(MainArgs.LOG_LEVEL, this.logLevel);
-		config.put(MainArgs.VERBOSE, this.verbose);
-		config.put(MainArgs.AUTO_UPDATE_OFF, this.autoUpdateOff);
+		Hashtable<String, String> config = new Hashtable<String, String>();
+		config.put(MainArgs.LOG_LEVEL, String.valueOf(this.logLevel));
+		config.put(MainArgs.VERBOSE, String.valueOf(this.verbose));
+		config.put(MainArgs.AUTO_UPDATE_OFF, String.valueOf(this.autoUpdateOff));
+		config.put(AppContext.APP_HOME_KEY, this.home);//NOTE: This key is different as it is used fairly widely.
 		return config;
 	}
 }

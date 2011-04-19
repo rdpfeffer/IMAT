@@ -20,9 +20,9 @@ import com.beust.jcommander.Parameters;
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This command renders help text for the Ginsu Application
+ * 
  */
 @Parameters(commandDescription = "Print out this help text.")
 public class CommandHelp extends Command implements ICommand {
@@ -36,8 +36,14 @@ public class CommandHelp extends Command implements ICommand {
 			hidden = true)
 	public boolean placeholder;
 	
+	
+	/**
+	 * Create a new Command 
+	 * @param printwriter The {@link PrintWriter} to write to.
+	 * @param logger The {@link Logger} to log to.
+	 */
 	public CommandHelp(PrintWriter printwriter, Logger logger) {
-		super(printwriter, null);
+		super(printwriter, logger);
 	}
 
 	public static final String NAME = "help";
@@ -47,7 +53,7 @@ public class CommandHelp extends Command implements ICommand {
 	 */
 	public int run() {
 		
-		// TODO Auto-generated method stub
+		// TODO Complete this method.
 		
 		int exitStatus  = 0;
 		return exitStatus;
@@ -61,11 +67,17 @@ public class CommandHelp extends Command implements ICommand {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#getName()
+	 */
 	public String getName()
 	{
 		return CommandHelp.NAME;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object command)
 	{
@@ -74,6 +86,9 @@ public class CommandHelp extends Command implements ICommand {
 				((CommandHelp)command).getName() == this.getName());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
+	 */
 	public boolean isRunnable() {
 		return true;
 	}

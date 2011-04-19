@@ -1,8 +1,8 @@
-${GLOBAL_OBJECT}.SuiteHandler = Class.create({
+@GLOBAL_OBJECT@.SuiteHandler = Class.create({
 	
 	initialize: function()
 	{
-		
+		//do nothing. All objects created using Class.create must have an initialize function.
 	},
 	
 	/**

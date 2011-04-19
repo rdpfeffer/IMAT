@@ -29,6 +29,7 @@ public interface IScriptLauncher {
 	
 	public File getScriptAsFile();
 	
+	//TODO: explain that it is expected that these properties will be set and used when the target script is invoked.
 	public void setProperties( Hashtable<String, String> properties);
 	
 	public void runScript();

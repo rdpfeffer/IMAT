@@ -30,7 +30,7 @@ import com.intuit.ginsu.cli.converters.FileConverter;
 public class CommandInitEnv extends Command implements ICommand{
 
 	public CommandInitEnv(PrintWriter printwriter, Logger logger) {
-		super(printwriter, null);
+		super(printwriter, logger);
 	}
 	public static final String NAME = "init-env";
 	

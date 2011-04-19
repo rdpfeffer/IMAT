@@ -17,12 +17,18 @@ import com.beust.jcommander.IStringConverter;
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This file converts command line options of type {@link File}
+ *              from string representations of their path
+ * 
+ * @see com.beust.jcommander.IStringConverter
  */
 public class FileConverter implements IStringConverter<File> {
 
+	
+	/* (non-Javadoc)
+	 * @see com.beust.jcommander.IStringConverter#convert(java.lang.String)
+	 */
 	public File convert(String value) {
 		return new File(value);
 	}

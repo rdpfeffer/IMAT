@@ -16,21 +16,31 @@ import java.io.FileNotFoundException;
 /**
  * @author rpfeffer
  * @dateCreated Apr 14, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This Interface defines how application resource files can be
+ *              retrieved.
+ * 
  */
 public interface IApplicationResourceService {
 
 	/**
 	 * Return a file found on the classpath as a {@link File}.
-	 * @param fileName The name of the file to look for.
+	 * 
+	 * @param fileName
+	 *            The name of the file to look for.
+	 * @param skipClassloader
+	 *            For implementations of this interface that use a Classloader
+	 *            object, this parameter provides a way to get at the files
+	 *            without using a classloader. This is helpful in instances
+	 *            where you want extracted files that you can point to rather
+	 *            than files embeded within a java archive file like a JAR or a
+	 *            WAR
 	 */
-	public File getAppResourceFile(String fileName) throws FileNotFoundException;
+	public File getAppResourceFile(String fileName, boolean skipClassloader) throws FileNotFoundException;
 	
 	/**
 	 * Return a file found on the classpath as a {@link File}.
 	 * @param fileName The name of the file to look for.
 	 */
-	public File getScript(String scriptName) throws FileNotFoundException;
+	public File getAppScript(String scriptName) throws FileNotFoundException;
 }

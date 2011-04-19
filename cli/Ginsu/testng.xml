@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="none">
+<suite name="Suite" parallel="false">
   <test name="Test" preserve-order="false">
     <classes>
+      <class name="com.intuit.ginsu.cli.AppTest"/>
       <class name="com.intuit.ginsu.cli.CommandLineParsingServiceTest"/>
       <class name="com.intuit.ginsu.cli.GinsuCLIModuleTest"/>
-      <class name="com.intuit.ginsu.cli.AppTest"/>
+      <class name="com.intuit.ginsu.commands.CommandGenerateProjectTest"/>
+      <class name="com.intuit.ginsu.io.PathAnalyzerTest"/>
+      <!-- <class name="com.intuit.ginsu.commands.CommandInitEnvTest"/>-->
+      <class name="com.intuit.ginsu.scripts.AntScriptLauncherTest"/>
     </classes>
   </test>
 </suite>
