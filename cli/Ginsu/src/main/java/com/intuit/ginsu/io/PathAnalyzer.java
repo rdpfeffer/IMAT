@@ -13,8 +13,9 @@ package com.intuit.ginsu.io;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
+
+import org.apache.log4j.Logger;
 
 /**
  * @author rpfeffer
@@ -25,17 +26,18 @@ import java.net.MalformedURLException;
  */
 public class PathAnalyzer {
 
-	private final PrintWriter printWriter;
+	private final Logger logger;
 	private IApplicationResourceService resourceService;
 	
 	/**
 	 * Create a new Path Analyzer
-	 * @param printWriter
 	 */
-	public PathAnalyzer(PrintWriter printWriter)
+	public PathAnalyzer(Logger logger)
 	{
-		this.printWriter = printWriter;
-		this.setResourceService(new FileSystemResourceService());
+		this.setResourceService(
+				new FileSystemResourceService(
+						Logger.getLogger(FileSystemResourceService.class)));
+		this.logger = logger;
 	}
 	
 	/**
@@ -50,6 +52,7 @@ public class PathAnalyzer {
 		String relativePath = "";
 		
 		try {
+			logger.debug("Getting the relativepath. fromPath="+fromPath+" toPath="+toPath);
 			String[] fromPathStrArray = fromPath.getCanonicalFile().toURI().getPath().split("/");
 			String[] toPathStrArray = toPath.getCanonicalFile().toURI().getPath().split("/");
 			
@@ -57,12 +60,16 @@ public class PathAnalyzer {
 			int numCommonDirs = 0;
 			while (numCommonDirs < fromPathStrArray.length && numCommonDirs < toPathStrArray.length)
 			{
+				
 				if( !fromPathStrArray[numCommonDirs].equals(toPathStrArray[numCommonDirs]))
 				{
 					break;
 				}
 				numCommonDirs++;
 			}
+			logger.trace("When finding common ancestor of paths. " +"numCommonDirs="+
+					numCommonDirs+". fromPathStrArray.length=" + fromPathStrArray.length+
+					" toPathStrArray.length="+ toPathStrArray.length);
 			
 			//Second start to build the relative path by adding the number of parent dirs
 			//the "fromPath" does not have in common with the "toPath".
@@ -91,14 +98,13 @@ public class PathAnalyzer {
 			
 			//set the relative path 
 			relativePath = pathBuilder.toString();
+			
 		} catch (MalformedURLException e) {
-			//TODO throw a more appropriate exception.
-			this.printException(e);
+			this.logException("MalformedURLException when getting relativePath.", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			this.printException(e);
+			this.logException("IOException when getting relativePath.", e);
 		}
-		
+		logger.debug("Ended with the final relativePath="+ relativePath);
 		return relativePath;
 	}
 	
@@ -115,8 +121,7 @@ public class PathAnalyzer {
 			File toPath = this.resourceService.getAppResourceFile(toGinsuResourceFile, true);
 			relativePath = this.getRelativePath(fromPath, toPath);
 		} catch (FileNotFoundException e) {
-			// TODO throw a more appropriate exception.
-			this.printException(e);
+			this.logException("FileNotFoundException when getting relativePath.", e);
 		}
 		return relativePath;
 	}
@@ -135,9 +140,9 @@ public class PathAnalyzer {
 		return resourceService;
 	}
 	
-	private void printException(Throwable e)
+	private void logException(String prefix, Throwable e)
 	{
-		printWriter.println("An error occured while trying to get a relative path. "+ e.getMessage());
-		e.printStackTrace();
+		logger.debug(prefix + " " + e.getMessage());
+		logger.debug(e.getStackTrace());
 	}
 }

@@ -13,6 +13,10 @@ package com.intuit.ginsu.io;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import org.apache.log4j.Logger;
+
+import com.google.inject.Inject;
+
 /**
  * @author rpfeffer
  * @dateCreated Apr 17, 2011
@@ -21,6 +25,11 @@ import java.io.FileNotFoundException;
  *
  */
 public class FileSystemTestResourceService extends FileSystemResourceService {
+
+	@Inject
+	public FileSystemTestResourceService(Logger logger) {
+		super(logger);
+	}
 
 	@Override
 	public File getAppScript(String scriptName) throws FileNotFoundException {

@@ -3,8 +3,8 @@ package com.intuit.ginsu.io;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,19 +15,17 @@ public class PathAnalyzerTest extends BaseTest{
 
 	private static final String PLACEHOLDER_FILE = "placeholder.txt";
 	private PathAnalyzer pathAnalyzer;
-	private ByteArrayOutputStream outputStream;
 	private File tempFile;
 	
 	@BeforeMethod
 	public void beforeMethod() 
 	{
-		this.outputStream = new ByteArrayOutputStream();
-		this.pathAnalyzer = new PathAnalyzer(new PrintWriter(outputStream));
+		new ByteArrayOutputStream();
+		this.pathAnalyzer = new PathAnalyzer(Logger.getLogger(PathAnalyzer.class));
 		
 		try {
 			this.tempFile = File.createTempFile("placeholder", ".txt");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

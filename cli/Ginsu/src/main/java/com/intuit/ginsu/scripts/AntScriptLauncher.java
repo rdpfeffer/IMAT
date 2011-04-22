@@ -16,6 +16,7 @@ import java.io.PrintStream;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
@@ -37,15 +38,15 @@ public class AntScriptLauncher implements IScriptLauncher {
 	private String script = "";
 	private Hashtable<String, String> properties = new Hashtable<String, String>();
 	private DefaultLogger consoleLogger;
-	private PrintStream printStream;
+	private Logger logger;
 	
 	private final IApplicationResourceService resourceService;
 	
 	@Inject
-	public AntScriptLauncher (IApplicationResourceService resourceService)
+	public AntScriptLauncher (IApplicationResourceService resourceService, Logger logger)
 	{
 		this.resourceService = resourceService;
-		this.printStream = System.out;
+		this.logger = logger;
 	}
 	
 	/* (non-Javadoc)
@@ -65,16 +66,13 @@ public class AntScriptLauncher implements IScriptLauncher {
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.scripts.IScriptLauncher#getScriptAsFile()
 	 */
-	public File getScriptAsFile() {
+	public File getScriptAsFile() throws FileNotFoundException {
 		//if the script is null, pass the empty string so that we do 
 		//not get a null pointer exception
 		File scriptFile = new File("");
-		try {
-			scriptFile = this.resourceService.getAppScript(this.script);
-		} catch (FileNotFoundException e) {
-			// TODO We should write this out to the Log
-			this.printStream.println(e.getStackTrace());
-		}
+		scriptFile = this.resourceService.getAppScript(this.script);
+		// TODO We should write this out to the Log
+
 		return scriptFile;
 	}
 
@@ -89,19 +87,15 @@ public class AntScriptLauncher implements IScriptLauncher {
 	 * @see com.intuit.ginsu.scripts.IScriptLauncher#runScript()
 	 */
 	public void runScript() {
-		assert this.isScriptRunnable() : "Could not run Script. Was not runnable. Check that the script exists and can be read.";
-		
-		File buildFile = this.getScriptAsFile();
-		
 		Project antProject = new Project();
-		antProject.setUserProperty("ant.file", buildFile.getAbsolutePath());
-		antProject.setUserProperty("basedir", buildFile.getParent());
-		this.loadPropertiesIntoProject(antProject);
-		antProject.addBuildListener(this.consoleLogger);
-		 
-		// parse the ant script
 		try
 		{
+			File buildFile = this.getScriptAsFile();
+			this.preValidateScript(buildFile);
+			antProject.setUserProperty("ant.file", buildFile.getAbsolutePath());
+			antProject.setUserProperty("basedir", buildFile.getParent());
+			this.loadPropertiesIntoProject(antProject);
+			antProject.addBuildListener(this.consoleLogger);
 			antProject.fireBuildStarted();
 			antProject.init();
 			ProjectHelper helper = ProjectHelper.getProjectHelper();
@@ -114,23 +108,37 @@ public class AntScriptLauncher implements IScriptLauncher {
 		catch (BuildException e)
 		{
 			antProject.fireBuildFinished(e);
+			logger.error(e.getMessage());
 			throw new AssertionError(e);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			String errMessage = "Could not find the Ant Script Needed to run this command. " +
+					"Script: " + this.script +
+					" Underlying Reason: " + e.getMessage() +
+					" See the" + " logs for more details";
+			logger.error(errMessage);
+			throw new AssertionError(errMessage);
 		}
 	}
 	
 	/* (non-Javadoc)
 	 * Determine if the current script set on this launcher is a runnable script
 	 */
-	private boolean isScriptRunnable()
+	private void preValidateScript(File antScript) throws BuildException
 	{
-		boolean isRunnable = false;
-		File antScript = this.getScriptAsFile();
-		if (this.script != null && antScript.exists() && antScript.canRead()
-				&& antScript.isFile())
+		if (!antScript.canRead())
 		{
-			isRunnable = true;
+			throw new BuildException("We did not have the right permissions to run the following " +
+					"script: " + antScript.getAbsolutePath() +
+					" See the Log for more details");
 		}
-		return isRunnable;
+		else if (!antScript.isFile())
+		{
+			throw new BuildException("The script we tried to run was not actually a file. " +
+					"script: " + antScript.getAbsolutePath() +
+					" See the Log for more details");
+		}
 	}
 	
 	/* (non-Javadoc) Take the set of properties set in the Hashtable of
@@ -156,17 +164,6 @@ public class AntScriptLauncher implements IScriptLauncher {
 		consoleLogger.setErrorPrintStream(System.err);
 		consoleLogger.setOutputPrintStream(printStream);
 		consoleLogger.setMessageOutputLevel(Project.MSG_INFO);
-		
-		//TODO:Remove the line below when we are fully configured with log4J
-		this.setPrinStream(printStream);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.intuit.ginsu.scripts.IScriptLauncher#setPrinStream(java.io.PrintStream)
-	 */
-	public void setPrinStream(PrintStream stdOut) {
-		this.printStream = stdOut;
 	}
 
 }

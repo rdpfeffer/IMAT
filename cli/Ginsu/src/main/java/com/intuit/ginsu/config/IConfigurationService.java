@@ -65,7 +65,7 @@ public interface IConfigurationService {
 	/**
 	 * Load the configuration from the default configuration store(s). 
 	 */
-	public void loadConfiguration();
+	public void loadConfiguration() throws MisconfigurationException;
 
 	/**
 	 * Store the configuration from the default configuration store and override

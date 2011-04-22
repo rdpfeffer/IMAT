@@ -8,14 +8,15 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu.cli;
 
 import java.io.PrintWriter;
 
-import java.util.logging.*;
+import org.apache.log4j.Logger;
 
-import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.intuit.ginsu.commands.ICommand;
+import com.intuit.ginsu.commands.IncompleteCommandException;
 
 /**
  * @author rpfeffer
@@ -24,17 +25,11 @@ import com.beust.jcommander.Parameters;
  *              This command renders help text for the Ginsu Application
  * 
  */
-@Parameters(commandDescription = "Print out this help text.")
-public class CommandHelp extends Command implements ICommand {
-
-	/**
-	 * TODO: Replace this Parameter with an actual parameter that we are going to use.
-	 */
-	public static final String PLACEHOLDER = "-placeholder";
-	@Parameter(names = {PLACEHOLDER},
-			description = "This is just a placeholder until we implement more of this class",
-			hidden = true)
-	public boolean placeholder;
+@Parameters(commandDescription = "Print out this help text. To get help for a specific command. Type: ginsu [command] -help")
+public class UsagePrinter implements ICommand {
+	
+	private final PrintWriter printWriter;
+	private final String usage;
 	
 	
 	/**
@@ -42,8 +37,9 @@ public class CommandHelp extends Command implements ICommand {
 	 * @param printwriter The {@link PrintWriter} to write to.
 	 * @param logger The {@link Logger} to log to.
 	 */
-	public CommandHelp(PrintWriter printwriter, Logger logger) {
-		super(printwriter, logger);
+	public UsagePrinter(PrintWriter printWriter, String usage) {
+		this.printWriter = printWriter;
+		this.usage = usage;
 	}
 
 	public static final String NAME = "help";
@@ -51,10 +47,8 @@ public class CommandHelp extends Command implements ICommand {
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
-	public int run() {
-		
-		// TODO Complete this method.
-		
+	public int run() {	
+		printWriter.println(this.usage);
 		int exitStatus  = 0;
 		return exitStatus;
 	}
@@ -72,7 +66,7 @@ public class CommandHelp extends Command implements ICommand {
 	 */
 	public String getName()
 	{
-		return CommandHelp.NAME;
+		return UsagePrinter.NAME;
 	}
 	
 	/* (non-Javadoc)
@@ -82,14 +76,34 @@ public class CommandHelp extends Command implements ICommand {
 	public boolean equals(Object command)
 	{
 		return (command != null &&
-				command instanceof CommandHelp &&
-				((CommandHelp)command).getName() == this.getName());
+				command instanceof UsagePrinter &&
+				((UsagePrinter)command).getName() == this.getName());
 	}
 
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
 	 */
 	public boolean isRunnable() {
+		return true;
+	}
+
+	public int getExitStatus() throws IncompleteCommandException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public String getErrorMessage() throws IncompleteCommandException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean isCommandComplete() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean shouldRenderCommandUsage() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 

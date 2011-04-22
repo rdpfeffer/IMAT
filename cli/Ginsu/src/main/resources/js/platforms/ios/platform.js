@@ -13,3 +13,4 @@ UIALogger.logDebug("GINSU: Loading Platform: iOS...");
 #import "./testUIMacros.js"
 #import "./UIAElement-extensions.js"
 #import "./UIAElementArrayUtils.js"
+#import "./BaseView.js"

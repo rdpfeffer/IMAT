@@ -12,12 +12,12 @@ import com.beust.jcommander.JCommander;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
-import com.intuit.ginsu.commands.CommandHelp;
 import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 import com.intuit.ginsu.config.IConfigurationService;
 import com.intuit.ginsu.config.PropertyFileConfigurationService;
+import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 
 public class GinsuCLIModuleTest {
 
@@ -25,7 +25,7 @@ public class GinsuCLIModuleTest {
 
 	@BeforeClass
 	public void setupInjector() {
-		this.injector = Guice.createInjector(new GinsuCLIModule());
+		this.injector = Guice.createInjector(new GinsuCLIModule(), new BindLog4JWithClassNameModule());
 	}
 
 	@Test
@@ -120,6 +120,6 @@ public class GinsuCLIModuleTest {
 	public void testSupportedCommandProvider() {
 		SupportedCommandCollection collection = injector.getInstance(SupportedCommandCollection.class);
 		assert collection.size() > 0;
-		assert collection.get(CommandHelp.NAME) instanceof CommandHelp;
+		assert collection.get(UsagePrinter.NAME) instanceof UsagePrinter;
 	}
 }

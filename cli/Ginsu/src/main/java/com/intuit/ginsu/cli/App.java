@@ -10,11 +10,16 @@
 *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import org.apache.log4j.Logger;
+
 import com.google.inject.Injector;
 import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.commands.ICommand;
 import com.intuit.ginsu.commands.ICommandDispatchService;
+import com.intuit.ginsu.commands.IncompleteCommandException;
 import com.intuit.ginsu.config.IConfigurationService;
+import com.intuit.ginsu.config.MisconfigurationException;
+import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 
 /**
  * 
@@ -26,12 +31,17 @@ import com.intuit.ginsu.config.IConfigurationService;
  */
 public class App 
 {
-    public static void main( String[] args )
+    private static final int APP_HOME_ARGS_INDEX = 1;
+	
+	public static void main( String[] args )
     {
-    	//get a reference to the AppContext Singleton object and initialize the CLI module.
+    	//get a reference to the AppContext Singleton object and initialize the CLI modules.
     	AppContext appContext = AppContext.getInstance();
+    	appContext.setProperty(AppContext.APP_HOME_KEY, args[APP_HOME_ARGS_INDEX]);
     	appContext.setAppModule(new GinsuCLIModule());
+    	appContext.setAppModule(new BindLog4JWithClassNameModule());
     	Injector injector = appContext.getInjector();
+    	Logger logger = injector.getInstance(Logger.class);
     	
     	//Load and parse the Input from the user 
     	IInputParsingService inputService = injector.getInstance(IInputParsingService.class);
@@ -42,9 +52,9 @@ public class App
     	IConfigurationService configService = injector.getInstance(IConfigurationService.class);
     	
     	//If we have a runnable command and the applicaiton is not initialized...
-    	if(command.isRunnable() && configService.isNotInitialized(inputService.getConfigurationOverride().get(AppContext.APP_HOME_KEY)))
+    	if(command.isRunnable() && configService.isNotInitialized(appContext.getProperty(AppContext.APP_HOME_KEY)))
     	{
-    		//run the first time initialization...
+    		logger.debug("Running first time initialization...");
     		
     		//load the main config override so that we can get access to the home directory.
     		appContext.overrideProperties(inputService.getConfigurationOverride());
@@ -52,14 +62,25 @@ public class App
     		//TODO: we will check for accepting license agreement here etc.
     		configService.doFirstTimeInitialization();
     	}
-    	//TODO: load the configuration files into the Application Context.
-    	configService.loadConfiguration();
-    	appContext.overrideProperties(inputService.getConfigurationOverride());
+    	try {
+    		configService.loadConfiguration();
+			appContext.overrideProperties(inputService.getConfigurationOverride());
 
-    	//run the loaded command using the command dispatch service
-    	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);
-    	commandDispatchService.dispatch(command);
+	    	//run the loaded command using the command dispatch service
+	    	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);
+	    	commandDispatchService.dispatch(command);
+			System.exit(command.getExitStatus());
+	    	//TODO after the command has run, dispatch the update command in the background and exit
+		} catch (MisconfigurationException e) {
+			logger.fatal("Ginsu is currently Misconfigured and will not run until corrected. " 
+					+ e.getMessage());
+			System.exit(-1);
+		} catch (IncompleteCommandException e) {
+			logger.fatal("The Application tried to move on before the command had completed." 
+					+ " Command=" + command.getName() + " "
+					+ e.getMessage());
+			System.exit(-1);
+		}
     	
-    	//TODO after the command has run, dispatch the update command in the background and exit
     }
 }

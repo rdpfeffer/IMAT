@@ -10,19 +10,25 @@
 *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
+import java.net.URL;
+
+import org.apache.log4j.Logger;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.annotations.AppHome;
 import com.intuit.ginsu.annotations.AppName;
+import com.intuit.ginsu.annotations.ConfigFile;
 import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
 import com.intuit.ginsu.commands.CommandGenerateProject;
-import com.intuit.ginsu.commands.CommandHelp;
 import com.intuit.ginsu.commands.CommandInitEnv;
 import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommandDispatchService;
@@ -55,7 +61,37 @@ public class GinsuCLIModule extends AbstractModule {
 	 */
 	@Override
 	protected void configure() {
+		
+		AppContext appContext =  AppContext.getInstance();
+		String appHome = appContext.getProperty(AppContext.APP_HOME_KEY);
+		String configFile = "config" + File.separator + "cliConfig.properties";
+		
+		URL testConfigURL = ClassLoader.getSystemResource(configFile);
+		assert testConfigURL != null : "Config file not found. Could not resolve file: " + configFile;
+		System.setProperty("log4j.configuration", testConfigURL.toString());
+		
+		// GINSU_LOG_DIR is the log directory for Ginsu. It is used by log4j to determine
+		// where to place logs
+		try {
+			String logDir = appContext.getProperty(AppContext.APP_HOME_KEY) 
+				+ File.separator + "logs";
+			File appHomeFile = new File(logDir).getCanonicalFile();
+			System.setProperty("GINSU_LOG_DIR", appHomeFile.toString() + File.separator);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		// Configure the App's Directory Structure based off of the Application's
+		// home directory.
+		bind(String.class).annotatedWith(AppHome.class).toInstance(appHome);
+		bind(String.class).annotatedWith(ConfigFile.class).toInstance(configFile);
+		
+		//Bind the app name, that is configurable too!
 		bind(String.class).annotatedWith(AppName.class).toInstance("Ginsu");
+		
+		// Bind the rest of the Major Service interfaces of the CLI app to their 
+		// implementing classes.
 		bind(IInputParsingService.class).to(CommandLineParsingService.class);
 		bind(IConfigurationService.class).to(PropertyFileConfigurationService.class)
 			.asEagerSingleton();
@@ -66,6 +102,8 @@ public class GinsuCLIModule extends AbstractModule {
 		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
 		bind(OutputStream.class).toInstance(System.out);
 		bind(MainArgs.class);
+		
+		
 	}
 	
 	/**
@@ -113,7 +151,7 @@ public class GinsuCLIModule extends AbstractModule {
 	{
 		// Keep reference to our commands so we can return the one we want later
 		SupportedCommandCollection supportedCommands = new SupportedCommandCollection();
-		supportedCommands.put(CommandHelp.NAME, new CommandHelp(printWriter, logger));
+		supportedCommands.put(UsagePrinter.NAME, new UsagePrinter(printWriter, ""));
 		supportedCommands.put(CommandInitEnv.NAME, new CommandInitEnv(printWriter, logger));
 		supportedCommands.put(CommandGenerateProject.NAME, 
 				new CommandGenerateProject(printWriter, logger, scriptLauncher));
@@ -131,11 +169,12 @@ public class GinsuCLIModule extends AbstractModule {
 	 * @param resourceService The {@link IApplicationResourceService} used to retrive the scripts
 	 * @return an instance of {@link IScriptLauncher} that runs ant scripts.
 	 */
-	@Provides IScriptLauncher provideScriptLauncher(PrintStream printStream, IApplicationResourceService resourceService)
+	@Provides IScriptLauncher provideScriptLauncher(PrintStream printStream, 
+			IApplicationResourceService resourceService) 
 	{
-		AntScriptLauncher antScriptLauncher = new AntScriptLauncher(resourceService);
+		AntScriptLauncher antScriptLauncher = new AntScriptLauncher(
+				resourceService, Logger.getLogger(AntScriptLauncher.class));
 		antScriptLauncher.setProjectListener(printStream);
 		return antScriptLauncher;
 	}
-
 }

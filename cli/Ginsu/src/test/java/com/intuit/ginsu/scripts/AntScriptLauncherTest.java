@@ -2,11 +2,11 @@ package com.intuit.ginsu.scripts;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Hashtable;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.BaseTest;
+import com.intuit.ginsu.io.FileSystemResourceService;
 import com.intuit.ginsu.io.FileSystemTestResourceService;
 
 public class AntScriptLauncherTest extends BaseTest {
@@ -23,10 +24,11 @@ public class AntScriptLauncherTest extends BaseTest {
 	private ByteArrayOutputStream outputStream;
 	@BeforeMethod
 	public void beforeMethod() {
-		scriptLauncher = new AntScriptLauncher(new FileSystemTestResourceService());
+		scriptLauncher = new AntScriptLauncher(
+				new FileSystemTestResourceService(Logger.getLogger(FileSystemResourceService.class)), 
+				Logger.getLogger(AntScriptLauncher.class));
 		outputStream = new ByteArrayOutputStream();
 		scriptLauncher.setProjectListener(new PrintStream(outputStream, true));
-		scriptLauncher.setPrinStream(new PrintStream(outputStream, true));
 		AppContext.getInstance().setProperty(AppContext.APP_HOME_KEY, "");
 	}
 
@@ -76,6 +78,8 @@ public class AntScriptLauncherTest extends BaseTest {
 	@Test()
 	public void testRunScriptWithoutProperties() {
 		File scriptWithoutProps = getTestResourceAsFile("helloWorldNoProps.xml");
+		scriptWithoutProps.setReadable(true);
+		scriptWithoutProps.setExecutable(true);
 		scriptLauncher.setScript(scriptWithoutProps.getPath());
 		scriptLauncher.runScript();
 		String output = this.outputStream.toString(); 
@@ -85,8 +89,10 @@ public class AntScriptLauncherTest extends BaseTest {
 	
 	@Test
 	public void testRunScript() {
-		File scriptWithoutProps = getTestResourceAsFile("helloWorldWithProps.xml");
-		scriptLauncher.setScript(scriptWithoutProps.getPath());
+		File scriptWithProps = getTestResourceAsFile("helloWorldWithProps.xml");
+		scriptWithProps.setExecutable(true);
+		scriptWithProps.setReadable(true);
+		scriptLauncher.setScript(scriptWithProps.getPath());
 		Hashtable<String, String> properties = new Hashtable<String, String>();
 		properties.put("name", "Johnny Utah");
 		scriptLauncher.setProperties(properties);

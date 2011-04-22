@@ -8,29 +8,24 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.scripts;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Hashtable;
+package com.intuit.ginsu.config;
 
 /**
  * @author rpfeffer
- * @dateCreated Apr 12, 2011
+ * @dateCreated Apr 20, 2011
  *
  * //TODO Explain why this file exists and how it is used.
  *
  */
-public interface IScriptLauncher {
+public class MisconfigurationException extends Exception {
 
-	public void setScript(String script);
-	
-	public String getScript();
-	
-	public File getScriptAsFile() throws FileNotFoundException;
-	
-	//TODO: explain that it is expected that these properties will be set and used when the target script is invoked.
-	public void setProperties( Hashtable<String, String> properties);
-	
-	public void runScript();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public MisconfigurationException(String message)
+	{
+		super("A configuration error occured. " + message);
+	}
 }

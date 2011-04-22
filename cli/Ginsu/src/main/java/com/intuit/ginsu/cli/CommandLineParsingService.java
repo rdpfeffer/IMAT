@@ -42,6 +42,7 @@ public class CommandLineParsingService implements IInputParsingService {
 	private final MainArgs mainArgs;
 	private final PrintWriter printWriter;
 	private final Map<String, ICommand> supportedCommands;
+	private final StringBuilder stringBuilder;
 	private ICommand command;
 	
 
@@ -54,11 +55,12 @@ public class CommandLineParsingService implements IInputParsingService {
 		this.jCommander = jCommander;
 		this.supportedCommands = supportedCommands;
 		
-		//Setup The JCommanderObject with the Supported Commands 
+		//Setup The JCommander Object with the Supported Commands 
 		this.loadSupportedCommands();
 		
 		//until we successfully call parse, this will be the object we get back
 		this.command = new CommandNull();
+		this.stringBuilder = new StringBuilder();
 	}
 
 	/*
@@ -68,32 +70,38 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * com.intuit.ginsu.cli.IInputParsingService#parseInput(java.lang.String[])
 	 */
 	public void parseInput(String[] input) {
-
 		try
 		{
-			this.jCommander.parse(input);
-			ICommand parsedCommand = this.getParsedCommand();
+			jCommander.parse(input);
+			ICommand parsedCommand = getParsedCommand();
 			if(parsedCommand.shouldRenderCommandUsage())
 			{
-				StringBuilder stringBuilder = new StringBuilder();
-				this.jCommander.usage(parsedCommand.getName(), stringBuilder);
-				this.printWriter.println(stringBuilder.toString());
+				if(parsedCommand.getName() == UsagePrinter.NAME)
+				{
+					throw new Exception("Usage is Defined as follows..." +
+							System.getProperty("line.separator"));
+				}
+				else
+				{
+					jCommander.usage(parsedCommand.getName(), stringBuilder);
+				}
+				command  = initUsagePrinter();
 			}
 			else
 			{
 				//Since we are not printing usage, we will set the current 
 				//command to the one that was parsed and override the CommandNull 
 				//object
-				this.command = parsedCommand;
+				command = parsedCommand;
 			}
 		}
 		catch (Throwable e)
 		{
-			//print a message out to the user
-			this.printWriter.println(e.getMessage());
-			StringBuilder stringBuilder = new StringBuilder();
-			this.jCommander.usage(stringBuilder);
-			this.printWriter.println(stringBuilder.toString());
+			//Formulate usage for the user.
+			stringBuilder.append(e.getMessage());
+			stringBuilder.append(System.getProperty("line.separator"));
+			jCommander.usage(stringBuilder);
+			command = initUsagePrinter();
 		}
 	}
 
@@ -103,7 +111,7 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * @see com.intuit.ginsu.cli.IInputParsingService#getCommand()
 	 */
 	public ICommand getCommand() {
-		return this.command;
+		return command;
 	}
 
 	/*
@@ -113,7 +121,7 @@ public class CommandLineParsingService implements IInputParsingService {
 	 */
 	public Hashtable<String, String> getConfigurationOverride() {
 		// TODO Auto-generated method stub
-		return this.mainArgs.getConfigurationOverride();
+		return mainArgs.getConfigurationOverride();
 	}
 
 	/**
@@ -124,7 +132,7 @@ public class CommandLineParsingService implements IInputParsingService {
 	 *            via the command line.
 	 */
 	public void setDefaultProvider(IDefaultProvider defaultProvider) {
-		this.jCommander.setDefaultProvider(defaultProvider);
+		jCommander.setDefaultProvider(defaultProvider);
 	}
 	
 	/**
@@ -136,7 +144,7 @@ public class CommandLineParsingService implements IInputParsingService {
 	 */
 	private ICommand getParsedCommand() throws Exception
 	{
-		ICommand parsedCommand = this.supportedCommands.get(this.jCommander.getParsedCommand());
+		ICommand parsedCommand = supportedCommands.get(jCommander.getParsedCommand());
 		if(parsedCommand == null)
 		{
 			throw new Exception("You must supply at least one supported command.");
@@ -154,6 +162,16 @@ public class CommandLineParsingService implements IInputParsingService {
 				.entrySet()) {
 			jCommander.addCommand(entry.getKey(), entry.getValue());
 		}
+	}
+	
+	/**
+	 * @return The UsagePrinter Object Loaded with the correct usage message
+	 *         ready to be displayed. This will be printed out with the Usage
+	 *         printer is run. 
+	 */
+	private UsagePrinter initUsagePrinter()
+	{
+		return new UsagePrinter(printWriter, stringBuilder.toString());
 	}
 
 }

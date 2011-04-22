@@ -11,7 +11,7 @@
 package com.intuit.ginsu.commands;
 
 import java.io.PrintWriter;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;

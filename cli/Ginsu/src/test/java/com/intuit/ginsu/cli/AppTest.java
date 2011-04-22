@@ -1,13 +1,9 @@
 package com.intuit.ginsu.cli;
 
-import java.io.ByteArrayOutputStream;
-
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import com.intuit.ginsu.AppContext;
 
 
 /**
@@ -16,7 +12,7 @@ import com.intuit.ginsu.AppContext;
 public class AppTest
 {
  
-	private ByteArrayOutputStream stubOutputStream;
+	//private ByteArrayOutputStream stubOutputStream;
 	
 	/**
      * Create the test case
@@ -32,7 +28,7 @@ public class AppTest
 	public void setUp()
     {
     	//Set up the application with the fixture that we can query later
-    	AppContext.getInstance().setAppModule(new GinsuTestModuleOverride());
+    	//AppContext.getInstance().setAppModule(new GinsuTestModuleOverride());
     	
     	
     }

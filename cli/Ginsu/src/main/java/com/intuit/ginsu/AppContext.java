@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import com.google.inject.Guice;
@@ -39,7 +40,7 @@ public class AppContext {
 	 */
 	public static final String APP_HOME_KEY = "home_key";
 	private static AppContext instance;
-	private Module appModule;
+	private ArrayList<Module> appModules = new ArrayList<Module>();
 	private Hashtable<String,String> properties = new Hashtable<String, String>();
 
 	/**
@@ -57,8 +58,8 @@ public class AppContext {
 	/**
 	 * @return the appModule
 	 */
-	public Module getAppModule() {
-		return appModule;
+	public ArrayList<Module> getAppModules() {
+		return appModules;
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class AppContext {
 	 *            the appModule to set
 	 */
 	public void setAppModule(Module module) {
-		this.appModule = module;
+		this.appModules.add(module);
 	}
 	
 	/**
@@ -80,7 +81,7 @@ public class AppContext {
 	 */
 	public Injector getInjector()
 	{
-		return Guice.createInjector(this.getAppModule());
+		return Guice.createInjector(this.getAppModules());
 	}
 	
 	/**

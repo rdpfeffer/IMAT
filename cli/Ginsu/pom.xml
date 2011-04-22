@@ -88,13 +88,10 @@
 		  <artifactId>guice</artifactId>
 		  <version>3.0</version>
 		</dependency>
-		<!-- 
 		<dependency>
-			<groupId>com.google.code.sli4j</groupId>
-			<artifactId>sli4j-log4j</artifactId>
-			<version>1.0</version>
-			<scope>compile</scope>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>r09</version>
 		</dependency>
-		-->
 	</dependencies>
 </project>

@@ -10,13 +10,17 @@
 *******************************************************************************/
 package com.intuit.ginsu.config;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Properties;
+
+import org.apache.log4j.Logger;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.annotations.ConfigFile;
 import com.intuit.ginsu.io.IApplicationResourceService;
 
 /**
@@ -29,10 +33,12 @@ import com.intuit.ginsu.io.IApplicationResourceService;
  */
 @Singleton
 public class PropertyFileConfigurationService implements IConfigurationService, IDefaultProvider {
-
+	
 	private AppContext appContext = AppContext.getInstance();
 	
 	private final IApplicationResourceService resourceService;
+	private final String configFile;
+	private final Logger logger;
 	
 	/**
 	 * Create a new PropertyFileConfigurationService
@@ -41,9 +47,11 @@ public class PropertyFileConfigurationService implements IConfigurationService, 
 	 *            application resource files
 	 */
 	@Inject
-	public PropertyFileConfigurationService(IApplicationResourceService resourceService)
+	public PropertyFileConfigurationService(IApplicationResourceService resourceService, @ConfigFile String configFile, Logger logger )
 	{
 		this.resourceService = resourceService;
+		this.configFile = configFile;
+		this.logger = logger;
 	}
 	
 	/*
@@ -67,9 +75,26 @@ public class PropertyFileConfigurationService implements IConfigurationService, 
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.config.IConfigurationService#loadConfiguration()
 	 */
-	public void loadConfiguration() {
-		// TODO Auto-generated method stub
-
+	public void loadConfiguration() throws MisconfigurationException{
+		logger.debug("Loading Configuration");
+		Properties props = this.resourceService.getAppProperties(configFile);
+		
+		if(props.isEmpty())
+		{
+			throw new MisconfigurationException("The Applicaiton was unable " +
+					"to load any properties from the configuration file. " +
+					"Please see the log for more details");
+		}
+		
+		Enumeration<?> keys = props.propertyNames();
+		while(keys.hasMoreElements())
+		{
+			String key = (String) keys.nextElement();
+			this.appContext.setProperty(key, props.getProperty(key));
+			logger.trace("Loading Property Pair <" + key + ", " + 
+					props.getProperty(key) + ">");
+		}
+		logger.debug("Configuration Loaded Successfully.");
 	}
 	
 	/*
@@ -79,14 +104,6 @@ public class PropertyFileConfigurationService implements IConfigurationService, 
 	public void storeConfiguration(Hashtable<String, String> configuration) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	/* (non-Javadoc)
-	 * @see com.intuit.ginsu.config.IConfigurationService#loadConfigurationOverride(com.intuit.ginsu.commands.ICommand)
-	 */
-	public void loadConfiguration(Hashtable<String, Object> configurationOverride) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/* (non-Javadoc)

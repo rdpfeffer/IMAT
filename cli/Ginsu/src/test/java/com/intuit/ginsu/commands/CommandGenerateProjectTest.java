@@ -3,8 +3,8 @@ package com.intuit.ginsu.commands;
 import java.io.File;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -16,11 +16,11 @@ import org.testng.annotations.Test;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.util.Modules;
-import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.BaseTest;
 import com.intuit.ginsu.cli.GinsuCLIModule;
 import com.intuit.ginsu.cli.GinsuTestModuleOverride;
 import com.intuit.ginsu.io.FileSystemResourceService;
+import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 import com.intuit.ginsu.scripts.AntScriptLauncher;
 
 public class CommandGenerateProjectTest extends BaseTest{
@@ -37,7 +37,9 @@ public class CommandGenerateProjectTest extends BaseTest{
 		this.printWriter = injector.getInstance(PrintWriter.class);
 		this.targetDir = new File(System.getProperty("java.io.tmpdir") 
 				+ System.getProperty("file.separator") + "ginsuTestDir");
-		AntScriptLauncher launcher = new AntScriptLauncher(new FileSystemResourceService());
+		AntScriptLauncher launcher = new AntScriptLauncher(
+				new FileSystemResourceService(Logger.getLogger(FileSystemResourceService.class)), 
+				Logger.getLogger(AntScriptLauncher.class));
 		launcher.setProjectListener(injector.getInstance(PrintStream.class));
 		this.command = new CommandGenerateProject(this.printWriter, this.logger, 
 				launcher);
@@ -52,9 +54,10 @@ public class CommandGenerateProjectTest extends BaseTest{
 	@BeforeClass
 	public void beforeClass() 
 	{
-		AppContext appContext = AppContext.getInstance();
-		appContext.setAppModule(Modules.override( new GinsuCLIModule()).with(new GinsuTestModuleOverride()));
-		this.injector = Guice.createInjector(appContext.getAppModule());
+		this.injector = Guice.createInjector(
+				Modules.override(new GinsuCLIModule()).with(
+						new GinsuTestModuleOverride()),
+				new BindLog4JWithClassNameModule());
 		this.logger = injector.getInstance(Logger.class);
 	}
 

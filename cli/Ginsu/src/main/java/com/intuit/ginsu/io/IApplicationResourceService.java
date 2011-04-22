@@ -12,6 +12,7 @@ package com.intuit.ginsu.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Properties;
 
 /**
  * @author rpfeffer
@@ -43,4 +44,11 @@ public interface IApplicationResourceService {
 	 * @param fileName The name of the file to look for.
 	 */
 	public File getAppScript(String scriptName) throws FileNotFoundException;
+	
+	/**
+	 * 
+	 * @param propertiesFileName
+	 * @return {@link Properties} object representing the 
+	 */
+	public Properties getAppProperties(String propertiesFileName);
 }

@@ -14,8 +14,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -26,15 +26,14 @@ import com.beust.jcommander.JCommander;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.util.Modules;
-import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.commands.CommandGenerateProject;
-import com.intuit.ginsu.commands.CommandHelp;
 import com.intuit.ginsu.commands.CommandInitEnv;
 import com.intuit.ginsu.commands.CommandNull;
 import com.intuit.ginsu.commands.CommandRunTests;
 import com.intuit.ginsu.commands.ICommand;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 import com.intuit.ginsu.io.FileSystemResourceService;
+import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 import com.intuit.ginsu.scripts.AntScriptLauncher;
 
 /**
@@ -57,9 +56,10 @@ public class CommandLineParsingServiceTest {
 	@BeforeClass
 	protected void setUpContext()
 	{
-		AppContext appContext = AppContext.getInstance();
-		appContext.setAppModule(Modules.override( new GinsuCLIModule()).with(new GinsuTestModuleOverride()));
-		this.injector = Guice.createInjector(appContext.getAppModule());
+		this.injector = Guice.createInjector(
+				Modules.override(new GinsuCLIModule()).with(
+						new GinsuTestModuleOverride()),
+				new BindLog4JWithClassNameModule());
 		this.logger = injector.getInstance(Logger.class);
 	}
 	
@@ -102,7 +102,7 @@ public class CommandLineParsingServiceTest {
 	public void testParseInputWithValidCommands()
 	{
 		String[][] testData = new String[][]  {
-				new String[] {CommandHelp.NAME},
+				new String[] {UsagePrinter.NAME},
 				new String[] {CommandInitEnv.NAME, 
 						"-template",  tempFile.getAbsolutePath()},
 				new String[] {CommandGenerateProject.NAME},
@@ -110,9 +110,12 @@ public class CommandLineParsingServiceTest {
 		};
 		
 		ICommand[] expectedCommands = new ICommand[]  {
-				new CommandHelp(printWriter, logger),
+				new UsagePrinter(printWriter, ""),
 				new CommandInitEnv(printWriter, logger),
-				new CommandGenerateProject(printWriter, logger, new AntScriptLauncher(new FileSystemResourceService())),
+				new CommandGenerateProject(printWriter, logger, 
+						new AntScriptLauncher(
+								new FileSystemResourceService(
+										Logger.getLogger(FileSystemResourceService.class)), null)),
 				new CommandRunTests(printWriter, logger),
 		};
 		
@@ -145,7 +148,6 @@ public class CommandLineParsingServiceTest {
 	{
 		//Set up the specifics for this test
 		String[] testData = new String[] {"foobar"};
-		ICommand expectedCommand = new CommandNull();
 		MainArgs mainArgs = injector.getInstance(MainArgs.class);
 		this.jCommander = injector.getInstance(JCommander.class);
 		SupportedCommandCollection cmdCollection = injector.getInstance(SupportedCommandCollection.class);
@@ -157,13 +159,15 @@ public class CommandLineParsingServiceTest {
 		String expectedOutput = "Expected a command, got foobar" 
 			+ System.getProperty("line.separator") 
 			+ exepectedUsageString.toString(); 
+		ICommand expectedCommand = new UsagePrinter(printWriter, "");
 		
 		//parse the test data
 		parsingService.parseInput(testData);
-		
-		//Validate the results
-		AssertJUnit.assertEquals(expectedCommand, parsingService.getCommand());
+		ICommand resultingCommand = parsingService.getCommand();
+		AssertJUnit.assertEquals(expectedCommand.getName(), resultingCommand.getName());
 		AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(), parsingService.getConfigurationOverride());
+		
+		resultingCommand.run();
 		AssertJUnit.assertEquals(expectedOutput.trim(), this.outputStreamFixture.toString().trim());
 	}
 	
@@ -171,18 +175,10 @@ public class CommandLineParsingServiceTest {
 	public void testParseInputWithCommandHelp()
 	{
 		String[][] testArgs = new String[][]  {
-				/*new String[] {CommandHelp.NAME, "-help"},*/
-				new String[] {CommandInitEnv.NAME, 
-						"-template",  tempFile.getAbsolutePath(), "-help"},
+				new String[] {UsagePrinter.NAME},
+				new String[] {CommandInitEnv.NAME, "-help"},
 				new String[] {CommandGenerateProject.NAME, "-help"},
 				new String[] {CommandRunTests.NAME, "-help"},
-		};
-		
-		String[] expectedHelpNeedles = new String[]  {
-				/*"Print out this help text.",*/
-				CommandInitEnv.TEMPLATE,
-				CommandGenerateProject.TARGET_DIR,
-				CommandRunTests.PLACEHOLDER,
 		};
 		
 		MainArgs mainArgs = injector.getInstance(MainArgs.class);
@@ -199,16 +195,8 @@ public class CommandLineParsingServiceTest {
 					this.printWriter, this.jCommander, mainArgs, cmdCollection);
 			parsingService.parseInput(args);
 			
-			//try to force the flushing of the text from the printwriter
-			this.printWriter.flush();
-			
-			String outputValue = this.outputStreamFixture.toString().trim();
-			assert outputValue.contains(expectedHelpNeedles[i]) : "Output Value is: " + outputValue 
-				+ " when we were looking for \"" + expectedHelpNeedles[i] + "\""; 
-			
-			//reset the byte array output stream to make sure we arent getting any false positives
-			this.outputStreamFixture = new ByteArrayOutputStream();
-			this.printWriter = new PrintWriter(this.outputStreamFixture, true);
+			ICommand command = parsingService.getCommand();
+			assert command.getName() == UsagePrinter.NAME;
 		}
 	}
 }

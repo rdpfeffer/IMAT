@@ -10,6 +10,10 @@
  *******************************************************************************/
 package com.intuit.ginsu.commands;
 
+import org.apache.log4j.Logger;
+
+import com.google.inject.Inject;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -21,6 +25,14 @@ package com.intuit.ginsu.commands;
  */
 public class CommandDispatchServiceImpl implements ICommandDispatchService {
 
+	private final Logger logger;
+	
+	@Inject
+	public CommandDispatchServiceImpl(Logger logger)
+	{
+		this.logger = logger;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -29,7 +41,9 @@ public class CommandDispatchServiceImpl implements ICommandDispatchService {
 	 * .ginsu.commands.ICommand)
 	 */
 	public void dispatch(ICommand command) {
+		logger.debug("Start Dispatching Command. Command Named: " + command.getName());
 		command.run();
+		logger.debug("Finished Dispatching Command. Command Named: " + command.getName());
 	}
 
 }

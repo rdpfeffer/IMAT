@@ -13,11 +13,11 @@ package com.intuit.ginsu.commands;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Hashtable;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
-import com.intuit.ginsu.AppContext;
 import com.intuit.ginsu.cli.converters.FileConverter;
 import com.intuit.ginsu.cli.validators.JavaScriptVariableValidator;
 import com.intuit.ginsu.io.PathAnalyzer;
@@ -41,7 +41,7 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 
 	public CommandGenerateProject(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
 		super(printwriter, logger, scriptLauncher);
-		this.pathAnalyzer = new PathAnalyzer(printwriter);
+		this.pathAnalyzer = new PathAnalyzer(Logger.getLogger(PathAnalyzer.class));
 	}
 
 	/**
@@ -104,8 +104,7 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 		Hashtable<String, String> properties = new Hashtable<String, String>();
 		properties.put("target.dir", this.targetDir.getAbsolutePath());
 		properties.put("global.object.var", this.globalObjectVar);
-		String pathToGinsuHome = AppContext.getInstance().getProperty(AppContext.APP_HOME_KEY);
-		String pathToGinsu = this.pathAnalyzer.getRelativePath(this.targetDir, pathToGinsuHome);
+		String pathToGinsu = this.pathAnalyzer.getRelativePath(this.targetDir, "");
 		properties.put("path.to.ginsu", pathToGinsu);
 		
 		//the only reason we are setting this here, and not in the script is if for any
