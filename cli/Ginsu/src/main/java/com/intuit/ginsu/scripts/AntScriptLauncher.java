@@ -86,8 +86,9 @@ public class AntScriptLauncher implements IScriptLauncher {
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.scripts.IScriptLauncher#runScript()
 	 */
-	public void runScript() {
+	public int runScript() {
 		Project antProject = new Project();
+		int exitStatus = 1; 
 		try
 		{
 			File buildFile = this.getScriptAsFile();
@@ -104,6 +105,7 @@ public class AntScriptLauncher implements IScriptLauncher {
 			String defaultTarget = antProject.getDefaultTarget();
 			antProject.executeTarget(defaultTarget);
 			antProject.fireBuildFinished(null);
+			exitStatus = 0;
 		}
 		catch (BuildException e)
 		{
@@ -120,6 +122,7 @@ public class AntScriptLauncher implements IScriptLauncher {
 			logger.error(errMessage);
 			throw new AssertionError(errMessage);
 		}
+		return exitStatus;
 	}
 	
 	/* (non-Javadoc)

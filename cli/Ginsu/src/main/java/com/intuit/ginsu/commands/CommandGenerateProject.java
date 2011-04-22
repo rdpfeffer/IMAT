@@ -98,8 +98,6 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
 	public int run() {
-		int exitStatus = 0;
-		
 		//set up the propertes
 		Hashtable<String, String> properties = new Hashtable<String, String>();
 		properties.put("target.dir", this.targetDir.getAbsolutePath());
@@ -114,7 +112,7 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 		IScriptLauncher scriptLauncher = this.getScriptLauncher();
 		scriptLauncher.setScript("generateProject.xml");
 		scriptLauncher.setProperties(properties);
-		scriptLauncher.runScript();
+		exitStatus = scriptLauncher.runScript();
 
 		return exitStatus;
 	}

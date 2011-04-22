@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import java.io.File;
 import java.util.Hashtable;
 
 import com.beust.jcommander.Parameter;
@@ -60,6 +61,14 @@ public class MainArgs {
 	public static final String HOME = "-home";
 	@Parameter(names = HOME, hidden = true)
 	public String home = ".";
+	
+	public static final String PROJECT_DIR = "-project_dir";
+	@Parameter(names = {PROJECT_DIR, "-p"}, description="Set the " +
+			PROJECT_DIR + " to the base directory of the automation project " +
+			"relative to the current directory. If this is not set correctly " +
+			"for certain commands (like running tests), ginsu will error out " +
+			"and not run the command.")
+	public File file= new File(".");
 	
 	public Hashtable<String, String> getConfigurationOverride()
 	{
