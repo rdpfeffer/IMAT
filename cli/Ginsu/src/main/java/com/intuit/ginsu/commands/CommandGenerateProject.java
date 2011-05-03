@@ -11,6 +11,7 @@
 package com.intuit.ginsu.commands;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Hashtable;
 
@@ -18,10 +19,13 @@ import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.IProjectResourceService;
+import com.intuit.ginsu.IScriptLauncher;
+import com.intuit.ginsu.MisconfigurationException;
 import com.intuit.ginsu.cli.converters.FileConverter;
 import com.intuit.ginsu.cli.validators.JavaScriptVariableValidator;
-import com.intuit.ginsu.io.PathAnalyzer;
-import com.intuit.ginsu.scripts.IScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -36,12 +40,13 @@ import com.intuit.ginsu.scripts.IScriptLauncher;
 @Parameters(commandDescription = "Generate the basic project files to start a new Ginsu automation project.")
 public class CommandGenerateProject extends ScriptedCommand implements ICommand {
 
-	private PathAnalyzer pathAnalyzer;
-	
+	private final IApplicationResourceService appResourceService;
 
-	public CommandGenerateProject(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
+	CommandGenerateProject(PrintWriter printwriter, 
+			Logger logger, IScriptLauncher scriptLauncher, 
+			IApplicationResourceService appResourceService) {
 		super(printwriter, logger, scriptLauncher);
-		this.pathAnalyzer = new PathAnalyzer(Logger.getLogger(PathAnalyzer.class));
+		this.appResourceService = appResourceService;
 	}
 
 	/**
@@ -97,34 +102,37 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#run()
 	 */
-	public int run() {
-		//set up the propertes
-		Hashtable<String, String> properties = new Hashtable<String, String>();
-		properties.put("target.dir", this.targetDir.getAbsolutePath());
-		properties.put("global.object.var", this.globalObjectVar);
-		String pathToGinsu = this.pathAnalyzer.getRelativePath(this.targetDir, "");
-		properties.put("path.to.ginsu", pathToGinsu);
-		
-		//the only reason we are setting this here, and not in the script is if for any
-		//reason, this path became dynamic, we wanted the opportunity to set it.
-		properties.put("project.dir", ".."+File.separator+"templates"+File.separator+"Project"); 
-		
-		IScriptLauncher scriptLauncher = this.getScriptLauncher();
-		scriptLauncher.setScript("generateProject.xml");
-		scriptLauncher.setProperties(properties);
-		exitStatus = scriptLauncher.runScript();
+	public int run() throws MisconfigurationException{
+		try
+		{
+			//set up the propertes
+			Hashtable<String, String> properties = new Hashtable<String, String>();
+			String absolutePathToTarget = this.targetDir.getAbsolutePath();
+			properties.put("target.dir", absolutePathToTarget);
+			properties.put("global.object.var", this.globalObjectVar);
+			
+			File fromPath = new File(absolutePathToTarget + File.separator + IProjectResourceService.ENV_DIR);
+			String pathToGinsu = appResourceService.getRelativePathToAppHome(fromPath);
+			properties.put("path.to.ginsu", pathToGinsu);
+			
+			//the only reason we are setting this here, and not in the script is if for any
+			//reason, this path became dynamic, we wanted the opportunity to set it.
+			properties.put("project.dir", ".."+File.separator+"templates"+File.separator+"Project"); 
+			
+			IScriptLauncher scriptLauncher = this.getScriptLauncher();
+			scriptLauncher.setScript("generateProject.xml");
+			scriptLauncher.setProperties(properties);
+			exitStatus = scriptLauncher.runScript();
+		}
+		catch (FileNotFoundException fileNotFoundException)
+		{
+			MisconfigurationException e = new MisconfigurationException(
+					"Could Not run the command: " + this.getName());
+			e.initCause(fileNotFoundException);
+			throw e;
+		}
 
 		return exitStatus;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.intuit.ginsu.commands.ICommand#cleanUp()
-	 */
-	public void cleanUp() {
-		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -139,36 +147,10 @@ public class CommandGenerateProject extends ScriptedCommand implements ICommand 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object command) {
-		return (command != null && command instanceof CommandGenerateProject 
-				&& ((CommandGenerateProject) command).getName() == this.getName());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
 	 */
 	public boolean isRunnable() {
 		return true;
-	}
-	
-
-	/**
-	 * @return the pathAnalyzer
-	 */
-	public PathAnalyzer getPathAnalyzer() {
-		return pathAnalyzer;
-	}
-
-	/**
-	 * @param pathAnalyzer the pathAnalyzer to set
-	 */
-	public void setPathAnalyzer(PathAnalyzer pathAnalyzer) {
-		this.pathAnalyzer = pathAnalyzer;
 	}
 
 }

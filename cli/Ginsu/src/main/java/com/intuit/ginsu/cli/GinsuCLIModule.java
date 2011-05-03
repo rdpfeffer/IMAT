@@ -17,29 +17,22 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URL;
 
-import org.apache.log4j.Logger;
-
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.ICommandDispatchService;
+import com.intuit.ginsu.IInputHandlingService;
 import com.intuit.ginsu.annotations.AppHome;
 import com.intuit.ginsu.annotations.AppName;
 import com.intuit.ginsu.annotations.ConfigFile;
-import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
-import com.intuit.ginsu.commands.CommandGenerateProject;
-import com.intuit.ginsu.commands.CommandInitEnv;
-import com.intuit.ginsu.commands.CommandRunTests;
-import com.intuit.ginsu.commands.ICommandDispatchService;
+import com.intuit.ginsu.annotations.UsageRenderer;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
-import com.intuit.ginsu.config.IConfigurationService;
-import com.intuit.ginsu.config.PropertyFileConfigurationService;
+import com.intuit.ginsu.commands.SynchronousCommandDispatchService;
 import com.intuit.ginsu.io.FileSystemResourceService;
-import com.intuit.ginsu.io.IApplicationResourceService;
-import com.intuit.ginsu.io.IProjectResourceService;
-import com.intuit.ginsu.scripts.AntScriptLauncher;
-import com.intuit.ginsu.scripts.IScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -62,7 +55,7 @@ public class GinsuCLIModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		
-		AppContext appContext =  AppContext.getInstance();
+		AppContext appContext =  AppContext.INSTANCE;
 		String appHome = appContext.getProperty(AppContext.APP_HOME_KEY);
 		String configFile = "config" + File.separator + "cliConfig.properties";
 		
@@ -88,20 +81,16 @@ public class GinsuCLIModule extends AbstractModule {
 		bind(String.class).annotatedWith(ConfigFile.class).toInstance(configFile);
 		
 		//Bind the app name, that is configurable too!
-		bind(String.class).annotatedWith(AppName.class).toInstance("Ginsu");
+		bind(String.class).annotatedWith(AppName.class).toInstance("ginsu");
 		
 		// Bind the rest of the Major Service interfaces of the CLI app to their 
 		// implementing classes.
-		bind(IInputParsingService.class).to(CommandLineParsingService.class);
-		bind(IConfigurationService.class).to(PropertyFileConfigurationService.class)
-			.asEagerSingleton();
-		bind(ICommandDispatchService.class).to(CommandDispatchServiceImpl.class);
-		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
-		bind(IProjectResourceService.class).to(FileSystemResourceService.class);
-		bind(IDefaultProvider.class).to(PropertyFileConfigurationService.class);
+		bind(IInputHandlingService.class).to(CommandLineParsingService.class);
+		bind(ICommandDispatchService.class).to(SynchronousCommandDispatchService.class);
 		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
 		bind(OutputStream.class).toInstance(System.out);
 		bind(MainArgs.class);
+		bind(ICommand.class).annotatedWith(UsageRenderer.class).to(UsagePrinter.class);
 		
 		
 	}
@@ -138,43 +127,15 @@ public class GinsuCLIModule extends AbstractModule {
 		return jCommander;
 	}
 	
-	/**
-	 * Provide all of the supported commands that we would like to support.
-	 * 
-	 * TODO: Someday it would be nice to have a CommandLoader object that could do
-	 * some sort of dynamic class loading to do this instead of hard-coding it in.
-	 * 
-	 * @return a {@link SupportedCommandCollection} of Commands that we support.
-	 */
-	@Provides SupportedCommandCollection provideSupportedCommands(PrintWriter printWriter, 
-			Logger logger, IScriptLauncher scriptLauncher)
+	@Provides UsagePrinter provideUsagePrinter(PrintWriter printWriter)
 	{
-		// Keep reference to our commands so we can return the one we want later
-		SupportedCommandCollection supportedCommands = new SupportedCommandCollection();
-		supportedCommands.put(UsagePrinter.NAME, new UsagePrinter(printWriter, ""));
-		supportedCommands.put(CommandInitEnv.NAME, new CommandInitEnv(printWriter, logger));
-		supportedCommands.put(CommandGenerateProject.NAME, 
-				new CommandGenerateProject(printWriter, logger, scriptLauncher));
-		supportedCommands.put(CommandRunTests.NAME, new CommandRunTests(printWriter, logger)); 
-		return supportedCommands;
+		return new UsagePrinter(printWriter);
 	}
 	
-	/**
-	 * Create an {@link IScriptLauncher} object that will launch the ant scripts for
-	 * Ginsu.
-	 * 
-	 * @param printStream
-	 *            a {@link PrintStream} which the script launcher object will
-	 *            write to as it executes
-	 * @param resourceService The {@link IApplicationResourceService} used to retrive the scripts
-	 * @return an instance of {@link IScriptLauncher} that runs ant scripts.
-	 */
-	@Provides IScriptLauncher provideScriptLauncher(PrintStream printStream, 
-			IApplicationResourceService resourceService) 
+	@Provides CommandLineParsingService provideCommandLineParsingService(
+			JCommander jCommander, MainArgs mainArgs,
+			SupportedCommandCollection supportedCommands)
 	{
-		AntScriptLauncher antScriptLauncher = new AntScriptLauncher(
-				resourceService, Logger.getLogger(AntScriptLauncher.class));
-		antScriptLauncher.setProjectListener(printStream);
-		return antScriptLauncher;
+		return new CommandLineParsingService(jCommander, mainArgs, supportedCommands);
 	}
 }

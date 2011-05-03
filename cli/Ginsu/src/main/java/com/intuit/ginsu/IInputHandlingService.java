@@ -8,11 +8,10 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.cli;
+package com.intuit.ginsu;
 
 import java.util.Hashtable;
 
-import com.intuit.ginsu.commands.ICommand;
 
 /**
  * @author rpfeffer
@@ -22,13 +21,13 @@ import com.intuit.ginsu.commands.ICommand;
  *              interpreted.
  * 
  */
-public interface IInputParsingService {
+public interface IInputHandlingService {
 
 	/**
-	 * Parse and validate the input from the user
+	 * Handle and validate the input from the user
 	 * @param input An Array of strings representing the user's input
 	 */
-	public void parseInput(String[] input);
+	public void handleInput(String[] input);
 	
 	/**
 	 * Get the command we parsed from the user's input
@@ -37,8 +36,11 @@ public interface IInputParsingService {
 	public ICommand getCommand();
 
 	/**
-	 * Get the main command context under which the parsed command will run.
-	 * @return an {@link ICommand} representing the Command Context
+	 * Get the configuration override which will replace the existing runtime
+	 * configuration for the duration of the command.
+	 * 
+	 * @return a {@link Hashtable} representing holding the properties which
+	 *         will override the existing configuration
 	 */
 	public Hashtable<String, String> getConfigurationOverride();
 	

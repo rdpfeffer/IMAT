@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
+import org.easymock.EasyMock;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -14,22 +15,29 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.intuit.ginsu.AppContext;
-import com.intuit.ginsu.BaseTest;
+import com.intuit.ginsu.cli.BaseFunctionalTest;
 import com.intuit.ginsu.io.FileSystemResourceService;
 import com.intuit.ginsu.io.FileSystemTestResourceService;
+import com.intuit.ginsu.io.PathAnalyzer;
 
-public class AntScriptLauncherTest extends BaseTest {
+public class AntScriptLauncherTest extends BaseFunctionalTest {
 
 	private AntScriptLauncher scriptLauncher;
 	private ByteArrayOutputStream outputStream;
+	private PathAnalyzer mockPathAnalyzer;
+	
+	
 	@BeforeMethod
 	public void beforeMethod() {
-		scriptLauncher = new AntScriptLauncher(
-				new FileSystemTestResourceService(Logger.getLogger(FileSystemResourceService.class)), 
+		mockPathAnalyzer = EasyMock.createMock(PathAnalyzer.class);
+		FileSystemTestResourceService resourceService = 
+			new FileSystemTestResourceService(
+					Logger.getLogger(FileSystemResourceService.class), mockPathAnalyzer);
+		scriptLauncher = new AntScriptLauncher(resourceService,
 				Logger.getLogger(AntScriptLauncher.class));
 		outputStream = new ByteArrayOutputStream();
 		scriptLauncher.setProjectListener(new PrintStream(outputStream, true));
-		AppContext.getInstance().setProperty(AppContext.APP_HOME_KEY, "");
+		AppContext.INSTANCE.setProperty(AppContext.APP_HOME_KEY, "");
 	}
 
 	@AfterMethod
@@ -44,10 +52,12 @@ public class AntScriptLauncherTest extends BaseTest {
 
 	@BeforeClass
 	public void beforeClass() {
+		//App.initAppContext(new String[] {});
 	}
 
 	@AfterClass
 	public void afterClass() {
+		AppContext.INSTANCE.clear();
 	}
 
 	@Test(expectedExceptions = AssertionError.class)
@@ -62,7 +72,6 @@ public class AntScriptLauncherTest extends BaseTest {
 		scriptWithoutPerms.setReadable(false);
 		scriptLauncher.setScript(scriptWithoutPerms.getPath());
 		scriptLauncher.runScript();
-		scriptWithoutPerms.setReadable(true);
 	}
 	
 	@Test()

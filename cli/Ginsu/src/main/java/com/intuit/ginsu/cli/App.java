@@ -10,16 +10,24 @@
 *******************************************************************************/
 package com.intuit.ginsu.cli;
 
+import java.util.Hashtable;
+
 import org.apache.log4j.Logger;
 
 import com.google.inject.Injector;
 import com.intuit.ginsu.AppContext;
-import com.intuit.ginsu.commands.ICommand;
-import com.intuit.ginsu.commands.ICommandDispatchService;
-import com.intuit.ginsu.commands.IncompleteCommandException;
-import com.intuit.ginsu.config.IConfigurationService;
-import com.intuit.ginsu.config.MisconfigurationException;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.ICommandDispatchService;
+import com.intuit.ginsu.IConfigurationService;
+import com.intuit.ginsu.IInputHandlingService;
+import com.intuit.ginsu.IncompleteCommandException;
+import com.intuit.ginsu.MisconfigurationException;
+import com.intuit.ginsu.ProjectConfigurationNotFoundException;
+import com.intuit.ginsu.commands.GinsuCommandsModule;
+import com.intuit.ginsu.config.GinsuConfigModule;
+import com.intuit.ginsu.io.GinsuIOModule;
 import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
+import com.intuit.ginsu.scripts.GinsuScriptsModule;
 
 /**
  * 
@@ -32,23 +40,24 @@ import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 public class App 
 {
     private static final int APP_HOME_ARGS_INDEX = 1;
+    private static final int ABNORMAL_EXIT_STATUS = -1;
 	
+    /**
+     * 
+     * @param args
+     */
 	public static void main( String[] args )
     {
-    	//get a reference to the AppContext Singleton object and initialize the CLI modules.
-    	AppContext appContext = AppContext.getInstance();
-    	appContext.setProperty(AppContext.APP_HOME_KEY, args[APP_HOME_ARGS_INDEX]);
-    	appContext.setAppModule(new GinsuCLIModule());
-    	appContext.setAppModule(new BindLog4JWithClassNameModule());
+		//Application initialization starts
+    	int exitStatus = ABNORMAL_EXIT_STATUS;
+    	AppContext appContext = App.initAppContext(args);
     	Injector injector = appContext.getInjector();
     	Logger logger = injector.getInstance(Logger.class);
     	
-    	//Load and parse the Input from the user 
-    	IInputParsingService inputService = injector.getInstance(IInputParsingService.class);
-    	inputService.parseInput(args);
+    	logger.info("Parsing Input."); 
+    	IInputHandlingService inputService = injector.getInstance(IInputHandlingService.class);
+    	inputService.handleInput(args);
     	ICommand command  = inputService.getCommand();
-    	
-    	//Get the configuration
     	IConfigurationService configService = injector.getInstance(IConfigurationService.class);
     	
     	//If we have a runnable command and the applicaiton is not initialized...
@@ -59,28 +68,62 @@ public class App
     		//load the main config override so that we can get access to the home directory.
     		appContext.overrideProperties(inputService.getConfigurationOverride());
     		
-    		//TODO: we will check for accepting license agreement here etc.
+    		//TODO RP: depending on the action from legal, we will check for accepting license agreement here etc.
     		configService.doFirstTimeInitialization();
     	}
     	try {
-    		configService.loadConfiguration();
-			appContext.overrideProperties(inputService.getConfigurationOverride());
+    		Hashtable<String, String>configOverride = inputService.getConfigurationOverride();
+    		appContext.setProperty(AppContext.PROJECT_HOME_KEY, configOverride.get(AppContext.PROJECT_HOME_KEY));
+    		logger.debug("Setting Project Home before Confguration is loaded: Project Home is:" + 
+    				configOverride.get(AppContext.PROJECT_HOME_KEY));
+    		
+    		//load properties
+    		logger.info("Loading Configuration.");
+    		configService.loadConfiguration(command.expectsProject());
+			appContext.overrideProperties(configOverride);
 
 	    	//run the loaded command using the command dispatch service
 	    	ICommandDispatchService commandDispatchService = injector.getInstance(ICommandDispatchService.class);
+	    	logger.info("Running Command...");
 	    	commandDispatchService.dispatch(command);
-			System.exit(command.getExitStatus());
-	    	//TODO after the command has run, dispatch the update command in the background and exit
+	    	exitStatus = command.getExitStatus();
+	    	logger.debug("Command Named: " + command.getName() + " finished with an exit status of " + String.valueOf(exitStatus));
+	    	logger.info("Command Completed.");
+			
+	    	/// TODO RP: After the command has run, dispatch the update command in the background and exit. 
+			/// this is pending review by legal privacy.
 		} catch (MisconfigurationException e) {
-			logger.fatal("Ginsu is currently Misconfigured and will not run until corrected. " 
-					+ e.getMessage());
-			System.exit(-1);
+			logger.fatal("Ginsu is currently Misconfigured and will not run until corrected.",
+					e);
 		} catch (IncompleteCommandException e) {
 			logger.fatal("The Application tried to move on before the command had completed." 
-					+ " Command=" + command.getName() + " "
-					+ e.getMessage());
-			System.exit(-1);
+					+ " Command is: " + command.getName(), e);
+			
+		} catch (ProjectConfigurationNotFoundException e) {
+			logger.fatal("A Ginsu Automation project was not found. \n" + 
+					"The command: "+command.getName() + " expected a file called " +
+					"project.properties.\n" +
+					"Please re-run this command from the same directory as your " +
+					"project home (where project.properties is) or alternatively, " +
+					"run the command setting the \"-p\" flag to the directory where" +
+					" the project.properties file is.");
+		} 
+		if(!configService.shouldSkipExitStatus())
+		{
+			System.exit(exitStatus);
 		}
-    	
     }
+	
+	public static AppContext initAppContext(String[] args)
+	{
+		AppContext appContext = AppContext.INSTANCE;
+    	appContext.setProperty(AppContext.APP_HOME_KEY, args[APP_HOME_ARGS_INDEX]);
+    	appContext.addAppModule(new GinsuCLIModule());
+    	appContext.addAppModule(new BindLog4JWithClassNameModule());
+    	appContext.addAppModule(new GinsuCommandsModule());
+    	appContext.addAppModule(new GinsuIOModule());
+    	appContext.addAppModule(new GinsuConfigModule());
+    	appContext.addAppModule(new GinsuScriptsModule());
+    	return appContext;
+	}
 }

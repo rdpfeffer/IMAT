@@ -9,15 +9,15 @@ import org.testng.annotations.Test;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.intuit.ginsu.commands.CommandDispatchServiceImpl;
+import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.ICommandDispatchService;
+import com.intuit.ginsu.IConfigurationService;
+import com.intuit.ginsu.IInputHandlingService;
 import com.intuit.ginsu.commands.CommandRunTests;
-import com.intuit.ginsu.commands.ICommandDispatchService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
-import com.intuit.ginsu.config.IConfigurationService;
+import com.intuit.ginsu.commands.SynchronousCommandDispatchService;
 import com.intuit.ginsu.config.PropertyFileConfigurationService;
-import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
 
 public class GinsuCLIModuleTest {
 
@@ -25,7 +25,8 @@ public class GinsuCLIModuleTest {
 
 	@BeforeClass
 	public void setupInjector() {
-		this.injector = Guice.createInjector(new GinsuCLIModule(), new BindLog4JWithClassNameModule());
+		App.initAppContext(new String[]{MainArgs.HOME, "."});
+		this.injector = AppContext.INSTANCE.getInjector();
 	}
 
 	@Test
@@ -45,15 +46,15 @@ public class GinsuCLIModuleTest {
 
 	@Test
 	public void testParsingServiceBinding() {
-		IInputParsingService inputParsingService = injector
-				.getInstance(IInputParsingService.class);
-		assert inputParsingService instanceof CommandLineParsingService;
+		IInputHandlingService inputHandlingService = injector
+				.getInstance(IInputHandlingService.class);
+		assert inputHandlingService instanceof CommandLineParsingService;
 
 		// the IInputParsingService is not bound as a singleton
 		// so it should not equal another instance
-		IInputParsingService secondIInputParsingService = injector
-				.getInstance(IInputParsingService.class);
-		assert inputParsingService != secondIInputParsingService;
+		IInputHandlingService secondIInputParsingService = injector
+				.getInstance(IInputHandlingService.class);
+		assert inputHandlingService != secondIInputParsingService;
 	}
 
 	@Test
@@ -73,7 +74,7 @@ public class GinsuCLIModuleTest {
 	public void testCommandDispatchServiceBinding() {
 		ICommandDispatchService inputParsingService = injector
 				.getInstance(ICommandDispatchService.class);
-		assert inputParsingService instanceof CommandDispatchServiceImpl;
+		assert inputParsingService instanceof SynchronousCommandDispatchService;
 
 		// the ICommandDispatchService is not bound as a singleton
 		// so it should not equal another instance
@@ -112,8 +113,6 @@ public class GinsuCLIModuleTest {
 	@Test
 	public void testPrintWriterProvider() {
 		assert injector.getInstance(PrintWriter.class) instanceof PrintWriter;
-		// TODO: Figure out a way to validate that this contains a reference to
-		// System.out
 	}
 
 	@Test

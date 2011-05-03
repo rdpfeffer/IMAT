@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.intuit.ginsu.cli;
 
-import java.io.File;
 import java.util.Hashtable;
 
+import org.apache.log4j.Logger;
+
 import com.beust.jcommander.Parameter;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.intuit.ginsu.AppContext;
 
@@ -22,8 +24,8 @@ import com.intuit.ginsu.AppContext;
  * @dateCreated Mar 25, 2011
  * 
  *              This object holds the main arguments set by the user of the
- *              command line interface for ginsu. When the input is parsed, all
- *              of the main otions get loaded into this class. These options can
+ *              command line interface for Ginsu. When the input is parsed, all
+ *              of the main options get loaded into this class. These options can
  *              then be passed off somewhere else so that they can override the
  *              default configuration
  * 
@@ -31,36 +33,24 @@ import com.intuit.ginsu.AppContext;
 @Singleton
 public class MainArgs {
 
+	@Inject
+	private Logger logger;
+	
 	public static final String NAME = "main";
-	
-	/**
-	 * TODO: Document the log level option
-	 */
-	public static final String LOG_LEVEL = "-log_level";
-	@Parameter(names = LOG_LEVEL, description = "The highest level"
-		+" of info we should be writing to the logs")
-	public Integer logLevel = 1;
-	
-	/**
-	 * TODO: Document The verbose option
-	 */
-	public static final String VERBOSE = "-verbose";
-	@Parameter(names = {VERBOSE, "-v"}, description = "output more"
-		+" information to standard out")
-	public boolean verbose = false;
 
-	/**
-	 * TODO: Document The option to turn auto-update off
-	 */
 	public static final String AUTO_UPDATE_OFF = "-auto_update_off";
 	@Parameter(names = AUTO_UPDATE_OFF, description = "Set the "
 			+ AUTO_UPDATE_OFF + " flag if you do not want to update "
-			+ "the CLI tool when it runs.")
+			+ "the CLI tool when it runs.", hidden = true)
 	public boolean autoUpdateOff = false;
 	
 	public static final String HOME = "-home";
 	@Parameter(names = HOME, hidden = true)
-	public String home = ".";
+	public String appHome;
+	
+	public static final String SKIP_EXIT_STATUS = "-SkipExit";
+	@Parameter(names = SKIP_EXIT_STATUS, hidden = true)
+	public boolean skipExit = false;
 	
 	public static final String PROJECT_DIR = "-project_dir";
 	@Parameter(names = {PROJECT_DIR, "-p"}, description="Set the " +
@@ -68,15 +58,36 @@ public class MainArgs {
 			"relative to the current directory. If this is not set correctly " +
 			"for certain commands (like running tests), ginsu will error out " +
 			"and not run the command.")
-	public File file= new File(".");
+	public String projectHome= System.getProperty("user.dir");
 	
+	
+	/**
+	 * Return the configuration override to the runtime configuration of the
+	 * Application, translating its internal representation of key/value pairs
+	 * to the keys and values expected by the rest of the application.
+	 * 
+	 * @return a {@link Hashtable} of key/value pairs, both of type {@link String}
+	 */
 	public Hashtable<String, String> getConfigurationOverride()
 	{
 		Hashtable<String, String> config = new Hashtable<String, String>();
-		config.put(MainArgs.LOG_LEVEL, String.valueOf(this.logLevel));
-		config.put(MainArgs.VERBOSE, String.valueOf(this.verbose));
 		config.put(MainArgs.AUTO_UPDATE_OFF, String.valueOf(this.autoUpdateOff));
-		config.put(AppContext.APP_HOME_KEY, this.home);//NOTE: This key is different as it is used fairly widely.
+		
+		assert this.appHome != null : "MainArgs.appHome must not be null. There is " +
+		"an internal error that needs attention. Please submit a bug for this issue.";
+		
+		logger.debug("APP_HOME_KEY is: " + this.appHome);
+		config.put(AppContext.APP_HOME_KEY, this.appHome);
+		
+		logger.debug("PROJECT_HOME_KEY is: " + this.projectHome);
+		config.put(AppContext.PROJECT_HOME_KEY, this.projectHome);
+		
+		logger.debug("SKIP_EXIT_STATUS is: " + String.valueOf(skipExit));
+		if(skipExit)
+		{
+			config.put(AppContext.SKIP_EXIT_STATUS, String.valueOf(skipExit));
+		}
+		
 		return config;
 	}
 }

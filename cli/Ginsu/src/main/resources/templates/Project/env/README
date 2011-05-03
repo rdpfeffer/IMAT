@@ -1,0 +1,4 @@
+The env directory is meant to be a system specific directory to hold 
+information and configuration that relates only to that system. Therefore,
+this folder should NEVER be checked into a source control repository when 
+this automation project is to be shared by 2 or more people.

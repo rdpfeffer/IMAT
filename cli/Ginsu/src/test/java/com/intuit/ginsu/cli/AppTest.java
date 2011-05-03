@@ -1,87 +1,90 @@
 package com.intuit.ginsu.cli;
 
-import org.testng.AssertJUnit;
+import java.io.File;
+import java.io.IOException;
+
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.intuit.ginsu.AppContext;
 
 
 /**
  * Unit test for simple App.
  */
-public class AppTest
+public class AppTest extends BaseFunctionalTest
 {
- 
-	//private ByteArrayOutputStream stubOutputStream;
-	
-	/**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        //super( testName );
-    }
-
-    @BeforeMethod()
-	public void setUp()
-    {
-    	//Set up the application with the fixture that we can query later
-    	//AppContext.getInstance().setAppModule(new GinsuTestModuleOverride());
-    	
-    	
-    }
     
     @AfterMethod()
-	public void tearDown()
+	public void tearDown() throws IOException
     {
-    	/*TODO: Add the following block back in.
-    	 * try {
-    		//this.stubOutputStream.flush();
-    		//this.stubOutputStream.close();
-		} catch (IOException e) {
-			AssertJUnit.assertTrue(e.getMessage(), false);
-		}*/
+    	AppContext.INSTANCE.clear();
     }
 
     /**
-     * Rigourous Test :-)
+     * This is a big EndToEnd Test to validate that we can generate a project as well
+     * as ensure that the environment specific files can be re-initialized to simulate
+     * initialization 
+     * @throws IOException 
      */
     @Test()
-	public void testInitEnvCommandEndToEnd()
+	public void testProjectSetupEndToEnd() throws IOException
     {
-        AssertJUnit.assertTrue( true );
-        //TODO: Start this later
+    	//Createa temp file so that we can get a path to the temp dir
+    	File tempFile = File.createTempFile("testInitEnvCommandEndToEnd", ".txt");
+    	String targetPath = tempFile.getParent() + File.separator + "com.intuit.ginsu.testInitEnvCommandEndToEndTargetDir";
+    	
+    	String envDirPath = targetPath + File.separator + "env";
+    	String envJSPath = envDirPath + File.separator + "env.js";
+    	String templateName = "TestTemplate.tracetemplate"; 
+    	String templatePath = getTestResourceAsFile(templateName).getPath(); //this is the template that will get copied into the project directory
+    	String templateTargetPath = envDirPath + File.separator + templateName; 
+    	
+    	//First generate the project
+    	App.main(new String[]{MainArgs.HOME, ".", MainArgs.SKIP_EXIT_STATUS,"generate-project", "-t", targetPath, "-g", "TEST"});
+    	(new File(envJSPath)).delete();
+    	
+    	//Clear the app context before we try to run things again.
+    	AppContext.INSTANCE.clear();
+    	
+    	//Delete the env dir so we can create it with the next call to App.main(args[])
+    	assert !(new File(envJSPath)).exists() : "environment js file still exists when it should have been deleted. Dir: "+ envDirPath; 
+
+    	//Clear the app context before we try to run the init-env command.
+    	AppContext.INSTANCE.clear();
+    	
+    	//Make the call to init env.
+    	App.main(new String[]{MainArgs.HOME, ".", MainArgs.PROJECT_DIR, targetPath, MainArgs.SKIP_EXIT_STATUS, "init-env", "-t", templatePath});
+    	
+    	//Check that it recreated all of the stuff within projectDir/env
+    	assert (new File(envDirPath)).exists() : "environment directory did not exist after making a call to init-env. Dir: "+ envDirPath; 
+    	assert (new File(envJSPath)).exists() : "environment javascript file did not exist after making a call to init-env. File: "+ envJSPath;
+    	assert (new File(templateTargetPath)).exists() : "template file did not exist after making a call to init-env. File: "+ templateTargetPath;
+    	
+    	//clean up after we are done.
+    	tempFile.delete();
+    	deleteAllFilesInGeneratedProject(targetPath);
+    	assert !(new File(targetPath)).exists() : "The target directory still exists even after we tried to delete it! Dir: " +targetPath;
     }
     
-    /**
-     * Test to make sure that we can generate
-     */
-    @Test()
-	public void testGenerateProjectCommandEndToEnd()
-    {
-        AssertJUnit.assertTrue( true );
-        
-    }
+	/**
+	 * Test to make sure we can test in all of the appropriate conditions
+	 */
+//    @Test()
+//	public void testRunTestsCommandEndToEnd()
+//    {
+//        AssertJUnit.assertTrue( true );
+//        //TODO RP: once we start running tests with ginsu this will be important!
+//    }
     
-    /**
-     * Test to make sure we can test in all of the appropriate conditions
-     */
-    @Test()
-	public void testExecuteCommandEndToEnd()
-    {
-        AssertJUnit.assertTrue( true );
-        //TODO: once we start running tests with ginsu this will be important!
-    }
-    
-    /**
-     * Test to make sure help comes out in the right way
-     */
+	/**
+	 * Test to make sure that asking for help end to end does not throw any
+	 * uncaught exceptions.
+	 */
     @Test()
 	public void testHelpCommandEndToEnd()
     {
-    	
+    	App.main(new String[]{MainArgs.HOME, ".", MainArgs.SKIP_EXIT_STATUS,"help"});
     }
     
     

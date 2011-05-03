@@ -8,20 +8,21 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu;
 
 /**
  * @author rpfeffer
- * @dateCreated Mar 26, 2011
+ * @dateCreated Apr 20, 2011
  *
- * This interface defines how Commands are dispatched.
+ * 
  *
  */
-public interface ICommandDispatchService {
+public class MisconfigurationException extends Exception {
 
-	/**
-	 * Dispatch the given command
-	 * @param command - The {@link ICommand} to execute.
-	 */
-	public void dispatch(ICommand command);
+	private static final long serialVersionUID = 1L;
+
+	public MisconfigurationException(String message)
+	{
+		super(message + " An internal configuration error occured.");
+	}
 }

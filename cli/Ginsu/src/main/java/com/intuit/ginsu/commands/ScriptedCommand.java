@@ -13,7 +13,7 @@ package com.intuit.ginsu.commands;
 import java.io.PrintWriter;
 import org.apache.log4j.Logger;
 
-import com.intuit.ginsu.scripts.IScriptLauncher;
+import com.intuit.ginsu.IScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -34,7 +34,7 @@ public abstract class ScriptedCommand extends Command {
 	 * @param logger the {@link Logger} this command will log to.
 	 * @param scriptLauncher the {@link IScriptLauncher} used to run the scripted command.
 	 */
-	public ScriptedCommand(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
+	ScriptedCommand(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
 		super(printwriter, logger);
 		this.scriptLauncher = scriptLauncher;
 	}

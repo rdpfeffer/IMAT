@@ -12,23 +12,24 @@ package com.intuit.ginsu.commands;
 
 import org.apache.log4j.Logger;
 
-import com.google.inject.Inject;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.ICommandDispatchService;
+import com.intuit.ginsu.MisconfigurationException;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
  * 
- *              The {@link CommandDispatchServiceImpl} runs commands set up by
+ *              The {@link SynchronousCommandDispatchService} runs commands set up by
  *              the applicaiton. This simple command dispatch service simply
  *              runs the command on the same thread and does nothing else
  * 
  */
-public class CommandDispatchServiceImpl implements ICommandDispatchService {
+public class SynchronousCommandDispatchService implements ICommandDispatchService {
 
 	private final Logger logger;
 	
-	@Inject
-	public CommandDispatchServiceImpl(Logger logger)
+	SynchronousCommandDispatchService(Logger logger)
 	{
 		this.logger = logger;
 	}
@@ -40,7 +41,7 @@ public class CommandDispatchServiceImpl implements ICommandDispatchService {
 	 * com.intuit.ginsu.commands.ICommandDispatchService#dispatch(com.intuit
 	 * .ginsu.commands.ICommand)
 	 */
-	public void dispatch(ICommand command) {
+	public void dispatch(ICommand command) throws MisconfigurationException {
 		logger.debug("Start Dispatching Command. Command Named: " + command.getName());
 		command.run();
 		logger.debug("Finished Dispatching Command. Command Named: " + command.getName());

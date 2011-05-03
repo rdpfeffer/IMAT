@@ -12,24 +12,45 @@ package com.intuit.ginsu.cli;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This module overrides the OutputStream interfaces of the
+ *              GinsuCLIModule class for functional testing.
+ * 
  */
-public class GinsuTestModuleOverride extends AbstractModule {
+public class GinsuCLIModuleOverrideForTesting extends AbstractModule {
 
+	private ByteArrayOutputStream outputStream;
+	
+	GinsuCLIModuleOverrideForTesting (ByteArrayOutputStream outputStream)
+	{
+		this.outputStream = outputStream;
+	}
+	
+	/**
+	 * Provide a PrintWriter that has the desired output stream.
+	 * @param outputStream an {@link OutputStream} to print to.
+	 * @return a {@link PrintWriter} with the {@link OutputStream} passed in.
+	 */
+	@Provides PrintWriter providePrintWriter()
+	{
+		PrintWriter pw = new PrintWriter(this.outputStream, true); 
+		return pw;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.google.inject.AbstractModule#configure()
 	 */
 	@Override
 	protected void configure() {
-		bind(OutputStream.class).toInstance(new ByteArrayOutputStream());
+		bind(OutputStream.class).toInstance(outputStream);
 	}
 
 }

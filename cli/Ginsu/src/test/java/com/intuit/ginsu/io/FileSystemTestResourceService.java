@@ -20,20 +20,20 @@ import com.google.inject.Inject;
 /**
  * @author rpfeffer
  * @dateCreated Apr 17, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This class Mocks out the FileSystem resource service for testing
+ *              of the AntScript Test launcher.
+ * 
  */
 public class FileSystemTestResourceService extends FileSystemResourceService {
 
 	@Inject
-	public FileSystemTestResourceService(Logger logger) {
-		super(logger);
+	public FileSystemTestResourceService(Logger logger, PathAnalyzer pathAnalyzer) {
+		super(logger, pathAnalyzer);
 	}
 
 	@Override
 	public File getAppScript(String scriptName) throws FileNotFoundException {
-		// TODO Auto-generated method stub
 		return this.getAppResourceFile(scriptName, true);
 	}
 	

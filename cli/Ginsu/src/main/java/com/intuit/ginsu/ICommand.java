@@ -8,7 +8,8 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu;
+
 
 /**
  * @author rpfeffer
@@ -32,16 +33,28 @@ public interface ICommand {
 	 * 
 	 * @return int 0, when the command has completed normally and and a positive
 	 *         non-zero integer when it has completed abnormally.
+	 * 
+	 * @throws MisconfigurationException
+	 *             When the command cannot run due to misconfiguration of either
+	 *             the application or the target project.
 	 */
-	public int run();
+	public int run() throws MisconfigurationException;
 
 	/**
-	 * Clean up after the command has finished.
-	 */
-	public void cleanUp();
-
-	/**
-	 * @return true if the {@link ICommand} object is runnable, false otherwise
+	 * Allows the Application to conditionally run different logic if
+	 * implemented {@link ICommand} takes any action.
+	 * 
+	 * An example of this would be objects that give help instructions to the
+	 * user, but are not actually going to take any actions. The suposed "help"
+	 * command could return false from the method and still be enabled to run
+	 * even though the application may not allow runnable commands in certain
+	 * configurations.
+	 * 
+	 * Inversely, a command that returns true from this method could enable
+	 * other logic in the app to handle things like first time initialization,
+	 * cleanup, etc.
+	 * 
+	 * @return true if the {@link ICommand} object is runnable, false otherwise.
 	 */
 	public boolean isRunnable();
 
@@ -61,6 +74,9 @@ public interface ICommand {
 	 * In the case that an {@link ICommand} object completes abnormally, it is
 	 * possible that an error message will accompany it. Call this method to get
 	 * an error message from an abnormally completing {@link ICommand} object.
+	 * 
+	 * NOTE: This method is really not used in version 1.0 of Ginsu, but is reserved
+	 * for future functionality depending on how the project moves forward.
 	 * 
 	 * @return a {@link String} representing the error message from running this
 	 *         command containing information as to what when wrong
@@ -98,4 +114,16 @@ public interface ICommand {
 	 * @return true when the Command usage information should be rendered.
 	 */
 	public boolean shouldRenderCommandUsage();
+
+	/**
+	 * Determines whether or not this command expects project configuration to
+	 * be loaded. NOTE: if this method returns false it does not mean the
+	 * applicaiton will not load project properties, only that does not rely on
+	 * them to complete. If set to true, it may cause the application to behave
+	 * differently if the project configuration cannot be found.
+	 * 
+	 * @return true if the command expects a project configuration to be loaded,
+	 *         false otherwise.
+	 */
+	public boolean expectsProject();
 }

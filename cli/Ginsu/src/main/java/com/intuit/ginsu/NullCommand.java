@@ -8,7 +8,8 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu;
+
 
 /**
  * @author rpfeffer
@@ -19,11 +20,11 @@ package com.intuit.ginsu.commands;
  *              for the ICommand interface. By that, we mean that it implements
  *              all of the expected methods in the ICommand interface but none
  *              of those methods actually do anything. This reduces the
- *              conditional logic and allows the application to complete
- *              normally even when there is a parsing error.
+ *              conditional logic and allows the application to continue
+ *              normally even when there is an input handling error.
  * 
  */
-public class CommandNull implements ICommand {
+public class NullCommand implements ICommand {
 
 	public static final String NAME = "null";
 	private static final int NULL_COMMAND_ERROR_CODE = 1;
@@ -37,26 +38,11 @@ public class CommandNull implements ICommand {
 		return this.getExitStatus();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.intuit.ginsu.commands.ICommand#cleanUp()
-	 */
-	public void cleanUp() {
-		// Do nothing
-	}
-
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.commands.ICommand#getName()
 	 */
 	public String getName() {
-		return CommandNull.NAME;
-	}
-
-	@Override
-	public boolean equals(Object command) {
-		return (command != null && command instanceof CommandNull && ((CommandNull) command)
-				.getName() == this.getName());
+		return NullCommand.NAME;
 	}
 
 	/* (non-Javadoc)
@@ -80,7 +66,7 @@ public class CommandNull implements ICommand {
 	 */
 	public String getErrorMessage() {
 		// Note we rely on the application to surface the correct error message.
-		// Note: this should only happen during input parsing
+		// Note: this should only happen during input handling
 		return "";
 	}
 
@@ -96,6 +82,13 @@ public class CommandNull implements ICommand {
 	 */
 	public boolean shouldRenderCommandUsage() {
 		// there is now help for this command so we will always return false here
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.ICommand#expectsProject()
+	 */
+	public boolean expectsProject() {
 		return false;
 	}
 

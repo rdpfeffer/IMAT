@@ -19,7 +19,7 @@
 	from the command.
 	-->
 	<target name="execute">
-		<copy toDir="${target.dir}">
+		<copy toDir="${target.dir}" >
 			<fileset dir="${project.dir}">
 				<include name="**/*.js"/>
 				<include name="**/*.properties"/>
@@ -29,5 +29,10 @@
 				<filter token="PATH_TO_GINSU" value="${path.to.ginsu}" />
 			</filterset>
 		</copy>
+		<chmod perm="777">
+			<fileset dir="${target.dir}">
+				<include name="**/**"/>
+			</fileset>
+		</chmod>
 	</target>
 </project>

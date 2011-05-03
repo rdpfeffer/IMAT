@@ -7,6 +7,7 @@
       <class name="com.intuit.ginsu.cli.CommandLineParsingServiceTest"/>
       <class name="com.intuit.ginsu.cli.GinsuCLIModuleTest"/>
       <class name="com.intuit.ginsu.commands.CommandGenerateProjectTest"/>
+      <class name="com.intuit.ginsu.config.PropertyFileConfigurationServiceTest"/>
       <class name="com.intuit.ginsu.io.PathAnalyzerTest"/>
       <!-- <class name="com.intuit.ginsu.commands.CommandInitEnvTest"/>-->
       <class name="com.intuit.ginsu.scripts.AntScriptLauncherTest"/>

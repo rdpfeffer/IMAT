@@ -1,4 +1,4 @@
-#import "@PATH_TO_GINSU@/js/bootstrap.js"
+#import "env/env.js"
 
 //declare any settings
 GINSU.settings.logLevel = GINSU.logLevels.LOG_DEBUG;

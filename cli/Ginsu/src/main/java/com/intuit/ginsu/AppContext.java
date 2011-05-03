@@ -10,7 +10,7 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 import com.google.inject.Guice;
@@ -27,8 +27,11 @@ import com.google.inject.Module;
  *              application to set and get the app-wide shared configurations.
  * 
  */
-public class AppContext {
+public enum AppContext {
 
+	/* Our Singleton */
+	INSTANCE;
+	
 	/**
 	 * The main home key for the application to be used when getting the Home
 	 * directory of the application.
@@ -39,41 +42,48 @@ public class AppContext {
 	 * </p>
 	 */
 	public static final String APP_HOME_KEY = "home_key";
-	private static AppContext instance;
-	private ArrayList<Module> appModules = new ArrayList<Module>();
-	private Hashtable<String,String> properties = new Hashtable<String, String>();
+	
+	/**
+	 * The main project key for the application to be used when getting the Home
+	 * directory of the target project.
+	 * <p>
+	 * To get the path to the project directory of the applicaiton, the user
+	 * should call
+	 * <code>AppContext.getInstance().getProperty(AppContext.PROJECT_HOME_KEY);</code>
+	 * </p>
+	 */
+	public static final String PROJECT_HOME_KEY = "project_key";
+	
+	/**
+	 * This is Key to the property used to determine if the application should
+	 * exit returning the command's exit status. NOTE: if a property is not
+	 * stored in the app context, it will come back as the empty string "".
+	 */
+	public static final String SKIP_EXIT_STATUS = "skip_exit_status_key";
+	private final HashSet<Module> appModules = new HashSet<Module>();
+	private final Hashtable<String,String> properties = new Hashtable<String, String>();
 
 	/**
-	 * Get an instance of the AppContext singleton object
-	 * 
-	 * @return the singleton instance of {@link AppContext}
+	 * @return the {@link HashSet} of Modules currently added to the app
+	 *         context.
 	 */
-	public static AppContext getInstance() {
-		if (instance == null) {
-			instance = new AppContext();
-		}
-		return instance;
-	}
-
-	/**
-	 * @return the appModule
-	 */
-	public ArrayList<Module> getAppModules() {
+	public HashSet<Module> getAppModules() {
 		return appModules;
 	}
 
 	/**
 	 * @param module
-	 *            the appModule to set
+	 *            the {@link Module} to add
 	 */
-	public void setAppModule(Module module) {
+	public void addAppModule(Module module) {
 		this.appModules.add(module);
 	}
-	
+
 	/**
-	 * Get an instance of the Dependency Injector.
+	 * Get an instance of the Guice Dependency Injector.
 	 * <p>
 	 * NOTE: This returns a new instance of the dependency injector every time.
+	 * Repeated calls to this method will not return the same injector
 	 * </p>
 	 * 
 	 * @return {@link Injector} an instance of the dependency injector
@@ -120,6 +130,17 @@ public class AppContext {
 	public void overrideProperties(Hashtable<String, String> properties)
 	{
 		this.properties.putAll(properties);
+	}
+	
+	/**
+	 * Clear the Application Context to an empty state. This function clears all
+	 * previously set modules and properties and leaves the app context in a clean
+	 * state as if it were a new instance.
+	 */
+	public void clear()
+	{
+		appModules.clear();
+		properties.clear();
 	}
 
 }

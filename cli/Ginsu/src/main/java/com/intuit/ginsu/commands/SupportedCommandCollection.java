@@ -12,7 +12,7 @@ package com.intuit.ginsu.commands;
 
 import java.util.HashMap;
 
-import com.google.inject.Singleton;
+import com.intuit.ginsu.ICommand;
 
 /**
  * @author rpfeffer
@@ -22,14 +22,11 @@ import com.google.inject.Singleton;
  * supported by ginsu.
  *
  */
-@Singleton
 public class SupportedCommandCollection extends HashMap<String, ICommand> {
 
 	/**
 	 * The id of this HashMap, to be used should this class ever be serialized.
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
 
 }

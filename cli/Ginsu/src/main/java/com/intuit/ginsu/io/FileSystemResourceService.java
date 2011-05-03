@@ -14,13 +14,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-import com.google.inject.Inject;
 import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.IProjectResourceService;
 
 /**
  * @author rpfeffer
@@ -39,11 +41,28 @@ public class FileSystemResourceService implements IApplicationResourceService, I
 	private static final String DEV_RESOURCE_DIR = "src" + File.separator + "main" + File.separator + "resources" + File.separator;
 	private static final String SCRIPTS_DIR = "scripts" + File.separator;
 	private final Logger logger;
+	private final PathAnalyzer pathAnalyzer;
 
-	@Inject
-	public FileSystemResourceService(Logger logger)
+	FileSystemResourceService(Logger logger, PathAnalyzer pathAnalyzer)
 	{
 		this.logger = logger;
+		this.pathAnalyzer = pathAnalyzer;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.IApplicationResourceService#getAppProperties(java.lang.String)
+	 */
+	public Properties getAppProperties(String propertiesFileName)
+	{
+		Properties props = new Properties();
+		try 
+		{
+			getPropertiesHelper(props, this.getAppResourceFile(propertiesFileName, true));
+		} 
+		catch (FileNotFoundException e) {
+			logger.debug("FileNotFoundException. Application Properties will be empty. Message:" + e.getMessage());
+		}
+		return props;
 	}
 	
 	/*
@@ -83,19 +102,10 @@ public class FileSystemResourceService implements IApplicationResourceService, I
 		}
 		if (!resourceFile.exists())
 		{
-			logger.debug("Failed all attempts to get file. Throwing Exception. File: " + fileName);
-			throw new FileNotFoundException("Could not find file: " + fileName);
+			logger.debug("Failed all attempts to get Application Resource file. Throwing Exception. File: " + fileName);
+			throw new FileNotFoundException("Could not find Application Resource file: " + fileName);
 		}
 		return resourceFile;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.intuit.ginsu.io.IProjectResourceService#getProjectResourceFile(java.lang.String)
-	 */
-	public File getProjectResourceFile(String fileName)
-			throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/* (non-Javadoc)
@@ -109,45 +119,67 @@ public class FileSystemResourceService implements IApplicationResourceService, I
 	/* (non-Javadoc)
 	 * @see com.intuit.ginsu.io.IApplicationResourceService#getAppProperties(java.lang.String)
 	 */
-	public Properties getAppProperties(String propertiesFileName)
+	public Properties getProjectProperties(String propertiesFileName)
 	{
 		Properties props = new Properties();
 		try 
 		{
-			logger.debug("Looking for Properties File: " + propertiesFileName);
-			props.load(new FileInputStream(this.getAppResourceFile(propertiesFileName, true)));
+			getPropertiesHelper(props, getProjectResourceFile(propertiesFileName));
 		} 
-		catch (SecurityException e)
-		{
-			logger.debug("SecurityException. Properties will be empty. Message:" + e.getMessage());
-		} catch (FileNotFoundException e) {
-			logger.debug("FileNotFoundException. Properties will be empty. Message:" + e.getMessage());
-		} catch (IOException e) {
-			logger.debug("IOException. Properties will be empty. Message:" + e.getMessage());
-		}
+		catch (FileNotFoundException e) {
+			logger.debug("FileNotFoundException. Project Properties will be empty. Message:" + e.getMessage());
+		} 
 		return props;
 	}
 	
-	/**
-	 * TODO Doc Me
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.IProjectResourceService#getProjectResourceFile(java.lang.String)
 	 */
-	protected String getHomeDir()
+	public File getProjectResourceFile(String fileName) throws FileNotFoundException {
+		String projectHome = AppContext.INSTANCE.getProperty(AppContext.PROJECT_HOME_KEY);
+		File pathToProjectHome = new File(projectHome);
+		logger.debug("Trying to get project resource file when project home is: " + projectHome);
+		File resourceFile = null;
+		try {
+			resourceFile = new File(pathToProjectHome.getCanonicalFile() + File.separator + fileName);
+		} catch (IOException e) {
+			logger.debug(e.getStackTrace());
+		}
+		if(resourceFile == null || !resourceFile.exists())
+		{
+			logger.debug("Failed all attempts to get Project Resource file. File: " + resourceFile.getAbsolutePath() + " does not exist!");
+			throw new FileNotFoundException();
+		}
+		return resourceFile;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.IApplicationResourceService#getRelativePath(java.io.File, java.lang.String)
+	 */
+	public String getRelativePathToAppHome(File fromPath) throws FileNotFoundException
 	{
-		return AppContext.getInstance().getProperty(AppContext.APP_HOME_KEY) + File.separator;
+		String relativePath = "";
+		File toPath = this.getAppResourceFile("", true);
+		try
+		{
+			URI fromURI = fromPath.getCanonicalFile().toURI(); 
+			URI toURI = toPath.getCanonicalFile().toURI();
+			relativePath = pathAnalyzer.getRelativePath(fromURI, toURI);
+		}
+		catch (IOException ioException)
+		{
+			FileNotFoundException e = new FileNotFoundException();
+			e.initCause(ioException);
+			throw e;
+		}
+		
+		return relativePath;
 	}
 	
 	/**
-	 * TODO Doc Me
-	 * @return
-	 */
-	protected String getTargetDir()
-	{
-		return TARGET_RESOURCES_DIR;
-	}
-	
-	/**
-	 * TODO Doc Me
+	 * This is used in development configurations only. Returns the path to the
+	 * Development resources directory for use during testing
+	 * 
 	 * @return
 	 */
 	protected String getDevResourcesDir()
@@ -156,12 +188,54 @@ public class FileSystemResourceService implements IApplicationResourceService, I
 	}
 	
 	/**
-	 * TODO Doc Me
+	 * Returns the path to the base directory of the application.
+	 * 
+	 * @return
+	 */
+	protected String getHomeDir()
+	{
+		return AppContext.INSTANCE.getProperty(AppContext.APP_HOME_KEY) + File.separator;
+	}
+	
+	/**
+	 * Returns the path to the scripts directory of the application.
+	 * 
 	 * @return
 	 */
 	protected String getScriptsDir()
 	{
 		return SCRIPTS_DIR;
 	}
-
+	
+	/**
+	 * This is used in development configurations only. Returns the path to the
+	 * Target  directory for use during testing.
+	 * 
+	 * @return
+	 */
+	protected String getTargetDir()
+	{
+		return TARGET_RESOURCES_DIR;
+	}
+	
+	/**
+	 * 
+	 * @param propertiesFile
+	 * @return
+	 */
+	private void getPropertiesHelper(Properties target, File propertiesFile)
+	{
+		try 
+		{
+			logger.debug("Looking for Properties File: " + propertiesFile.getAbsolutePath());
+			target.load(new FileInputStream(propertiesFile));
+		} 
+		catch (SecurityException e)
+		{
+			logger.debug("SecurityException. Properties will be empty. Message:" + e.getMessage());
+		} 
+		catch (IOException e) {
+			logger.debug("IOException. Properties will be empty. Message:" + e.getMessage());
+		}
+	}
 }

@@ -8,10 +8,11 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.io;
+package com.intuit.ginsu;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Properties;
 
 /**
  * @author rpfeffer
@@ -26,10 +27,19 @@ import java.io.FileNotFoundException;
  */
 public interface IProjectResourceService {
 
+	public static final String ENV_DIR = "env";
+	
 	/**
 	 * Return a file found in the user's project as a {@link File}.
 	 * @param fileName The name of the file to look for.
 	 */
 	public File getProjectResourceFile(String fileName) throws FileNotFoundException;
+	
+	/**
+	 * 
+	 * @param propertiesFileName
+	 * @return {@link Properties} object representing the 
+	 */
+	public Properties getProjectProperties(String propertiesFileName);
 	
 }

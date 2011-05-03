@@ -22,8 +22,8 @@ import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
 
-import com.google.inject.Inject;
-import com.intuit.ginsu.io.IApplicationResourceService;
+import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.IScriptLauncher;
 
 /**
  * @author rpfeffer
@@ -42,8 +42,7 @@ public class AntScriptLauncher implements IScriptLauncher {
 	
 	private final IApplicationResourceService resourceService;
 	
-	@Inject
-	public AntScriptLauncher (IApplicationResourceService resourceService, Logger logger)
+	AntScriptLauncher (IApplicationResourceService resourceService, Logger logger)
 	{
 		this.resourceService = resourceService;
 		this.logger = logger;
@@ -67,12 +66,11 @@ public class AntScriptLauncher implements IScriptLauncher {
 	 * @see com.intuit.ginsu.scripts.IScriptLauncher#getScriptAsFile()
 	 */
 	public File getScriptAsFile() throws FileNotFoundException {
-		//if the script is null, pass the empty string so that we do 
-		//not get a null pointer exception
-		File scriptFile = new File("");
-		scriptFile = this.resourceService.getAppScript(this.script);
-		// TODO We should write this out to the Log
-
+		File scriptFile = resourceService.getAppScript(script);
+		String loggedMessage = "getScriptAsFile() found: " 
+			+ (scriptFile == null ? "null when trying to get script: " + script : scriptFile.getPath());
+		logger.debug(loggedMessage);
+		assert scriptFile != null : loggedMessage; //script file should never be null. if it is we are misconfigured.
 		return scriptFile;
 	}
 
@@ -104,7 +102,7 @@ public class AntScriptLauncher implements IScriptLauncher {
 			helper.parse(antProject, buildFile);
 			String defaultTarget = antProject.getDefaultTarget();
 			antProject.executeTarget(defaultTarget);
-			antProject.fireBuildFinished(null);
+			//antProject.fireBuildFinished(null);
 			exitStatus = 0;
 		}
 		catch (BuildException e)
@@ -164,7 +162,7 @@ public class AntScriptLauncher implements IScriptLauncher {
 	public void setProjectListener(PrintStream printStream)
 	{
 		consoleLogger = new DefaultLogger();
-		consoleLogger.setErrorPrintStream(System.err);
+		consoleLogger.setErrorPrintStream(printStream);
 		consoleLogger.setOutputPrintStream(printStream);
 		consoleLogger.setMessageOutputLevel(Project.MSG_INFO);
 	}

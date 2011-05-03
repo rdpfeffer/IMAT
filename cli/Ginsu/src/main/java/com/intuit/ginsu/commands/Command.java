@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.IncompleteCommandException;
 
 /**
  * @author rpfeffer
@@ -48,7 +50,7 @@ public abstract class Command implements ICommand {
 	 * @param printwriter
 	 * @param logger
 	 */
-	public Command(PrintWriter printwriter, Logger logger) {
+	Command(PrintWriter printwriter, Logger logger) {
 		this.printWriter = printwriter;
 		this.logger = logger;
 		this.exitStatus = UNSET_EXIT_STATUS;
@@ -90,6 +92,11 @@ public abstract class Command implements ICommand {
 			this.exitStatus = PRINT_HELP_EXIT_STATUS;
 		}
 		return this.help;
+	}
+	
+	public boolean expectsProject()
+	{
+		return false;
 	}
 
 	/**

@@ -15,26 +15,27 @@ import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.intuit.ginsu.ICommand;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
  *
- * //TODO Explain why this file exists and how it is used.
+ * //TODO RP: We should explain the use of this class once it has been implemented.
  *
  */
 @Parameters(commandDescription = "Use this command to run your tests.")
 public class CommandRunTests extends Command implements ICommand{
 
 	/**
-	 * TODO: Replace this Parameter with an actual parameter that we are going to use.
+	 * TODO RP: When we implement this classReplace this Parameter with an actual parameter that we are going to use.
 	 */
 	public static final String PLACEHOLDER = "-placeholder";
 	@Parameter(names = {PLACEHOLDER},
 			description = "This is just a placeholder until we implement more of this class")
 	public boolean placeholder;
 	
-	public CommandRunTests(PrintWriter printwriter, Logger logger) {
+	CommandRunTests(PrintWriter printwriter, Logger logger) {
 		super(printwriter, logger);
 	}
 
@@ -42,30 +43,23 @@ public class CommandRunTests extends Command implements ICommand{
 	
 	public int run() {
 		int exitStatus  = 0;
-		// TODO Auto-generated method stub
+		// TODO RP: We still need to finish this feature.
 		
 		return exitStatus;
-	}
-
-	public void cleanUp() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public String getName()
 	{
 		return CommandRunTests.NAME;
 	}
-	
-	@Override
-	public boolean equals(Object command)
-	{
-		return (command != null &&
-				command instanceof CommandRunTests &&
-				((CommandRunTests)command).getName() == this.getName());
-	}
 
 	public boolean isRunnable() {
+		return true;
+	}
+	
+	@Override
+	public boolean expectsProject()
+	{
 		return true;
 	}
 }

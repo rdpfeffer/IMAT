@@ -10,15 +10,14 @@
  *******************************************************************************/
 package com.intuit.ginsu.cli;
 
-import java.io.PrintWriter;
 import java.util.Hashtable;
 import java.util.Map;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
-import com.google.inject.Inject;
-import com.intuit.ginsu.commands.CommandNull;
-import com.intuit.ginsu.commands.ICommand;
+import com.intuit.ginsu.NullCommand;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.IInputHandlingService;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 
 /**
@@ -33,24 +32,20 @@ import com.intuit.ginsu.commands.SupportedCommandCollection;
  *              as implement the ICommand interface.
  * 
  */
-public class CommandLineParsingService implements IInputParsingService {
+public class CommandLineParsingService implements IInputHandlingService {
 
 	// According to the best practices listed at:
 	// http://code.google.com/docreader/#p=google-guice&s=google-guice&t=MinimizeMutability
 	// we should try keep all injected objects immutable
 	private final JCommander jCommander;
 	private final MainArgs mainArgs;
-	private final PrintWriter printWriter;
 	private final Map<String, ICommand> supportedCommands;
-	private final StringBuilder stringBuilder;
+	private StringBuilder stringBuilder;
 	private ICommand command;
 	
 
-	@Inject
-	public CommandLineParsingService(PrintWriter printWriter, 
-			JCommander jCommander, MainArgs mainArgs,
+	CommandLineParsingService( JCommander jCommander, MainArgs mainArgs,
 			SupportedCommandCollection supportedCommands) {
-		this.printWriter = printWriter;
 		this.mainArgs = mainArgs;
 		this.jCommander = jCommander;
 		this.supportedCommands = supportedCommands;
@@ -59,8 +54,7 @@ public class CommandLineParsingService implements IInputParsingService {
 		this.loadSupportedCommands();
 		
 		//until we successfully call parse, this will be the object we get back
-		this.command = new CommandNull();
-		this.stringBuilder = new StringBuilder();
+		this.command = new NullCommand();
 	}
 
 	/*
@@ -69,40 +63,28 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * @see
 	 * com.intuit.ginsu.cli.IInputParsingService#parseInput(java.lang.String[])
 	 */
-	public void parseInput(String[] input) {
-		try
+	public void handleInput(String[] input) {
+		
+		stringBuilder = new StringBuilder();
+		ICommand parsedCommand = getParsedCommand(input);
+		if(parsedCommand.shouldRenderCommandUsage())
 		{
-			jCommander.parse(input);
-			ICommand parsedCommand = getParsedCommand();
-			if(parsedCommand.shouldRenderCommandUsage())
+			UsagePrinter usagePrinter;
+			if(parsedCommand.getName() == UsagePrinter.NAME)
 			{
-				if(parsedCommand.getName() == UsagePrinter.NAME)
-				{
-					throw new Exception("Usage is Defined as follows..." +
-							System.getProperty("line.separator"));
-				}
-				else
-				{
-					jCommander.usage(parsedCommand.getName(), stringBuilder);
-				}
-				command  = initUsagePrinter();
+				usagePrinter = getUsagePrinter();				
 			}
 			else
 			{
-				//Since we are not printing usage, we will set the current 
-				//command to the one that was parsed and override the CommandNull 
-				//object
-				command = parsedCommand;
+				stringBuilder.append("Explanation..." +
+						System.getProperty("line.separator"));
+				jCommander.usage(parsedCommand.getName(), stringBuilder);
+				usagePrinter = (UsagePrinter) supportedCommands.get(UsagePrinter.NAME);
+				usagePrinter.setUsage(stringBuilder.toString());
 			}
+			parsedCommand = usagePrinter;
 		}
-		catch (Throwable e)
-		{
-			//Formulate usage for the user.
-			stringBuilder.append(e.getMessage());
-			stringBuilder.append(System.getProperty("line.separator"));
-			jCommander.usage(stringBuilder);
-			command = initUsagePrinter();
-		}
+		command = parsedCommand;
 	}
 
 	/*
@@ -120,7 +102,6 @@ public class CommandLineParsingService implements IInputParsingService {
 	 * @see com.intuit.ginsu.cli.IInputParsingService#getMainCommand()
 	 */
 	public Hashtable<String, String> getConfigurationOverride() {
-		// TODO Auto-generated method stub
 		return mainArgs.getConfigurationOverride();
 	}
 
@@ -142,14 +123,39 @@ public class CommandLineParsingService implements IInputParsingService {
 	 *             When more or less than one of the supported commands is
 	 *             parsed from the input given by the consuming class
 	 */
-	private ICommand getParsedCommand() throws Exception
+	private ICommand getParsedCommand(String[] input)
 	{
-		ICommand parsedCommand = supportedCommands.get(jCommander.getParsedCommand());
-		if(parsedCommand == null)
+		ICommand parsedCommand;
+		try
 		{
-			throw new Exception("You must supply at least one supported command.");
+			jCommander.parse(input);
+			parsedCommand = supportedCommands.get(jCommander.getParsedCommand());
+		}
+		catch (Throwable e)
+		{
+			//When jCommander parses the command, it is possible for it
+			//to throw an unchecked exception at runtime.
+			stringBuilder.append(e.getMessage() + 
+					System.getProperty("line.separator"));
+			parsedCommand = getUsagePrinter();
 		}
 		return parsedCommand;
+	}
+	
+	private UsagePrinter getUsagePrinter()
+	{
+		UsagePrinter usagePrinter = (UsagePrinter) supportedCommands.get(UsagePrinter.NAME);
+		//This gets called twice if an error was thrown
+		//We do a check here to make sure it happens correctly.
+		if(!usagePrinter.hasBeenWrittenTo())
+		{
+			stringBuilder.append("Usage is Defined as follows..." +
+					System.getProperty("line.separator"));
+			stringBuilder.append(System.getProperty("line.separator"));
+			jCommander.usage(stringBuilder);
+			usagePrinter.setUsage(stringBuilder.toString());
+		}
+		return usagePrinter;
 	}
 	
 	/**
@@ -158,20 +164,11 @@ public class CommandLineParsingService implements IInputParsingService {
 	private void loadSupportedCommands()
 	{
 		// add all of the commands in our collection of supported commands
-		for (Map.Entry<String, ICommand> entry : supportedCommands
-				.entrySet()) {
+		for (Map.Entry<String, ICommand> entry : supportedCommands.entrySet()) {
 			jCommander.addCommand(entry.getKey(), entry.getValue());
 		}
 	}
 	
-	/**
-	 * @return The UsagePrinter Object Loaded with the correct usage message
-	 *         ready to be displayed. This will be printed out with the Usage
-	 *         printer is run. 
-	 */
-	private UsagePrinter initUsagePrinter()
-	{
-		return new UsagePrinter(printWriter, stringBuilder.toString());
-	}
+	
 
 }

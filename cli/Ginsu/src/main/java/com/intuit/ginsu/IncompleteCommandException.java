@@ -8,13 +8,14 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu;
 
 /**
  * @author rpfeffer
  * @dateCreated Apr 3, 2011
  * 
- *              //TODO Explain why this file exists and how it is used.
+ *              This exception class defines how the application should report
+ *              exceptions related to incomplete commands
  * 
  */
 public class IncompleteCommandException extends Exception {
@@ -32,7 +33,7 @@ public class IncompleteCommandException extends Exception {
 	 */
 	public IncompleteCommandException(ICommand command,
 			String methodNameExcludingParenthesis) {
-		super("Tried to call " + methodNameExcludingParenthesis
+		super("Internal Error: Tried to call " + methodNameExcludingParenthesis
 				+ "() on command of type " + command.getClass().toString()
 				+ " before the command had completed execution.");
 	}

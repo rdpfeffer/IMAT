@@ -10,27 +10,22 @@
 *******************************************************************************/
 package com.intuit.ginsu.scripts;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Hashtable;
+import org.apache.log4j.Logger;
+
+import com.intuit.ginsu.IApplicationResourceService;
 
 /**
  * @author rpfeffer
- * @dateCreated Apr 12, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * @dateCreated May 2, 2011
+ * 
+ *              This file is used to expose the AntScript launchers package
+ *              private constructor so that we can use it for testing purposes
+ * 
  */
-public interface IScriptLauncher {
+public class AntScriptLauncherForTesting extends AntScriptLauncher {
 
-	public void setScript(String script);
-	
-	public String getScript();
-	
-	public File getScriptAsFile() throws FileNotFoundException;
-	
-	//TODO: explain that it is expected that these properties will be set and used when the target script is invoked.
-	public void setProperties( Hashtable<String, String> properties);
-	
-	public int runScript();
+	public AntScriptLauncherForTesting(
+			IApplicationResourceService resourceService, Logger logger) {
+		super(resourceService, logger);
+	}
 }

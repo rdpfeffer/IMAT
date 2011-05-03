@@ -11,26 +11,44 @@
 package com.intuit.ginsu.commands;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Hashtable;
+
 import org.apache.log4j.Logger;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.intuit.ginsu.AppContext;
+import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.IProjectResourceService;
+import com.intuit.ginsu.IScriptLauncher;
+import com.intuit.ginsu.MisconfigurationException;
 import com.intuit.ginsu.cli.converters.FileConverter;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              Command to Initialize a ginsu automation project within a new
+ *              environment. This is used to resolve paths when someone
+ *              downloads an existing project and must map their project back to
+ *              the installation of ginsu somewhere else on their system.
+ * 
  */
-@Parameters(commandDescription = "Run this command after downloading Ginsu for"
-	+" the first time.")
-public class CommandInitEnv extends Command implements ICommand{
-
-	public CommandInitEnv(PrintWriter printwriter, Logger logger) {
-		super(printwriter, logger);
+@Parameters(commandDescription = "Initializes the environment against an existing" +
+		" ginsu project that was recently installed on the system. Resolves paths" +
+		" and installs the necessary files for the tests to run.")
+public class CommandInitEnv extends ScriptedCommand implements ICommand{
+	
+	private final IApplicationResourceService appResourceService;
+	
+	CommandInitEnv(PrintWriter printwriter, Logger logger, 
+			IScriptLauncher scriptLauncher, 
+			IApplicationResourceService appResourceService) {
+		super(printwriter, logger, scriptLauncher);
+		this.appResourceService = appResourceService;
 	}
 	public static final String NAME = "init-env";
 	
@@ -42,15 +60,40 @@ public class CommandInitEnv extends Command implements ICommand{
 				+ "running iOS Automation.")
 	File template;
 	
-	public int run() {
-		int exitStatus  = 0;
-		// TODO Auto-generated method stub
-		
+	public int run() throws MisconfigurationException{
+		try
+		{
+			Hashtable<String, String> properties = new Hashtable<String, String>();
+			String projectHome = AppContext.INSTANCE.getProperty(AppContext.PROJECT_HOME_KEY);
+			String absolutePathToTarget = new File(projectHome).getAbsolutePath();
+			logger.debug("Setting projectHome as target.dir=" + absolutePathToTarget);
+			properties.put("target.dir", absolutePathToTarget);
+			
+			File fromPath = new File(absolutePathToTarget + File.separator + IProjectResourceService.ENV_DIR);
+			String pathToGinsu = appResourceService.getRelativePathToAppHome(fromPath);
+			properties.put("path.to.ginsu", pathToGinsu);
+			if(template != null)
+			{
+				properties.put("trace.file", template.getAbsolutePath());
+			}
+			//Set the project template directory...
+			//the only reason we are setting this here, and not in the script is if for any
+			//reason, this path became dynamic, we wanted the opportunity to set it.
+			properties.put("project.dir", ".."+File.separator+"templates"+File.separator+"Project"); 
+			
+			IScriptLauncher scriptLauncher = this.getScriptLauncher();
+			scriptLauncher.setScript("initEnvironment.xml");
+			scriptLauncher.setProperties(properties);
+			exitStatus = scriptLauncher.runScript();
+		}
+		catch (FileNotFoundException fileNotFoundException)
+		{
+			MisconfigurationException e = new MisconfigurationException(
+					"Could not run the command: " + this.getName());
+			e.initCause(fileNotFoundException);
+			throw e;
+		}
 		return exitStatus;
-	}
-	
-	public void cleanUp() {
-		// TODO Auto-generated method stub	
 	}
 	
 	public String getName()
@@ -58,14 +101,12 @@ public class CommandInitEnv extends Command implements ICommand{
 		return CommandInitEnv.NAME;
 	}
 	
-	@Override
-	public boolean equals(Object command)
-	{
-		return (command != null &&
-				command instanceof CommandInitEnv &&
-				((CommandInitEnv)command).getName() == this.getName());
-	}
 	public boolean isRunnable() {
+		return true;
+	}
+	
+	public boolean expectsProject()
+	{
 		return true;
 	}
 }

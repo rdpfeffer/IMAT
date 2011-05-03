@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Copyright (c) 2009 Intuit, Inc. All rights reserved. This program 
+	and the accompanying materials are made available under the terms of the 
+	Eclipse Public License v1.0 which accompanies this distribution, and is 
+	available at http://www.opensource.org/licenses/eclipse-1.0.php 
+	Contributors: 
+	Intuit, Inc - initial API and implementation 
+-->
+
+<!--
+	@file This is the ant script for initializing environment specfic paths
+	on an existing ginsu project. 
+	@author rpfeffer 
+	@dateCreated Apr 25, 2011
+  -->
+<project default="execute" >
+	<!-- 
+	Copy files from the resources template directory to the target directory,
+	and filter all files for tokens and replace them with the specified values
+	from the command.
+	-->
+	<target name="execute" depends="copy-env,copy-trace" />
+
+	<target name="copy-env">
+		<copy toDir="${target.dir}" force="true">
+			<fileset dir="${project.dir}">
+				<include name="**/env.js" />
+			</fileset>
+			<filterset>
+				<filter token="PATH_TO_GINSU" value="${path.to.ginsu}" />
+			</filterset>
+		</copy>
+	</target>
+
+	<target name="copy-trace" if="trace.file">
+		<copy file="${trace.file}" todir="${target.dir}${file.separator}env" force="true"/>
+	</target>
+</project>

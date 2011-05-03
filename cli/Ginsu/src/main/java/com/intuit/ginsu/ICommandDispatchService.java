@@ -8,18 +8,22 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-package com.intuit.ginsu.io;
-
-import java.io.PrintWriter;
+package com.intuit.ginsu;
 
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
- *
- * //TODO Explain why this file exists and how it is used.
- *
+ * 
+ *              This interface defines the contract of how Commands should be
+ *              dispatched.
+ * 
  */
-public interface IPrintService {
+public interface ICommandDispatchService {
 
-	public PrintWriter getPrintWriter();
+	/**
+	 * Dispatch the given command.
+	 * @param command - The {@link ICommand} to execute.
+	 * @throws MisconfigurationException 
+	 */
+	public void dispatch(ICommand command) throws MisconfigurationException;
 }

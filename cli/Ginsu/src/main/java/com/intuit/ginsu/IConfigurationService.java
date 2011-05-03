@@ -8,10 +8,8 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.config;
+package com.intuit.ginsu;
 
-import java.util.Hashtable;
-import java.util.Properties;
 
 /**
  * @author rpfeffer
@@ -21,11 +19,9 @@ import java.util.Properties;
  *              to define an interface for initializing Ginsu configuration.
  * 
  *              The {@link IConfigurationService} also provides an interface for
- *              loading and storing properties of the runtime configuration.
- *              Although the data structure for accessing the values of the
- *              configuration is a {@link Properties} object, we leave it up to
- *              the implementer as to how these properties should be stored. For
- *              example, the easiest way to store them would be in a file on
+ *              loading properties of the runtime configuration. We leave it up
+ *              to the implementer as to how these properties should be stored.
+ *              For example, the easiest way to store them would be in a file on
  *              disk, but they could also be stored in a database, retrieved
  *              from a service, or otherwise...
  * 
@@ -35,7 +31,8 @@ public interface IConfigurationService {
 	/**
 	 * Set up the initial configuration of Ginsu. This initialization is meant
 	 * to happen during the first use of Ginsu to make sure that the project is
-	 * set up correctly. This includes
+	 * set up correctly. This may include accepting a terms of agreement, or 
+	 * otherwise.
 	 */
 	public void doFirstTimeInitialization();
 
@@ -64,18 +61,14 @@ public interface IConfigurationService {
 
 	/**
 	 * Load the configuration from the default configuration store(s). 
-	 */
-	public void loadConfiguration() throws MisconfigurationException;
-
-	/**
-	 * Store the configuration from the default configuration store and override
-	 * the default configuration properties with those passed in.
 	 * 
-	 * @param configurationOverride
-	 *            The {@link Properties} object containing properties which will
-	 *            be stored on the base properties file.
+	 * @throws MisconfigurationException
+	 * @throws {@link ProjectConfigurationNotFoundException}
 	 */
-	public void storeConfiguration(
-			Hashtable<String, String> configuration);
+	public void loadConfiguration(boolean expectsProjectConfig) throws 
+		MisconfigurationException, 
+		ProjectConfigurationNotFoundException;
+	
+	public boolean shouldSkipExitStatus();
 
 }

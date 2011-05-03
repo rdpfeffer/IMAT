@@ -1,10 +1,8 @@
 package com.intuit.ginsu.commands;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 
-import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -13,36 +11,22 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.util.Modules;
-import com.intuit.ginsu.BaseTest;
-import com.intuit.ginsu.cli.GinsuCLIModule;
-import com.intuit.ginsu.cli.GinsuTestModuleOverride;
-import com.intuit.ginsu.io.FileSystemResourceService;
-import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
-import com.intuit.ginsu.scripts.AntScriptLauncher;
+import com.intuit.ginsu.MisconfigurationException;
+import com.intuit.ginsu.cli.BaseFunctionalTest;
 
-public class CommandGenerateProjectTest extends BaseTest{
+public class CommandGenerateProjectTest extends BaseFunctionalTest{
 	
 	private File targetDir;
 	private Injector injector;
-	private Logger logger;
-	private PrintWriter printWriter;
 	private CommandGenerateProject command;
 	
 	@BeforeMethod
 	public void beforeMethod() 
 	{
-		this.printWriter = injector.getInstance(PrintWriter.class);
 		this.targetDir = new File(System.getProperty("java.io.tmpdir") 
 				+ System.getProperty("file.separator") + "ginsuTestDir");
-		AntScriptLauncher launcher = new AntScriptLauncher(
-				new FileSystemResourceService(Logger.getLogger(FileSystemResourceService.class)), 
-				Logger.getLogger(AntScriptLauncher.class));
-		launcher.setProjectListener(injector.getInstance(PrintStream.class));
-		this.command = new CommandGenerateProject(this.printWriter, this.logger, 
-				launcher);
+		this.command = injector.getInstance(CommandGenerateProject.class);
 	}
 
 	@AfterMethod
@@ -54,11 +38,8 @@ public class CommandGenerateProjectTest extends BaseTest{
 	@BeforeClass
 	public void beforeClass() 
 	{
-		this.injector = Guice.createInjector(
-				Modules.override(new GinsuCLIModule()).with(
-						new GinsuTestModuleOverride()),
-				new BindLog4JWithClassNameModule());
-		this.logger = injector.getInstance(Logger.class);
+		ByteArrayOutputStream outputStreamFixture = new ByteArrayOutputStream();
+		this.injector = getFunctionalTestInjector(outputStreamFixture);
 	}
 
 	@AfterClass
@@ -84,11 +65,15 @@ public class CommandGenerateProjectTest extends BaseTest{
 	{
 		this.command.targetDir = this.targetDir;
 		this.command.globalObjectVar = "FOO"; 
-		this.command.run();
+		try {
+			this.command.run();
+		} catch (MisconfigurationException e) {
+			assert false : e.getMessage();
+		}
 		
 		// test to make sure that the Tokens were all matched
 		File[] targetDirFiles = this.command.targetDir.listFiles();
-		assert targetDirFiles.length == 4 : "The target directory did not have the right number of files. Instead it had: "
+		assert targetDirFiles.length == 6 : "The target directory did not have the right number of files. Instead it had: "
 				+ String.valueOf(targetDirFiles.length);
 		for (int i = 0; i < targetDirFiles.length; i++) {
 			if (targetDirFiles[i].getName() == "project.js") {
