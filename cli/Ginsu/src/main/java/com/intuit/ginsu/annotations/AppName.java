@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.annotations;
 
 import static java.lang.annotation.ElementType.FIELD;
@@ -23,12 +23,14 @@ import com.google.inject.BindingAnnotation;
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
- *
- * This is a BindingAnnotation for Guice. It tells the injection framework what
- * value to use when something needs to inject the app's name.
- *
+ * 
+ *              This is a BindingAnnotation for Guice. It tells the injection
+ *              framework what value to use when something needs to inject the
+ *              app's name.
+ * 
  */
 @BindingAnnotation
 @Retention(RUNTIME)
-@Target({FIELD, PARAMETER, METHOD})
-public @interface AppName {}
+@Target({ FIELD, PARAMETER, METHOD })
+public @interface AppName {
+}

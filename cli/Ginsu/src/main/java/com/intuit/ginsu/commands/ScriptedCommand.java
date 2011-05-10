@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.commands;
 
 import java.io.PrintWriter;
@@ -27,23 +27,25 @@ import com.intuit.ginsu.IScriptLauncher;
 public abstract class ScriptedCommand extends Command {
 
 	private final IScriptLauncher scriptLauncher;
-	
-	
+
 	/**
-	 * @param printwriter the {@link PrintWriter} this command will write to
-	 * @param logger the {@link Logger} this command will log to.
-	 * @param scriptLauncher the {@link IScriptLauncher} used to run the scripted command.
+	 * @param printwriter
+	 *            the {@link PrintWriter} this command will write to
+	 * @param logger
+	 *            the {@link Logger} this command will log to.
+	 * @param scriptLauncher
+	 *            the {@link IScriptLauncher} used to run the scripted command.
 	 */
-	ScriptedCommand(PrintWriter printwriter, Logger logger, IScriptLauncher scriptLauncher) {
+	ScriptedCommand(PrintWriter printwriter, Logger logger,
+			IScriptLauncher scriptLauncher) {
 		super(printwriter, logger);
 		this.scriptLauncher = scriptLauncher;
 	}
-	
+
 	/**
 	 * @return the {@link IScriptLauncher} for this application.
 	 */
-	public IScriptLauncher getScriptLauncher()
-	{
+	public IScriptLauncher getScriptLauncher() {
 		return this.scriptLauncher;
 	}
 

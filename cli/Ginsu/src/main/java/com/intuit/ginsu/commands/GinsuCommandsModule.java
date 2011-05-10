@@ -19,8 +19,14 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.intuit.ginsu.IApplicationResourceService;
 import com.intuit.ginsu.ICommand;
+import com.intuit.ginsu.IFileMonitoringService;
+import com.intuit.ginsu.IProjectResourceService;
 import com.intuit.ginsu.IScriptLauncher;
+import com.intuit.ginsu.ITestMonitor;
+import com.intuit.ginsu.annotations.AntScript;
+import com.intuit.ginsu.annotations.AppleScript;
 import com.intuit.ginsu.annotations.UsageRenderer;
+import com.intuit.ginsu.annotations.iOS;
 
 /**
  * @author rpfeffer
@@ -50,7 +56,7 @@ public class GinsuCommandsModule extends AbstractModule {
 	 */
 	@Provides @Singleton SupportedCommandCollection provideSupportedCommands(
 			@UsageRenderer ICommand usageRenderer,
-			CommandGenerateProject generateproject,
+			CommandNewProject generateproject,
 			CommandInitEnv initEnv,
 			CommandRunTests runTests)
 	{
@@ -64,26 +70,32 @@ public class GinsuCommandsModule extends AbstractModule {
 	}
 	
 	@Provides CommandInitEnv provideCommandInitEnv(PrintWriter printwriter, 
-			IScriptLauncher scriptLauncher, 
+			@AntScript IScriptLauncher scriptLauncher, 
 			IApplicationResourceService appResourceService)
 	{
 		Logger logger = Logger.getLogger(CommandInitEnv.class);
 		return new CommandInitEnv(printwriter, logger, scriptLauncher, appResourceService);
 	}
 	
-	@Provides CommandGenerateProject provideCommandGenerateProject(PrintWriter printwriter, 
-			IScriptLauncher scriptLauncher, 
+	@Provides CommandNewProject provideCommandGenerateProject(PrintWriter printwriter, 
+			@AntScript IScriptLauncher scriptLauncher, 
 			IApplicationResourceService appResourceService)
 	{
-		Logger logger = Logger.getLogger(CommandGenerateProject.class);
-		return new CommandGenerateProject(printwriter, logger, scriptLauncher, appResourceService);
+		Logger logger = Logger.getLogger(CommandNewProject.class);
+		return new CommandNewProject(printwriter, logger, scriptLauncher, appResourceService);
 	}
 
-	@Provides CommandRunTests provideCommandRunTests(PrintWriter printwriter)
+	@Provides CommandRunTests provideCommandRunTests(PrintWriter printwriter, 
+			@AppleScript IScriptLauncher scriptLauncher, 
+			IApplicationResourceService applicationResourceService,
+			IProjectResourceService projectResourceService,
+			IFileMonitoringService fileMonitoringService,
+			@iOS ITestMonitor testMonitor)
 	{
 		Logger logger = Logger.getLogger(CommandRunTests.class);
-		return new CommandRunTests(printwriter, logger);
-		
+		return new CommandRunTests(printwriter, logger, scriptLauncher, 
+				applicationResourceService, projectResourceService, 
+				fileMonitoringService, testMonitor);
 	}
 	
 	@Provides SynchronousCommandDispatchService provideDispatchService()

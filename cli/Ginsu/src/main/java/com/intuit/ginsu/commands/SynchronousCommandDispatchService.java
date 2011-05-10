@@ -20,20 +20,20 @@ import com.intuit.ginsu.MisconfigurationException;
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
  * 
- *              The {@link SynchronousCommandDispatchService} runs commands set up by
- *              the applicaiton. This simple command dispatch service simply
- *              runs the command on the same thread and does nothing else
+ *              The {@link SynchronousCommandDispatchService} runs commands set
+ *              up by the applicaiton. This simple command dispatch service
+ *              simply runs the command on the same thread and does nothing else
  * 
  */
-public class SynchronousCommandDispatchService implements ICommandDispatchService {
+public class SynchronousCommandDispatchService implements
+		ICommandDispatchService {
 
 	private final Logger logger;
-	
-	SynchronousCommandDispatchService(Logger logger)
-	{
+
+	SynchronousCommandDispatchService(Logger logger) {
 		this.logger = logger;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -42,9 +42,11 @@ public class SynchronousCommandDispatchService implements ICommandDispatchServic
 	 * .ginsu.commands.ICommand)
 	 */
 	public void dispatch(ICommand command) throws MisconfigurationException {
-		logger.debug("Start Dispatching Command. Command Named: " + command.getName());
+		logger.debug("Start Dispatching Command. Command Named: "
+				+ command.getName());
 		command.run();
-		logger.debug("Finished Dispatching Command. Command Named: " + command.getName());
+		logger.debug("Finished Dispatching Command. Command Named: "
+				+ command.getName());
 	}
 
 }

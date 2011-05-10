@@ -1,19 +1,19 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.commands;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 
@@ -37,57 +37,63 @@ import com.intuit.ginsu.cli.converters.FileConverter;
  *              the installation of ginsu somewhere else on their system.
  * 
  */
-@Parameters(commandDescription = "Initializes the environment against an existing" +
-		" ginsu project that was recently installed on the system. Resolves paths" +
-		" and installs the necessary files for the tests to run.")
-public class CommandInitEnv extends ScriptedCommand implements ICommand{
-	
+@Parameters(commandDescription = "Initializes the environment against an existing"
+		+ " ginsu project that was recently installed on the system. Resolves paths"
+		+ " and installs the necessary files for the tests to run.")
+public class CommandInitEnv extends ScriptedCommand implements ICommand {
+
 	private final IApplicationResourceService appResourceService;
-	
-	CommandInitEnv(PrintWriter printwriter, Logger logger, 
-			IScriptLauncher scriptLauncher, 
+
+	CommandInitEnv(PrintWriter printwriter, Logger logger,
+			IScriptLauncher scriptLauncher,
 			IApplicationResourceService appResourceService) {
 		super(printwriter, logger, scriptLauncher);
 		this.appResourceService = appResourceService;
 	}
+
 	public static final String NAME = "init-env";
-	
-	/**
-	 */
+
 	public static final String TEMPLATE = "-template";
-	@Parameter(names = {TEMPLATE, "-t"}, converter = FileConverter.class,
-			description = "The instruments trace template file to use when "
-				+ "running iOS Automation.")
+	@Parameter(names = { TEMPLATE, "-t" }, converter = FileConverter.class, description = "The instruments trace template file to use when "
+			+ "running iOS Automation.")
 	File template;
-	
-	public int run() throws MisconfigurationException{
-		try
-		{
-			Hashtable<String, String> properties = new Hashtable<String, String>();
-			String projectHome = AppContext.INSTANCE.getProperty(AppContext.PROJECT_HOME_KEY);
-			String absolutePathToTarget = new File(projectHome).getAbsolutePath();
-			logger.debug("Setting projectHome as target.dir=" + absolutePathToTarget);
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.intuit.ginsu.ICommand#run()
+	 */
+	public int run() throws MisconfigurationException {
+		try {
+			LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
+			String projectHome = AppContext.INSTANCE
+					.getProperty(AppContext.PROJECT_HOME_KEY);
+			String absolutePathToTarget = new File(projectHome)
+					.getAbsolutePath();
+			logger.debug("Setting projectHome as target.dir="
+					+ absolutePathToTarget);
 			properties.put("target.dir", absolutePathToTarget);
-			
-			File fromPath = new File(absolutePathToTarget + File.separator + IProjectResourceService.ENV_DIR);
-			String pathToGinsu = appResourceService.getRelativePathToAppHome(fromPath);
+
+			File fromPath = new File(absolutePathToTarget + File.separator
+					+ IProjectResourceService.ENV_DIR);
+			String pathToGinsu = appResourceService
+					.getRelativePathToAppHome(fromPath);
 			properties.put("path.to.ginsu", pathToGinsu);
-			if(template != null)
-			{
+			if (template != null) {
 				properties.put("trace.file", template.getAbsolutePath());
 			}
-			//Set the project template directory...
-			//the only reason we are setting this here, and not in the script is if for any
-			//reason, this path became dynamic, we wanted the opportunity to set it.
-			properties.put("project.dir", ".."+File.separator+"templates"+File.separator+"Project"); 
-			
+			// Set the project template directory...
+			// the only reason we are setting this here, and not in the script
+			// is if for any reason, this path became dynamic, we wanted the
+			// opportunity to set it.
+			properties.put("project.dir", ".." + File.separator + "templates"
+					+ File.separator + "Project");
+
 			IScriptLauncher scriptLauncher = this.getScriptLauncher();
 			scriptLauncher.setScript("initEnvironment.xml");
 			scriptLauncher.setProperties(properties);
 			exitStatus = scriptLauncher.runScript();
-		}
-		catch (FileNotFoundException fileNotFoundException)
-		{
+		} catch (FileNotFoundException fileNotFoundException) {
 			MisconfigurationException e = new MisconfigurationException(
 					"Could not run the command: " + this.getName());
 			e.initCause(fileNotFoundException);
@@ -95,18 +101,31 @@ public class CommandInitEnv extends ScriptedCommand implements ICommand{
 		}
 		return exitStatus;
 	}
-	
-	public String getName()
-	{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.intuit.ginsu.ICommand#getName()
+	 */
+	public String getName() {
 		return CommandInitEnv.NAME;
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.intuit.ginsu.ICommand#isRunnable()
+	 */
 	public boolean isRunnable() {
 		return true;
 	}
-	
-	public boolean expectsProject()
-	{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.intuit.ginsu.commands.Command#expectsProject()
+	 */
+	public boolean expectsProject() {
 		return true;
 	}
 }

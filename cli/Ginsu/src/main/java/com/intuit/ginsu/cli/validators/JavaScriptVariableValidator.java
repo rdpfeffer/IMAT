@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.cli.validators;
 
 import com.beust.jcommander.IParameterValidator;
@@ -26,21 +26,21 @@ import com.beust.jcommander.ParameterException;
  */
 public class JavaScriptVariableValidator implements IParameterValidator {
 
-	/* (non-Javadoc)
-	 * @see com.beust.jcommander.IParameterValidator#validate(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.beust.jcommander.IParameterValidator#validate(java.lang.String,
+	 * java.lang.String)
 	 */
 	public void validate(String name, String value) throws ParameterException {
-		
-		//TODO RP: Finish implementing this method.
-		
-		//cannot Start with a number
-		
-		
-		//cannot be "GINSU"
-		
-		//cannot contain "@", even though the Actual JS Spec allows it.
-		
-		
+
+		// TODO RP: Finish implementing this method.
+
+		// cannot Start with a number
+
+		// cannot be "GINSU"
+
+		// cannot contain "@", even though the Actual JS Spec allows it.
 
 	}
 

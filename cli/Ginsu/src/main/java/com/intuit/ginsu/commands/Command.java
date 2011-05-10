@@ -31,21 +31,20 @@ public abstract class Command implements ICommand {
 	private static final int UNSET_EXIT_STATUS = -1;
 
 	private static final int PRINT_HELP_EXIT_STATUS = 0;
-	
+
 	private static final String UNSET_ERROR_MESSAGE = "";
 	protected final PrintWriter printWriter;
 	protected final Logger logger;
 	protected int exitStatus;
 	protected String errorMessage;
 
-	
 	/**
 	 * The flag used in the command line client for specifying when the the help
 	 * text for this command should be printed.
 	 */
-	@Parameter(names={"-help"}, description="Print the usage for this command.")
+	@Parameter(names = { "-help" }, description = "Print the usage for this command.")
 	public boolean help = false;
-	
+
 	/**
 	 * @param printwriter
 	 * @param logger
@@ -57,7 +56,9 @@ public abstract class Command implements ICommand {
 		this.errorMessage = UNSET_ERROR_MESSAGE;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#getExitStatus()
 	 */
 	public int getExitStatus() throws IncompleteCommandException {
@@ -65,42 +66,49 @@ public abstract class Command implements ICommand {
 		return this.exitStatus;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#getErrorMessage()
 	 */
 	public String getErrorMessage() throws IncompleteCommandException {
 		this.assertCommandComplete();
 		return this.errorMessage;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#isCommandComplete()
 	 */
-	public boolean isCommandComplete()
-	{
+	public boolean isCommandComplete() {
 		return (this.exitStatus != UNSET_EXIT_STATUS);
 	}
-	
-	
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#shouldPrintCommandUsage()
 	 */
 	public boolean shouldRenderCommandUsage() {
-		if(this.help)
-		{
+		if (this.help) {
 			this.exitStatus = PRINT_HELP_EXIT_STATUS;
 		}
 		return this.help;
 	}
-	
-	public boolean expectsProject()
-	{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.intuit.ginsu.ICommand#expectsProject()
+	 */
+	public boolean expectsProject() {
 		return false;
 	}
 
 	/**
-	 * @throws IncompleteCommandException when the Command is not complete and it should be.
+	 * @throws IncompleteCommandException
+	 *             when the Command is not complete and it should be.
 	 */
 	private void assertCommandComplete() throws IncompleteCommandException {
 		if (!this.isCommandComplete()) {

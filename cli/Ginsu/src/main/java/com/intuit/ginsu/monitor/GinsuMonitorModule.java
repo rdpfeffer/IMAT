@@ -8,25 +8,30 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.commands;
+package com.intuit.ginsu.monitor;
 
-import java.util.HashMap;
-
-import com.intuit.ginsu.ICommand;
+import com.google.inject.AbstractModule;
+import com.intuit.ginsu.ITestMonitor;
+import com.intuit.ginsu.annotations.iOS;
 
 /**
  * @author rpfeffer
- * @dateCreated Mar 26, 2011
+ * @dateCreated May 7, 2011
  * 
- *              This class exists to provide a single way to access all of the
- *              commands supported by ginsu.
+ *              //TODO Explain why this file exists and how it is used.
  * 
  */
-public class SupportedCommandCollection extends HashMap<String, ICommand> {
+public class GinsuMonitorModule extends AbstractModule {
 
-	/**
-	 * The id of this HashMap, to be used should this class ever be serialized.
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.inject.AbstractModule#configure()
 	 */
-	private static final long serialVersionUID = 1L;
+	@Override
+	protected void configure() {
+		bind(ITestMonitor.class).annotatedWith(iOS.class).to(
+				iOSTestMonitor.class);
+	}
 
 }

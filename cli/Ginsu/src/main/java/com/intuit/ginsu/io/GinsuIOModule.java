@@ -10,11 +10,14 @@
 *******************************************************************************/
 package com.intuit.ginsu.io;
 
+import java.util.Timer;
+
 import org.apache.log4j.Logger;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.intuit.ginsu.IApplicationResourceService;
+import com.intuit.ginsu.IFileMonitoringService;
 import com.intuit.ginsu.IProjectResourceService;
 
 /**
@@ -34,6 +37,7 @@ public class GinsuIOModule extends AbstractModule {
 	protected void configure() {
 		bind(IApplicationResourceService.class).to(FileSystemResourceService.class);
 		bind(IProjectResourceService.class).to(FileSystemResourceService.class);
+		bind(Timer.class);
 	}
 
 	@Provides PathAnalyzer providePathAnalyzer()
@@ -46,5 +50,10 @@ public class GinsuIOModule extends AbstractModule {
 		return new FileSystemResourceService(
 				Logger.getLogger(FileSystemResourceService.class), 
 				pathAnalyzer);
+	}
+	
+	@Provides IFileMonitoringService provideFileMonitoringService(Timer timer)
+	{
+		return new FileMonitoringService(timer);
 	}
 }

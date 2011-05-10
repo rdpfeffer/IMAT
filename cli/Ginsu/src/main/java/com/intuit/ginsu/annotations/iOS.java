@@ -22,15 +22,14 @@ import com.google.inject.BindingAnnotation;
 
 /**
  * @author rpfeffer
- * @dateCreated Apr 20, 2011
+ * @dateCreated May 7, 2011
  * 
- *              This is a BindingAnnotation for Guice. It tells the injection
- *              framework what value to use when something needs to inject the
- *              app's Home directory.
+ *              //TODO Explain why this file exists and how it is used.
  * 
  */
 @BindingAnnotation
 @Retention(RUNTIME)
 @Target({ FIELD, PARAMETER, METHOD })
-public @interface AppHome {
+public @interface iOS {
+
 }

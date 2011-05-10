@@ -39,30 +39,34 @@ import com.google.inject.spi.TypeListener;
  *         http://pastie.org/558544
  * @dateCreated Apr 19, 2011
  * 
- *              
- *              <p>Any class injected from a guice {@link Injector injector} using
+ * 
+ *              <p>
+ *              Any class injected from a guice {@link Injector injector} using
  *              this module will have a log4j Logger if either of the following
- *              conditions are met.</p>
+ *              conditions are met.
+ *              </p>
  * 
  *              <ol>
  *              <li>A constructor is present with a Logger parameter annotated
  *              with @Inject</li>
  * 
  *              <pre>
- * public static class A{
- *    private final Logger logger;
- *    
- *    @Inject public A(Logger logger) {
- *       this.logger = logger; 
- *    } 
+ * public static class A {
+ * 	private final Logger logger;
+ * 
+ * 	&#064;Inject
+ * 	public A(Logger logger) {
+ * 		this.logger = logger;
+ * 	}
  * }
  * </pre>
  * 
  *              <li>A field is present of type Logger annotated with @Inject</li>
  * 
  *              <pre>
- * public static class B{
- *    @Inject private  Logger logger;
+ * public static class B {
+ * 	&#064;Inject
+ * 	private Logger logger;
  * }
  * </pre>
  * 
@@ -78,11 +82,17 @@ import com.google.inject.spi.TypeListener;
  */
 public class BindLog4JWithClassNameModule extends AbstractModule {
 
+	/* (non-Javadoc)
+	 * @see com.google.inject.AbstractModule#configure()
+	 */
 	@Override
 	protected void configure() {
 		bindListener(any(), new BindLoggers());
 	}
 
+	/**
+	 * @return
+	 */
 	@Provides
 	Logger provideDefaultLoggerToSatisfyGuiceProvisionCheck() {
 		return Logger.getRootLogger();
@@ -95,11 +105,18 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			private final Logger logger;
 			private final Field field;
 
+			/**
+			 * @param logger
+			 * @param field
+			 */
 			AssignLoggerToField(Logger logger, Field field) {
 				this.logger = logger;
 				this.field = field;
 			}
 
+			/* (non-Javadoc)
+			 * @see com.google.inject.spi.InjectionListener#afterInjection(java.lang.Object)
+			 */
 			public void afterInjection(I injectee) {
 				try {
 					field.setAccessible(true);
@@ -110,6 +127,9 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			}
 		}
 
+		/* (non-Javadoc)
+		 * @see com.google.inject.spi.TypeListener#hear(com.google.inject.TypeLiteral, com.google.inject.spi.TypeEncounter)
+		 */
 		public <I> void hear(TypeLiteral<I> injectableType,
 				TypeEncounter<I> encounter) {
 			Class<? super I> type = injectableType.getRawType();
@@ -127,20 +147,38 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			assignLoggerAfterInjection(encounter, loggerFields, logger);
 		}
 
+		/**
+		 * @param type
+		 * @return
+		 */
 		@VisibleForTesting
 		static Set<Field> getInjectableLoggerFieldsFrom(Class<?> type) {
 			return onlyInjectableFields(onlyLoggerFields(allFieldsFrom(type)));
 		}
 
+		/**
+		 * @param type
+		 * @return
+		 */
 		@VisibleForTesting
 		static Set<Field> getAllLoggerFieldsFrom(Class<?> type) {
 			return onlyLoggerFields(allFieldsFrom(type));
 		}
 
+		/**
+		 * @param type
+		 * @return
+		 */
 		private static Logger getCorrectLoggerForType(Class<?> type) {
 			return Logger.getLogger(type.getName());
 		}
 
+		/**
+		 * @param <I>
+		 * @param encounter
+		 * @param loggerFields
+		 * @param logger
+		 */
 		private static <I> void assignLoggerAfterInjection(
 				TypeEncounter<I> encounter, Set<Field> loggerFields,
 				Logger logger) {
@@ -149,6 +187,10 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			}
 		}
 
+		/**
+		 * @param declaredType
+		 * @return
+		 */
 		@VisibleForTesting
 		static boolean hasInjectableConstructorWithLoggerParameter(
 				Class<?> declaredType) {
@@ -176,6 +218,10 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 					}).size() > 0;
 		}
 
+		/**
+		 * @param declaredType
+		 * @return
+		 */
 		private static Set<Field> allFieldsFrom(Class<?> declaredType) {
 			Set<Field> fields = new HashSet<Field>();
 			// find all the fields for this type.
@@ -187,6 +233,10 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			return fields;
 		}
 
+		/**
+		 * @param fields
+		 * @return
+		 */
 		private static Set<Field> onlyInjectableFields(Set<Field> fields) {
 			return filter(fields, new Predicate<Field>() {
 				public boolean apply(Field input) {
@@ -195,6 +245,10 @@ public class BindLog4JWithClassNameModule extends AbstractModule {
 			});
 		}
 
+		/**
+		 * @param fields
+		 * @return
+		 */
 		private static Set<Field> onlyLoggerFields(Set<Field> fields) {
 			return filter(fields, new Predicate<Field>() {
 				public boolean apply(Field input) {
