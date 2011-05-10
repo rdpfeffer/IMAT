@@ -12,7 +12,7 @@ package com.intuit.ginsu;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 /**
  * @author rpfeffer
@@ -83,7 +83,7 @@ public interface IScriptLauncher {
 	 * 
 	 * @param properties
 	 */
-	public void setProperties(Hashtable<String, String> properties);
+	public void setProperties(LinkedHashMap<String, String> properties);
 
 	/**
 	 * Run the script.

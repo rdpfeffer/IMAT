@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu;
 
 import java.io.File;
@@ -28,18 +28,21 @@ import java.util.Properties;
 public interface IProjectResourceService {
 
 	public static final String ENV_DIR = "env";
-	
+
 	/**
 	 * Return a file found in the user's project as a {@link File}.
-	 * @param fileName The name of the file to look for.
+	 * 
+	 * @param fileName
+	 *            The name of the file to look for.
 	 */
-	public File getProjectResourceFile(String fileName) throws FileNotFoundException;
-	
+	public File getProjectResourceFile(String fileName)
+			throws FileNotFoundException;
+
 	/**
 	 * 
 	 * @param propertiesFileName
-	 * @return {@link Properties} object representing the 
+	 * @return {@link Properties} object representing the
 	 */
 	public Properties getProjectProperties(String propertiesFileName);
-	
+
 }

@@ -10,21 +10,19 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
+import java.io.File;
+
 /**
  * @author rpfeffer
- * @dateCreated Apr 20, 2011
+ * @dateCreated May 7, 2011
  * 
- * 
+ *              //TODO Explain why this file exists and how it is used.
  * 
  */
-public class MisconfigurationException extends Exception {
+public interface IFileMonitoringService {
 
-	private static final long serialVersionUID = 1L;
+	public void monitorFile(File file, long interval, IFileListener listener);
 
-	/**
-	 * @return @TODO DocMe
-	 */
-	public MisconfigurationException(String message) {
-		super(message + " An internal configuration error occured.");
-	}
+	public void stopMonitoring();
+
 }

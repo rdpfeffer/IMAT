@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 import org.easymock.EasyMock;
@@ -33,6 +33,7 @@ import com.intuit.ginsu.io.FileSystemTestResourceService;
 import com.intuit.ginsu.io.GinsuIOModule;
 import com.intuit.ginsu.io.PathAnalyzer;
 import com.intuit.ginsu.logging.BindLog4JWithClassNameModule;
+import com.intuit.ginsu.monitor.GinsuMonitorModule;
 import com.intuit.ginsu.scripts.AntScriptLauncher;
 import com.intuit.ginsu.scripts.AntScriptLauncherForTesting;
 import com.intuit.ginsu.scripts.GinsuScriptsModule;
@@ -41,7 +42,8 @@ import com.intuit.ginsu.scripts.GinsuScriptsModule;
  * @author rpfeffer
  * @dateCreated Apr 12, 2011
  * 
- *              This class provides base methods commonly used in functional test classes.
+ *              This class provides base methods commonly used in functional
+ *              test classes.
  * 
  */
 public abstract class BaseFunctionalTest {
@@ -83,25 +85,23 @@ public abstract class BaseFunctionalTest {
 	protected boolean checkEachLineInFileForSubstring(File file, String substr) {
 		boolean stringExists = false;
 		try {
-			BufferedReader reader = new BufferedReader( new FileReader(file));
+			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = "";
-			while((line = reader.readLine()) != null)
-			{
-				if (line.contains(substr))
-				{
+			while ((line = reader.readLine()) != null) {
+				if (line.contains(substr)) {
 					stringExists = true;
 					break;
 				}
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
-			assert false: e.getStackTrace();
+			assert false : e.getStackTrace();
 		} catch (IOException e) {
-			assert false: e.getStackTrace();
+			assert false : e.getStackTrace();
 		}
 		return stringExists;
 	}
-	
+
 	/**
 	 * Return the Google Guice injector to created especially for functional
 	 * testing
@@ -109,23 +109,20 @@ public abstract class BaseFunctionalTest {
 	 * @param outputStream
 	 * @return
 	 */
-	protected Injector getFunctionalTestInjector(ByteArrayOutputStream outputStream) {
+	protected Injector getFunctionalTestInjector(
+			ByteArrayOutputStream outputStream) {
 		{
 			AppContext appContext = AppContext.INSTANCE;
-	    	appContext.setProperty(AppContext.APP_HOME_KEY, ".");
-	    	return Guice.createInjector(
-	    		Modules.override(new GinsuCLIModule())
-	    			.with(new GinsuCLIModuleOverrideForTesting(outputStream)),
-    			new BindLog4JWithClassNameModule(),
-    	    	new GinsuCommandsModule(),
-    	    	new GinsuIOModule(),
-    	    	new GinsuConfigModule(),
-    	    	new GinsuScriptsModule()
-	    	);
+			appContext.setProperty(AppContext.APP_HOME_KEY, ".");
+			return Guice.createInjector(Modules.override(new GinsuCLIModule())
+					.with(new GinsuCLIModuleOverrideForTesting(outputStream)),
+					new BindLog4JWithClassNameModule(),
+					new GinsuCommandsModule(), new GinsuIOModule(),
+					new GinsuConfigModule(), new GinsuScriptsModule(),
+					new GinsuMonitorModule());
 		}
 	}
-	
-	
+
 	/**
 	 * Delete all project files created at targetPath to clean up after
 	 * functional testing.
@@ -133,17 +130,16 @@ public abstract class BaseFunctionalTest {
 	 * @param targetPath
 	 *            the path where the project exists.
 	 */
-	protected void deleteAllFilesInGeneratedProject(String targetPath)
-	{
+	protected void deleteAllFilesInGeneratedProject(String targetPath) {
 		PathAnalyzer mockPathAnalyzer = EasyMock.createMock(PathAnalyzer.class);
-		FileSystemTestResourceService resourceService = 
-			new FileSystemTestResourceService(
-					Logger.getLogger(FileSystemResourceService.class), mockPathAnalyzer);
-		AntScriptLauncher scriptLauncher = new AntScriptLauncherForTesting(resourceService,
-				Logger.getLogger(AntScriptLauncher.class));
+		FileSystemTestResourceService resourceService = new FileSystemTestResourceService(
+				Logger.getLogger(FileSystemResourceService.class),
+				mockPathAnalyzer);
+		AntScriptLauncher scriptLauncher = new AntScriptLauncherForTesting(
+				resourceService, Logger.getLogger(AntScriptLauncher.class));
 		File cleanupScript = getTestResourceAsFile("deleteProjectFiles.xml");
 		scriptLauncher.setScript(cleanupScript.getPath());
-		Hashtable<String, String> properties = new Hashtable<String, String>();
+		LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
 		properties.put("target.dir", targetPath);
 		scriptLauncher.setProperties(properties);
 		scriptLauncher.setProjectListener(System.out);

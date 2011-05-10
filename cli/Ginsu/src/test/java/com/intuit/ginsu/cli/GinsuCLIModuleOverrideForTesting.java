@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.opensource.org/licenses/eclipse-1.0.php
-* 
-* Contributors:
-*     Intuit, Inc - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2009 Intuit, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ * 
+ * Contributors:
+ *     Intuit, Inc - initial API and implementation
+ *******************************************************************************/
 package com.intuit.ginsu.cli;
 
 import java.io.ByteArrayOutputStream;
@@ -28,24 +28,27 @@ import com.google.inject.Provides;
 public class GinsuCLIModuleOverrideForTesting extends AbstractModule {
 
 	private ByteArrayOutputStream outputStream;
-	
-	GinsuCLIModuleOverrideForTesting (ByteArrayOutputStream outputStream)
-	{
+
+	GinsuCLIModuleOverrideForTesting(ByteArrayOutputStream outputStream) {
 		this.outputStream = outputStream;
 	}
-	
+
 	/**
 	 * Provide a PrintWriter that has the desired output stream.
-	 * @param outputStream an {@link OutputStream} to print to.
+	 * 
+	 * @param outputStream
+	 *            an {@link OutputStream} to print to.
 	 * @return a {@link PrintWriter} with the {@link OutputStream} passed in.
 	 */
-	@Provides PrintWriter providePrintWriter()
-	{
-		PrintWriter pw = new PrintWriter(this.outputStream, true); 
+	@Provides
+	PrintWriter providePrintWriter() {
+		PrintWriter pw = new PrintWriter(this.outputStream, true);
 		return pw;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.google.inject.AbstractModule#configure()
 	 */
 	@Override

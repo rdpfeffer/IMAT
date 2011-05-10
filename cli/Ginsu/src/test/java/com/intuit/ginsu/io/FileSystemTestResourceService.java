@@ -27,28 +27,44 @@ import com.google.inject.Inject;
  */
 public class FileSystemTestResourceService extends FileSystemResourceService {
 
+	/**
+	 * @param logger
+	 * @param pathAnalyzer
+	 */
 	@Inject
 	public FileSystemTestResourceService(Logger logger, PathAnalyzer pathAnalyzer) {
 		super(logger, pathAnalyzer);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.FileSystemResourceService#getAppScript(java.lang.String)
+	 */
 	@Override
 	public File getAppScript(String scriptName) throws FileNotFoundException {
 		return this.getAppResourceFile(scriptName, true);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.FileSystemResourceService#getTargetDir()
+	 */
 	@Override
 	protected String getTargetDir()
 	{
 		return "";
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.FileSystemResourceService#getDevResourcesDir()
+	 */
 	@Override
 	protected String getDevResourcesDir()
 	{
 		return "";
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.intuit.ginsu.io.FileSystemResourceService#getScriptsDir()
+	 */
 	@Override
 	protected String getScriptsDir()
 	{

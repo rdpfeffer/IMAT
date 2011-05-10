@@ -37,9 +37,10 @@ public interface IApplicationResourceService extends IPathAnalysis {
 	 *            where you want extracted files that you can point to rather
 	 *            than files embeded within a java archive file like a JAR or a
 	 *            WAR
-	 * @return The {@link File} which represents the Application resource requested.
-	 * @throws {@link FileNotFoundException}
-	 *             when the file given by fileName cannot be found.
+	 * @return The {@link File} which represents the Application resource
+	 *         requested.
+	 * @throws {@link FileNotFoundException} when the file given by fileName
+	 *         cannot be found.
 	 */
 	public File getAppResourceFile(String fileName, boolean skipClassloader)
 			throws FileNotFoundException;
@@ -49,8 +50,8 @@ public interface IApplicationResourceService extends IPathAnalysis {
 	 * 
 	 * @param fileName
 	 *            The name of the file to look for.
-	 * @throws {@link FileNotFoundException}
-	 *             when the script given by scriptName cannot be found.
+	 * @throws {@link FileNotFoundException} when the script given by scriptName
+	 *         cannot be found.
 	 */
 	public File getAppScript(String scriptName) throws FileNotFoundException;
 
@@ -60,8 +61,8 @@ public interface IApplicationResourceService extends IPathAnalysis {
 	 * @param propertiesFileName
 	 *            The name of the properties file to retrieve.
 	 * @return {@link Properties} object representing the properties of the
-	 *         application. When the file defined by propertiesFileName does
-	 *         not exist, the result is an empty properties object.
+	 *         application. When the file defined by propertiesFileName does not
+	 *         exist, the result is an empty properties object.
 	 */
 	public Properties getAppProperties(String propertiesFileName);
 }

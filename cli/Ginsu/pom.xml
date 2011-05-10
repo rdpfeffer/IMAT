@@ -27,6 +27,7 @@
 				<version>2.2-beta-2</version>
 				<configuration>
 					<descriptor>src/main/assembly/dep.xml</descriptor>
+<!-- 					<filters>src/main/assembly/filter.properties</filters> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -38,11 +39,14 @@
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-              				<mainClass>com.intuit.ginsu.cli.App</mainClass>
+							<mainClass>com.intuit.ginsu.cli.App</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Bundle-Version>${project.version}</Bundle-Version>
-							<Bundle-Description>This is the Ginsu Command Line Interface (CLI) It is used to streamline application testing by orchestrating tools, providing consistency of reporting, and generating commonly used report suites.</Bundle-Description>
+							<Bundle-Description>This is the Ginsu Command Line Interface
+								(CLI) It is used to streamline application testing by
+								orchestrating tools, providing consistency of reporting, and
+								generating commonly used report suites.</Bundle-Description>
 							<Implementation-Version>${project.version}</Implementation-Version>
 						</manifestEntries>
 					</archive>
@@ -58,6 +62,27 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
+<!-- 			<plugin> -->
+				<!-- 
+				See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info.
+				 -->
+<!-- 				<groupId>gr.abiss.mvn.plugins</groupId> -->
+<!-- 				<artifactId>maven-jstools-plugin</artifactId> -->
+<!-- 				<version>0.7</version> -->
+<!-- 				<configuration> -->
+<!-- 					<jsDir>src/main/resources/js</jsDir> -->
+<!-- 					<includes>**/*.js</includes>  -->
+<!-- 					<reportSets>   -->
+<!-- 					   <reportSet>   -->
+<!-- 					      <reports>   -->
+					         <!-- include the desired reports -->  
+<!-- 					         <report>jslint</report>   -->
+<!-- 					         <report>jsdoc</report>   -->
+<!-- 					      </reports>   -->
+<!-- 					   </reportSet>   -->
+<!-- 					</reportSets>  -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
@@ -74,19 +99,19 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.ant</groupId>
-		    <artifactId>ant</artifactId>
-		    <version>1.8.2</version>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.8.2</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.beust</groupId>
-		  <artifactId>jcommander</artifactId>
-		  <version>1.17</version>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.17</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.google.inject</groupId>
-		  <artifactId>guice</artifactId>
-		  <version>3.0</version>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>

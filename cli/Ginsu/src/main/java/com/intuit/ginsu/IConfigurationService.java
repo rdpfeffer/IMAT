@@ -10,7 +10,6 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
-
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
@@ -31,7 +30,7 @@ public interface IConfigurationService {
 	/**
 	 * Set up the initial configuration of Ginsu. This initialization is meant
 	 * to happen during the first use of Ginsu to make sure that the project is
-	 * set up correctly. This may include accepting a terms of agreement, or 
+	 * set up correctly. This may include accepting a terms of agreement, or
 	 * otherwise.
 	 */
 	public void doFirstTimeInitialization();
@@ -47,6 +46,7 @@ public interface IConfigurationService {
 	 * case. Therefore, we have named this from the perspective of the consuming
 	 * code so that it would read easier within a conditional:
 	 * </p>
+	 * 
 	 * <pre>
 	 * ...
 	 * if ( configService.isNotInitialized() && ...)
@@ -55,20 +55,21 @@ public interface IConfigurationService {
 	 * }
 	 * ...
 	 * </pre>
+	 * 
 	 * @return true if ginsu has not been initialized, false if it has.
 	 */
 	public boolean isNotInitialized(String homeDir);
 
 	/**
-	 * Load the configuration from the default configuration store(s). 
+	 * Load the configuration from the default configuration store(s).
 	 * 
 	 * @throws MisconfigurationException
 	 * @throws {@link ProjectConfigurationNotFoundException}
 	 */
-	public void loadConfiguration(boolean expectsProjectConfig) throws 
-		MisconfigurationException, 
-		ProjectConfigurationNotFoundException;
-	
+	public void loadConfiguration(boolean expectsProjectConfig)
+			throws MisconfigurationException,
+			ProjectConfigurationNotFoundException;
+
 	public boolean shouldSkipExitStatus();
 
 }

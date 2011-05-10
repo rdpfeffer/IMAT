@@ -31,7 +31,7 @@ public enum AppContext {
 
 	/* Our Singleton */
 	INSTANCE;
-	
+
 	/**
 	 * The main home key for the application to be used when getting the Home
 	 * directory of the application.
@@ -42,7 +42,7 @@ public enum AppContext {
 	 * </p>
 	 */
 	public static final String APP_HOME_KEY = "home_key";
-	
+
 	/**
 	 * The main project key for the application to be used when getting the Home
 	 * directory of the target project.
@@ -53,7 +53,7 @@ public enum AppContext {
 	 * </p>
 	 */
 	public static final String PROJECT_HOME_KEY = "project_key";
-	
+
 	/**
 	 * This is Key to the property used to determine if the application should
 	 * exit returning the command's exit status. NOTE: if a property is not
@@ -61,7 +61,7 @@ public enum AppContext {
 	 */
 	public static final String SKIP_EXIT_STATUS = "skip_exit_status_key";
 	private final HashSet<Module> appModules = new HashSet<Module>();
-	private final Hashtable<String,String> properties = new Hashtable<String, String>();
+	private final Hashtable<String, String> properties = new Hashtable<String, String>();
 
 	/**
 	 * @return the {@link HashSet} of Modules currently added to the app
@@ -89,11 +89,10 @@ public enum AppContext {
 	 * @return {@link Injector} an instance of the dependency injector
 	 *         configured to use the currently set application module
 	 */
-	public Injector getInjector()
-	{
+	public Injector getInjector() {
 		return Guice.createInjector(this.getAppModules());
 	}
-	
+
 	/**
 	 * Get a non-null property from the application context. If the key for the
 	 * property does not exist, return the empty string.
@@ -104,22 +103,23 @@ public enum AppContext {
 	 * @return {@link String} - The value matching key, or the empty string if
 	 *         the key has not been set
 	 */
-	public String getProperty(String key)
-	{
+	public String getProperty(String key) {
 		String value = this.properties.get(key);
 		return (value == null ? "" : value);
 	}
-	
+
 	/**
 	 * Set an application property on the App Context.
-	 * @param key String the key by which the property can be retrieved.
-	 * @param value The value of the property.
+	 * 
+	 * @param key
+	 *            String the key by which the property can be retrieved.
+	 * @param value
+	 *            The value of the property.
 	 */
-	public void setProperty(String key, String value)
-	{
+	public void setProperty(String key, String value) {
 		this.properties.put(key, value);
 	}
-	
+
 	/**
 	 * Override a set of properties already set on the Application context.
 	 * 
@@ -127,18 +127,16 @@ public enum AppContext {
 	 *            The {@link Hashtable} of Properties which will override what
 	 *            is already set in the applicaiton context.
 	 */
-	public void overrideProperties(Hashtable<String, String> properties)
-	{
+	public void overrideProperties(Hashtable<String, String> properties) {
 		this.properties.putAll(properties);
 	}
-	
+
 	/**
 	 * Clear the Application Context to an empty state. This function clears all
-	 * previously set modules and properties and leaves the app context in a clean
-	 * state as if it were a new instance.
+	 * previously set modules and properties and leaves the app context in a
+	 * clean state as if it were a new instance.
 	 */
-	public void clear()
-	{
+	public void clear() {
 		appModules.clear();
 		properties.clear();
 	}

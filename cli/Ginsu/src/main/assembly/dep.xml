@@ -27,6 +27,7 @@
 				<include>LICENSE*</include>
 				<include>NOTICE*</include>
 			</includes>
+			<filtered>true</filtered>
 		</fileSet>
 		<fileSet>
 			<directory>${project.build.directory}</directory>
@@ -47,6 +48,7 @@
 				<include>templates/**</include>
 				<include>js/**</include>
 				<include>scripts/**</include>
+				<include>logs/**</include>
 			</includes>
 		</fileSet>
 		<fileSet>

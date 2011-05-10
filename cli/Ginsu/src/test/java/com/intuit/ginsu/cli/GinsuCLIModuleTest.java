@@ -25,7 +25,7 @@ public class GinsuCLIModuleTest {
 
 	@BeforeClass
 	public void setupInjector() {
-		App.initAppContext(new String[]{MainArgs.HOME, "."});
+		App.initAppContext(new String[] { MainArgs.HOME, "." });
 		this.injector = AppContext.INSTANCE.getInjector();
 	}
 
@@ -34,11 +34,13 @@ public class GinsuCLIModuleTest {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		JCommander jCommander = injector.getInstance(JCommander.class);
-		SupportedCommandCollection supportedCommands = injector.getInstance(SupportedCommandCollection.class);
-		jCommander.addCommand(CommandRunTests.NAME, supportedCommands.get(CommandRunTests.NAME));
+		SupportedCommandCollection supportedCommands = injector
+				.getInstance(SupportedCommandCollection.class);
+		jCommander.addCommand(CommandRunTests.NAME,
+				supportedCommands.get(CommandRunTests.NAME));
 		jCommander.usage(stringBuilder);
 		assert stringBuilder.toString().contains("Ginsu");
-		
+
 		// Just for safe measure, also make sure that we are always getting a
 		// new instance of JCommander when we ask for it.
 		assert jCommander != injector.getInstance(JCommander.class);
@@ -117,7 +119,8 @@ public class GinsuCLIModuleTest {
 
 	@Test
 	public void testSupportedCommandProvider() {
-		SupportedCommandCollection collection = injector.getInstance(SupportedCommandCollection.class);
+		SupportedCommandCollection collection = injector
+				.getInstance(SupportedCommandCollection.class);
 		assert collection.size() > 0;
 		assert collection.get(UsagePrinter.NAME) instanceof UsagePrinter;
 	}

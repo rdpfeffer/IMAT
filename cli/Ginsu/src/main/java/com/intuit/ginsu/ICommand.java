@@ -10,7 +10,6 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
-
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
@@ -75,8 +74,9 @@ public interface ICommand {
 	 * possible that an error message will accompany it. Call this method to get
 	 * an error message from an abnormally completing {@link ICommand} object.
 	 * 
-	 * NOTE: This method is really not used in version 1.0 of Ginsu, but is reserved
-	 * for future functionality depending on how the project moves forward.
+	 * NOTE: This method is really not used in version 1.0 of Ginsu, but is
+	 * reserved for future functionality depending on how the project moves
+	 * forward.
 	 * 
 	 * @return a {@link String} representing the error message from running this
 	 *         command containing information as to what when wrong
@@ -84,9 +84,10 @@ public interface ICommand {
 	 *             when called before the command has completed.
 	 */
 	public String getErrorMessage() throws IncompleteCommandException;
-	
+
 	/**
 	 * Returns the name of the command.
+	 * 
 	 * @return {@link String} the name of the command.
 	 */
 	public String getName();
@@ -108,7 +109,7 @@ public interface ICommand {
 	 * chance to return usage information back to the user. For example when
 	 * this command returns true, the CommandDispatchServiceImpl class will not
 	 * run the command, but rather print its usage out to the console. In other
-	 * implementations of the ICommandDispatchService it may cause the help to 
+	 * implementations of the ICommandDispatchService it may cause the help to
 	 * be displayed in other ways.
 	 * 
 	 * @return true when the Command usage information should be rendered.
@@ -118,7 +119,7 @@ public interface ICommand {
 	/**
 	 * Determines whether or not this command expects project configuration to
 	 * be loaded. NOTE: if this method returns false it does not mean the
-	 * applicaiton will not load project properties, only that does not rely on
+	 * Application will not load project properties, only that does not rely on
 	 * them to complete. If set to true, it may cause the application to behave
 	 * differently if the project configuration cannot be found.
 	 * 

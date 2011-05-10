@@ -10,7 +10,6 @@
  *******************************************************************************/
 package com.intuit.ginsu;
 
-
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -38,21 +37,27 @@ public class NullCommand implements ICommand {
 		return this.getExitStatus();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#getName()
 	 */
 	public String getName() {
 		return NullCommand.NAME;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#isRunnable()
 	 */
 	public boolean isRunnable() {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#getExitStatus()
 	 */
 	public int getExitStatus() {
@@ -61,7 +66,9 @@ public class NullCommand implements ICommand {
 		return NULL_COMMAND_ERROR_CODE;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#getErrorMessage()
 	 */
 	public String getErrorMessage() {
@@ -70,22 +77,29 @@ public class NullCommand implements ICommand {
 		return "";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#isCommandComplete()
 	 */
 	public boolean isCommandComplete() {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.commands.ICommand#shouldRenderCommandUsage()
 	 */
 	public boolean shouldRenderCommandUsage() {
-		// there is now help for this command so we will always return false here
+		// there is now help for this command so we will always return false
+		// here
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.ginsu.ICommand#expectsProject()
 	 */
 	public boolean expectsProject() {

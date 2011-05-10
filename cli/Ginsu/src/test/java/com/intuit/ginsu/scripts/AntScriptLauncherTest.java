@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 import org.easymock.EasyMock;
@@ -102,7 +102,7 @@ public class AntScriptLauncherTest extends BaseFunctionalTest {
 		scriptWithProps.setExecutable(true);
 		scriptWithProps.setReadable(true);
 		scriptLauncher.setScript(scriptWithProps.getPath());
-		Hashtable<String, String> properties = new Hashtable<String, String>();
+		LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
 		properties.put("name", "Johnny Utah");
 		scriptLauncher.setProperties(properties);
 		scriptLauncher.runScript();
