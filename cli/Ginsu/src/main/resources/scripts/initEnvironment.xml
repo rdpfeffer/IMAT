@@ -28,7 +28,7 @@
 				<include name="**/env.js" />
 			</fileset>
 			<filterset>
-				<filter token="PATH_TO_GINSU" value="${path.to.ginsu}" />
+				<filter token="PATH_TO_APP" value="${path.to.ginsu}" />
 			</filterset>
 		</copy>
 	</target>

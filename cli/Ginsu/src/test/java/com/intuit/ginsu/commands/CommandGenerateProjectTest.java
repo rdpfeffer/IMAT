@@ -3,12 +3,10 @@ package com.intuit.ginsu.commands;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.google.inject.Injector;
@@ -39,30 +37,17 @@ public class CommandGenerateProjectTest extends BaseFunctionalTest {
 		this.injector = getFunctionalTestInjector(outputStreamFixture);
 	}
 
-	@AfterClass
-	public void afterClass() {
-
-	}
-
-	@BeforeTest
-	public void beforeTest() {
-
-	}
-
 	@AfterTest
 	public void afterTest() {
 		this.targetDir.delete();
 	}
 
 	@Test
-	public void testRunWithValidOptions() {
+	public void testRunWithValidOptions() throws MisconfigurationException {
 		this.command.targetDir = this.targetDir;
 		this.command.globalObjectVar = "FOO";
-		try {
-			this.command.run();
-		} catch (MisconfigurationException e) {
-			assert false : e.getMessage();
-		}
+
+		this.command.run();
 
 		// test to make sure that the Tokens were all matched
 		File[] targetDirFiles = this.command.targetDir.listFiles();
@@ -71,7 +56,7 @@ public class CommandGenerateProjectTest extends BaseFunctionalTest {
 		for (int i = 0; i < targetDirFiles.length; i++) {
 			if (targetDirFiles[i].getName() == "project.js") {
 				assert false == this.checkEachLineInFileForSubstring(
-						targetDirFiles[i], "@PATH_TO_GINSU@") : "@PATH_TO_GINSU@ found in file when it should not have existed";
+						targetDirFiles[i], "@PATH_TO_APP@") : "@PATH_TO_APP@ found in file when it should not have existed";
 				assert false == this.checkEachLineInFileForSubstring(
 						targetDirFiles[i], "@GLOBAL_OBJECT@") : "@GLOBAL_OBJECT@ found in file when it should not have existed";
 			}
@@ -81,11 +66,6 @@ public class CommandGenerateProjectTest extends BaseFunctionalTest {
 	@Test
 	public void testRunWithDefaultOptions() {
 		// this.command.run();
-		// assert false;
-	}
-
-	@Test
-	public void testRunWithInvalidGlobalObj() {
 		// assert false;
 	}
 

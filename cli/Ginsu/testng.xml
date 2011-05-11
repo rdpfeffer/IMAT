@@ -11,6 +11,7 @@
       <class name="com.intuit.ginsu.io.PathAnalyzerTest"/>
       <!-- <class name="com.intuit.ginsu.commands.CommandInitEnvTest"/>-->
       <class name="com.intuit.ginsu.scripts.AntScriptLauncherTest"/>
+      <class name="com.intuit.ginsu.validators.JavaScriptVariableValidatorTests" />
     </classes>
   </test>
 </suite>

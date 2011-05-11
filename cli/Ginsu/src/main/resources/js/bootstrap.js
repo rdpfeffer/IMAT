@@ -44,7 +44,7 @@ if(GINSU_TARGET_PLATFORM)
 }
 else
 {
-	throw "GINSU_TARGET_PLATFORM not Set! Please set to one of the following: " + GINSU.platforms;
+	throw "GINSU_TARGET_PLATFORM not Set! Please set to one of the following: " + GINSU.platforms; 
 }
 
 // Declare the Runner Classes

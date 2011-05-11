@@ -25,7 +25,7 @@ import com.intuit.ginsu.IProjectResourceService;
 import com.intuit.ginsu.IScriptLauncher;
 import com.intuit.ginsu.MisconfigurationException;
 import com.intuit.ginsu.cli.converters.FileConverter;
-import com.intuit.ginsu.cli.validators.JavaScriptVariableValidator;
+import com.intuit.ginsu.validators.JavaScriptVariableValidator;
 
 /**
  * @author rpfeffer
@@ -66,8 +66,10 @@ public class CommandNewProject extends ScriptedCommand implements ICommand {
 			+ " not provided, it is assumed to be the current directory: \".\"")
 	File targetDir = new File(".");
 
+	
 	public static final String GLOBAL_OBJECT_VAR = "-globalObjVar";
 	public static final String GLOBAL_OBJECT_VAR_DEFAULT_VAL = "AUTO";
+
 	@Parameter(names = { GLOBAL_OBJECT_VAR, "-g" }, validateWith = JavaScriptVariableValidator.class, description = "The variable  name of the global object which will hold "
 			+ "reference to all objects that are created within the JavaScript "
 			+ "source of your automation project. In JavaScript, it is good "

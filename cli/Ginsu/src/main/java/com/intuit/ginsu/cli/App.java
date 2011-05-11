@@ -39,6 +39,9 @@ import com.intuit.ginsu.scripts.GinsuScriptsModule;
  *              line interface.
  */
 public class App {
+	public static final String APP_NAME_NORMAL = "Ginsu";
+	public static final String APP_NAME_LOWERCASE = APP_NAME_NORMAL.toLowerCase();
+	public static final String APP_NAME_UPPERCASE = APP_NAME_NORMAL.toUpperCase();
 	private static final int APP_HOME_ARGS_INDEX = 1;
 	private static final int ABNORMAL_EXIT_STATUS = -1;
 

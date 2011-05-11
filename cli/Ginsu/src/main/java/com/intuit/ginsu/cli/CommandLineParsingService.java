@@ -15,9 +15,10 @@ import java.util.Map;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
-import com.intuit.ginsu.NullCommand;
+import com.beust.jcommander.MissingCommandException;
 import com.intuit.ginsu.ICommand;
 import com.intuit.ginsu.IInputHandlingService;
+import com.intuit.ginsu.NullCommand;
 import com.intuit.ginsu.commands.SupportedCommandCollection;
 
 /**
@@ -69,7 +70,6 @@ public class CommandLineParsingService implements IInputHandlingService {
 	 * com.intuit.ginsu.cli.IInputParsingService#parseInput(java.lang.String[])
 	 */
 	public void handleInput(String[] input) {
-
 		stringBuilder = new StringBuilder();
 		ICommand parsedCommand = getParsedCommand(input);
 		if (parsedCommand.shouldRenderCommandUsage()) {
@@ -133,11 +133,7 @@ public class CommandLineParsingService implements IInputHandlingService {
 			parsedCommand = supportedCommands
 					.get(jCommander.getParsedCommand());
 		} catch (Throwable e) {
-			// When jCommander parses the command, it is possible for it
-			// to throw an unchecked exception at runtime.
-			stringBuilder.append(e.getMessage()
-					+ System.getProperty("line.separator"));
-			parsedCommand = getUsagePrinter();
+			parsedCommand = getUsagePrinterForException(e);
 		}
 		return parsedCommand;
 	}
@@ -158,6 +154,20 @@ public class CommandLineParsingService implements IInputHandlingService {
 			usagePrinter.setUsage(stringBuilder.toString());
 		}
 		return usagePrinter;
+	}
+
+	private UsagePrinter getUsagePrinterForException(Throwable e) {
+		UsagePrinter usagePrinterForException;
+		if (e.getClass() == MissingCommandException.class) {
+			stringBuilder.append(e.getMessage()
+					+ System.getProperty("line.separator"));
+			usagePrinterForException = getUsagePrinter();
+		} else {
+			usagePrinterForException = (UsagePrinter) supportedCommands
+					.get(UsagePrinter.NAME);
+			usagePrinterForException.setUsage(e.getMessage());
+		} 
+		return usagePrinterForException;
 	}
 
 	/**

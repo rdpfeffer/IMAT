@@ -72,21 +72,15 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 	 */
 	@AfterMethod()
 	protected void tearDown() throws Exception {
-		try {
-			this.outputStreamFixture.flush();
-			this.outputStreamFixture.close();
-		} catch (IOException e) {
-			// if we get here we should throw a failure to show that something
-			// went wrong
-			AssertJUnit.assertTrue(e.getMessage(), false);
-		}
+		this.outputStreamFixture.flush();
+		this.outputStreamFixture.close();
 	}
 
 	/**
 	 * Test that we handle basic and valid commands
 	 */
 	@Test()
-	public void testParseInputWithValidCommands() {
+	public void testHandleInputWithValidCommands() {
 		String[][] testData = new String[][] {
 				new String[] { UsagePrinter.NAME },
 				new String[] { CommandInitEnv.NAME, "-template",
@@ -125,9 +119,10 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 	/**
 	 * Test that a parsing error will result in a null command and showing an
 	 * error/usage message to the user.
+	 * @throws MisconfigurationException 
 	 */
 	@Test()
-	public void testParseInputWithInvalidCommands() {
+	public void testHandleInputWithBogusCommands() throws MisconfigurationException {
 		// Set up the specifics for this test
 		String[] testData = new String[] { "foobar" };
 		MainArgs mainArgs = injector.getInstance(MainArgs.class);
@@ -150,19 +145,48 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 		AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(),
 				parsingService.getConfigurationOverride());
 
-		try {
-			resultingCommand.run();
-		} catch (MisconfigurationException e) {
-			assert false : e.getMessage();
-		}
+		resultingCommand.run();
 		String result = this.outputStreamFixture.toString();
 		assert result.contains("Expected a command, got foobar");
-		assert result
-				.contains("Usage: ginsu [options] [command] [command options]");
+	}
+	
+	/**
+	 * Test that our commands are getting validated by our custom validator 
+	 * classes
+	 * 
+	 * @TODO: Rewrite this using Mock Objects for the JCommander Object.
+	 */
+	@Test()
+	public void testHandleInputWithInvalidCommand() throws MisconfigurationException {
+//		// Set up the specifics for this test
+//		String[] testData = new String[] { CommandNewProject.NAME, "-g", App.APP_NAME_UPPERCASE};
+//		MainArgs mainArgs = injector.getInstance(MainArgs.class);
+//		mainArgs.appHome = ".";
+//		this.jCommander = injector.getInstance(JCommander.class);
+//		SupportedCommandCollection cmdCollection = injector
+//				.getInstance(SupportedCommandCollection.class);
+//		CommandLineParsingService parsingService = new CommandLineParsingService(
+//				this.jCommander, mainArgs, cmdCollection);
+//
+//		StringBuilder exepectedUsageString = new StringBuilder();
+//		this.jCommander.usage(exepectedUsageString);
+//		ICommand expectedCommand = new UsagePrinter(printWriter);
+//
+//		// parse the test data
+//		parsingService.handleInput(testData);
+//		ICommand resultingCommand = parsingService.getCommand();
+//		AssertJUnit.assertEquals(expectedCommand.getName(),
+//				resultingCommand.getName());
+//		AssertJUnit.assertEquals(mainArgs.getConfigurationOverride(),
+//				parsingService.getConfigurationOverride());
+//
+//		resultingCommand.run();
+//		String result = this.outputStreamFixture.toString();
+//		assert result.contains("-globalObjVar may not be equal to: GINSU");
 	}
 
 	@Test()
-	public void testParseInputWithCommandHelp() {
+	public void testHandleInputWithCommandHelp() {
 		String[][] testArgs = new String[][] {
 				new String[] { UsagePrinter.NAME },
 				new String[] { CommandInitEnv.NAME, "-help" },
@@ -175,8 +199,7 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 			String[] args = testArgs[i];
 
 			// The JCommander Object gains state when you invoke its "parse()"
-			// method,
-			// so we need to keep recreating new ones in the loop.
+			// method, so we need to keep recreating new ones in the loop.
 			this.jCommander = injector.getInstance(JCommander.class);
 			SupportedCommandCollection cmdCollection = injector
 					.getInstance(SupportedCommandCollection.class);

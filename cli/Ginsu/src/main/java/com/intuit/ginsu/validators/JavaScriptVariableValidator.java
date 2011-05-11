@@ -8,10 +8,12 @@
  * Contributors:
  *     Intuit, Inc - initial API and implementation
  *******************************************************************************/
-package com.intuit.ginsu.cli.validators;
+package com.intuit.ginsu.validators;
 
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;
+import com.google.common.base.CharMatcher;
+import com.intuit.ginsu.cli.App;
 
 /**
  * @author rpfeffer
@@ -26,6 +28,15 @@ import com.beust.jcommander.ParameterException;
  */
 public class JavaScriptVariableValidator implements IParameterValidator {
 
+	private static final CharMatcher NON_JAVASCRIPT_VAR = CharMatcher
+			.inRange('a', 'z').or(CharMatcher.inRange('A', 'Z'))
+			.or(CharMatcher.inRange('0', '9')).or(CharMatcher.is('$'))
+			.or(CharMatcher.is('_')).negate();
+
+	private static final CharMatcher NUMBERS = CharMatcher.inRange('0', '9');
+	private static final String TRY_HELP = "Try \"" + App.APP_NAME_LOWERCASE
+			+ " [command] -help\" to get more information.";
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -33,15 +44,22 @@ public class JavaScriptVariableValidator implements IParameterValidator {
 	 * java.lang.String)
 	 */
 	public void validate(String name, String value) throws ParameterException {
-
-		// TODO RP: Finish implementing this method.
-
-		// cannot Start with a number
-
-		// cannot be "GINSU"
-
-		// cannot contain "@", even though the Actual JS Spec allows it.
-
+		if (NUMBERS.matches(value.charAt(0))) {
+			throw new ParameterException(name + " may not start with a number."
+					+ " Given: " + value + " " + TRY_HELP);
+		}
+		for (int i = 0; i < value.length(); i++) {
+			if (NON_JAVASCRIPT_VAR.matches(value.charAt(i))) {
+				throw new ParameterException(name
+								+ " may contain only letters,"
+								+ " numbers, and any of the following characters: '$', "
+								+ "'_'. Was given the value: " + value + " "
+								+ TRY_HELP);
+			}
+		}
+		if (value.equals(App.APP_NAME_UPPERCASE)) {
+			throw new ParameterException(name + " may not be equal to \""
+					+ App.APP_NAME_UPPERCASE + "\". " + TRY_HELP);
+		}
 	}
-
 }
