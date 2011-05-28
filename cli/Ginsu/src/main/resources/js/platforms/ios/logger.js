@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -15,9 +15,9 @@
  *
  * @param message string - The message to be logged
  */
-GINSU.log_error = function(message)
+IMAT.log_error = function(message)
 {
-	if (GINSU.settings.logLevel >= GINSU.logLevels.LOG_ERROR)
+	if (IMAT.settings.logLevel >= IMAT.logLevels.LOG_ERROR)
 	{
 		//NOTE: this will take a screenshot as well.
 		UIALogger.logError(message);
@@ -30,9 +30,9 @@ GINSU.log_error = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_warning = function(message)
+IMAT.log_warning = function(message)
 {
-	if (GINSU.settings.logLevel >= GINSU.logLevels.LOG_WARN)
+	if (IMAT.settings.logLevel >= IMAT.logLevels.LOG_WARN)
 	{
 		//NOTE: this will take a screenshot as well.
 		UIALogger.logWarning(message);
@@ -44,9 +44,9 @@ GINSU.log_warning = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_info = function(message)
+IMAT.log_info = function(message)
 {
-	if (GINSU.settings.logLevel >= GINSU.logLevels.LOG_INFO)
+	if (IMAT.settings.logLevel >= IMAT.logLevels.LOG_INFO)
 	{
 		UIALogger.logMessage(message);
 	}
@@ -57,9 +57,9 @@ GINSU.log_info = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_debug = function(message)
+IMAT.log_debug = function(message)
 {
-	if (GINSU.settings.logLevel >= GINSU.logLevels.LOG_DEBUG)
+	if (IMAT.settings.logLevel >= IMAT.logLevels.LOG_DEBUG)
 	{
 		UIALogger.logDebug("DEBUG: " + message);
 	}
@@ -70,9 +70,9 @@ GINSU.log_debug = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_trace = function(message)
+IMAT.log_trace = function(message)
 {
-	if(GINSU.settings.logLevel >=  GINSU.logLevels.LOG_TRACE)
+	if(IMAT.settings.logLevel >=  IMAT.logLevels.LOG_TRACE)
 	{
 		UIALogger.logDebug("TRACE: " + message);
 	}
@@ -83,7 +83,7 @@ GINSU.log_trace = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_start = function(message)
+IMAT.log_start = function(message)
 {
 	UIALogger.logStart(message);
 };
@@ -93,7 +93,7 @@ GINSU.log_start = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_pass = function(message)
+IMAT.log_pass = function(message)
 {
 	UIALogger.logPass(message);
 };
@@ -103,7 +103,7 @@ GINSU.log_pass = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_fail = function(message)
+IMAT.log_fail = function(message)
 {
 	UIALogger.logFail(message);
 };
@@ -113,7 +113,7 @@ GINSU.log_fail = function(message)
  *
  * @param message string - The message to be logged
  */
-GINSU.log_state = function()
+IMAT.log_state = function()
 {
 	UIATarget.localTarget().logElementTree();
 };

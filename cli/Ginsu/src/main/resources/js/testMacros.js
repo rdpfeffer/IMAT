@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -10,20 +10,25 @@
 *******************************************************************************/
 
 /**
- * Checks for Strict equality. Depending on if you are using objects or primitives, this will work 
- * differently. JS is pass by reference for objects, so if you are testing that two objects are
- * equal, this will only work if they are the same reference. For literals, this is simply checking
- * that they evaluate to the same value.
+ * Checks for Strict equality. Depending on if you are using objects or 
+ * primitives, this will work differently. JS is pass by reference for objects, 
+ * so if you are testing that two objects are equal, this will only work if they 
+ * are the same reference. For literals, this is simply checking that they 
+ * evaluate to the same value.
  *
  * @param expected The expected value we are testing
  * @param received The value we expected to see
- * @param message (optional) The message to throw if expected did not match received
+ * @param message (optional) The message to throw if expected did not match 
+ * received
  *
- * @throws an error message if expected did not match received
- *
- * TODO: Create an assertEqualObjects function that calls isEqual on the expected object.
- * TODO: Create an assertNotEquals function. This will prevent us from having to add unneccessary
- *	try/catch statements in places where we don't need them.
+ * @throws An exception string with the given parameter message if expected did 
+ * not match received.
+ */
+ /*
+ * TODO: Create an assertEqualObjects function that calls isEqual on the 
+ * expected object.
+ * TODO: Create an assertNotEquals function. This will prevent us from having to 
+ * add unneccessary try/catch statements in places where we don't need them.
  */
 function assertEquals(received, expected, message) {
   if (received !== expected) {
@@ -36,7 +41,8 @@ function assertEquals(received, expected, message) {
  * Checks that the expression evaluates to true.
  *
  * @param expression The expression value we are checking
- * @param message (optional) The message to throw if expression does not evaluate to true
+ * @param message (optional) The message to throw if expression does not 
+ * evaluate to true
  *
  * @throws an error message if expression does not evaluate to true.
  */
@@ -52,7 +58,8 @@ function assertTrue(expression, message) {
  * Checks that the expression evaluates to false.
  *
  * @param expression The expression value we are checking
- * @param message (optional) The message to throw if expression does not evaluate to false
+ * @param message (optional) The message to throw if expression does not 
+ * evaluate to false
  *
  * @throws an error message if expression does not evaluate to false.
  */
@@ -61,12 +68,14 @@ function assertFalse(expression, message) {
 };
 
 /**
- * Checks that thingie does not evaluate to null or any of its equivalents (i.e. undefined). Note 
- * that this also handles cases where UIAElementNil is returned. However, it does not consider the
- * value false to be an equivalent of null. For that use the assertFalse() function.
+ * Checks that thingie does not evaluate to null or any of its equivalents 
+ * (i.e. undefined). Note that this also handles cases where UIAElementNil is 
+ * returned. However, it does not consider the value false to be an equivalent 
+ * of null. For that use the assertFalse() function.
  *
  * @param thingie The expected value we are testing
- * @param message (optional) The message to throw if thingie evaluated to a null equivalents
+ * @param message (optional) The message to throw if thingie evaluated to a null 
+ * equivalents
  *
  * @throws an error message if expected did not match received
  */
@@ -107,6 +116,51 @@ function assertDescending(highValue, lowValue, msg)
 	{
 		throw msg + " Sorted values are not in descending order. lowValue " + lowValue + " is not lower than highValue " + highValue;
 	}
+};
+
+/**
+ * For keeping track of manual tests that have not been automated yet, this will
+ * log a message stating that a given test has passed manually. This is meant to
+ * be called directly within a test.
+ *
+ *  @param {string} message
+ * 					An optional message to log with the manual pass message. 
+ */
+function manualPass()
+{
+	var message = "MANUAL: This test is marked as Passing during manual execution.";
+	if (arguments.length > 0) {
+		message = message + " " + arguments[0];
+	} 
+	IMAT.log_info(message);
+};
+
+/**
+ * For keeping track of manual tests that have not been automated yet, this will
+ * log a message stating that a given test has failed manually. This is meant to
+ * be called directly within a test.
+ *
+ *  @param {string} message
+ * 					An optional message to log with the manual fail message. 
+ */
+function manualFail()
+{
+	var message = "MANUAL: This test is marked as failing during manual execution.";
+	if (arguments.length > 0) {
+		message = message + " " + arguments[0]; 
+	} 
+	throw message;
+};
+
+/**
+ * For keeping track of manual tests that have not been automated yet, and still
+ * need to be run manually. This is meant to be called directly within a test.
+ * Logs a warning message since this test is neither a passing for a failing 
+ * test.
+ */
+function toBeExecutedManually()
+{
+	IMAT.log_warning("MANUAL: To Be Executed.");
 };
 
 //TODO Create an assertValid function that will call checkIsValid on a UIAElement Passed in.

@@ -1,7 +1,7 @@
 #import "env/env.js"
 
 //declare any settings
-GINSU.settings.logLevel = GINSU.logLevels.LOG_DEBUG;
+IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
 
 var @GLOBAL_OBJECT@ = {};
 

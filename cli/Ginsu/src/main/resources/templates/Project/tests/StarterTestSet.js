@@ -1,4 +1,4 @@
-@GLOBAL_OBJECT@.StarterTestSet = Class.extend(GINSU.BaseTest, {
+@GLOBAL_OBJECT@.StarterTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	
 	//All tests
 	title: "StarterTestSet",
@@ -7,8 +7,8 @@
 	 */
 	initialize: function()
 	{
-		GINSU.log_debug("Initializing the Starter Tests.");
-		GINSU.log_debug("Note: This is where you could declare your test fixtures.");
+		IMAT.log_debug("Initializing the Starter Tests.");
+		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
 	},
 	
 	/**
@@ -18,7 +18,7 @@
 	setUp: function()
 	{
 		//Do nothing
-		GINSU.log_debug("setUp was called");
+		IMAT.log_debug("setUp was called");
 		//This is where you would invoke actions to setup the right viewContext before each test in
 		//this test set
 	},
@@ -30,14 +30,14 @@
 	tearDown: function()
 	{
 		//Do nothing
-		GINSU.log_debug("tearDown was called");
+		IMAT.log_debug("tearDown was called");
 		//This is where you would invoke actions to reset the viewContext after each test in this
 		//test Set
 	},
 	
 	setUpTestSet: function()
 	{
-		GINSU.log_debug("setUpTestSet was called");
+		IMAT.log_debug("setUpTestSet was called");
 		//This is where you would invoke actions to setup the right viewContext before any of the 
 		//tests in this test set are run.
 		
@@ -47,7 +47,7 @@
 	
 	tearDownTestSet: function()
 	{
-		GINSU.log_debug("tearDownTestSet was called");		
+		IMAT.log_debug("tearDownTestSet was called");		
 		//This is where you would invoke actions to setup the right viewContext after all of the 
 		//tests in this test set are run.
 	},
@@ -55,7 +55,18 @@
 	doCleanup: function()
 	{
 		//Do nothing
-		GINSU.log_debug("doCleanup was called");		
+		IMAT.log_debug("doCleanup was called");		
+	},
+	
+	/**
+	 * Return the base view which we consider to be the "Base State" when recovering from a test
+	 * failure. This implementation does nothing and returns undefined. You must override this
+	 * in order to get test recovery working correctly. 
+	 *
+	 * @return IMAT.LoginView which is considered the base view for all functional tests
+	 */
+	getBaseView: function() {
+		return new @GLOBAL_OBJECT@.StarterView();
 	},
 	
 	/**
@@ -63,9 +74,9 @@
 	 */
 	testSomething: function()
 	{
-		GINSU.log_debug("Running the testSomething() test");
+		IMAT.log_debug("Running the testSomething() test");
 		
-		//In ginsu, a test is defined as a set of actions taken against a view context.
+		//In IMAT, a test is defined as a set of actions taken against a view context.
 		this.viewContext
 		
 	},
@@ -73,4 +84,4 @@
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.
-GINSU.suiteRunner.addTestSet( new @GLOBAL_OBJECT@.StarterTestSet());
+IMAT.suiteRunner.addTestSet( new @GLOBAL_OBJECT@.StarterTestSet());

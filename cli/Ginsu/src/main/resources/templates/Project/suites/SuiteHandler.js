@@ -10,7 +10,7 @@
 	 */
 	initSuite: function()
 	{
-		GINSU.log_trace("Initializing Suite");
+		IMAT.log_trace("Initializing Suite");
 	},
 	
 	/**
@@ -18,6 +18,6 @@
 	 */
 	cleanUpSuite: function()
 	{
-		GINSU.log_trace("Cleaning up Suite");
+		IMAT.log_trace("Cleaning up Suite");
 	}
 });

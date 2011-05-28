@@ -10,7 +10,7 @@
 
 <!--
 	@file This is the ant script for initializing environment specfic paths
-	on an existing ginsu project. 
+	on an existing IMAT project. 
 	@author rpfeffer 
 	@dateCreated Apr 25, 2011
   -->
@@ -28,7 +28,7 @@
 				<include name="**/env.js" />
 			</fileset>
 			<filterset>
-				<filter token="PATH_TO_APP" value="${path.to.ginsu}" />
+				<filter token="PATH_TO_APP" value="${path.to.app.home}" />
 			</filterset>
 		</copy>
 	</target>

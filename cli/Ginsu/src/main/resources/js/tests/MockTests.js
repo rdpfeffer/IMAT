@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -11,8 +11,9 @@
 /**
  * This class is a mock class used for testing that the TestRunner can accurately find the right
  * test methods.
+ * @ignore 
  */
-GINSU.MockTests = Class.extend(GINSU.BaseTest, {
+IMAT.MockTests = Class.extend(IMAT.BaseTestSet, {
 	
 	initialize: function(){},
 	myTests: ["test1", "testA", "testa", "test_a", "testAtest", "testNeedle", "test4LeafClover"],

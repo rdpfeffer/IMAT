@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -8,7 +8,10 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-GINSU.SuiteHandler = Class.create({
+/**
+ * @ignore 
+ */
+IMAT.SuiteHandler = Class.create({
 	
 	initialize: function()
 	{
@@ -20,7 +23,7 @@ GINSU.SuiteHandler = Class.create({
 	 */
 	initSuite: function()
 	{
-		GINSU.log_trace("Initializing Suite");
+		IMAT.log_trace("Initializing Suite");
 	},
 	
 	/**
@@ -28,6 +31,6 @@ GINSU.SuiteHandler = Class.create({
 	 */
 	cleanUpSuite: function()
 	{
-		GINSU.log_trace("Cleaning up Suite");
+		IMAT.log_trace("Cleaning up Suite");
 	}
 });

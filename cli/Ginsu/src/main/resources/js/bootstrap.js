@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -10,12 +10,19 @@
 *******************************************************************************/
 
 /**
- * This is to encapsulate all JS classes within your own namespace to prevent overwriting existing 
- * framework classes. This object creates that namespace for us. All JS Prototypes created
- * as "classes" as well as any functions will be properties in the namespace of this global object.
+ *  @namespace The IMAT namespace holds all of the formal classes of the Intuit
+ *  Mobile Automation Toolkit(IMAT). If an object is part of the IMAT namespace,
+ *  then it should provide some sort of common functionality applicable to all 
+ *  types of consumers of this framework.
  */
-var GINSU = {};
-GINSU.settings = {};
+var IMAT = {};
+
+/**
+ *  @namespace The IMAT.settings namespace should hold all things related to 
+ *  settings used while running tests. For example,Your automation can reference 
+ *  this namespace to get or set the logging levels.
+ */
+IMAT.settings = {};
 
 
 // Declare the base inheritance framework
@@ -31,11 +38,12 @@ GINSU.settings = {};
 #import "./utils/exceptions.js"
 #import "./utils/generators.js"
 #import "./utils/String-extensions.js"
+#import "./BaseTestSet.js"
 
 
-if(GINSU_TARGET_PLATFORM)
+if(IMAT_TARGET_PLATFORM)
 {
-	switch(GINSU_TARGET_PLATFORM)
+	switch(IMAT_TARGET_PLATFORM)
 	{
 		case "ios":	
 #import "./platforms/ios/platform.js";
@@ -44,7 +52,7 @@ if(GINSU_TARGET_PLATFORM)
 }
 else
 {
-	throw "GINSU_TARGET_PLATFORM not Set! Please set to one of the following: " + GINSU.platforms; 
+	throw "IMAT_TARGET_PLATFORM not Set! Please set to one of the following: " + IMAT.platforms; 
 }
 
 // Declare the Runner Classes
@@ -52,5 +60,5 @@ else
 #import "./SuiteRunner.js"
 
 // Declare a global suite runner object that we can use to run our tests.
-GINSU.suiteRunner = new GINSU.SuiteRunner();
-GINSU.suiteRunner.setTestRunner(new GINSU.TestRunner());
+IMAT.suiteRunner = new IMAT.SuiteRunner();
+IMAT.suiteRunner.setTestRunner(new IMAT.TestRunner());

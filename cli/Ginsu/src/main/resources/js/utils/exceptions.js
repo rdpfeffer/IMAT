@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -16,12 +16,12 @@
  * exceptions while at other times throw full fledged exception objects. It determines if a message
  * is part of a given exception.
  *
- * @param e mixed - The exception we are handling.
- * @param message string - The message
+ * @param {mixed} e The exception we are handling.
+ * @param {string} message The message to check for
  * 
- * @return boolean - true if message is part of the thrown exception.
+ * @return {boolean} true if message is part of the thrown exception.
  */
-GINSU.exceptionStartsWithMessage = function(e, message)
+IMAT.exceptionStartsWithMessage = function(e, message)
 {
 	var isPartofException = false;
 	if(typeof e == "string")

@@ -8,12 +8,12 @@
 		<version>1.0.15</version>
 	</parent>
 
-	<groupId>com.intuit.ginsu</groupId>
-	<artifactId>Ginsu</artifactId>
+	<groupId>com.intuit.tools.imat</groupId>
+	<artifactId>IMAT</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Ginsu</name>
+	<name>IMAT</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,13 +21,27 @@
 	</properties>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>imat</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>imat</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.2-beta-2</version>
 				<configuration>
 					<descriptor>src/main/assembly/dep.xml</descriptor>
-<!-- 					<filters>src/main/assembly/filter.properties</filters> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -39,11 +53,11 @@
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.intuit.ginsu.cli.App</mainClass>
+							<mainClass>com.intuit.tools.imat.cli.App</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Bundle-Version>${project.version}</Bundle-Version>
-							<Bundle-Description>This is the Ginsu Command Line Interface
+							<Bundle-Description>This is the IMAT Command Line Interface
 								(CLI) It is used to streamline application testing by
 								orchestrating tools, providing consistency of reporting, and
 								generating commonly used report suites.</Bundle-Description>
@@ -62,27 +76,27 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
+			<plugin>
 				<!-- 
 				See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info.
 				 -->
-<!-- 				<groupId>gr.abiss.mvn.plugins</groupId> -->
-<!-- 				<artifactId>maven-jstools-plugin</artifactId> -->
-<!-- 				<version>0.7</version> -->
-<!-- 				<configuration> -->
-<!-- 					<jsDir>src/main/resources/js</jsDir> -->
-<!-- 					<includes>**/*.js</includes>  -->
-<!-- 					<reportSets>   -->
-<!-- 					   <reportSet>   -->
-<!-- 					      <reports>   -->
-					         <!-- include the desired reports -->  
-<!-- 					         <report>jslint</report>   -->
-<!-- 					         <report>jsdoc</report>   -->
-<!-- 					      </reports>   -->
-<!-- 					   </reportSet>   -->
-<!-- 					</reportSets>  -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<jsDir>src/main/resources/js</jsDir>
+					<includes>**/*.js</includes> 
+					<reportSets>  
+					   <reportSet>  
+					      <reports>  
+					         include the desired reports  
+					         <report>jslint</report>  
+					         <report>jsdoc</report>  
+					      </reports>  
+					   </reportSet>  
+					</reportSets> 
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

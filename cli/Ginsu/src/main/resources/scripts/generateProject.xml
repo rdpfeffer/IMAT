@@ -8,7 +8,7 @@
 -->
 
 <!--
-	@file This is the Ant script for Generating a new Ginsu Project 
+	@file This is the Ant script for Generating a new IMAT Project 
 	@author rpfeffer 
 	@dateCreated Apr 12, 2011
   -->
@@ -26,7 +26,7 @@
 			</fileset>
 			<filterset>
 				<filter token="GLOBAL_OBJECT" value="${global.object.var}" />
-				<filter token="PATH_TO_APP" value="${path.to.ginsu}" />
+				<filter token="PATH_TO_APP" value="${path.to.app.home}" />
 			</filterset>
 		</copy>
 		<chmod perm="777">

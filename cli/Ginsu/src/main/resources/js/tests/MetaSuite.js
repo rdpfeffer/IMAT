@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -8,14 +8,22 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-//declare the platform
-var GINSU_TARGET_PLATFORM = "ios";
 
-//bootstrap ginsu
+/**
+ * declare the platform
+ * @ignore
+ */
+var IMAT_TARGET_PLATFORM = "ios";
+
+//bootstrap IMAT
 #import "../bootstrap.js"
 
-//declare any settings
-GINSU.settings.logLevel = GINSU.logLevels.LOG_DEBUG;
+
+/**
+ * declare any settings
+ * @ignore
+ */
+IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
 
 //load the tests
 #import "./MockTests.js"
@@ -24,5 +32,5 @@ GINSU.settings.logLevel = GINSU.logLevels.LOG_DEBUG;
 
 
 //run the tests
-GINSU.suiteRunner.previewAllRunnableTests();
-GINSU.suiteRunner.runTests(new GINSU.SuiteHandler());
+IMAT.suiteRunner.previewAllRunnableTests();
+IMAT.suiteRunner.runTests(new IMAT.SuiteHandler());

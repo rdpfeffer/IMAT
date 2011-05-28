@@ -6,7 +6,7 @@
  *		2) update the import reference in views_inc.js
  *		3) change this.viewName to match the name of the new view.
  */
-@GLOBAL_OBJECT@.StarterView = Class.extend(GINSU.BaseView, {
+@GLOBAL_OBJECT@.StarterView = Class.extend(IMAT.BaseView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -20,7 +20,7 @@
 		// parent's method, not the parent object itself.
 		//
 		// Also note that parent() is not a construct of the javascript language, but rather a 
-		// reference set up by the inheritance model we are using in Ginsu.
+		// reference set up by the inheritance model we are using in IMAT.
 		//
 		// In java the line below would look like this: "super(view);"
 		this.parent();
@@ -37,11 +37,11 @@
 		
 		//The next line can be removed. They are here just to let you know what is going on
 		//during the first time that you run the tests
-		GINSU.log_debug("initializing @GLOBAL_OBJECT@." + this.viewName);
+		IMAT.log_debug("initializing @GLOBAL_OBJECT@." + this.viewName);
 		
-		//Log element tree is your best friend. Pay close attention to her. She will get you through 
+		//IMAT.log_state() is your best friend. Pay close attention to her. She will get you through 
 		//the day. :-)
-		this.target.logElementTree();
+		IMAT.log_state();
 		
 		//The call below is an important part of our pattern. All views should validate their 
 		//initial state when they are initialized.
@@ -85,7 +85,7 @@
 	 */
 	someAction : function()
 	{
-		GINSU.log_debug("The someAction() function.");
+		IMAT.log_debug("The someAction() function.");
 		
 		//This is where you would want to start making calls against the UIAutomation API's
 		//e.g. this.mainWin.textFields().firstWithName("foobar").tap();

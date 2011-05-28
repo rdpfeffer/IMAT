@@ -1,4 +1,6 @@
 //Import all of your views here.
-GINSU.log_debug("Importing all of the views...");
+IMAT.log_debug("Importing all of the views...");
 
+#import "viewMap.js"
 #import "StarterView.js"
+#import "StemView.js"

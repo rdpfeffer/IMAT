@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -10,17 +10,21 @@
 *******************************************************************************/
 
 /**
- * Wait for a given element to be invisible. Uses the local target's timeout value checks for 
- * isVisible until the timeout time is reached. This is an extension to the UIAElement object of the 
- * UI Automation framework.
+ * Wait for a given element to be invisible. Uses the local target's timeout 
+ * value and checks for isVisible until the timeout time is reached. This is an 
+ * extension to the UIAElement object of the UI Automation framework.
  * 
- * @param softTimeout boolean, Optional - true if we should log the timeout at the debug level rather
- * 	than log a warning.
+ * @param {boolean} softTimeout 
+ * 					Optional. Set to true if we should log the timeout at the  
+ * 					debug level rather than as a warning.
+ * 
+ * @memberOf UIAElement#
  */
 UIAElement.prototype.waitForInvisible = function(softTimeout)
 {
-	//Since it is possible for the timeout to be verrrry long, 30 seconds or more, we need to store
-	//its value and replace the top timeout with a 1 second timeout value.
+	//Since it is possible for the timeout to be verrrry long, 30 seconds or 
+	//more, we need to store its value and replace the top timeout with a 1 
+	//second timeout value.
 	var timeout = UIATarget.localTarget().timeout();
 	UIATarget.localTarget().pushTimeout(1);
 	
@@ -28,10 +32,10 @@ UIAElement.prototype.waitForInvisible = function(softTimeout)
 	startDate = endDate = new Date();
 	var millisecondsPerSecond = 1000;
 	var iAmVisible = true;
-	GINSU.log_trace("waitForInvisible: " + this);
+	IMAT.log_trace("waitForInvisible: " + this);
 	
-	//Internal convenience function to get the time since we started waiting for the element
-	//to be invisible.
+	//Internal convenience function to get the time since we started waiting for 
+	//the element to be invisible.
 	var timeSinceWaitStart = function()
 	{
 		return (endDate.getTime() - startDate.getTime())/millisecondsPerSecond;
@@ -46,11 +50,11 @@ UIAElement.prototype.waitForInvisible = function(softTimeout)
 			var message = "Timeout Exceeded: waitForInvisible | timeout: " + timeout + " sec | " + this;
 			if(softTimeout)
 			{
-				GINSU.log_debug(message);
+				IMAT.log_debug(message);
 			}
 			else
 			{
-				GINSU.log_warning(message);
+				IMAT.log_warning(message);
 			}
 			
 		}

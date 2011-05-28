@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -12,8 +12,9 @@
 //Core test framework
 /**
  * This class handles things common to all Functional Tests
+ * @ignore 
  */
-GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
+IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	
 	title: "MetaTests",
 	/**
@@ -87,10 +88,10 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		//-----------positive cases--------------//
 		var i;
 		
-		GINSU.log_debug("testing positive cases for assertEquals");
+		IMAT.log_debug("testing positive cases for assertEquals");
 		for(i = 0; i < this.types.length; i++)
 		{
-			GINSU.log_trace("this.types[i] is :" + this.types[i]);
+			IMAT.log_trace("this.types[i] is :" + this.types[i]);
 			assertEquals(this.types[i], this.types[i]);
 		}
 		
@@ -99,10 +100,10 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		
 		//-----------negative cases--------------//
 		// (non-comprehensive)
-		GINSU.log_debug("testing negative cases for assertEquals");
+		IMAT.log_debug("testing negative cases for assertEquals");
 		for(i = 0; i < this.types.length; i++)
 		{
-			GINSU.log_trace("this.types[i] is :" + this.types[i]);
+			IMAT.log_trace("this.types[i] is :" + this.types[i]);
 			var message = "The two unequal objects, " + this.types[i] + " and "+ 
 					this.types[(i+1) % this.types.length] + " evaluated as equals when they should" 
 					+ " not have";
@@ -133,7 +134,7 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		try
 		{
 			//other identical objects will not be equal since this is equality by reference.
-			GINSU.log_debug("Checking two objects of equal value");
+			IMAT.log_debug("Checking two objects of equal value");
 			assertEquals(this.anEqualObj, this.otherEqualObj);
 		}
 		catch (e)
@@ -143,18 +144,18 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		
 		//---------------------------------assertTrue---------------------------------------------//
 		//-----------positive cases--------------//
-		GINSU.log_trace("Testing positive cases for assertTrue");
+		IMAT.log_trace("Testing positive cases for assertTrue");
 		for(i = 0; i < this.trueTypes.length; i++)
 		{
-			GINSU.log_trace("this.trueTypes[i] is :" + this.trueTypes[i]);
+			IMAT.log_trace("this.trueTypes[i] is :" + this.trueTypes[i]);
 			assertTrue(this.trueTypes[i]);
 		}
 		
 		//-----------negative cases--------------//
-		GINSU.log_trace("Testing negative cases for assertTrue");
+		IMAT.log_trace("Testing negative cases for assertTrue");
 		for(i = 0; i < this.falseTypes.length; i++)
 		{
-			GINSU.log_trace("this.falseTypes[i] is :" + this.falseTypes[i]);
+			IMAT.log_trace("this.falseTypes[i] is :" + this.falseTypes[i]);
 			try
 			{
 				assertTrue(this.falseTypes[i]);
@@ -171,18 +172,18 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		
 		//---------------------------------assertFalse--------------------------------------------//
 		//-----------positive cases--------------//
-		GINSU.log_trace("Testing positive cases for assertFalse");
+		IMAT.log_trace("Testing positive cases for assertFalse");
 		for(i = 0; i < this.falseTypes.length; i++)
 		{
-			GINSU.log_trace("this.falseTypes[i] is :" + this.falseTypes[i]);
+			IMAT.log_trace("this.falseTypes[i] is :" + this.falseTypes[i]);
 			assertFalse(this.falseTypes[i]);
 		}
 		
 		//-----------negative cases--------------//
-		GINSU.log_trace("Testing negative cases for assertFalse");
+		IMAT.log_trace("Testing negative cases for assertFalse");
 		for(i = 0; i < this.trueTypes.length; i++)
 		{
-			GINSU.log_trace("this.trueTypes[i] is :" + this.trueTypes[i]);
+			IMAT.log_trace("this.trueTypes[i] is :" + this.trueTypes[i]);
 			try
 			{
 				assertFalse(this.trueTypes[i]);
@@ -199,18 +200,18 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 
 		//---------------------------------assertNotNull------------------------------------------//
 		//-----------positive cases--------------//
-		GINSU.log_trace("Testing positive cases for assertNotNull");
+		IMAT.log_trace("Testing positive cases for assertNotNull");
 		for(i = 0; i < this.nonNullTypes.length; i++)
 		{
-			GINSU.log_trace("this.nonNullTypes[i] is :" + this.nonNullTypes[i]);
+			IMAT.log_trace("this.nonNullTypes[i] is :" + this.nonNullTypes[i]);
 			assertNotNull(this.nonNullTypes[i]);
 		}
 		
 		//-----------negative cases--------------//
-		GINSU.log_trace("Testing negative cases for assertNotNull");
+		IMAT.log_trace("Testing negative cases for assertNotNull");
 		for(i = 0; i < this.nullTypes.length; i++)
 		{
-			GINSU.log_trace("this.nullTypes[i] is :" + this.nullTypes[i]);
+			IMAT.log_trace("this.nullTypes[i] is :" + this.nullTypes[i]);
 			try
 			{
 				assertNotNull(this.nullTypes[i]);
@@ -232,23 +233,23 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 	 */
 	testIsPropValidTestCase: function()
 	{
-		var myRunner = new GINSU.TestRunner();
-		var mockTests = new GINSU.MockTests();
+		var myRunner = new IMAT.TestRunner();
+		var mockTests = new IMAT.MockTests();
 		var i;
 		
 		//-----------positive cases--------------//
-		GINSU.log_debug("testing positive cases for IsPropValidTestCase");
+		IMAT.log_debug("testing positive cases for IsPropValidTestCase");
 		for(i = 0; i < mockTests.myTests.length; i++)
 		{
-			GINSU.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
+			IMAT.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
 			assertTrue(myRunner.isPropValidTestCase(mockTests.myTests[i], mockTests));
 		}
 		
 		//-----------negative cases--------------//
-		GINSU.log_debug("testing negative cases for IsPropValidTestCase");
+		IMAT.log_debug("testing negative cases for IsPropValidTestCase");
 		for(i = 0; i < mockTests.myNonTests.length; i++)
 		{
-			GINSU.log_trace("mockTests.myNonTests[i] is :" + mockTests.myNonTests[i]);
+			IMAT.log_trace("mockTests.myNonTests[i] is :" + mockTests.myNonTests[i]);
 			assertFalse(myRunner.isPropValidTestCase(mockTests.myNonTests[i], mockTests));
 		}
 	},
@@ -258,24 +259,24 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 	 */
 	testTestCaseMatchesFilter: function()
 	{
-		var myRunner = new GINSU.TestRunner();
-		var mockTests = new GINSU.MockTests();
+		var myRunner = new IMAT.TestRunner();
+		var mockTests = new IMAT.MockTests();
 		var i;
 		
 		//-----------zero filter cases--------------//
-		GINSU.log_debug("testing positive cases for IsPropValidTestCase");
+		IMAT.log_debug("testing positive cases for IsPropValidTestCase");
 		for(i = 0; i < mockTests.myTests.length; i++)
 		{
-			GINSU.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
+			IMAT.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
 			assertTrue(myRunner.testCaseMatchesFilter(mockTests.myTests[i], mockTests));
 		}
 		
 		//-----------single filter cases--------------//
 		myRunner.addFilters(["Needle"]);
-		GINSU.log_debug("testing positive cases for IsPropValidTestCase");
+		IMAT.log_debug("testing positive cases for IsPropValidTestCase");
 		for(i = 0; i < mockTests.myTests.length; i++)
 		{
-			GINSU.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
+			IMAT.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
 			if(mockTests.myTests[i] == "testNeedle")
 			{
 				assertTrue(myRunner.testCaseMatchesFilter(mockTests.myTests[i], mockTests));
@@ -288,10 +289,10 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 		
 		//-----------multi filter cases--------------//
 		myRunner.addFilters(["4LeafClover"]);
-		GINSU.log_debug("testing positive cases for IsPropValidTestCase");
+		IMAT.log_debug("testing positive cases for IsPropValidTestCase");
 		for(i = 0; i < mockTests.myTests.length; i++)
 		{
-			GINSU.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
+			IMAT.log_trace("mockTests.myTests[i] is :" + mockTests.myTests[i]);
 			if(mockTests.myTests[i] == "testNeedle" || mockTests.myTests[i] == "test4LeafClover")
 			{
 				assertTrue(myRunner.testCaseMatchesFilter(mockTests.myTests[i], mockTests));
@@ -311,14 +312,14 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 	testExceptions: function()
 	{
 		//-----------positive cases--------------//
-		GINSU.log_debug("testing positive cases for Exceptions");
-		assertTrue(GINSU.exceptionStartsWithMessage(this.needleAtStart, this.needle));
-		assertTrue(GINSU.exceptionStartsWithMessage(this.exceptionWithMessage, this.needle));
+		IMAT.log_debug("testing positive cases for Exceptions");
+		assertTrue(IMAT.exceptionStartsWithMessage(this.needleAtStart, this.needle));
+		assertTrue(IMAT.exceptionStartsWithMessage(this.exceptionWithMessage, this.needle));
 
 		//-----------negative cases--------------//
-		GINSU.log_debug("testing negative cases for Exceptions");
-		assertFalse(GINSU.exceptionStartsWithMessage(this.exceptionWithoutMessage, this.needle));
-		assertFalse(GINSU.exceptionStartsWithMessage("", this.needle));
+		IMAT.log_debug("testing negative cases for Exceptions");
+		assertFalse(IMAT.exceptionStartsWithMessage(this.exceptionWithoutMessage, this.needle));
+		assertFalse(IMAT.exceptionStartsWithMessage("", this.needle));
 	},
 	
 	/**
@@ -327,18 +328,67 @@ GINSU.MetaTests = Class.extend(GINSU.BaseTest, {
 	testStringExtensions: function()
 	{
 		//-----------positive cases--------------//
-		GINSU.log_debug("testing positive cases for stringExtensions");
+		IMAT.log_debug("testing positive cases for stringExtensions");
 		assertTrue(this.needleByItself.startsWith(this.needle));
 		assertTrue(this.needleAtStart.startsWith(this.needle));
 
 		//-----------negative cases--------------//
-		GINSU.log_debug("testing negative cases for stringExtensions");
+		IMAT.log_debug("testing negative cases for stringExtensions");
 		assertFalse(this.needleAtEnd.startsWith(this.needle));
 		assertFalse(this.needleInMiddle.startsWith(this.needle));
 		assertFalse(this.empty.startsWith(this.needle));
 		assertFalse(this.whiteSpace.startsWith(this.needle));
+	},
+	
+	testManualPassMacro: function() {
+		manualPass();
+		manualPass("With message");
+		
+		//2nd param will not show up in logs
+		manualPass("With message... ", "And Another"); 
+	},
+	
+	testManualFailMacro: function() {
+		var latestException = undefined;
+		IMAT.log_debug("Testing with no arguments");
+		latestException = this.manualfailHelper(function(){manualFail();});
+		
+		var expectedMessage = "With message";
+		IMAT.log_debug("Testing with 1 argument");
+		latestException = this.manualfailHelper(function(){manualFail(expectedMessage);});
+		assertTrue((latestException.indexOf(expectedMessage) > -1), "The " +
+			"exception did not contain the expected string. Exception: " +
+			latestException);
+		
+		//2nd param will not show up in logs
+		var unexpectedMessage  ="And Another";
+		IMAT.log_debug("Testing with 2 arguments");
+		latestException = this.manualfailHelper(function(){manualFail(expectedMessage, unexpectedMessage);});
+		assertTrue((latestException.indexOf(expectedMessage) > -1), "The " +
+			"exception did not contain the expected string. Exception: " +
+			latestException);
+		assertTrue((latestException.indexOf(unexpectedMessage) == -1), "The " +
+			"exception had the unexpected string. Exception: " +
+			latestException);
+	},
+	
+	manualfailHelper: function(func)
+	{
+		var didThrowException = true;
+		var result = undefined;
+		try {
+			func();
+			didThrowException = false; // we should never get here.
+		} catch (e){
+			assertTrue(typeof e == "string", "the exception thrown should have been of type string");
+			assertTrue((e.indexOf("MANUAL:") > -1), "The exception did not contain the expected string.");
+			result = e;
+		}
+		assertTrue(didThrowException, 
+			"manualFail() did not throw an exception when it should have");
+		return result;
 	}
 	
 });
 
-GINSU.suiteRunner.addTestSet( new GINSU.MetaTests());
+IMAT.suiteRunner.addTestSet( new IMAT.MetaTests());

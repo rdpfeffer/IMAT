@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -9,28 +9,46 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-GINSU.TestRunner = Class.extend({
+/**
+ * 	Constructs a TestRunner object
+ *	@class The {@link IMAT.TestRunner} object is the workhorse of the test
+ *	execution lifecycle of a given Test Set. It's major responsibilities 
+ *	include:
+ *  <ul>
+ *		<li>Inspecting a Test Set to determine which properties are
+ * 		runnable testcases.</li>
+ *		<li>Filtering out tests which do not match the set of internal 
+ * 		filters it currently holds</li>
+ *  	<li>Running tests which match the filters it currently holds</li>
+ *  </ul>
+ * @memberOf IMAT 
+ */
+ /*
+  * @TODO implement an optional retry mechanism to gain more validation when
+  *	tests fail.
+  */
+IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	
 	/**
-	 * 	Constructs a TestRunner object
-	 *
-	 * 	@param numRetries number - The number of times the testrunner should try to run a test over
-	 * 		again before logging a failure.
-	 * 	@TODO implement retry mechanism.
+	 * The constructor called when invoking "new" on this class object.
+	 * @ignore 
 	 */
-	initialize: function(numRetries)
+	initialize: function()
 	{
-		this.retries = numRetries;
 		this.filtersArray = new Array();
 	},
 	
 	/**
 	 * Returns the signature for the test case
 	 * 
-	 * @param testCaseName string - the name of the test case to be run.
-	 * @param testSet object - A testSet in our test harness
+	 * @param {IMAT.BaseTestSet} testSet
+	 * 					A testSet in our test harness
+	 * @param {string} testCaseName 
+	 * 					The name of the test case to be run.
 	 * 
-	 * @return string The signature.
+	 * @return {string} The signature of the test case. This will be of the form
+	 * <code>SomeTestSet.testCaseName()</code> where SomeTestSet is the test set
+	 *  class and testCaseName is the method representing the test case.
 	 */
 	getTestCaseSignature: function(testSet, testCaseName)
 	{
@@ -38,13 +56,17 @@ GINSU.TestRunner = Class.extend({
 	},
 	
 	/**
-	 * Determines if a given property is a function we should run as part of the test
+	 * Determines if a given property is a function we should run as part of the 
+	 * test
 	 * 
-	 * @param prop string - A property of the test object which may or may not be a test case
-	 * @param testSet object - A testSet in our test harness
+	 * @param {mixed} prop
+	 * 					A property of the test object which may or may not be a 
+	 * 					test case
+	 * @param {IMAT.BaseTestSet} testSet
+	 * 					A testSet in our test harness
 	 * 
-	 * @return boolean true if prop is a function and starts with word "test" like 
-	 * "testSomething: function(){...},"
+	 * @return {boolean} true if prop is a function and starts with word "test" 
+	 * like "testSomething: function(){...},"
 	 */
 	isPropValidTestCase: function(prop, testSet)
 	{
@@ -53,12 +75,15 @@ GINSU.TestRunner = Class.extend({
 	},
 	
 	/**
-	 * Determines if a test case matches at least one of the filters given with the test set.
+	 * Determines if a test case matches at least one of the filters given with 
+	 * the test set.
 	 * 
-	 * @param testCase string - the name of the test case to be run.
-	 * @param testSet object - A testSet in our test harness
+	 * @param {string} testCase
+	 * 					The name of the test case to be run.
+	 * @param {IMAT.BaseTestSet} testSet
+	 * 					A testSet in our test harness
 	 * 
-	 * @return boolean true if the testCase matches at least one of the filters.
+	 * @return {boolean} true if the testCase matches at least one of the filters.
 	 */
 	testCaseMatchesFilter: function(testCase, testSet)
 	{
@@ -85,25 +110,31 @@ GINSU.TestRunner = Class.extend({
 	},
 	
 	/**
-	 * Convenience function for determining if the prop is a test in the testSet that should be run.
-	 * This function validates that prop is both a valid test function and that it matches at least 
-	 * one filter.
+	 * Convenience function for determining if the prop is a test in the testSet 
+	 * that should be run. This function validates that prop is both a valid 
+	 * test function and that it matches at least one filter.
 	 * 
-	 * @param prop string the name of a propery in testSet
-	 * @param testSet string the testSet object we are currently executing against
+	 * @param {mixed} prop
+	 * 					A property of the test object which may or may not be a 
+	 * 					test case
+	 * @param {IMAT.BaseTestSet} testSet
+	 * 					A testSet in our test harness
 	 *
-	 * @returns boolean true if the test should be run.
+	 * @returns {boolean} true if the test should be run.
 	 */
 	isPropRunnableTest: function(prop, testSet)
 	{
-		return (this.isPropValidTestCase(prop, testSet) && this.testCaseMatchesFilter(prop, testSet));
+		return (this.isPropValidTestCase(prop, testSet) && 
+			this.testCaseMatchesFilter(prop, testSet));
 	},
 	
 	/**
-	 * Runs a set of test cases. This is the main function of the TestRunner class. It drives the
-	 * whole harness
+	 * Determine if a Test Set contains runnable test cases.
 	 *
-	 * @param testSet object The object containing a set of test objects to run.
+	 * @param {IMAT.BaseTestSet} testSet.
+	 * 					A testSet in our test harness
+	 *
+	 *  @returns {boolean} true if the testSet has runnable test cases.
 	 */
 	containsRunnableTestCases: function(testSet)
 	{		
@@ -120,30 +151,33 @@ GINSU.TestRunner = Class.extend({
 	},
 	
 	/**
-	 * Print out a list of the runnable tests in the testSet. This is a function written for
-	 * test development convenience to see if your filters are including the appropriate tests.
+	 * Logs out a list of the runnable tests in the testSet. This is a function 
+	 * written for test development convenience to see if your filters are 
+	 * including the appropriate tests.
 	 *
-	 * @param testSet the set we are to potentially execute against.
+	 * @param {IMAT.BaseTestSet} testSet.
+	 * 					A Test Set which we may execute against.
 	 */
 	previewRunnableTests: function(testSet)
 	{
-		GINSU.log_debug("	TestSet: " + testSet.title);
+		IMAT.log_debug("	TestSet: " + testSet.title);
 		for(prop in testSet)
 		{
 			if (this.isPropRunnableTest(prop, testSet)) 
 			{
-				GINSU.log_debug("		" + testSet.title + "." + prop + "()");
+				IMAT.log_debug("		" + testSet.title + "." + prop + "()");
 			}
 		}
 	},
 	
 	/**
-	 * Runs a given test case
+	 * Runs a given test case in the test set. Never call this function 
+	 * directly. Its merely a helper for {@link IMAT.TestRunner.runTestCases}
 	 * 
-	 * @param testSet object - A testSet running in our test harness.
-	 * @param testCaseName string - The name of the test case in our test we are going to run.
-	 * 
-	 * @return boolean true if the test passes
+	 * @param {IMAT.BaseTestSet} testSet.
+	 * 					A Test Set which we will execute.
+	 * @param {string} testCase
+	 * 					The name of the test case we are about to run.
 	 */
 	runTestCase: function(testSet, testCaseName)
 	{
@@ -152,24 +186,24 @@ GINSU.TestRunner = Class.extend({
 		//this try block allows us our "fail fast" approach
 		try 
 		{
-			GINSU.log_start(testSignature);
+			IMAT.log_start(testSignature);
 			testSet.setUp();
 			testSet[testCaseName]();
 			testSet.tearDown();
 			//if we get here, the test has passed.
-			GINSU.log_pass(testSignature);
+			IMAT.log_pass(testSignature);
 		}
 		catch (e) 
 		{
 			//first log an error
-			GINSU.log_error(e);
+			IMAT.log_error(e);
 			//then print out the current view tree
 			if (testSet.logOnFailure) 
 			{
-				GINSU.log_state();
+				IMAT.log_state();
 			}
 			//finally log that the test has failed.
-			GINSU.log_fail(testSignature);
+			IMAT.log_fail(testSignature);
 			
 			//Invoke the cleanup process so that we can make an attempt at starting the next test 
 			//fresh
@@ -178,19 +212,23 @@ GINSU.TestRunner = Class.extend({
 	},
 	
 	/**
-	 * Runs a set of test cases. This is the main function of the TestRunner class. It drives the
-	 * whole harness
+	 * Runs a set of test cases. This is the main function of the TestRunner 
+	 * class. It drives each test set through its testing lifecycle.
 	 *
-	 * @param testSet object The object containing a set of test objects to run.
+	 * @param {IMAT.BaseTestSet} testSet.
+	 * 					A Test Set which we will execute.
+	 * 
+	 * @param {function} test
+	 *  				The test we are about to run.
 	 */
 	runTestCases: function(testSet, test)
 	{		
 		if(this.containsRunnableTestCases(testSet))
 		{
-			GINSU.log_start(testSet.title + ".setUpTestSet();");
-			GINSU.log_trace("Setting up the test set");
+			IMAT.log_start(testSet.title + ".setUpTestSet();");
+			IMAT.log_trace("Setting up the test set");
 			testSet.setUpTestSet();
-			GINSU.log_pass(testSet.title + ".setUpTestSet();");
+			IMAT.log_pass(testSet.title + ".setUpTestSet();");
 			for(prop in testSet)
 			{
 				//NOTE: We do not check for hasOwnProperty() because that function does not check the 
@@ -200,28 +238,22 @@ GINSU.TestRunner = Class.extend({
 					this.runTestCase(testSet, prop);
 				}
 			}
-			GINSU.log_start(testSet.title + ".tearDownTestSet();");
-			GINSU.log_trace("Tearing down the test set.");
+			IMAT.log_start(testSet.title + ".tearDownTestSet();");
+			IMAT.log_trace("Tearing down the test set.");
 			testSet.tearDownTestSet();
-			GINSU.log_pass(testSet.title + ".tearDownTestSet();");
+			IMAT.log_pass(testSet.title + ".tearDownTestSet();");
 		}
 	},
 	
 	/**
-	 * Add filters to the current set maintained by the TestRunner object. All filters added will
-	 * be concatenated with the existing set.
+	 * Maintain an internal reference to the array of filters so that the set of
+	 * runnable tests can be generated. Users should never call this method 
+	 * directly.
 	 *
-	 * @param filtersArray array of strings representing filters. NOTE that regular expressions are
-	 * supported and encouraged! 
-	 *
-	 * @see this.previewRunnableTests() to test if your filter is working correctly.
+	 * @param {array} the Array of strings to use as filters.
 	 * 
-	 * @discussion Filters represented as Regular expressions do not need to include the wrapping "/"
-	 * characters. Also note that modifiers like g, i etc are not supported. Since the regular 
-	 * expressions are represented as strings, all "\" should be escaped like "\\"
-	 *
-	 * @example /^Regular(\W)expressions(\W)are(\W)cool(\W)\.$/ should be represented as...
-	 *	"^Regular(\\W)expressions(\\W)are(\\W)cool(\\W)\\.$"
+	 * @see {IMAT.SuiteRunner.previewAllRunnableTests} for the full set of 
+	 * documentation.
 	 */
 	addFilters : function(filtersArray)
 	{

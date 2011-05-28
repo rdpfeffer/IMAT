@@ -14,7 +14,7 @@
 				<include>*:jar:*</include>
 			</includes>
 			<excludes>
-				<exclude>Ginsu*.jar</exclude>
+				<exclude>IMAT*.jar</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>
@@ -55,7 +55,7 @@
 			<directory>${project.basedir}/src/main/resources</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
-				<include>ginsu</include>
+				<include>imat</include>
 			</includes>
 			<fileMode>0755</fileMode>
 			<filtered>true</filtered>

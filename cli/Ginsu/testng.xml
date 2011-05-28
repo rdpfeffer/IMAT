@@ -3,15 +3,15 @@
 <suite name="Suite" parallel="false">
   <test name="Test" preserve-order="false">
     <classes>
-      <class name="com.intuit.ginsu.cli.AppTest"/>
-      <class name="com.intuit.ginsu.cli.CommandLineParsingServiceTest"/>
-      <class name="com.intuit.ginsu.cli.GinsuCLIModuleTest"/>
-      <class name="com.intuit.ginsu.commands.CommandGenerateProjectTest"/>
-      <class name="com.intuit.ginsu.config.PropertyFileConfigurationServiceTest"/>
-      <class name="com.intuit.ginsu.io.PathAnalyzerTest"/>
-      <!-- <class name="com.intuit.ginsu.commands.CommandInitEnvTest"/>-->
-      <class name="com.intuit.ginsu.scripts.AntScriptLauncherTest"/>
-      <class name="com.intuit.ginsu.validators.JavaScriptVariableValidatorTests" />
+      <class name="com.intuit.tools.imat.cli.AppTest"/>
+      <class name="com.intuit.tools.imat.cli.CommandLineParsingServiceTest"/>
+      <class name="com.intuit.tools.imat.cli.IMATCLIModuleTest"/>
+      <class name="com.intuit.tools.imat.commands.CommandGenerateProjectTest"/>
+      <class name="com.intuit.tools.imat.config.PropertyFileConfigurationServiceTest"/>
+      <class name="com.intuit.tools.imat.io.PathAnalyzerTest"/>
+      <!-- <class name="com.intuit.tools.imat.commands.CommandInitEnvTest"/>-->
+      <class name="com.intuit.tools.imat.scripts.AntScriptLauncherTest"/>
+      <class name="com.intuit.tools.imat.validators.JavaScriptVariableValidatorTests" />
     </classes>
   </test>
 </suite>

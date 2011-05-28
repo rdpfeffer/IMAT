@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+* Copyright (c) 2011 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -13,12 +13,16 @@
  * Returns the index within the array of the first element with its name
  * matching the supplied elementName.
  *
- * @param elementArray The UIAElementArray containing the elements to search
- * @param name The name of the element to find. NOTE: This is case sensitive.
+ * @param {UIAElementArray} elementArray 
+ * 						The array containing the elements to search.
+ * @param {string} name 
+ * 						The name of the element to find. NOTE: This is case 
+ * 						sensitive.
  *
- * @return int The index of the element within the array if found or undefined otherwise.
+ * @return {number} The whole number representing the index of the element 
+ * within the array. If not found, this element will be undefined.
  */
-GINSU.indexOfFirstWithName = function(elementArray, name)
+IMAT.indexOfFirstWithName = function(elementArray, name)
 {
 	var i = 0;
 	var index = undefined;
