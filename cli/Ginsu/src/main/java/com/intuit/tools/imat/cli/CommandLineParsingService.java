@@ -127,11 +127,15 @@ public class CommandLineParsingService implements IInputHandlingService {
 	 *             parsed from the input given by the consuming class
 	 */
 	private ICommand getParsedCommand(String[] input) {
-		ICommand parsedCommand;
+		ICommand parsedCommand = null;
 		try {
 			jCommander.parse(input);
 			parsedCommand = supportedCommands
 					.get(jCommander.getParsedCommand());
+			if (parsedCommand == null) {
+				throw new MissingCommandException("Please enter at least one " +
+						"command.");
+			}
 		} catch (Throwable e) {
 			parsedCommand = getUsagePrinterForException(e);
 		}
