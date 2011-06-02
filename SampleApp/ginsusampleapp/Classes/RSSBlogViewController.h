@@ -10,7 +10,7 @@
 #import <Three20/Three20.h>
 
 
-@interface RSSBlogViewController : TTTableViewController {
+@interface RSSBlogViewController : TTTableViewController<NSXMLParserDelegate> {
 
 	NSXMLParser * rssParser;
 	

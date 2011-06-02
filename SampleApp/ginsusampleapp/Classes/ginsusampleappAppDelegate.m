@@ -10,7 +10,7 @@
 
 @implementation ginsusampleappAppDelegate
 
-@synthesize window;
+@synthesize window, lvc;
 
 
 #pragma mark -
@@ -22,6 +22,7 @@
     TTNavigator* navigator = [TTNavigator navigator];
 	navigator.supportsShakeToReload = YES;
 	navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+    navigator.window = window;
 	
 	//set the stylesheet so that we can have black text underneath each launcher icon
 	[TTStyleSheet setGlobalStyleSheet:[[[StyleSheet alloc] init] autorelease]];
@@ -65,8 +66,8 @@
 				selector: nil
 			  transition: 0];
 	
-	 [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://launcherView"]];
-   // [self.window makeKeyAndVisible];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://launcherView"]];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

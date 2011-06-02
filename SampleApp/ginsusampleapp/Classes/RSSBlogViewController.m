@@ -8,12 +8,15 @@
 
 #import "RSSBlogViewController.h"
 
+@interface RSSBlogViewController(Private)
+- (void)parseXMLFileAtURL:(NSString *)URL;    
+@end
 
 @implementation RSSBlogViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
 		self.title = @"Mint Blog";
 		self.variableHeightRows = YES;
 	}
