@@ -84,7 +84,7 @@
 				<artifactId>maven-jstools-plugin</artifactId>
 				<version>0.7</version>
 				<configuration>
-					<jsDir>src/main/resources/js</jsDir>
+					<jsDir>${project.basedir}/src/main/resources/js</jsDir>
 					<includes>**/*.js</includes> 
 					<reportSets>  
 					   <reportSet>  
