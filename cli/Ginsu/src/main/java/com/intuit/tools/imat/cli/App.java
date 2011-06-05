@@ -28,6 +28,7 @@ import com.intuit.tools.imat.config.IMATConfigModule;
 import com.intuit.tools.imat.io.IMATIOModule;
 import com.intuit.tools.imat.logging.BindLog4JWithClassNameModule;
 import com.intuit.tools.imat.monitor.IMATMonitorModule;
+import com.intuit.tools.imat.reporting.IMATReportingModule;
 import com.intuit.tools.imat.scripts.IMATScriptsModule;
 
 /**
@@ -137,6 +138,7 @@ public class App {
 		appContext.addAppModule(new IMATConfigModule());
 		appContext.addAppModule(new IMATScriptsModule());
 		appContext.addAppModule(new IMATMonitorModule());
+		appContext.addAppModule(new IMATReportingModule());
 		return appContext;
 	}
 }

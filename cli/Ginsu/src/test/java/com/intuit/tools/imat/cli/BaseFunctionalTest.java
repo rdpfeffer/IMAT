@@ -35,6 +35,7 @@ import com.intuit.tools.imat.io.IMATIOModule;
 import com.intuit.tools.imat.io.PathAnalyzer;
 import com.intuit.tools.imat.logging.BindLog4JWithClassNameModule;
 import com.intuit.tools.imat.monitor.IMATMonitorModule;
+import com.intuit.tools.imat.reporting.IMATReportingModule;
 import com.intuit.tools.imat.scripts.AntScriptLauncher;
 import com.intuit.tools.imat.scripts.AntScriptLauncherForTesting;
 import com.intuit.tools.imat.scripts.IMATScriptsModule;
@@ -120,7 +121,7 @@ public abstract class BaseFunctionalTest {
 					new BindLog4JWithClassNameModule(),
 					new IMATCommandsModule(), new IMATIOModule(),
 					new IMATConfigModule(), new IMATScriptsModule(),
-					new IMATMonitorModule());
+					new IMATMonitorModule(), new IMATReportingModule());
 		}
 	}
 

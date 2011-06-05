@@ -29,6 +29,8 @@ import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.ITestMonitor;
 import com.intuit.tools.imat.MisconfigurationException;
 import com.intuit.tools.imat.cli.converters.FileConverter;
+import com.intuit.tools.imat.reporting.IReportingService;
+import com.intuit.tools.imat.validators.JavaScriptFileValidator;
 
 /**
  * @author rpfeffer
@@ -45,6 +47,8 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 		"runs";
 	private static final String AUTOMATION_RESULTS_FILE = AUTOMATION_RESULTS_PATH + 
 		File.separator + "Run 1" + File.separator + "Automation Results.plist";
+	private static final String TEST_REPORT_PATH = "reports" + File.separator +
+		"junitReport.xml";
 		
 	
 	/**
@@ -53,7 +57,8 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	public static final String SUITE_FILE = "-suite";
 	@Parameter(names = {SUITE_FILE, "-s"},
 			description = "The filename of the suite file to run. Note, this path " +
-					"should be relative to the current project directory.")
+			"should be relative to the current project directory.",
+			validateWith = JavaScriptFileValidator.class)
 	public String suite;
 	
 	/**
@@ -73,6 +78,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	private final IProjectResourceService projResourceService;
 	private final IFileMonitoringService fileMonitoringService;
 	private final ITestMonitor testMonitor;
+	private final IReportingService reportingService;
 	
 	/**
 	 * @param printwriter
@@ -86,13 +92,15 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			IApplicationResourceService applicationResourceService,
 			IProjectResourceService projResourceService,
 			IFileMonitoringService fileMonitoringService,
-			ITestMonitor testMonitor
+			ITestMonitor testMonitor,
+			IReportingService reportingService
 			) {
 		super(printwriter, logger, scriptLauncher);
 		this.applicationResourceService = applicationResourceService;
 		this.projResourceService = projResourceService;
 		this.fileMonitoringService = fileMonitoringService;
 		this.testMonitor = testMonitor;
+		this.reportingService = reportingService;
 	}
 
 	
@@ -107,7 +115,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			exitStatus = stopTests();
 		}
 		if(testMonitor.testsDidRunToCompletion()) {
-			//TODO: Create the XML Formatted Test Result Files.
+			generateReport();
 		}
 		if (exitStatus == 0 ) {
 			exitStatus = archiveTestResults();
@@ -120,13 +128,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	/**
 	 * @throws MisconfigurationException
 	 */
-	private int startTests() throws MisconfigurationException
-	{
-		String suiteFilePath ="";
+	private int startTests() throws MisconfigurationException {
+		String suiteFilePath = "";
 		int exitCode = 0;
 		try {
 			LinkedHashMap<String, String> arguments = new LinkedHashMap<String, String>();
-			suiteFilePath = projResourceService.getProjectResourceFile(suite).getCanonicalPath();
+			suiteFilePath = (new File(suite)).getCanonicalPath();
 			arguments.put(SUITE_FILE, suiteFilePath);
 			arguments.put(TEMPLATE_FILE, template.getCanonicalPath());
 			IScriptLauncher scriptLauncher = this.getScriptLauncher();
@@ -134,13 +141,13 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			scriptLauncher.setScript("StartXCodeInstrument.scpt");
 			exitCode = scriptLauncher.runScript();
 		} catch (FileNotFoundException e) {
-			MisconfigurationException ex = 
-				new MisconfigurationException("Could not find suite file: " + suiteFilePath);
+			MisconfigurationException ex = new MisconfigurationException(
+					"Could not find suite file: " + suiteFilePath);
 			ex.initCause(e);
 			throw ex;
 		} catch (IOException e) {
-			MisconfigurationException ex = 
-				new MisconfigurationException("Error while resolving path.");
+			MisconfigurationException ex = new MisconfigurationException(
+					"Error while resolving path.");
 			ex.initCause(e);
 			throw ex;
 		}
@@ -201,6 +208,24 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 		IScriptLauncher scriptLauncher = this.getScriptLauncher();
 		scriptLauncher.setScript("StopXCodeInstrument.scpt");
 		return scriptLauncher.runScript();
+	}
+	
+	private void generateReport() {
+		try {
+			File junitXmlResultFile = new File(projResourceService
+					.getProjectResourceFile("").getPath()
+					+ File.separator
+					+ TEST_REPORT_PATH);
+			File testResultLog = applicationResourceService.getAppResourceFile(
+					AUTOMATION_RESULTS_FILE, true);
+			reportingService.setJunitXMLResultFile(junitXmlResultFile);
+			reportingService
+					.convertTestOutputFileToJunitXMLResultFormat(testResultLog);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	private int archiveTestResults() throws MisconfigurationException {

@@ -27,6 +27,7 @@ import com.intuit.tools.imat.annotations.AntScript;
 import com.intuit.tools.imat.annotations.AppleScript;
 import com.intuit.tools.imat.annotations.UsageRenderer;
 import com.intuit.tools.imat.annotations.iOS;
+import com.intuit.tools.imat.reporting.IReportingService;
 
 /**
  * @author rpfeffer
@@ -90,12 +91,13 @@ public class IMATCommandsModule extends AbstractModule {
 			IApplicationResourceService applicationResourceService,
 			IProjectResourceService projectResourceService,
 			IFileMonitoringService fileMonitoringService,
-			@iOS ITestMonitor testMonitor)
+			@iOS ITestMonitor testMonitor,
+			IReportingService reportingService)
 	{
 		Logger logger = Logger.getLogger(CommandRunTests.class);
 		return new CommandRunTests(printwriter, logger, scriptLauncher, 
 				applicationResourceService, projectResourceService, 
-				fileMonitoringService, testMonitor);
+				fileMonitoringService, testMonitor, reportingService);
 	}
 	
 	@Provides SynchronousCommandDispatchService provideDispatchService()

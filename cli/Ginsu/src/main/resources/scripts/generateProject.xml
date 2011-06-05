@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-	Copyright (c) 2009 Intuit, Inc. * All rights reserved. This program 
-	and the accompanying materials * are made available under the terms of the 
-	Eclipse Public License v1.0 * which accompanies this distribution, and is 
-	available at * http://www.opensource.org/licenses/eclipse-1.0.php * * Contributors: 
+	Copyright (c) 2009 Intuit, Inc. All rights reserved. This program 
+	and the accompanying materials are made available under the terms of the 
+	Eclipse Public License v1.0 which accompanies this distribution, and is 
+	available at http://www.opensource.org/licenses/eclipse-1.0.php Contributors: 
 	Intuit, Inc - initial API and implementation 
 -->
 
@@ -23,13 +23,14 @@
 			<fileset dir="${project.dir}">
 				<include name="**/*.js"/>
 				<include name="**/*.properties"/>
+				<include name="reports"/>
 			</fileset>
 			<filterset>
 				<filter token="GLOBAL_OBJECT" value="${global.object.var}" />
 				<filter token="PATH_TO_APP" value="${path.to.app.home}" />
 			</filterset>
 		</copy>
-		<chmod perm="777">
+		<chmod perm="666">
 			<fileset dir="${target.dir}">
 				<include name="**/**"/>
 			</fileset>
