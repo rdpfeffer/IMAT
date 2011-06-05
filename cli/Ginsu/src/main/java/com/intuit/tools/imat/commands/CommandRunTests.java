@@ -57,7 +57,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	public static final String SUITE_FILE = "-suite";
 	@Parameter(names = {SUITE_FILE, "-s"},
 			description = "The filename of the suite file to run. Note, this path " +
-			"should be relative to the current project directory.",
+			"should be relative to the current directory.",
 			validateWith = JavaScriptFileValidator.class)
 	public String suite;
 	
