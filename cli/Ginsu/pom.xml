@@ -7,6 +7,7 @@
 		<artifactId>cic-parent-pom</artifactId>
 		<version>1.0.15</version>
 	</parent>
+	
 
 	<groupId>com.intuit.tools.imat</groupId>
 	<artifactId>IMAT</artifactId>
@@ -18,6 +19,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- The code.intuit.com project URL name for this project. Children 
+			of the cic-parent-pom need to override this -->
+		<projectURLName>ginsu</projectURLName>
 	</properties>
 
 	<build>
