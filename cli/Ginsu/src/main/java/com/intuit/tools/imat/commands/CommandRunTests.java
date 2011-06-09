@@ -47,8 +47,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 		"runs";
 	private static final String AUTOMATION_RESULTS_FILE = AUTOMATION_RESULTS_PATH + 
 		File.separator + "Run 1" + File.separator + "Automation Results.plist";
-	private static final String TEST_REPORT_PATH = "reports" + File.separator +
-		"junitReport.xml";
+	private static final String TEST_REPORT_PATH = "reports"; 
 		
 	
 	/**
@@ -212,13 +211,13 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	
 	private void generateReport() {
 		try {
-			File junitXmlResultFile = new File(projResourceService
+			File junitXmlResultPath = new File(projResourceService
 					.getProjectResourceFile("").getPath()
 					+ File.separator
 					+ TEST_REPORT_PATH);
 			File testResultLog = applicationResourceService.getAppResourceFile(
 					AUTOMATION_RESULTS_FILE, true);
-			reportingService.setJunitXMLResultFile(junitXmlResultFile);
+			reportingService.setJunitXMLResultPath(junitXmlResultPath);
 			reportingService
 					.convertTestOutputFileToJunitXMLResultFormat(testResultLog);
 		} catch (FileNotFoundException e) {

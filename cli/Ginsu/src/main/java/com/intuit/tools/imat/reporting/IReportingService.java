@@ -35,13 +35,13 @@ public interface IReportingService {
 	public void convertTestOutputFileToJunitXMLResultFormat(File testOutputFile);
 	
 	/**
-	 * Get the Junit XML result format file.	
+	 * Get the Junit XML result path.	
 	 */
-	public File getJunitXMLResultFile();
+	public File getJunitXMLResultPath();
 	
 	/**
-	 * Get the Junit XML result format file.	
+	 * Get the Junit XML result path.	
 	 */
-	public void setJunitXMLResultFile(File junitXMLResultFile);
+	public void setJunitXMLResultPath(File junitXMLResultPath);
 
 }

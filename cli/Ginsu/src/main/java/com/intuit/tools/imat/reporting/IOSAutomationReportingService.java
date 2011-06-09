@@ -67,8 +67,7 @@ public class IOSAutomationReportingService implements IReportingService{
 	private static final String TESTCASE_PASS_STATUS = "PASS";	
 	private static final String TESTCASE_FAIL_STATUS = "FAIL";	
 	
-	//junit XML elements
-	private static final String JUNIT_XML_ELEMENT_TESTSUITES = "testsuites";
+	//junit XML elements	
 	private static final String JUNIT_XML_ELEMENT_TESTSUITE = "testsuite";
 	private static final String JUNIT_XML_ELEMENT_TESTCASE= "testcase";
 	private static final String JUNIT_XML_ELEMENT_FAILURE = "failure";
@@ -90,7 +89,7 @@ public class IOSAutomationReportingService implements IReportingService{
 	
 	private ArrayList<Dict> dictList;
 	private JunitTestSuiteList junitTestSuiteList;
-	private File junitXMLResultFile;
+	private File junitXMLResultPath;
 	
 	public void setTestOutputFile() {
 		//to be implemented
@@ -102,8 +101,8 @@ public class IOSAutomationReportingService implements IReportingService{
 		this.convertJunitTestSuiteListToJunitXMLResult ();
 	}
 	
-	public File getJunitXMLResultFile() {
-		return junitXMLResultFile;
+	public File getJunitXMLResultPath() {
+		return junitXMLResultPath;
 	}
 	
 	public void convertPListToDictList (File pList){		
@@ -274,7 +273,7 @@ public class IOSAutomationReportingService implements IReportingService{
 		 
 			//root elements
 			Document doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement(JUNIT_XML_ELEMENT_TESTSUITES);
+			Element rootElement = doc.createElement(JUNIT_XML_ELEMENT_TESTSUITE);
 			doc.appendChild(rootElement);
 			  
 			//testsuite elements
@@ -296,7 +295,7 @@ public class IOSAutomationReportingService implements IReportingService{
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			File junitXML = getJunitXMLResultFile ();
+			File junitXML = getJunitXMLResultPath ();
 			StreamResult result =  new StreamResult(new File(junitXML.toString()));			
 			transformer.transform(source, result);
 			
@@ -309,26 +308,19 @@ public class IOSAutomationReportingService implements IReportingService{
 	}
 	
 	public void generateXMLForScriptCompleted () {
-		try{
-			 
-		      DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-			  DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-		 
-			  //root elements
-			  Document doc = docBuilder.newDocument();
-			  Element rootElement = doc.createElement(JUNIT_XML_ELEMENT_TESTSUITES);
-			  doc.appendChild(rootElement);
-			  
-			  
-			  
+		try{	 
+		      
 			  for (int i=0;i<junitTestSuiteList.getTestSuiteList().size();i++ ){
 				  
 				  JunitTestSuite testSuite = junitTestSuiteList.getTestSuiteList ().get(i);
-			  
-		 
-				  //testsuite elements
+				  
+				  DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+				  DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			 
+				  //testsuite root element
+				  Document doc = docBuilder.newDocument();				  
 				  Element suite = doc.createElement(JUNIT_XML_ELEMENT_TESTSUITE);
-				  rootElement.appendChild(suite);
+				  doc.appendChild(suite);
 			 
 				  //set attributes to testsuite element
 				  Attr attr = doc.createAttribute(JUNIT_XML_ELEMENT_ERRORS);
@@ -398,16 +390,19 @@ public class IOSAutomationReportingService implements IReportingService{
 						  //attr1.setValue("Sample Error Message");
 						  error.setAttributeNode(attr1);
 					  }
+					  
+					//write the content into xml file
+					  TransformerFactory transformerFactory = TransformerFactory.newInstance();
+					  Transformer transformer = transformerFactory.newTransformer();
+					  DOMSource source = new DOMSource(doc);
+					  File junitXMLPath = getJunitXMLResultPath ();
+					  String junitXMLFile =  junitXMLPath.toString() + "\\TEST-" + testSuite.getName() + ".xml";
+					  StreamResult result =  new StreamResult(junitXMLFile);
+					  transformer.transform(source, result); 
 				  }
 			  }
 				  
-			  //write the content into xml file
-			  TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			  Transformer transformer = transformerFactory.newTransformer();
-			  DOMSource source = new DOMSource(doc);
-			  File junitXML = getJunitXMLResultFile ();
-			  StreamResult result =  new StreamResult(new File(junitXML.toString()));
-			  transformer.transform(source, result); 		  
+			  		  
 			  
 			  }catch(ParserConfigurationException pce){
 		    	 pce.printStackTrace();
@@ -452,8 +447,8 @@ public class IOSAutomationReportingService implements IReportingService{
 		this.junitTestSuiteList = junitTestSuiteList;
 	}	
 
-	public void setJunitXMLResultFile(File junitXMLResultFile) {
-		this.junitXMLResultFile = junitXMLResultFile;
+	public void setJunitXMLResultPath(File junitXMLResultPath) {
+		this.junitXMLResultPath = junitXMLResultPath;
 	}
 	
 
