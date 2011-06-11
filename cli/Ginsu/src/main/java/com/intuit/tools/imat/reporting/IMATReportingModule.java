@@ -10,7 +10,12 @@
  *******************************************************************************/
 package com.intuit.tools.imat.reporting;
 
+
+
+import org.apache.log4j.Logger;
+
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 
 /**
  * @author rpfeffer
@@ -30,4 +35,9 @@ public class IMATReportingModule extends AbstractModule {
 		bind(IReportingService.class).to(IOSAutomationReportingService.class);
 	}
 
+	@Provides IOSAutomationReportingService provideReportingService()
+	{
+		Logger logger = Logger.getLogger(IOSAutomationReportingService.class);
+		return new IOSAutomationReportingService(logger);
+	}
 }

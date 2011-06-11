@@ -31,6 +31,7 @@ import com.intuit.tools.imat.MisconfigurationException;
 import com.intuit.tools.imat.cli.converters.FileConverter;
 import com.intuit.tools.imat.reporting.IReportingService;
 import com.intuit.tools.imat.validators.JavaScriptFileValidator;
+import com.intuit.tools.imat.validators.TemplateFileValidator;
 
 /**
  * @author rpfeffer
@@ -47,7 +48,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 		"runs";
 	private static final String AUTOMATION_RESULTS_FILE = AUTOMATION_RESULTS_PATH + 
 		File.separator + "Run 1" + File.separator + "Automation Results.plist";
-	private static final String TEST_REPORT_PATH = "reports"; 
+	private static final String TEST_REPORT_PATH = "reports";
 		
 	
 	/**
@@ -56,18 +57,22 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	public static final String SUITE_FILE = "-suite";
 	@Parameter(names = {SUITE_FILE, "-s"},
 			description = "The filename of the suite file to run. Note, this path " +
-			"should be relative to the current directory.",
+			"should be relative to the current directory. This option is required.",
 			validateWith = JavaScriptFileValidator.class)
-	public String suite;
+	public String suite = null;
 	
 	/**
 	 * The template file we will use in our tests.
 	 */
+	public static final String BOGUS_TEMPLATE_FILE_CHANGEME = "env/required.tracetemplate";
 	public static final String TEMPLATE_FILE = "-template";
 	@Parameter(names = {TEMPLATE_FILE, "-t"},
-			description = "The filename of the template to run.",
-			converter = FileConverter.class)
-	public File template;
+			description = "The filename of the template to run. It must end in " +
+					".tracetemplate This option is required.",
+			converter = FileConverter.class, 
+			validateWith = TemplateFileValidator.class
+			)
+	public File template = null;
 	
 	public static final String NAME = "run-tests";
 	private static final int MAX_ATTEMPTS_TO_FIND_LOG = 5;
@@ -108,18 +113,24 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	 * @see com.intuit.tools.imat.ICommand#run()
 	 */
 	public int run() throws MisconfigurationException {
-		exitStatus  = startTests();
-		if (exitStatus == 0 ) {
-			monitorTests();
-			exitStatus = stopTests();
+		if (suite != null && template != null) {
+			exitStatus = startTests();
+			if (exitStatus == 0) {
+				monitorTests();
+				exitStatus = stopTests();
+			}
+			logger.debug(testMonitor.testsDidRunToCompletion() ? "Tests ran to completion"
+					: "Tests did not complete successfully");
+			if (testMonitor.testsDidRunToCompletion()) {
+				generateReport();
+			}
+			if (exitStatus == 0) {
+				exitStatus = archiveTestResults();
+			}
+		} else {
+			logger.error("Invalid Parameters: You must specify a suite as well as a template file. Run \"imat run-tests -help\" for more information.");
+			exitStatus = 1;
 		}
-		if(testMonitor.testsDidRunToCompletion()) {
-			generateReport();
-		}
-		if (exitStatus == 0 ) {
-			exitStatus = archiveTestResults();
-		}
-		
 		return exitStatus;
 	}
 
@@ -211,6 +222,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	
 	private void generateReport() {
 		try {
+			logger.info("Generating XML reports...");
 			File junitXmlResultPath = new File(projResourceService
 					.getProjectResourceFile("").getPath()
 					+ File.separator
@@ -218,6 +230,8 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			File testResultLog = applicationResourceService.getAppResourceFile(
 					AUTOMATION_RESULTS_FILE, true);
 			reportingService.setJunitXMLResultPath(junitXmlResultPath);
+			logger.debug("converting test result log: " + testResultLog + 
+					" to jUnit report for path: " + junitXmlResultPath);
 			reportingService
 					.convertTestOutputFileToJunitXMLResultFormat(testResultLog);
 		} catch (FileNotFoundException e) {

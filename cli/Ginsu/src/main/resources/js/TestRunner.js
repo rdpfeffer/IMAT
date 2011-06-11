@@ -179,22 +179,22 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 * @param {string} testCase
 	 * 					The name of the test case we are about to run.
 	 */
-	runTestCase: function(testSet, testCaseName)
-	{
+	runTestCase: function(testSet, testCaseName) {
 		var testSignature = this.getTestCaseSignature(testSet, testCaseName);
 		
 		//this try block allows us our "fail fast" approach
-		try 
-		{
+		try {
 			IMAT.log_start(testSignature);
-			testSet.setUp();
+			if (!IMAT.settings.SKIP_SET_UP_TEST_CASE) {
+				testSet.setUp();
+			}
 			testSet[testCaseName]();
-			testSet.tearDown();
+			if (!IMAT.settings.SKIP_TEAR_DOWN_TEST_CASE) {
+				testSet.tearDown();
+			}
 			//if we get here, the test has passed.
 			IMAT.log_pass(testSignature);
-		}
-		catch (e) 
-		{
+		} catch (e)  {
 			//first log an error
 			IMAT.log_error(e);
 			//then print out the current view tree
@@ -225,10 +225,23 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	{		
 		if(this.containsRunnableTestCases(testSet))
 		{
-			IMAT.log_start(testSet.title + ".setUpTestSet();");
-			IMAT.log_trace("Setting up the test set");
-			testSet.setUpTestSet();
-			IMAT.log_pass(testSet.title + ".setUpTestSet();");
+			//NOTE: The Code which translates the Plist files over to Junit
+			//XML reports keys off these tokens to do the translation. 
+			//In terms of guaranteeing that the report can be generated it is
+			//important to ensure that these tokens are always printed out at
+			//the beginning and end of each testSet.
+			var setUpToken = testSet.title + ".setUpTestSet();";
+			var tearDownToken = testSet.title + ".tearDownTestSet();";
+			try {
+				IMAT.log_start(setUpToken);
+				if (!IMAT.settings.SKIP_SET_UP_TEST_SET ) {
+					testSet.setUpTestSet();
+				} 
+				IMAT.log_pass(setUpToken);
+			} catch (e) {
+				IMAT.log_error(e);
+				IMAT.log_fail(setUpToken);
+			}
 			for(prop in testSet)
 			{
 				//NOTE: We do not check for hasOwnProperty() because that function does not check the 
@@ -238,10 +251,16 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 					this.runTestCase(testSet, prop);
 				}
 			}
-			IMAT.log_start(testSet.title + ".tearDownTestSet();");
-			IMAT.log_trace("Tearing down the test set.");
-			testSet.tearDownTestSet();
-			IMAT.log_pass(testSet.title + ".tearDownTestSet();");
+			try {
+				IMAT.log_start(tearDownToken);
+				if (!IMAT.settings.SKIP_TEAR_DOWN_TEST_SET) {
+					testSet.tearDownTestSet();
+				}
+				IMAT.log_pass(tearDownToken);
+			} catch (e) {
+				IMAT.log_error(e);
+				IMAT.log_fail(tearDownToken);
+			}
 		}
 	},
 	

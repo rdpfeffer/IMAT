@@ -52,17 +52,22 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 		IMAT.log_debug("Running Suite...");
 		if(suiteHandler)
 		{
-			
-			IMAT.log_start("suiteHandler.initSuite();");
-			suiteHandler.initSuite();
-			IMAT.log_pass("suiteHandler.initSuite();");
+			var initSuiteToken = "suiteHandler.initSuite();"; 
+			var cleanUpSuiteToken = "suiteHandler.cleanUpSuite();";
+			IMAT.log_start(initSuiteToken);
+			if (!IMAT.settings.SKIP_INIT_SUITE) {
+				suiteHandler.initSuite();
+			}
+			IMAT.log_pass(initSuiteToken);
 			while (testSet = this.testSetArray.pop())
 			{
 				this.testRunner.runTestCases(testSet);
 			}
-			IMAT.log_start("suiteHandler.cleanUpSuite();");
-			suiteHandler.cleanUpSuite();
-			IMAT.log_pass("suiteHandler.cleanUpSuite();");
+			IMAT.log_start(cleanUpSuiteToken);
+			if (!IMAT.settings.SKIP_CLEAN_UP_SUITE) {
+				suiteHandler.cleanUpSuite();
+			}
+			IMAT.log_pass(cleanUpSuiteToken);
 		}
 		else
 		{

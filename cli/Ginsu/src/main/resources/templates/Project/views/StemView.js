@@ -4,9 +4,11 @@
  * This view is responsible for discovering its current environment and 
  * specializing itself based upon what is around it. Just like a "stem cell," 
  * it will use the environmental factors, in this case the application state, to
- * beget a new view to match what it detects on the screen.
+ * beget a new view to match what it detects on the screen. Also note that this
+ * is a rare exception where we will have a view live under the IMAT namespace
+ * instead of the @GLOBAL_OBJECT@ namespace.
  */
-@GLOBAL_OBJECT@.StemView = Class.extend(IMAT.BaseView, {
+IMAT.StemView = Class.extend(IMAT.BaseView, {
 	
 	/**
 	 * Initialize the stem view Factory

@@ -17,13 +17,8 @@
  */
 var IMAT = {};
 
-/**
- *  @namespace The IMAT.settings namespace should hold all things related to 
- *  settings used while running tests. For example,Your automation can reference 
- *  this namespace to get or set the logging levels.
- */
-IMAT.settings = {};
-
+//import the default settings
+#import "settings.js"
 
 // Declare the base inheritance framework
 #import "./inheritance-2.7.js"

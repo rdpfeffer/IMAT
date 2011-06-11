@@ -24,7 +24,11 @@
 			of the cic-parent-pom need to override this -->
 		<projectURLName>ginsu</projectURLName>
 	</properties>
-
+	<scm>
+		<connection>scm:svn:https://code.intuit.com/svn/repos/ginsu/trunk</connection>
+		<developerConnection>scm:svn:https://code.intuit.com/svn/repos/ginsu/trunk</developerConnection>
+		<url>https://code.intuit.com/integration/viewvc/viewvc.cgi/?root=ginsu&amp;system=exsy1003</url>
+	</scm>
 	<build>
 		<resources>
 			<resource>
