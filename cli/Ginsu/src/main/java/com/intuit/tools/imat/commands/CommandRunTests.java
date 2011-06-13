@@ -114,14 +114,17 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	 */
 	public int run() throws MisconfigurationException {
 		if (suite != null && template != null) {
-			exitStatus = startTests();
+			exitStatus = archiveTestResults();
+			if (exitStatus == 0) {
+				exitStatus = startTests();
+			}
 			if (exitStatus == 0) {
 				monitorTests();
 				exitStatus = stopTests();
 			}
 			logger.debug(testMonitor.testsDidRunToCompletion() ? "Tests ran to completion"
 					: "Tests did not complete successfully");
-			if (testMonitor.testsDidRunToCompletion()) {
+			if (testMonitor.testsDidRunToCompletion() && exitStatus == 0) {
 				generateReport();
 			}
 			if (exitStatus == 0) {
