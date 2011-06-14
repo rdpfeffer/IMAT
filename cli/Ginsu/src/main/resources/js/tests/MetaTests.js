@@ -105,8 +105,8 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		{
 			IMAT.log_trace("this.types[i] is :" + this.types[i]);
 			var message = "The two unequal objects, " + this.types[i] + " and "+ 
-					this.types[(i+1) % this.types.length] + " evaluated as equals when they should" 
-					+ " not have";
+					this.types[(i+1) % this.types.length] + " evaluated as equals when they should"+
+					" not have";
 			
 			try
 			{
@@ -127,7 +127,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			//if we get here, that means one of these things evaluated as equals. log a failure.
 			UIALogger.logFail("NaN is never equal to itself!");
 		}
-		catch (e)
+		catch (e2)
 		{
 			//do nothing. We Expect to fail.
 		}
@@ -137,7 +137,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			IMAT.log_debug("Checking two objects of equal value");
 			assertEquals(this.anEqualObj, this.otherEqualObj);
 		}
-		catch (e)
+		catch (e3)
 		{
 			//do nothing. We Expect to fail.
 		}
@@ -164,7 +164,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 				UIALogger.logFail("Something was true when it should have been false. Type was " +
 					this.falseTypes[i]);
 			}
-			catch (e)
+			catch (e4)
 			{
 				//do nothing. We Expect to fail.
 			}
@@ -192,7 +192,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 				UIALogger.logFail("Something was false when it should have been true. Type was " +
 					this.trueTypes[i]);
 			}
-			catch (e)
+			catch (e5)
 			{
 				//do nothing. We Expect to fail.
 			}
@@ -220,7 +220,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 				UIALogger.logFail("Something is null when it should have been not null. Type was " +
 					this.nullTypes[i]);
 			}
-			catch (e)
+			catch (e6)
 			{
 				//do nothing. We Expect to fail.
 			}

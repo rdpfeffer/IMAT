@@ -32,8 +32,7 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 	 */
 	initialize: function()
 	{
-		this.testSetArray = new Array();
-		this.testRunner;
+		this.testSetArray = [];
 	},
 	
 	/**
@@ -59,9 +58,11 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 				suiteHandler.initSuite();
 			}
 			IMAT.log_pass(initSuiteToken);
-			while (testSet = this.testSetArray.pop())
+			testSet = this.testSetArray.pop();
+			while (testSet)
 			{
 				this.testRunner.runTestCases(testSet);
+				testSet = this.testSetArray.pop();
 			}
 			IMAT.log_start(cleanUpSuiteToken);
 			if (!IMAT.settings.SKIP_CLEAN_UP_SUITE) {
@@ -71,7 +72,7 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 		}
 		else
 		{
-			throw "suiteHandler was not defined when calling SuiteRunner.runTests(...)"	
+			throw "suiteHandler was not defined when calling SuiteRunner.runTests(...)";	
 		}
 	},
 	

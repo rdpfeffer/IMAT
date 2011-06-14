@@ -32,10 +32,14 @@
  */
 function assertEquals(received, expected, message) {
   if (received !== expected) {
-    if (!message) message = "Expected " + expected + " (type:" +typeof expected+")" + " but received " + received + " (type:" + typeof received+"). Check for value and type.";
+    if (!message) {
+    	message = "Expected " + expected + " (type:" + typeof expected + ")" + 
+    		" but received " + received + " (type:" + typeof received + 
+    		"). Check for value and type.";
+    }
     throw message;
   }
-};
+}
 
 /**
  * Checks that the expression evaluates to true.
@@ -48,11 +52,13 @@ function assertEquals(received, expected, message) {
  */
 function assertTrue(expression, message) {
   if (!expression) {
-    if (!message) message = "Assertion failed when expression was: " + expression + 
-    	" type:" + typeof expression;
+    if (!message){
+    	message = "Assertion failed when expression was: " + expression + 
+    		" type:" + typeof expression;
+    } 
     throw message;
   }
-};
+}
 
 /**
  * Checks that the expression evaluates to false.
@@ -65,7 +71,7 @@ function assertTrue(expression, message) {
  */
 function assertFalse(expression, message) {
   assertTrue(!expression, message);
-};
+}
 
 /**
  * Checks that thingie does not evaluate to null or any of its equivalents 
@@ -81,10 +87,12 @@ function assertFalse(expression, message) {
  */
 function assertNotNull(thingie, message) {
   if (thingie === null || typeof thingie === "undefined" || thingie instanceof UIAElementNil) {
-    if (!message) message = "Expected not null object";
+    if (!message) {
+    	message = "Expected not null object";
+    }
     throw message;
   }
-};
+}
 
 /**
  * Checks that two values from a sort are in an ascending relationship.
@@ -100,7 +108,7 @@ function assertAscending(lowValue, highValue, msg)
 	{
 		throw msg + " Sorted values are not in ascending order. highValue " + highValue + " is not higher than lowValue " + lowValue;
 	}
-};
+}
 
 /**
  * Checks that two values from a sort are in an descending relationship.
@@ -116,7 +124,7 @@ function assertDescending(highValue, lowValue, msg)
 	{
 		throw msg + " Sorted values are not in descending order. lowValue " + lowValue + " is not lower than highValue " + highValue;
 	}
-};
+}
 
 /**
  * For keeping track of manual tests that have not been automated yet, this will
@@ -133,7 +141,7 @@ function manualPass()
 		message = message + " " + arguments[0];
 	} 
 	IMAT.log_info(message);
-};
+}
 
 /**
  * For keeping track of manual tests that have not been automated yet, this will
@@ -150,7 +158,7 @@ function manualFail()
 		message = message + " " + arguments[0]; 
 	} 
 	throw message;
-};
+}
 
 /**
  * For keeping track of manual tests that have not been automated yet, and still
@@ -161,7 +169,7 @@ function manualFail()
 function toBeExecutedManually()
 {
 	IMAT.log_warning("MANUAL: To Be Executed.");
-};
+}
 
 //TODO Create an assertValid function that will call checkIsValid on a UIAElement Passed in.
 //function assertValid(elem, description)...

@@ -107,5 +107,5 @@ IMAT.BaseTestSet = Class.extend(/** @lends IMAT.BaseTestSet.prototype */{
 	doCleanup: function()
 	{
 		//do nothing.
-	},
+	}
 });

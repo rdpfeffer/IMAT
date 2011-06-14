@@ -178,7 +178,7 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 		{
 			if (typeof throttle == "undefined")
 			{
-				throttle = .5;
+				throttle = 0.5;
 			}
 			this.target.pushTimeout(throttle);
 			this.app.keyboard().buttons().firstWithName(buttonName).tap();
@@ -258,12 +258,12 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
             } else if (locator instanceof Array) {
             	IMAT.log_trace("Locator for " + elementID + " was an array.");
             	var tempElement = undefined;
-            	var i = 0
+            	var i = 0;
             	for (i = 0; i < locator.length; i++) {
-            		tempElement = eval(IMAT.viewMapPrefix + locator[i])
+            		tempElement = eval(IMAT.viewMapPrefix + locator[i]);
             		if (tempElement && !(tempElement instanceof UIAElementNil)){
             			element = tempElement;
-            			break
+            			break;
             		}
             	}
             } else if (typeof locator == "string") {

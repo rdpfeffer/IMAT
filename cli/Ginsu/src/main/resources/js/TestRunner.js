@@ -35,7 +35,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 */
 	initialize: function()
 	{
-		this.filtersArray = new Array();
+		this.filtersArray = [];
 	},
 	
 	/**
@@ -238,8 +238,8 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 					testSet.setUpTestSet();
 				} 
 				IMAT.log_pass(setUpToken);
-			} catch (e) {
-				IMAT.log_error(e);
+			} catch (setUpException) {
+				IMAT.log_error(setUpException);
 				IMAT.log_fail(setUpToken);
 			}
 			for(prop in testSet)
@@ -257,8 +257,8 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 					testSet.tearDownTestSet();
 				}
 				IMAT.log_pass(tearDownToken);
-			} catch (e) {
-				IMAT.log_error(e);
+			} catch (tearDownException) {
+				IMAT.log_error(tearDownException);
 				IMAT.log_fail(tearDownToken);
 			}
 		}

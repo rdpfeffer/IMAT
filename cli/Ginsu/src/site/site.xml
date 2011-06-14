@@ -5,12 +5,10 @@
 	<bannerLeft>
 		<name>Intuit Mobile Automation Toolkit</name>
 	</bannerLeft>
-
 	<poweredBy>
 		<logo name="Maven" href="http://maven.apache.org/"
 			img="http://maven.apache.org/images/logos/maven-feather.png" />
 	</poweredBy>
-
 	<body>
 		${reports}
 	</body>

@@ -53,4 +53,4 @@ IMAT.getTime = function()
 IMAT.generatePhoneNumber = function()
 {
 	return IMAT.randomXToY(100,999) + "-" + IMAT.randomXToY(100,999) + "-" + IMAT.randomXToY(1000,9999) ;
-}
+};

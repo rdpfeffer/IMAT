@@ -91,7 +91,7 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 				
 				assertEquals(alertTitle, title);
 				return true;
-			}
+			};
 		},
 	
 		/**
@@ -107,7 +107,7 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 				// tap tap taparoo that button with the given name
 				alert.buttons()[buttonName].tap();
 				return true;
-			}
+			};
 		},
 		
 		/**
@@ -278,5 +278,5 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 				" instead it evaluates to: " + actionFunction);
 			this.viewContext = actionFunction.apply(this.viewContext, args);
 		}
-	},
+	}
 });

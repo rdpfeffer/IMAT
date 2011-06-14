@@ -1,3 +1,4 @@
+/*
 YOU ARE STRONGLY DISCOURAGED FROM MODIFYING ANYTHING IN THE IMAT CORE DIRECTORY 
 THAT YOU DO NOT HAVE IMMEDIATE PLANS TO GIVE BACK TO THE IMAT OPEN SOURCE 
 PROJECT. THIS IS FOR TWO REASONS:
@@ -11,3 +12,4 @@ frustration and headache.
 Plus, you lose an opportunity to add "Open source rockstar" to your resume.
 
 So there! Consider yourself warned. :-)
+*/

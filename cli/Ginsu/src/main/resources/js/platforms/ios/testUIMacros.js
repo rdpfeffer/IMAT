@@ -17,7 +17,7 @@
  */
 function assertValid(elem, description) {
 	assertTrue(elem.checkIsValid(), (description ? description : "") + " was not valid: " + elem + " type: " + typeof elem);
-};
+}
 
 /**
  * Check that the given element is not valid.
@@ -27,4 +27,4 @@ function assertValid(elem, description) {
  */
 function assertInvalid(elem, description) {
 	assertFalse(elem.checkIsValid(), (description ? description : "") + " was valid: " + elem + " type: " + typeof elem);
-};
+}
