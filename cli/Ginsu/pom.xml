@@ -95,30 +95,55 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-			<plugin>
-				<!-- 
-				See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info.
-				 -->
-				<groupId>gr.abiss.mvn.plugins</groupId>
-				<artifactId>maven-jstools-plugin</artifactId>
-				<version>0.7</version>
-				<configuration>
-					<jsDir>${project.basedir}/src/main/resources/js</jsDir>
-					<includes>**/*.js</includes> 
-					<reportSets>  
-					   <reportSet>  
-					      <reports>  
-					         include the desired reports  
-					         <report>jslint</report>  
-					         <report>jsdoc</report>  
-					      </reports>  
-					   </reportSet>  
-					</reportSets> 
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->			
+<!-- 				See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info. -->
+<!-- 				 --> 
+<!-- 				<groupId>gr.abiss.mvn.plugins</groupId> -->
+<!-- 				<artifactId>maven-jstools-plugin</artifactId> -->
+<!-- 				<version>0.7</version> -->
+<!-- 				<configuration> -->
+<!-- 					<jsDir></jsDir> -->
+<!-- 					<includes>**/*.js</includes>  -->
+<!-- 					<reportSets>   -->
+<!-- 					   <reportSet>   -->
+<!-- 					      <reports>   -->
+<!-- 					         include the desired reports   -->
+<!-- 					         <report>jslint</report>   -->
+<!-- 					         <report>jsdoc</report>   -->
+<!-- 					      </reports>   -->
+<!-- 					   </reportSet>   -->
+<!-- 					</reportSets>  -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
-
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<!-- the default is src/main/js -->
+					<jsDir>${project.basedir}/src/main/resources/js</jsDir>
+					<!-- this is actually the default -->
+					<includes>**/*.js</includes>
+					<!-- this is actually the default -->
+					<caseSensitive>true</caseSensitive>
+					<!-- for more configuration properties, see the goals documentation -->
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- include the desired reports -->
+							<report>jslint</report>
+							<report>jsdoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>

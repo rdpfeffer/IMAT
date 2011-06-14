@@ -12,11 +12,6 @@
 	</poweredBy>
 
 	<body>
-		<menu name="JavaScript Documentation" inherit="top" ref="reports">
-			<item ref="reports" name="JavaScript Documentation" href="jsdoc/index.html">
-				<description>This is the JavaScript API Documentation for the Intuit
-					Mobile Automation Toolkit.</description>
-			</item>
-		</menu>
+		${reports}
 	</body>
 </project>
