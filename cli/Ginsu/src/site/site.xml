@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
+	name="Intuit Mobile Automation Toolkit">
+	<bannerLeft>
+		<name>Intuit Mobile Automation Toolkit</name>
+	</bannerLeft>
+
+	<poweredBy>
+		<logo name="Maven" href="http://maven.apache.org/"
+			img="http://maven.apache.org/images/logos/maven-feather.png" />
+	</poweredBy>
+
+	<body>
+		<menu name="JavaScript Documentation" inherit="top" ref="reports">
+			<item ref="reports" name="JavaScript Documentation" href="jsdoc/index.html">
+				<description>This is the JavaScript API Documentation for the Intuit
+					Mobile Automation Toolkit.</description>
+			</item>
+		</menu>
+	</body>
+</project>

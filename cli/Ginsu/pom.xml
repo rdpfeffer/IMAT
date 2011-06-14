@@ -7,7 +7,16 @@
 		<artifactId>cic-parent-pom</artifactId>
 		<version>1.0.15</version>
 	</parent>
+	<description>The Intuit Mobile Automation Toolkit picks up where the other
+	mobile automation tools leave off. Currently it only supports iOS Automation
+	in conjunction with the tools provided by Apple's iOS SDK.'
 	
+	More Specifically, the Intuit Mobile Automation Toolkit provides the ability
+	to execute tests in a fully defined test execution life-cycle. Furthermore, 
+	it supports command line support for running tests, as well as environment
+	initialization and basic project templating. It when all is said and done,
+	the Intuit Mobile Automation Toolkit will leave you with a set of neatly 
+	generated JUnit XML reports for you to show off to your friends.</description>
 
 	<groupId>com.intuit.tools.imat</groupId>
 	<artifactId>IMAT</artifactId>
@@ -16,6 +25,7 @@
 
 	<name>IMAT</name>
 	<url>http://maven.apache.org</url>
+	<inceptionYear>2011</inceptionYear>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
