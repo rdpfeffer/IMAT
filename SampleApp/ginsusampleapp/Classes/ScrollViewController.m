@@ -1,6 +1,6 @@
 //
 //  ScrollViewController.m
-//  ginsusampleapp
+//  sampleApp
 //
 //  Created by Benjamin, Sargon on 4/27/11.
 //  Copyright 2011 Intuit. All rights reserved.
@@ -8,9 +8,9 @@
 
 #import "ScrollViewController.h"
 
-static NSString* one = @"Ryan Pfeffer : Sr SWE in Quality \nRyan_Pfeffer@intuit.com \nGinsu Evangelist & Founder";
-static NSString* two = @"Simon Levy : SW Engineer 2 \nSimon_Levy@intuit.com \n Mobile Maniac";
-static NSString* three = @"Sargon Benjamin : Sr SWE in Quality \nSargon_Benjamin@intuit.com \nFitness & Coding";
+static NSString* one = @"\nThe Intuit Mobile Autoamtion Toolkit is simple to Install. In Fact, it plugs right in without project modification. Here are the Steps on how to get started... \n\n\n1. Download the archive. \n2. Extract it somewhere on your system. \n3. Add the imat executable to your path.\n\n Its that easy! \n\nRun...\n  \"imat help\" \n\f...for steps on where to go from there.";
+static NSString* two = @"\nFollow the Pattern : \n\nThe Intuit Mobile Automation Toolkit allows you to write tests in a consistent way that reduces maintenance.\n\n Check out the automation for this sample app and you will see that it is quite easy to write automation from the top level test case business definitions all the way down to the view map.";
+static NSString* three = @"\nSpend Less time in triage.\n\n Automated tests are no good if it takes you days to triage tests. Along with consistency comes the ability to know exactly where and why your tests are failing without having to re-run tests to figure out if the app is the problem or the test script. \n\nThis is time better spent writing more automation!";
 
 @implementation ScrollViewController
 
@@ -34,15 +34,15 @@ NSArray *myArray = nil;
 		
 		
 		
-		self.title = @"Timeline";
+		self.title = @"Features";
 		self.navigationItem.rightBarButtonItem
 		= [[[UIBarButtonItem alloc] initWithTitle:@"Details" style:UIBarButtonItemStyleBordered
 										   target:self action:@selector(showDetails)] autorelease];
 		
 		_colors = [[NSArray arrayWithObjects:
-					[UIImage imageNamed:@"ryan.png"],
-					[UIImage imageNamed:@"simon.png"],
-					[UIImage imageNamed:@"sargon.png"],
+					[UIImage imageNamed:@"lego.jpg"],
+					[UIImage imageNamed:@"pattern.jpg"],
+					[UIImage imageNamed:@"time.jpg"],
 					nil]retain];
 		
 		

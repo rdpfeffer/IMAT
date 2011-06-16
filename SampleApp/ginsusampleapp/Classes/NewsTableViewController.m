@@ -1,6 +1,6 @@
 //
 //  NewsTableViewController.m
-//  ginsusampleapp
+//  sampleApp
 //
 //  Created by Benjamin, Sargon on 4/27/11.
 //  Copyright 2011 Intuit. All rights reserved.
@@ -22,15 +22,15 @@
 		 
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 						   @"Social Media",
-						   [TTTableMessageItem itemWithTitle:@"Ginsu on Facebook" caption:nil
-														text:@"Check out the Ginsu page on Facebook, like it, and tell your friends!" timestamp:nil
-													imageURL:@"bundle://facebookicon.png" URL:@"http://www.facebook.com/mint" ],
-						   [TTTableMessageItem itemWithTitle:@"Ginsu on Twitter" caption:nil
-														text:@"We're tweeting Ginsu updates - stay connected!" timestamp:nil
-													imageURL:@"bundle://twittericon.png" URL:@"http://twitter.com/mint" ],
+						   [TTTableMessageItem itemWithTitle:@"Intuit on Facebook" caption:nil
+														text:@"Check out Intuit on Facebook, like it, and tell your friends!" timestamp:nil
+													imageURL:@"bundle://facebookicon.png" URL:@"http://www.facebook.com/intuit" ],
+						   [TTTableMessageItem itemWithTitle:@"Intuit on Twitter" caption:nil
+														text:@"Small Busines. Rejoice!" timestamp:nil
+													imageURL:@"bundle://twittericon.png" URL:@"http://mobile.twitter.com/Intuit" ],
 						   
-						   [TTTableMessageItem itemWithTitle:@"Ginsu on Press" caption:nil
-														text:@"We're blogging Ginsu updates - stay connected!" timestamp:nil
+						   [TTTableMessageItem itemWithTitle:@"Intuit in the Press" caption:nil
+														text:@"Keep up on the latest news from Intuit." timestamp:nil
 													imageURL:@"bundle://rssicon.png"  URL:@"tt://rssBlogViewController"],
 						   [TTTableMessageItem itemWithTitle:@"Feedback" caption:nil
 														text:@"Run into an issue or want to see an update? Let us know" timestamp:nil

@@ -1,6 +1,6 @@
 //
-//  ginsusampleappAppDelegate.h
-//  ginsusampleapp
+//  sampleAppAppDelegate.h
+//  sampleApp
 //
 //  Created by Benjamin, Sargon on 4/15/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -17,7 +17,7 @@
 #import "RSSBlogViewController.h"
 #import "SettingsViewController.h"
 
-@interface ginsusampleappAppDelegate : NSObject <UIApplicationDelegate> {
+@interface sampleAppAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	LauncherViewController *lvc;
 }

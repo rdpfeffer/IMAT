@@ -1,6 +1,6 @@
 //
 //  LauncherViewController.m
-//  ginsusampleapp
+//  sampleApp
 //
 //  Created by Benjamin, Sargon on 4/15/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -19,7 +19,7 @@
   	
 	
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		self.title = @"Ginsu Sample App";
+		self.title = @"Sample App";
 		
 		self.navigationItem.rightBarButtonItem
 		= [[[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStyleBordered
@@ -117,48 +117,30 @@
 	_launcherView.delegate = self;
 	_launcherView.columnCount = 3;
 	
-	TTLauncherItem *l1Item = [[[TTLauncherItem alloc] initWithTitle:@"Events"
-															  image:@"bundle://rssicon.png"
-																URL:@"tt://eventView" canDelete:NO] autorelease];
+	TTLauncherItem *eventItem = [[[TTLauncherItem alloc] initWithTitle:@"Events"
+                                                                 image:@"bundle://rssicon.png"
+                                                                   URL:@"tt://eventView" canDelete:NO] autorelease];
 	
-	TTLauncherItem *l2Item = [[[TTLauncherItem alloc] initWithTitle:@"Info"
-															  image:@"bundle://Icon.png"
-																URL:@"tt://newsTableViewController" canDelete:YES] autorelease];
+	TTLauncherItem *infoItem = [[[TTLauncherItem alloc] initWithTitle:@"Info"
+                                                                 image:@"bundle://info.png"
+                                                                   URL:@"tt://newsTableViewController" canDelete:YES] autorelease];
 	
-	TTLauncherItem *l3Item = [[[TTLauncherItem alloc] initWithTitle:@"Map"
-															  image:@"bundle://rssicon.png"
-																URL:nil canDelete:YES] autorelease];
+	TTLauncherItem *intuitItem = [[[TTLauncherItem alloc] initWithTitle:@"Intuit"
+                                                                  image:@"bundle://home.png"
+                                                                    URL:@"http://www.intuit.com" canDelete:YES] autorelease];
 	
-	TTLauncherItem *l4Item = [[[TTLauncherItem alloc] initWithTitle:@"Developers"
-															  image:@"bundle://developericon.png"
-																URL:@"tt://scrollViewController" canDelete:NO] autorelease];
+	TTLauncherItem *developersItem = [[[TTLauncherItem alloc] initWithTitle:@"Features"
+                                                                      image:@"bundle://star.png"
+                                                                        URL:@"tt://scrollViewController" canDelete:NO] autorelease];
 	
-	TTLauncherItem *l5Item = [[[TTLauncherItem alloc] initWithTitle:@"Intuit"
-															  image:@"bundle://Icon.png"
-																URL:@"http://www.intuit.com" canDelete:YES] autorelease];
-	
-	TTLauncherItem *l6Item = [[[TTLauncherItem alloc] initWithTitle:@"Settings"
+	TTLauncherItem *settingsItem = [[[TTLauncherItem alloc] initWithTitle:@"Settings"
 															  image:@"bundle://settings.png"
 																URL:@"tt://settingsViewController" canDelete:YES] autorelease];
 	
-	
-	TTLauncherItem *l7Item = [[[TTLauncherItem alloc] initWithTitle:@"Facebook"
-															  image:@"bundle://Icon.png"
-																URL:nil canDelete:YES] autorelease];
-	
-	TTLauncherItem *l8Item = [[[TTLauncherItem alloc] initWithTitle:@"Button 9"
-															  image:@"bundle://Icon.png"
-																URL:nil canDelete:YES] autorelease];
-	
 	_launcherView.pages = [NSArray arrayWithObjects:
-						   [NSArray arrayWithObjects:
-							l1Item, l2Item, l3Item, l4Item, l5Item, l6Item,
-							nil],
-						   [NSArray arrayWithObjects:
-							l7Item, l8Item,
-							nil],
-						   nil
-						   ];
+                           [NSArray arrayWithObjects:eventItem, infoItem, intuitItem, developersItem, nil],
+						   [NSArray arrayWithObjects:settingsItem, nil],
+						   nil];
 	
 	[self.view addSubview:_launcherView];
 

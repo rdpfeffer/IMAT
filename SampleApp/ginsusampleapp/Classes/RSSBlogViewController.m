@@ -1,6 +1,6 @@
 //
 //  RSSBlogViewController.m
-//  ginsusampleapp
+//  sampleApp
 //
 //  Created by Benjamin, Sargon on 4/18/11.
 //  Copyright 2011 Intuit. All rights reserved.
@@ -28,8 +28,9 @@
 	
 	if ([stories count] == 0) {
 		//NSString * path = @"http://feeds.feedburner.com/TheAppleBlog";
-		NSString * path = @"http://www.mint.com/blog/feed/rss/";
-		[self parseXMLFileAtURL:path];
+		//NSString * path = @"http://www.mint.com/blog/feed/rss/";
+		NSString * path = @"http://about.intuit.com/about_intuit/rss/press_release_rss.jsp";
+        [self parseXMLFileAtURL:path];
 		
 	}
 	
