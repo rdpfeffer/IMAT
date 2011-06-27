@@ -287,15 +287,22 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 	 *	@param {Number} seconds
 	 *						The number of seconds to wait. If a string is pased,
 	 *						will attempt to convert to an integer using parseInt.
+	 *						Currently, only decimal numbers are allowed. If the 
+	 *  					parameter parsed gives NaN, a warning is logged and 
+	 *						seconds is set to the value 0. 
 	 *  @returns this view.
 	 */
 	waitAction: function(seconds) {
 		if (typeof seconds == "string")
 		{
-			seconds = parseInt(seconds);
+			var givenSeconds = seconds;
+			seconds = parseInt(seconds, 10);
 			if (isNaN(seconds))
 			{
 				seconds = 0;
+				IMAT.log_warning("While calling waitAction, the given number of "+
+				"seconds could not be parsed from a string into a number. Given " +
+				"number of seconds was: " + givenSeconds);
 			}
 		}
 		this.target.delay(seconds);
@@ -310,6 +317,6 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 	escapeAction: function()
 	{
 		//do nothing.
-	},
+	}
 	
 });

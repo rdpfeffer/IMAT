@@ -1,3 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011 Intuit, Inc. 
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.opensource.org/licenses/eclipse-1.0.php
+
+Contributors:
+
+Intuit Inc - Initial contribution
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -26,6 +39,18 @@
 	<name>IMAT</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2011</inceptionYear>
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://forge.code.intuit.com/hudson/view/Ginsu/</url>
+	</ciManagement>
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0 (EPL)</name>
+			<url>http://www.opensource.org/licenses/eclipse-1.0.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,26 +120,25 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->			
-<!-- 				See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info. -->
-<!-- 				 --> 
-<!-- 				<groupId>gr.abiss.mvn.plugins</groupId> -->
-<!-- 				<artifactId>maven-jstools-plugin</artifactId> -->
-<!-- 				<version>0.7</version> -->
-<!-- 				<configuration> -->
-<!-- 					<jsDir></jsDir> -->
-<!-- 					<includes>**/*.js</includes>  -->
-<!-- 					<reportSets>   -->
-<!-- 					   <reportSet>   -->
-<!-- 					      <reports>   -->
-<!-- 					         include the desired reports   -->
-<!-- 					         <report>jslint</report>   -->
-<!-- 					         <report>jsdoc</report>   -->
-<!-- 					      </reports>   -->
-<!-- 					   </reportSet>   -->
-<!-- 					</reportSets>  -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<plugin>			
+<!--  See: http://dev.abiss.gr/mvn-jstools/usage.html for usage info. --> 
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<jsDir>${project.basedir}/src/main/resources/js</jsDir>
+					<includes>**/*.js</includes> 
+					<reportSets>  
+					   <reportSet>  
+					      <reports>  
+					         include the desired reports  
+					         <report>jslint</report>  
+					         <report>jsdoc</report>  
+					      </reports>  
+					   </reportSet>  
+					</reportSets> 
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -123,6 +147,7 @@
 				<groupId>gr.abiss.mvn.plugins</groupId>
 				<artifactId>maven-jstools-plugin</artifactId>
 				<inherited>false</inherited>
+				<version>0.7</version>
 				<configuration>
 					<!-- the default is src/main/js -->
 					<jsDir>${project.basedir}/src/main/resources/js</jsDir>

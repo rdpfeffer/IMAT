@@ -160,12 +160,12 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 */
 	previewRunnableTests: function(testSet)
 	{
-		IMAT.log_debug("	TestSet: " + testSet.title);
+		IMAT.log_debug("\tTestSet: " + testSet.title);
 		for(prop in testSet)
 		{
 			if (this.isPropRunnableTest(prop, testSet)) 
 			{
-				IMAT.log_debug("		" + testSet.title + "." + prop + "()");
+				IMAT.log_debug("\t\t" + testSet.title + "." + prop + "()");
 			}
 		}
 	},

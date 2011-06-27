@@ -263,7 +263,7 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 			assertTrue(actions[i].length > 0, "All actions require at least one string representing the action.");
 			var action = actions[i][0] + "Action";
 			var logMessage = "ACTION: " + actions[i][0] + "("; 
-			var j, 
+			var j; 
 			var args = [];
 			for (j = 1; j < actions[i].length; j++)
 			{
