@@ -32,7 +32,7 @@ Intuit Inc - Initial contribution
 
 	<groupId>com.intuit.tools.imat</groupId>
 	<artifactId>IMAT</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>IMAT</name>
@@ -59,9 +59,9 @@ Intuit Inc - Initial contribution
 		<projectURLName>ginsu</projectURLName>
 	</properties>
 	<scm>
-		<connection>scm:svn:https://code.intuit.com/svn/repos/ginsu/tags/IMAT-1.0.5</connection>
-		<developerConnection>scm:svn:https://code.intuit.com/svn/repos/ginsu/tags/IMAT-1.0.5</developerConnection>
-		<url>https://code.intuit.com/integration/viewvc/viewvc.cgi/tags/IMAT-1.0.5?root=ginsu&amp;system=exsy1003</url>
+		<connection>scm:svn:https://code.intuit.com/svn/repos/ginsu/tags/IMAT-1.0.0</connection>
+		<developerConnection>scm:svn:https://code.intuit.com/svn/repos/ginsu/tags/IMAT-1.0.0</developerConnection>
+		<url>https://code.intuit.com/integration/viewvc/viewvc.cgi/tags/IMAT-1.0.0?root=ginsu&amp;system=exsy1003</url>
 	</scm>
 	<build>
 		<resources>
