@@ -81,6 +81,18 @@ Intuit Inc - Initial contribution
 		</resources>
 		<plugins>
 			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0-beta-8</version>
+				<configuration>
+					<addSchema>false</addSchema>
+					<updateDependencies>true</updateDependencies>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<preparationGoals>clean install</preparationGoals>
+					<goals>clean deploy assembly:single site-deploy</goals>
+					<allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.2-beta-2</version>
 				<configuration>
