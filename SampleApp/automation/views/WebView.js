@@ -110,13 +110,13 @@ AUTO.WebView = Class.extend(IMAT.BaseView, {
 		//TODO: return the resulting view of this action. 
 		
 	},
-	/*
+	
 	returnToHomeScreenAction : function() {
 		IMAT.log_debug("Returning to app home screen.");
 		this.getElement("backButton").tap();
 		return new AUTO.StarterView();
 	},
-	*/
+	
 	returnToInfoScreenAction : function() {
 		IMAT.log_debug("Return to Info screen from web view.");
 		this.getElement("backButton").tap();

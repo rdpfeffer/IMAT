@@ -125,13 +125,12 @@ AUTO.StarterTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		this.contextView
 		this.performActions([
 			["selectFeaturesButton"],
-			["zoomImage"],
 			["viewAndCloseDetails"],
 			// ["scrollRight"],
 			["returnToHomeScreen"],
 		]);
 	},	
-	
+	/*
 	testAbout : function()
 	{
 		IMAT.log_debug("Running tests for About button on main screen.");
@@ -141,6 +140,7 @@ AUTO.StarterTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			// ["checkCancelsText"],
 		]);	
 	},
+	*/
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.
