@@ -46,6 +46,7 @@ IMAT.viewMap = {
 		backButton : ".navigationBar().leftButton()",
 		detailsAndCloseButton : ".navigationBar().rightButton()",
 		image : ".images()[0]",
+		contentArea : ".contentArea()",
 	},
 	
 	WebView : {
