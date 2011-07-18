@@ -36,12 +36,14 @@ var Class = (function() {
           }
     	  delete def.overrideInclude; // clean syntax sugar
       }
-      if (def) Class.inherit(func.prototype, def);
+      if (def) { 
+      	Class.inherit(func.prototype, def); 
+      }
       for (var i = 0; (mixin = mixins[i]); i++) {
     	  Class.mixin(func.prototype, mixin);
       }
       // similar to the above loop that carefully imports mixins, this version aggresively clobbers functions
-      for (var i = 0; (clobberMixin = clobberMixins[i]); i++) {
+      for (var j = 0; (clobberMixin = clobberMixins[j]); j++) {
           Class.mixin(func.prototype, clobberMixin, true);
       }
       return func;
@@ -64,7 +66,11 @@ var Class = (function() {
         descendent = function() {
           var ref = this.parent; this.parent = ancestor;
           var result = method.apply(this, arguments);
-          ref ? this.parent = ref : delete this.parent;
+          if (ref) { 
+          	this.parent = ref;
+          } else {
+          	delete this.parent;
+          }
           return result;
         };
         // mask the underlying method
@@ -96,8 +102,12 @@ var Class = (function() {
         var klass = Class.extend.apply(args.callee, args);
         return {
           getInstance: function () {
-            if (arguments[0] == __extending) return klass;
-            if (instance) return instance;
+            if (arguments[0] == __extending) {
+            	return klass;
+            }
+            if (instance) { 
+            	return instance;
+            }
             return (instance = new klass());
           }
         };

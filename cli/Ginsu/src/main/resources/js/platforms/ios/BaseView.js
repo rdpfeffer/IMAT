@@ -271,13 +271,13 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
             	var tempElement = undefined;
             	var i = 0;
             	for (i = 0; i < locator.length; i++) {
-            		IMAT.log_trace("evaluating: " + IMAT.viewMapPrefix + locator[i])
+            		IMAT.log_trace("evaluating: " + IMAT.viewMapPrefix + locator[i]);
                     tempElement = eval(IMAT.viewMapPrefix + locator[i]);
             		if (tempElement && !(tempElement instanceof UIAElementNil)){
             			element = tempElement;
             			break;
             		}
-                    IMAT.log_trace("array locator not found in loop: " + IMAT.viewMapPrefix + locator[i])
+                    IMAT.log_trace("array locator not found in loop: " + IMAT.viewMapPrefix + locator[i]);
             	}
             } else if (typeof locator == "string") {
             	IMAT.log_trace("Locator for " + elementID + " was a string.");
