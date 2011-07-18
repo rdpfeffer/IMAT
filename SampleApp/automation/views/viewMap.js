@@ -9,13 +9,6 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-/**
- * 
- * This file defines how objects in our UI are referenced. Whenever we make a call to getElement(), 
- * this object map is referenced and returns the corresponding locator for the element in that view.
- * This makes the way we reference UIAElements more consistent and maintainable.
- */
-
 IMAT.viewMapPrefix = "UIATarget.localTarget().frontMostApp().mainWindow()";
 IMAT.viewMap = {	
 	StarterView : {
@@ -25,6 +18,19 @@ IMAT.viewMap = {
 		featuresButton: ".scrollViews()[0].buttons().firstWithName(\"Features\")",
 		settingsButton: ".scrollViews()[0].buttons().firstWithName(\"Settings\")",
 		aboutButton: ".navigationBar().rightButton()",
+	},
+	
+	BasicView : {
+		backButton : ".navigationBar().leftButton()",
+		navBar : ".navigationBar()",
+	},
+	
+	ListView : {
+		navBar : ".navigationBar()",
+		backButton : ".navigationBar().leftButton()",
+		table : ".tableViews()[0]",
+		firstTableItem : ".tableViews()[0].cells()[0]",
+		lastTableItem : ".tableViews()[0].cells()[-1]",
 	},
 	
 	EventsView : {
@@ -44,6 +50,7 @@ IMAT.viewMap = {
 	FeaturesView : {
 		navBar : ".navigationBar()",
 		backButton : ".navigationBar().leftButton()",
+		rightButton : "navigationBar().rightButton()",
 		detailsAndCloseButton : ".navigationBar().rightButton()",
 		image : ".images()[0]",
 		contentArea : ".contentArea()",
@@ -57,5 +64,13 @@ IMAT.viewMap = {
 	SettingsView : {
 		navBar : ".navigationBar()",
 		backButton : ".navigationBar().leftButton()",
+		singleLineTextField : ".tableViews()[0].cells()[0].textFields()[0]",
+		multipleLineTextField : ".tableViews()[0].cells()[1].textFields()[0]",
+		toggleSwitch : ".tableViews()[0].cells()[4].switches()[0]",
+		slider : ".tableViews()[0].cells()[5].sliders()[0]",
 	},
+	
+	StemView : {
+		navBar : ".navigationBar()",
+	}
 };

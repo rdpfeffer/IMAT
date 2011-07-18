@@ -16,4 +16,4 @@ var IMAT_TARGET_PLATFORM = "ios";
 
 //run the tests
 IMAT.suiteRunner.previewAllRunnableTests();
-IMAT.suiteRunner.runTests(new AUTO.SuiteHandler());
+IMAT.suiteRunner.runTests(new SAMPLE.SuiteHandler());

@@ -8,9 +8,8 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-var i = 1;
 
-AUTO.StarterView = Class.extend(IMAT.BaseView, {
+SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -20,17 +19,29 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 	{
 		this.parent();
 		this.viewName = "StarterView";
+		this.backButton = this.getElement("backButton");
 		
 		this.eventsButton = this.getElement("eventsButton");
  		this.infoButton = this.getElement("infoButton");
  		this.intuitButton = this.getElement("intuitButton");
  		this.featuresButton = this.getElement("featuresButton");
  		this.settingsButton = this.getElement("settingsButton");
-		
-		IMAT.log_debug("initializing AUTO." + this.viewName);
-		
+
+		IMAT.log_debug("initializing SAMPLE." + this.viewName);
+
 		//Validate the initial view state
 		this.validateInitialViewState();
+	},
+	
+	escapeAction : function()
+	{
+		this.swipeLeftAction();
+	},
+	
+	waitForActivityAction : function()
+	{
+		var w = UIATarget.localTarget().frontMostApp().mainWindow();
+		IMAT.waitForActivity(w,10);
 	},
 
 	//////////////////////////////    View State Validators    /////////////////////////////////////
@@ -43,7 +54,7 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 		this.validateState("INITIAL", false, this, function(that){
 			assertTrue(that.viewName == "StarterView");
 		});
-	},	
+	},
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
@@ -52,7 +63,7 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 		this.target.delay(1);
 		this.getElement("eventsButton").tap();
 		this.target.delay(3);
-		return new AUTO.EventsView();
+		return new SAMPLE.EventsView();
 	},
 	
 	selectInfoButtonAction : function() {
@@ -60,7 +71,7 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 		this.target.delay(1);
 		this.getElement("infoButton").tap();
 		this.target.delay(3);
-		return new AUTO.InfoView();
+		return new SAMPLE.InfoView();
 	},
 	
 	selectIntuitButtonAction : function() {
@@ -68,7 +79,7 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 		this.target.delay(1);
 		this.getElement("intuitButton").tap();
 		this.target.delay(3);
-		return new AUTO.WebView();
+		return new SAMPLE.WebView();
 	},
 	
 	selectFeaturesButtonAction : function() {
@@ -76,32 +87,65 @@ AUTO.StarterView = Class.extend(IMAT.BaseView, {
 		this.target.delay(1);
 		this.getElement("featuresButton").tap();
 		this.target.delay(3);
-		return new AUTO.FeaturesView();	
+		return new SAMPLE.FeaturesView();	
 	},
 	
 	selectSettingsButtonAction : function() {
-		IMAT.log_debug("SelectingFeatures button from home screen.");
+		IMAT.log_debug("Selecting Features button from home screen.");
 		this.target.delay(1);
 		this.getElement("settingsButton").tap();
 		this.target.delay(3);
-		return new AUTO.SettingsView();
+		return new SAMPLE.SettingsView();
 	},
 	
-	checkSavesTextAction : function(text) {
-		IMAT.log_debug("Checking to see if it saves text when you enter into About alert.");
-		this.target.delay(1);
+	swipeRightAction : function() {
+		IMAT.log_debug("Swipe screen to the right.");
+		var p1 = { x: 200, y: 300 };
+		var p2 = { x: 0, y: 300 };
+		this.target.dragFromToForDuration(p1, p2, 0.5);
+		return this;
+	},
+	
+	swipeLeftAction : function() {
+		IMAT.log_debug("Swipe screen to the left.");
+		var p1 = { x: 0, y: 300 };
+		var p2 = { x: 200, y: 300 };
+		this.target.dragFromToForDuration(p1, p2, 0.5);
+		return this;		
+	},
+	
+	waitAction : function() {
+		this.target.delay(2);
+		return this;
+	},
+	
+	selectAboutButtonAction : function() {
+		this.expectAlertAction();
 		this.getElement("aboutButton").tap();
 		IMAT.log_state();
-		// enter text into text field
-		// click save
-		// assert that the text in field is same as text entered before
-		
 	},
-		
+	
+	expectAlertAction : function() {
+		var ref = this;
+		this.defaultAlert = UIATarget.onAlert;
+		UIATarget.onAlert = function onAlert(alert) {
+			alert.textFields()[0].setValue("this is a test message");
+			alert.buttons()["Save"].tap();
+		}
+	},
+	
+	expectAlertWithValidateAction : function() {
+		var ref = this;
+		this.defaultAlert = UIATarget.onAlert;
+		UIATarget.onAlert = function onAlert(alert) {
+			alert.textFields()[0].setValue("this is a test message");
+			for (var i = 0; i < 100000000; i++) {}
+			alert.buttons()["Save"].tap();
+		}
+	},
+	
+	removeAlertExpectationAction : function() {
+		UIATarget.onAlert = this.defaultAlert;
+	},
+	
 });
-
-///////// 	Alert Handler Code	 //////////
-UIATarget.onAlert = function onAlert(alert) {
-	alert.buttons()["Save"].tap();
-	return true;
-}

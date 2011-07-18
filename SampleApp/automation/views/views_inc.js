@@ -12,9 +12,16 @@
 //Import all of your views here.
 IMAT.log_debug("Importing all of the views...");
 
+// Included files
 #import "viewMap.js"
-#import "StarterView.js"
 #import "StemView.js"
+
+// Basic Views
+#import "BasicView.js"
+#import "ListView.js"
+#import "StarterView.js"
+
+// Specific Views
 #import "EventsView.js"
 #import "FeaturesView.js"
 #import "InfoView.js"

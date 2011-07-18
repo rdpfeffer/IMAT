@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-AUTO.SuiteHandler = Class.create({
+SAMPLE.SuiteHandler = Class.create({
 	
 	initialize: function()
 	{

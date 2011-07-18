@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-AUTO.InfoView = Class.extend(IMAT.BaseView, {
+SAMPLE.InfoView = Class.extend(SAMPLE.ListView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -21,7 +21,7 @@ AUTO.InfoView = Class.extend(IMAT.BaseView, {
 		this.viewName = "InfoView";
 		this.backButton = this.getElement("backButton");
 		
-		IMAT.log_debug("initializing AUTO." + this.viewName);
+		IMAT.log_debug("initializing SAMPLE." + this.viewName);
 		
 		//Validate the initial view state
 		this.validateInitialViewState();
@@ -41,18 +41,7 @@ AUTO.InfoView = Class.extend(IMAT.BaseView, {
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
-	returnToHomeScreenAction : function() {
-		IMAT.log_debug("Returning to app home screen.");
-		this.target.delay(1);
-		this.getElement("backButton").tap();
-		return new AUTO.StarterView();
-	},
-	
-	selectListingAction : function() {
-		IMAT.log_debug("Selecting an item from the Info screen table.");
-		this.getElement("firstTableItem").tap();
-		this.target.delay(5);
-		return new AUTO.WebView();
-	}
+	// Actions inherited from ListView.js
+	// No additional actions
 
 });

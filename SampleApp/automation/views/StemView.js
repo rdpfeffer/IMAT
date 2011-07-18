@@ -17,7 +17,7 @@
  * it will use the environmental factors, in this case the application state, to
  * beget a new view to match what it detects on the screen. Also note that this
  * is a rare exception where we will have a view live under the IMAT namespace
- * instead of the AUTO namespace.
+ * instead of the SAMPLE namespace.
  */
 IMAT.StemView = Class.extend(IMAT.BaseView, {
 	
@@ -42,12 +42,29 @@ IMAT.StemView = Class.extend(IMAT.BaseView, {
 		try
 		{
 			this.refreshAppContext();
-			
-			//TODO: Fill in the rest of this function. You should try to create
-			//a generic way to dicover what view of your app you are currently 
-			//on based upon what you can see on the screen. This may be a piece
-			//of text on the navigation bar or even 
-			return new AUTO.StarterView();
+			var navBar = this.getElement("navBar");
+			if (navBar.checkIsValid()) {
+				var navBarName = this.getElement("navBar").name();
+				switch (navBarName) {
+					case "Events":
+						specializedView = new SAMPLE.EventsView();
+						break;
+					case "News":
+						specializedView = new SAMPLE.InfoView();
+						break;
+					case "Intuit Small Business - Website Builder, Quickbooks, Payroll & Payment Solutions":
+						specializedView = new SAMPLE.WebView();
+						break;
+					case "Features":
+						specializedView = new SAMPLE.FeaturesView();
+						break;
+					default:
+						specializedView = new SAMPLE.BasicView();
+				}
+			}
+			else {
+				return new SAMPLE.StarterView();
+			}
 			
 		}
 		catch(e)

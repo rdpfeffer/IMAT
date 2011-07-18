@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-AUTO.FeaturesView = Class.extend(IMAT.BaseView, {
+SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -22,7 +22,7 @@ AUTO.FeaturesView = Class.extend(IMAT.BaseView, {
 		this.backButton = this.getElement("backButton");
 		this.detailsAndCloseButton = this.getElement("detailsAndCloseButton");
 		
-		IMAT.log_debug("initializing AUTO." + this.viewName);
+		IMAT.log_debug("initializing SAMPLE." + this.viewName);
 		
 		//Validate the initial view state
 		this.validateInitialViewState();
@@ -35,23 +35,39 @@ AUTO.FeaturesView = Class.extend(IMAT.BaseView, {
 	 */
 	validateInitialViewState : function()
 	{
-		this.validateState("INITIAL", false, this, function(that){
+		this.validateState("INITIAL", false, this, function(that) {
 			assertTrue(that.viewName == "FeaturesView");
+		});
+	},
+	
+	validateImageSwitchedAction : function(previousImage, presentImage)
+	{
+		this.validateState("image switched", false, this, function(that) {
+			var oldImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(previousImage);
+			var currentImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(presentImage);
+			IMAT.log_debug(oldImage.name() + " == " + previousImage);
+			assertTrue(oldImage.name() == previousImage);
+			IMAT.log_debug(currentImage.name() + " == " + presentImage);
+			assertTrue(currentImage.name() == presentImage);
+		});
+		return this;
+	},
+	
+	validateDetailsShowing : function()
+	{
+		this.validateState("Details showing", false, this, function(that) {
+			var rightButton = that.getElement("detailsAndCloseButton");
+			IMAT.log_debug(rightButton.name() + " == Close");
+			assertTrue(rightButton.name() == "Close");
 		});
 	},
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
-	returnToHomeScreenAction : function() {
-		IMAT.log_debug("Returning to app home screen.");
-		this.target.delay(1);
-		this.getElement("backButton").tap();
-		return new AUTO.StarterView();
-	},
-	
 	viewAndCloseDetailsAction : function() {
 		IMAT.log_debug("Click on details button, wait 2 seconds, click on close button.");
 		this.getElement("detailsAndCloseButton").tap();
+		this.validateDetailsShowing();
 		this.target.delay(2);
 		this.getElement("detailsAndCloseButton").tap();
 		return this;
@@ -66,12 +82,19 @@ AUTO.FeaturesView = Class.extend(IMAT.BaseView, {
 	},
 	
 	swipeRightAction : function() {
-		IMAT.log_debug("Swiping right to view other images.");
-		var c = this.getElement("contentArea");
-		var p1 = { x: 80, y: 50 };
-		var p2 = { x: 20, y: 50 };
-		this.target.flickFromTo(p1,p2);
+		IMAT.log_debug("Swipe screen to the right.");
+		var p1 = { x: 200, y: 300 };
+		var p2 = { x: 0, y: 300 };
+		this.target.dragFromToForDuration(p1, p2, 0.5);
 		return this;
 	},
 	
+	swipeLeftAction : function() {
+		IMAT.log_debug("Swipe screen to the left.");
+		var p1 = { x: 0, y: 300 };
+		var p2 = { x: 200, y: 300 };
+		this.target.dragFromToForDuration(p1, p2, 0.5);
+		return this;		
+	},
+
 });

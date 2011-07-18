@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-AUTO.EventsView = Class.extend(IMAT.BaseView, {
+SAMPLE.EventsView = Class.extend(SAMPLE.ListView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -20,9 +20,10 @@ AUTO.EventsView = Class.extend(IMAT.BaseView, {
 		this.parent();
 		this.viewName = "EventsView";
 		this.backButton = this.getElement("backButton");
+		this.navBar = this.getElement("navBar");
+		this.navBarTitle = this.getElement("navBarTitle");
 		
-		IMAT.log_debug("initializing AUTO." + this.viewName);
-		
+		IMAT.log_debug("initializing SAMPLE." + this.viewName);
 		//Validate the initial view state
 		this.validateInitialViewState();
 	},
@@ -41,26 +42,7 @@ AUTO.EventsView = Class.extend(IMAT.BaseView, {
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
-	returnToHomeScreenAction : function() {
-		IMAT.log_debug("Returning to app home screen.");
-		this.target.delay(1);
-		this.getElement("backButton").tap();
-		return new AUTO.StarterView();
-	},
+	// Actions inherited from ListView.js
+	// No additional actions
 	
-	selectListingAction : function() {
-		IMAT.log_debug("Selecting an item from the Info screen table.");
-		this.getElement("firstTableItem").tap();
-		this.target.delay(5);
-		return new AUTO.WebView();
-	},
-	
-	scrollToBottomAction : function() {
-		IMAT.log_debug("Scroll until last cell in table is visible.");
-		var lastIndex = this.getElement("table").cells().length - 1;
-		this.target.delay(2);
-		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[lastIndex].scrollToVisible();
-		return this;
-	},
-
 });

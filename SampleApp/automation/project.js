@@ -14,7 +14,7 @@
 //declare any settings
 IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
 
-var AUTO = {};
+var SAMPLE = {};
 
 //load the tests and their respective views
 #import "tests/tests_inc.js"

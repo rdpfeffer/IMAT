@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
+SAMPLE.ListView = Class.extend(SAMPLE.BasicView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -18,13 +18,12 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	initialize: function()
 	{
 		this.parent();
-		this.viewName = "WebView";
-		this.backButton = this.getElement("backButton");
-		
+		this.viewName = "ListView";
+
 		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
+
 		//Validate the initial view state
-		this.validateInitialViewState();
+		//this.validateInitialViewState();
 	},
 
 	//////////////////////////////    View State Validators    /////////////////////////////////////
@@ -35,22 +34,32 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "WebView");
+			assertTrue(that.viewName == "ListView");
 		});
 	},
-
+	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
-	returnToInfoScreenAction : function() {
-		IMAT.log_debug("Return to Info screen from web view.");
-		this.getElement("backButton").tap();
-		return new SAMPLE.InfoView();
+	selectListingAction : function() {
+		IMAT.log_debug("Selecting an item from the table.");
+		this.getElement("firstTableItem").tap();
+		this.target.delay(5);
+		return new SAMPLE.WebView();
 	},
 	
-	returnToEventsScreenAction : function() {
-		IMAT.log_debug("Return to Events screen from web view.");
-		this.getElement("backButton").tap();
-		return new SAMPLE.EventsView();
+	scrollToTopAction : function() {
+		IMAT.log_debug("Scroll until first cell in table is visible");
+		this.target.delay(2);
+		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[0].scrollToVisible();
+		return this;
 	},
-
+	
+	scrollToBottomAction : function() {
+		IMAT.log_debug("Scroll until last cell in table is visible.");
+		var lastIndex = this.getElement("table").cells().length - 1;
+		this.target.delay(2);
+		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[lastIndex].scrollToVisible();
+		return this;
+	},
+	
 });

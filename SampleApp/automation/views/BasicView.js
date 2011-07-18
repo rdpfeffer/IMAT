@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
+SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 	
 	/**
 	 * Initialize the view. Grab references to all things on the screen that are of importance and
@@ -18,13 +18,27 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	initialize: function()
 	{
 		this.parent();
-		this.viewName = "WebView";
+		this.viewName = "BasicView";
 		this.backButton = this.getElement("backButton");
-		
+		this.navBar = this.getElement("navBar");
+
 		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
+
 		//Validate the initial view state
-		this.validateInitialViewState();
+		//this.validateInitialViewState();
+	},
+	
+	escapeAction : function()
+	{
+		IMAT.log_debug("Attempt to back out until we hit the app home screen.");
+		this.getElement("backButton").tap();
+		return this;
+	},
+	
+	waitForActivityAction : function()
+	{
+		var w = UIATarget.localTarget().frontMostApp().mainWindow();
+		this.waitForActivity(w,10);
 	},
 
 	//////////////////////////////    View State Validators    /////////////////////////////////////
@@ -35,22 +49,39 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "WebView");
+			assertTrue(that.viewName == "BasicView");
 		});
 	},
-
-	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
-	returnToInfoScreenAction : function() {
-		IMAT.log_debug("Return to Info screen from web view.");
-		this.getElement("backButton").tap();
-		return new SAMPLE.InfoView();
+	validateCorrectPageLoadedAction : function(page)
+	{
+		this.validateState("Facebook Mobile", false, this, function(that) {
+			IMAT.log_debug(that.navBar.name() + " == " + page);
+			assertTrue(that.navBar.name() == page);
+		});
+		return new SAMPLE.WebView();
 	},
 	
-	returnToEventsScreenAction : function() {
-		IMAT.log_debug("Return to Events screen from web view.");
+	//////////////////////////////////    View Actions    //////////////////////////////////////////
+	
+	returnToHomeScreenAction : function()
+	{
+		IMAT.log_debug("Returning to app home screen.");
+		this.target.delay(1);
 		this.getElement("backButton").tap();
-		return new SAMPLE.EventsView();
+		return new SAMPLE.StarterView();
+	},
+	
+	waitAction : function() {
+		this.target.delay(3);
+		return this;
 	},
 
 });
+
+//////////	Alert Handler Code	/////////////
+UIATarget.onAlert = function onAlert(alert) {
+	
+	// be default, select cancel
+	
+}
