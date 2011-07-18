@@ -3,7 +3,6 @@
   Copyright (c) 2006, 2007, 2008, Alex Arnell <alex@twologic.com>
   Licensed under the new BSD License. See end of file for full license terms.
 */
-
 var Class = (function() {
   var __extending = {};
 
@@ -18,6 +17,7 @@ var Class = (function() {
         func.prototype = new parent( __extending);
       }
       var mixins = [];
+      var clobberMixins = [];
       if (def && def.include) {
         if (def.include.reverse) {
           // methods defined in later mixins should override prior
@@ -27,9 +27,22 @@ var Class = (function() {
         }
         delete def.include; // clean syntax sugar
       }
+      if(def && def.overrideInclude) {
+    	  if (def.overrideInclude.reverse) {
+              // methods defined in later mixins should override prior
+    		  clobberMixins = clobberMixins.concat(def.overrideInclude.reverse());
+          } else {
+        	  clobberMixins.push(def.overrideInclude);
+          }
+    	  delete def.overrideInclude; // clean syntax sugar
+      }
       if (def) Class.inherit(func.prototype, def);
       for (var i = 0; (mixin = mixins[i]); i++) {
-        Class.mixin(func.prototype, mixin);
+    	  Class.mixin(func.prototype, mixin);
+      }
+      // similar to the above loop that carefully imports mixins, this version aggresively clobbers functions
+      for (var i = 0; (clobberMixin = clobberMixins[i]); i++) {
+          Class.mixin(func.prototype, clobberMixin, true);
       }
       return func;
     },
@@ -37,8 +50,9 @@ var Class = (function() {
       clobber = clobber || false;
       if (typeof(src) != 'undefined' && src !== null) {
         for (var prop in src) {
-          if (clobber || (!dest[prop] && typeof(src[prop]) == 'function')) {
-            dest[prop] = src[prop];
+          // if clobbering don't clobber initialize
+          if ((clobber && prop != 'initialize') || (!dest[prop] && typeof(src[prop]) == 'function')) {
+        	  dest[prop] = src[prop];
           }
         }
       }

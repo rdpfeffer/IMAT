@@ -234,24 +234,35 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
      * 						current view. When the value assigned to this 
      * 						property is evaluated, it should return the desired
      *						element currently on screen.
+     * @param {string} viewID
+     *                      The view within the view map to pull the element from.
+     *                      This is helpful during instances where you might want
+     *                      to inherit elements from a parent view, but don't want
+     *                      to repeat the elementID in every child view. Instead,
+     *                      you can call <code>getElement()</code> from the parent 
+     *                      view and specify the viewID of the more generic set of
+     *                      locators. This is an optional argument. When it is not
+     *                      set, viewID takes the same value as <code>this.viewName<code>
      * 
      * @requires IMAT.viewMap, A map of locators defining elements on 
      * each view. IMAT.viewMapPrefix, the prefix to all string based locators. 
      */
-    getElement: function (elementID){
+    getElementFromView: function (elementID, viewID){
 		var element = UIAElementNil;
         if (IMAT.viewMap && IMAT.viewMapPrefix)
         {
-            IMAT.log_trace("View name is: " + this.viewName );
+            IMAT.log_trace("View name is: " + this.viewName + " viewID is: " + viewID);
             IMAT.log_trace("Finding element: " + elementID);
-            
+            if (!viewID) {
+                viewID = this.viewName;
+            }
             this.target.pushTimeout(5);
-            var locator = IMAT.viewMap[this.viewName][elementID];
+            var locator = IMAT.viewMap[viewID][elementID];
             IMAT.log_trace("the view map returned the following locator: " + locator);
             if (typeof locator == "function") {
             	IMAT.log_trace("Locator for " + elementID + " was a function.");
             	locatorArgs = [];
-            	for (var argInd = 1; argInd < arguments.length; argInd++) {
+            	for (var argInd = 2; argInd < arguments.length; argInd++) {
             		locatorArgs.push(arguments[argInd]);
             	}
             	element = locator.apply(this, locatorArgs);
@@ -260,11 +271,13 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
             	var tempElement = undefined;
             	var i = 0;
             	for (i = 0; i < locator.length; i++) {
-            		tempElement = eval(IMAT.viewMapPrefix + locator[i]);
+            		IMAT.log_trace("evaluating: " + IMAT.viewMapPrefix + locator[i])
+                    tempElement = eval(IMAT.viewMapPrefix + locator[i]);
             		if (tempElement && !(tempElement instanceof UIAElementNil)){
             			element = tempElement;
             			break;
             		}
+                    IMAT.log_trace("array locator not found in loop: " + IMAT.viewMapPrefix + locator[i])
             	}
             } else if (typeof locator == "string") {
             	IMAT.log_trace("Locator for " + elementID + " was a string.");
@@ -281,6 +294,16 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
         }
         return element;
 	},
+    
+    getElement: function(elementID) {
+        var locatorArgs = [elementID, this.viewName];
+        for (var argInd = 1; argInd < arguments.length; argInd++) {
+            IMAT.log_trace("Pushing Argument from getElement()");
+            locatorArgs.push(arguments[argInd]);
+        }
+        IMAT.log_trace("Locator Args for getElementFromView: [" + locatorArgs + "]");
+        return this.getElementFromView.apply(this, locatorArgs);
+    },
 	
 	/**
 	 * 	Do nothing for the desired number of seconds.

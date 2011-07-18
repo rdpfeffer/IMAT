@@ -39,7 +39,7 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 	 * @ignore 
 	 */
 	initialize: function() {
-		IMAT.log_debug("Initializing the Base Functional Tests");
+		IMAT.log_trace("Initializing the Base Functional Tests");
 		this.viewContext = undefined;
 	},
 	
@@ -76,22 +76,28 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 		 * @throws {String} when the value of alert.name() does not equal title. 
 		 */
 		handleDefaultAlertWithTitle : function(title) {
+			// need an internal reference to pass to the callback method ('this' changes context)
+			var ref = this;
 			UIATarget.onAlert = function onAlert(alert) {
-				
-				IMAT.log_debug("Handling alert named: '" + title + "'");
-				
-				// if the name field exists then check that
-				var alertTitle = null;
-				if(alert.name()) {
-					alertTitle = alert.name();
-				// if not then look for a text field with the title we are looking for
-				} else {
-					alertTitle = alert.elements().firstWithName(title).name();
-				}
-				
-				assertEquals(alertTitle, title);
+				ref.validateAlertWithTitle(alert, title);
 				return true;
 			};
+		},
+		
+		validateAlertWithTitle : function(alert, title) {
+			IMAT.log_debug("Validating alert named: '" + title + "'");			
+			if (IMAT.settings.logLevel >= IMAT.logLevels.LOG_DEBUG) {
+				alert.logElementTree();
+			}
+			// if the name field exists then check that
+			var alertTitle = null;
+			if(alert.name()) {
+				alertTitle = alert.name();
+			// if not then look for a text field with the title we are looking for
+			} else {
+				alertTitle = alert.elements().firstWithName(title).name();
+			}
+			assertEquals(alertTitle, title);
 		},
 	
 		/**
@@ -101,11 +107,10 @@ IMAT.BaseFunctionalTestSet = Class.extend(IMAT.BaseTestSet, /** @lends IMAT.Base
 			// need an internal reference to pass to the callback method ('this' changes context)
 			var ref = this;
 			UIATarget.onAlert = function onAlert(alert) {
-				ref.handleDefaultAlertWithTitle(title);
-				
+				ref.validateAlertWithTitle(alert, title);
 				IMAT.log_debug("Tapping Alert Button: '" + buttonName + "'");
 				// tap tap taparoo that button with the given name
-				alert.buttons()[buttonName].tap();
+				alert.buttons().firstWithName(buttonName).tap();
 				return true;
 			};
 		},
