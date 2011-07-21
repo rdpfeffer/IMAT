@@ -43,13 +43,11 @@ SAMPLE.ListView = Class.extend(SAMPLE.BasicView, {
 	selectListingAction : function() {
 		IMAT.log_debug("Selecting an item from the table.");
 		this.getElement("firstTableItem").tap();
-		this.target.delay(5);
 		return new SAMPLE.WebView();
 	},
 	
 	scrollToTopAction : function() {
 		IMAT.log_debug("Scroll until first cell in table is visible");
-		this.target.delay(2);
 		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[0].scrollToVisible();
 		return this;
 	},
@@ -57,8 +55,17 @@ SAMPLE.ListView = Class.extend(SAMPLE.BasicView, {
 	scrollToBottomAction : function() {
 		IMAT.log_debug("Scroll until last cell in table is visible.");
 		var lastIndex = this.getElement("table").cells().length - 1;
-		this.target.delay(2);
 		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[lastIndex].scrollToVisible();
+		return this;
+	},
+	
+	scrollDownAction : function() {
+		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].scrollDown();
+		return this;
+	},
+	
+	scrollUpAction : function() {
+		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].scrollUp();
 		return this;
 	},
 	

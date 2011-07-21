@@ -72,5 +72,6 @@ IMAT.viewMap = {
 	
 	StemView : {
 		navBar : ".navigationBar()",
+		backButton : ".navigationBar().leftButton()",
 	}
 };

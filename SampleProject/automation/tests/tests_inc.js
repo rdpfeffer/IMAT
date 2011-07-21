@@ -13,3 +13,8 @@
 IMAT.log_debug("Importing all of the test sets...");
 
 #import "StarterTestSet.js"
+#import "EventsTestSet.js"
+#import "FeaturesTestSet.js"
+#import "InfoTestSet.js"
+#import "IntuitTestSet.js"
+#import "SettingsTestSet.js"

@@ -56,13 +56,20 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		});
 	},
 	
+	validateAlertText : function(text)
+	{
+		this.validateState("Alert Saved", false, this, function(that) {
+			assertTrue(text == "this is a test message");
+		});
+	},
+	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	selectEventsButtonAction : function() {
 		IMAT.log_debug("Executing the testAction function which is supposed to tap the Events button");
 		this.target.delay(1);
 		this.getElement("eventsButton").tap();
-		this.target.delay(3);
+		this.target.delay(1);
 		return new SAMPLE.EventsView();
 	},
 	
@@ -70,7 +77,7 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		IMAT.log_debug("Selecting Info button from home screen.");
 		this.target.delay(1);
 		this.getElement("infoButton").tap();
-		this.target.delay(3);
+		this.target.delay(1);
 		return new SAMPLE.InfoView();
 	},
 	
@@ -78,7 +85,7 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		IMAT.log_debug("Selecting Intuit button from home screen.");
 		this.target.delay(1);
 		this.getElement("intuitButton").tap();
-		this.target.delay(3);
+		this.target.delay(1);
 		return new SAMPLE.WebView();
 	},
 	
@@ -86,7 +93,7 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		IMAT.log_debug("Selecting Features button from home screen.");
 		this.target.delay(1);
 		this.getElement("featuresButton").tap();
-		this.target.delay(3);
+		this.target.delay(1);
 		return new SAMPLE.FeaturesView();	
 	},
 	
@@ -94,7 +101,7 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		IMAT.log_debug("Selecting Features button from home screen.");
 		this.target.delay(1);
 		this.getElement("settingsButton").tap();
-		this.target.delay(3);
+		this.target.delay(1);
 		return new SAMPLE.SettingsView();
 	},
 	
@@ -122,7 +129,7 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 	selectAboutButtonAction : function() {
 		this.expectAlertAction();
 		this.getElement("aboutButton").tap();
-		IMAT.log_state();
+		return this;
 	},
 	
 	expectAlertAction : function() {
@@ -134,18 +141,20 @@ SAMPLE.StarterView = Class.extend(IMAT.BaseView, {
 		}
 	},
 	
-	expectAlertWithValidateAction : function() {
+	verifyAlertSavedAction : function() {
+		this.expectAlertAgainAction();
+		this.getElement("aboutButton").tap();
+		return this;
+	},
+	
+	expectAlertAgainAction : function() {
 		var ref = this;
 		this.defaultAlert = UIATarget.onAlert;
 		UIATarget.onAlert = function onAlert(alert) {
-			alert.textFields()[0].setValue("this is a test message");
-			for (var i = 0; i < 100000000; i++) {}
-			alert.buttons()["Save"].tap();
+			var text = alert.textFields()[0].value();
+			validateAlertText(text);
+			alert.buttons()["Cancel"].tap();
 		}
-	},
-	
-	removeAlertExpectationAction : function() {
-		UIATarget.onAlert = this.defaultAlert;
 	},
 	
 });

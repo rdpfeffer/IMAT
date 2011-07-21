@@ -52,5 +52,23 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 		this.getElement("backButton").tap();
 		return new SAMPLE.EventsView();
 	},
+	
+	scrollDownAction : function() {
+		IMAT.log_state();
+		UIATarget.localTarget().frontMostApp().mainWindow().scrollViews()[0].scrollDown();
+		return this;
+	},
+	
+	scrollUpAction : function() {
+		UIATarget.localTarget().frontMostApp().mainWindow().scrollViews()[0].scrollUp();
+		return this;
+	},
+	
+	waitForNetworkActivityAction : function()
+	{
+		var backButton = this.getElement("backButton");
+		this.waitForActivity(backButton,5);
+		return this;
+	},
 
 });

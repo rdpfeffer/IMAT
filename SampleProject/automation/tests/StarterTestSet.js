@@ -88,122 +88,35 @@ SAMPLE.StarterTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	{
 		this.performActions([
 			["swipeRight"],
-			["wait"],
 			["swipeLeft"],
 		]);
 	},
 	
-	testSelectListingInEvents : function()
-	{
-		this.performActions([
-			["selectEventsButton"],
-			["selectListing"],
-			["returnToEventsScreen"],
-			["returnToHomeScreen"],
-		]);
-	},
-	
-	testScrollingInEvents : function()
-	{
-		this.performActions([
-			["selectEventsButton"],
-			["scrollToBottom"],
-			["scrollToTop"],
-			["returnToHomeScreen"],
-		]);
-	},
-	
-	testSelectListingInfo : function()
-	{
-		this.performActions([
-			["selectInfoButton"],
-			["selectListing"],
-			["wait"],
-			["validateCorrectPageLoaded", "Facebook Mobile"],
-			["returnToInfoScreen"],
-			["returnToHomeScreen"],
-		]);
-	},
-	
-	testLoadHomePageInIntuit : function()
-	{
-		this.performActions([
-			["selectIntuitButton"],
-			["wait"],
-			["validateCorrectPageLoaded", "Intuit Small Business - Website Builder, Quickbooks, Payroll & Payment Solutions"],
-			["returnToHomeScreen"],
-		]);
-	},	
-	
-	testZoomInAndOutInFeatures : function()
-	{
-		this.performActions([
-			["selectFeaturesButton"],
-			["zoom"],
-			["zoom"],
-			["returnToHomeScreen"],
-		]);
-	},	
-	
-	testViewDetailsInFeatures : function()
-	{
-		this.performActions([
-			["selectFeaturesButton"],
-			["viewAndCloseDetails"],
-			["returnToHomeScreen"],
-		]);
-	},
-	
-	testPictureScrollingInFeatures : function()
-	{
-		this.performActions([
-			["selectFeaturesButton"],
-			["swipeRight"],
-			["validateImageSwitched", "lego.jpg", "pattern.jpg"],
-			["wait"],
-			["swipeRight"],
-			["validateImageSwitched", "pattern.jpg", "time.jpg"],
-			["wait"],
-			["swipeLeft"],
-			["validateImageSwitched", "time.jpg", "pattern.jpg"],
-			["wait"],
-			["swipeLeft"],
-			["validateImageSwitched", "pattern.jpg", "lego.jpg"],
-			["wait"],
-			["returnToHomeScreen"],
-		]);
-	},
-	
-	testModifyFieldsInSettings : function()
-	{
-		this.performActions([
-			["wait"],
-			["swipeRight"],
-			["selectSettingsButton"],
-			["enterSingleLineComment", "single line comment"],
-			["wait"],
-			["enterMultiLineComment", "multiline comments are much longer than single line comments and hopefully this takes up more than one line"],
-			["wait"],
-			["toggleSwitch", "on"],
-			["wait"],
-			["adjustSliderToValue", 1],
-			["wait"],			
-			["validateAllFieldsEdited"], // validate that all fields, switches, and sliders have been edited
-			["toggleSwitch", "off"],
-			["wait"],
-			["adjustSliderToValue", 0],
-			["wait"],
-			["returnToHomeScreen"],
-		]);
-	},
 	
 	testAboutAlertAndSaveMessage : function(alert)
 	{
 		IMAT.log_debug("Running tests for About button on main screen.");
 		this.performActions([
 			["selectAboutButton"],
-			// ["validateAlertMessageSaved"],
+			["wait"],
+			["verifyAlertSaved"],
 		]);	
+	},
+	
+	testManuallyStarterTestThatAlwaysPasses : function()
+	{
+		/*
+			always passes
+		*/
+		manualPass("7/20/2011");
+	},
+	
+	testManuallyStarterTestThatAlwaysFails : function()
+	{
+		/*
+			always fails
+		*/
+		manualFail("7/20/2011");
 	},
 	
 	

@@ -77,7 +77,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 		IMAT.log_debug("Zoom on image by double tapping.");
 		var c = this.getElement("contentArea");
 		this.target.doubleTap(c);
-		this.target.delay(2);
+		this.target.delay(1);
 		return this;
 	},
 	
