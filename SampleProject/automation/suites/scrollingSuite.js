@@ -14,7 +14,18 @@ var IMAT_TARGET_PLATFORM = "ios";
 
 #import "../project.js"
 
-//run the tests
+/**
+ * This suite will only run tests that deal with scrolling. While running only tests that deal with
+ * scrolling may be of marginal value, this suite exemplifies that suites can consist of specific 
+ * types of tests that cross cut many test sets. By maintaining consistent naming schemes, you can
+ * take advantage of this fact
+ */
 IMAT.suiteRunner.addFilters(["testScrolling"]);
-IMAT.suiteRunner.previewAllRunnableTests();
+
+// uncomment the following two lines and comment out the call to "runTests()" to get a preview of
+// what tests we are filtering for.
+//IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
+//IMAT.suiteRunner.previewAllRunnableTests();
+
+//run the tests
 IMAT.suiteRunner.runTests(new SAMPLE.SuiteHandler());

@@ -19,11 +19,6 @@ SAMPLE.ListView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "ListView";
-
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-
-		//Validate the initial view state
-		//this.validateInitialViewState();
 	},
 
 	//////////////////////////////    View State Validators    /////////////////////////////////////
@@ -33,40 +28,44 @@ SAMPLE.ListView = Class.extend(SAMPLE.BasicView, {
 	 */
 	validateInitialViewState : function()
 	{
-		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "ListView");
+		this.parent();
+		this.validateState("List View INITIAL", false, this, function(that){
+			assertValid(that.getTable(), "Table");
 		});
 	},
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	selectListingAction : function() {
-		IMAT.log_debug("Selecting an item from the table.");
-		this.getElement("firstTableItem").tap();
+		this.getElementFromView("firstTableItem", "ListView").tap();
 		return new SAMPLE.WebView();
 	},
 	
 	scrollToTopAction : function() {
-		IMAT.log_debug("Scroll until first cell in table is visible");
-		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[0].scrollToVisible();
+		this.getElementFromView("firstTableItem", "ListView").scrollToVisible();
 		return this;
 	},
 	
 	scrollToBottomAction : function() {
-		IMAT.log_debug("Scroll until last cell in table is visible.");
-		var lastIndex = this.getElement("table").cells().length - 1;
-		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells()[lastIndex].scrollToVisible();
+		this.getElementFromView("lastTableItem", "ListView").scrollToVisible();
 		return this;
 	},
 	
 	scrollDownAction : function() {
-		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].scrollDown();
+		this.getTable().scrollDown();
 		return this;
 	},
 	
 	scrollUpAction : function() {
-		UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].scrollUp();
+		this.getTable().scrollUp();
 		return this;
 	},
+	
+	//////////////////////////////////    Helper Functions    //////////////////////////////////////
+	
+	getTable : function()
+	{
+		return this.getElementFromView("table", "ListView");
+	}
 	
 });

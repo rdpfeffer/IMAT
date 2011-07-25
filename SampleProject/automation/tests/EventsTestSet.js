@@ -11,7 +11,6 @@
 
 SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	
-	//All tests
 	title: "EventsTestSet",
 	/**
 	 * Initializes the MetaTest Class object.
@@ -28,10 +27,7 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	setUp: function()
 	{
-		//Do nothing
-		IMAT.log_debug("setUp was called");
-		//This is where you would invoke actions to setup the right viewContext before each test in
-		//this test set
+		this.performActions([["selectEventsButton"]]);
 	},
 	
 	/**
@@ -40,44 +36,20 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	tearDown: function()
 	{
-		//Do nothing
-		IMAT.log_debug("tearDown was called");
-		//This is where you would invoke actions to reset the viewContext after each test in this
-		//test Set
+		this.performActions([["returnToHomeScreen"]]);
 	},
 	
 	setUpTestSet: function()
 	{
-		IMAT.log_debug("setUpTestSet was called");
-		//This is where you would invoke actions to setup the right viewContext before any of the 
-		//tests in this test set are run.
-		
-		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new SAMPLE.StarterView();
-	},
-	
-	tearDownTestSet: function()
-	{
-		IMAT.log_debug("tearDownTestSet was called");		
-		//This is where you would invoke actions to setup the right viewContext after all of the 
-		//tests in this test set are run.
-	},
-	
-	doCleanup: function()
-	{
-		//Do nothing
-		IMAT.log_debug("doCleanup was called");	
+		//initialize the view context before any tests in this test set run.
+		this.viewContext = new SAMPLE.HomeScreenView();
 	},
 	
 	/**
-	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. This implementation does nothing and returns undefined. You must override this
-	 * in order to get test recovery working correctly. 
-	 *
-	 * @return IMAT.LoginView which is considered the base view for all functional tests
+	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
 	 */
 	getBaseView: function() {
-		return new SAMPLE.StarterView();
+		return new SAMPLE.HomeScreenView();
 	},
 	
 	/**
@@ -87,42 +59,33 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	testSelectListingInEvents : function()
 	{
 		this.performActions([
-			["selectEventsButton"],
 			["selectListing"],
-			["waitForNetworkActivity"],
-			["returnToEventsScreen"],
-			["returnToHomeScreen"],
+			["waitForActivity"],
+			["returnToEventsScreen"]
 		]);
 	},
 	
 	testScrollingWhileViewingEventsList : function()
 	{
 		this.performActions([
-			["selectEventsButton"],
 			["scrollToBottom"],
 			["scrollToTop"],
 			["scrollDown"],
-			["scrollUp"],
-			["returnToHomeScreen"],
+			["scrollUp"]
 		]);
 	},	
 	
-	testManuallyEventsTestThatAlwaysPasses : function()
+	testManuallySomethingThatCurrentlyPasses : function()
 	{
-		/*
-			always passes
-		*/
+		//always passes
 		manualPass("7/20/2011");
 	},
 	
-	testManuallyEventsTestThatAlwaysFails : function()
+	testManuallySomethingThatCurrentlyFails : function()
 	{
-		/*
-			always fails
-		*/
+		//always fails
 		manualFail("7/20/2011");
-	},
-	
+	}
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.

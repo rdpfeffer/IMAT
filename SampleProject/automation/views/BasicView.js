@@ -19,26 +19,6 @@ SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 	{
 		this.parent();
 		this.viewName = "BasicView";
-		this.backButton = this.getElement("backButton");
-		this.navBar = this.getElement("navBar");
-
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-
-		//Validate the initial view state
-		//this.validateInitialViewState();
-	},
-	
-	escapeAction : function()
-	{
-		IMAT.log_debug("Attempt to back out until we hit the app home screen.");
-		this.getElement("backButton").tap();
-		return this;
-	},
-	
-	waitForActivityAction : function()
-	{
-		var w = UIATarget.localTarget().frontMostApp().mainWindow();
-		this.waitForActivity(w,10);
 	},
 
 	//////////////////////////////    View State Validators    /////////////////////////////////////
@@ -48,40 +28,50 @@ SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 	 */
 	validateInitialViewState : function()
 	{
-		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "BasicView");
+		this.validateState("Basic View INITIAL", false, this, function(that){
+			assertValid(that.getNavBar(), "Navigation Bar");
+			assertValid(that.getBackButton(), "Back Button");
 		});
 	},
 	
 	validateCorrectPageLoadedAction : function(page)
 	{
 		this.validateState("Facebook Mobile", false, this, function(that) {
-			IMAT.log_debug(that.navBar.name() + " == " + page);
-			assertTrue(that.navBar.name() == page);
+			assertEquals(that.getNavBar().name(), page);
 		});
-		return new SAMPLE.WebView();
+		return this;
 	},
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	returnToHomeScreenAction : function()
 	{
-		IMAT.log_debug("Returning to app home screen.");
+		this.getBackButton().tap();
 		this.target.delay(1);
-		this.getElement("backButton").tap();
-		return new SAMPLE.StarterView();
+		return new SAMPLE.HomeScreenView();
 	},
 	
-	waitAction : function() {
-		this.target.delay(3);
+	escapeAction : function()
+	{
+		return this.returnToHomeScreenAction();
+	},
+	
+	waitForActivityAction : function()
+	{
+		var w = UIATarget.localTarget().frontMostApp().mainWindow();
+		this.waitForActivity(w,15);
 		return this;
 	},
+	
+	//////////////////////////////////    Helper Functions    //////////////////////////////////////
+	getNavBar : function()
+	{
+		return this.getElementFromView("navBar", "BasicView");
+	},
+	
+	getBackButton : function()
+	{
+		return this.getElementFromView("backButton", "BasicView");
+	}
 
 });
-
-//////////	Alert Handler Code	/////////////
-UIATarget.onAlert = function onAlert(alert) {
-	
-	// be default, select cancel
-	
-}

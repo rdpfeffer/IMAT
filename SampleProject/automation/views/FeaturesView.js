@@ -19,12 +19,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "FeaturesView";
-		this.backButton = this.getElement("backButton");
 		this.detailsAndCloseButton = this.getElement("detailsAndCloseButton");
-		
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
-		//Validate the initial view state
 		this.validateInitialViewState();
 	},
 
@@ -36,19 +31,17 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that) {
-			assertTrue(that.viewName == "FeaturesView");
+			assertValid(that.getElement("detailsAndCloseButton"), "Details Button");
 		});
 	},
 	
-	validateImageSwitchedAction : function(previousImage, presentImage)
+	validateImageSwitchedAction : function(previousImageName, currentImageName)
 	{
 		this.validateState("image switched", false, this, function(that) {
-			var oldImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(previousImage);
-			var currentImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(presentImage);
-			IMAT.log_debug(oldImage.name() + " == " + previousImage);
-			assertTrue(oldImage.name() == previousImage);
-			IMAT.log_debug(currentImage.name() + " == " + presentImage);
-			assertTrue(currentImage.name() == presentImage);
+			var oldImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(previousImageName);
+			var currentImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(currentImageName);
+			assertFalse(that.isElementWithinViewRange(oldImage));
+			assertTrue(that.isElementWithinViewRange(currentImage));
 		});
 		return this;
 	},
@@ -65,16 +58,13 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	viewAndCloseDetailsAction : function() {
-		IMAT.log_debug("Click on details button, wait 2 seconds, click on close button.");
 		this.getElement("detailsAndCloseButton").tap();
 		this.validateDetailsShowing();
-		this.target.delay(2);
 		this.getElement("detailsAndCloseButton").tap();
 		return this;
 	},
 	
 	zoomAction : function() {
-		IMAT.log_debug("Zoom on image by double tapping.");
 		var c = this.getElement("contentArea");
 		this.target.doubleTap(c);
 		this.target.delay(1);
@@ -82,19 +72,60 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	},
 	
 	swipeRightAction : function() {
-		IMAT.log_debug("Swipe screen to the right.");
 		var p1 = { x: 200, y: 300 };
 		var p2 = { x: 0, y: 300 };
 		this.target.dragFromToForDuration(p1, p2, 0.5);
+		this.target.delay(1);
 		return this;
 	},
 	
 	swipeLeftAction : function() {
-		IMAT.log_debug("Swipe screen to the left.");
 		var p1 = { x: 0, y: 300 };
 		var p2 = { x: 200, y: 300 };
 		this.target.dragFromToForDuration(p1, p2, 0.5);
+		this.target.delay(1);
 		return this;		
 	},
+	
+	isElementWithinViewRange : function(element)
+	{
+		if (element && element instanceof UIAElement)
+		{
+			//get reference to the x,y coords of the Application.
+			var appRect = UIATarget.localTarget().frontMostApp().rect();
+			var appUpperLeftX = appRect.origin.x;
+			var appUpperRightX = appRect.origin.x + appRect.size.width;
+			var appUpperLeftY = appRect.origin.y;
+			var appLowerLeftY = appRect.origin.y + appRect.size.height;
+			
+			//get reference to the x,y coords of the points defining the element
+			var elemRect = element.rect();
+			var elemUpperLeftX, elemLowerLeftX = elemRect.origin.x;
+			var elemUpperRightX, elemLowerRightX = elemRect.origin.x + elemRect.size.width;
+			var elemUpperLeftY, elemUpperRightY = elemRect.origin.y;
+			var elemLowerLeftY, elemLowerRightY = elemRect.origin.y + elemRect.size.height;
+			
+			//This helper function will help us determine if a given point of the element falls 
+			//within the range of the application.
+			var testPoint = function(x, y) {
+				var numberXVal = new Number(x);
+				var numberYVal = new Number(y);
+				return (numberXVal.isBetween(appUpperLeftX, appUpperRightX) && 
+					numberYVal.isBetween(appUpperLeftY, appLowerLeftY))
+			};
+			
+			//If any of the 4 points of the element fall within the range of the view of the 
+			//application, then we can say that this element is within the view range
+			return (testPoint(elemUpperLeftX, elemUpperLeftY) ||
+					testPoint(elemUpperRightX, elemUpperRightY) ||
+					testPoint(elemLowerLeftX, elemLowerLeftY) ||
+					testPoint(elemLowerRightX, elemLowerRightY));
+			
+		}
+		else
+		{
+			throw "given parameter \"element\" was not of type UIAElement: " + element;
+		}
+	}
 
 });

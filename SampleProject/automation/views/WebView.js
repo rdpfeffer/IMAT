@@ -19,10 +19,6 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "WebView";
-		this.backButton = this.getElement("backButton");
-		
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
 		//Validate the initial view state
 		this.validateInitialViewState();
 	},
@@ -34,41 +30,40 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	 */
 	validateInitialViewState : function()
 	{
+		this.parent();
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "WebView");
+			assertValid(that.getElement("scrollView"), "Scroll View");
 		});
 	},
 
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	returnToInfoScreenAction : function() {
-		IMAT.log_debug("Return to Info screen from web view.");
-		this.getElement("backButton").tap();
+		this.getBackButton().tap();
+		this.target.delay(.5);
 		return new SAMPLE.InfoView();
 	},
 	
 	returnToEventsScreenAction : function() {
-		IMAT.log_debug("Return to Events screen from web view.");
-		this.getElement("backButton").tap();
+		this.getBackButton().tap();
+		this.target.delay(.5);
 		return new SAMPLE.EventsView();
 	},
 	
 	scrollDownAction : function() {
-		IMAT.log_state();
-		UIATarget.localTarget().frontMostApp().mainWindow().scrollViews()[0].scrollDown();
+		this.getElement("scrollView").scrollDown();
 		return this;
 	},
 	
 	scrollUpAction : function() {
-		UIATarget.localTarget().frontMostApp().mainWindow().scrollViews()[0].scrollUp();
+		this.getElement("scrollView").scrollUp();
 		return this;
 	},
 	
-	waitForNetworkActivityAction : function()
+	waitForActivityAction : function()
 	{
-		var backButton = this.getElement("backButton");
-		this.waitForActivity(backButton,5);
+		this.waitForActivity(this.getNavBar(), 15);
 		return this;
-	},
+	}
 
 });

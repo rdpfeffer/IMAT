@@ -19,10 +19,6 @@ SAMPLE.InfoView = Class.extend(SAMPLE.ListView, {
 	{
 		this.parent();
 		this.viewName = "InfoView";
-		this.backButton = this.getElement("backButton");
-		
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
 		//Validate the initial view state
 		this.validateInitialViewState();
 	},

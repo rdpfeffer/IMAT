@@ -11,15 +11,14 @@
 
 SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	
-	//All tests
+	
 	title: "FeaturesTestSet",
 	/**
 	 * Initializes the MetaTest Class object.
 	 */
 	initialize: function()
 	{
-		IMAT.log_debug("Initializing the Features Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
+		IMAT.log_trace("Initializing the Features Tests.");
 	},
 	
 	/**
@@ -28,10 +27,7 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	setUp: function()
 	{
-		//Do nothing
-		IMAT.log_debug("setUp was called");
-		//This is where you would invoke actions to setup the right viewContext before each test in
-		//this test set
+		this.performActions([["selectFeaturesButton"]]);
 	},
 	
 	/**
@@ -40,73 +36,50 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	tearDown: function()
 	{
-		//Do nothing
-		IMAT.log_debug("tearDown was called");
-		//This is where you would invoke actions to reset the viewContext after each test in this
-		//test Set
+		this.performActions([["returnToHomeScreen"]]);
 	},
 	
 	setUpTestSet: function()
 	{
-		IMAT.log_debug("setUpTestSet was called");
-		//This is where you would invoke actions to setup the right viewContext before any of the 
-		//tests in this test set are run.
-		
-		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new SAMPLE.StarterView();
-	},
-	
-	tearDownTestSet: function()
-	{
-		IMAT.log_debug("tearDownTestSet was called");		
-		//This is where you would invoke actions to setup the right viewContext after all of the 
-		//tests in this test set are run.
-	},
-	
-	doCleanup: function()
-	{
-		//Do nothing
-		IMAT.log_debug("doCleanup was called");	
+		this.viewContext = new SAMPLE.HomeScreenView();
 	},
 	
 	/**
 	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. This implementation does nothing and returns undefined. You must override this
-	 * in order to get test recovery working correctly. 
+	 * failure.
 	 *
-	 * @return IMAT.LoginView which is considered the base view for all functional tests
+	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
 	 */
 	getBaseView: function() {
-		return new SAMPLE.StarterView();
+		return new SAMPLE.HomeScreenView();
 	},
 	
-	/**
-	 * Test all of the macros so that we have a clear definition of what they will allow.
-	 */
+	getBaseViewName: function() {
+		return "HomeScreenView";
+	},
 	
 	testZoomInAndOutInFeatures : function()
 	{
 		this.performActions([
-			["selectFeaturesButton"],
 			["zoom"],
-			["zoom"],
-			["returnToHomeScreen"],
+			["zoom"]
 		]);
 	},	
 	
 	testViewDetailsInFeatures : function()
 	{
 		this.performActions([
-			["selectFeaturesButton"],
 			["viewAndCloseDetails"],
-			["returnToHomeScreen"],
+			["swipeRight"],
+			["viewAndCloseDetails"],
+			["swipeRight"],
+			["viewAndCloseDetails"]
 		]);
 	},
 	
 	testScrollingInFeatures : function()
 	{
 		this.performActions([
-			["selectFeaturesButton"],
 			["swipeRight"],
 			["validateImageSwitched", "lego.jpg", "pattern.jpg"],
 			["swipeRight"],
@@ -114,27 +87,21 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["swipeLeft"],
 			["validateImageSwitched", "time.jpg", "pattern.jpg"],
 			["swipeLeft"],
-			["validateImageSwitched", "pattern.jpg", "lego.jpg"],
-			["returnToHomeScreen"],
+			["validateImageSwitched", "pattern.jpg", "lego.jpg"]
 		]);
 	},
 	
-	testManuallyFeaturesTestThatAlwaysPasses : function()
+	testManuallySomethingThatCurrentlyPasses : function()
 	{
-		/*
-			always passes
-		*/
+		//always passes
 		manualPass("7/20/2011");
 	},
 	
-	testManuallyFeaturesTestThatAlwaysFails : function()
+	testManuallySomethingThatCurrentlyFails : function()
 	{
-		/*
-			always fails
-		*/
+		//always fails
 		manualFail("7/20/2011");
-	},
-	
+	}
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.

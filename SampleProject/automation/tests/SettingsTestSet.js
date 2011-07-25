@@ -11,7 +11,7 @@
 
 SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	
-	//All tests
+	
 	title: "SettingsTestSet",
 	/**
 	 * Initializes the MetaTest Class object.
@@ -28,10 +28,10 @@ SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	setUp: function()
 	{
-		//Do nothing
-		IMAT.log_debug("setUp was called");
-		//This is where you would invoke actions to setup the right viewContext before each test in
-		//this test set
+		this.performActions([
+			["swipeRight"],
+			["selectSettingsButton"]
+		]);
 	},
 	
 	/**
@@ -40,83 +40,56 @@ SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	tearDown: function()
 	{
-		//Do nothing
-		IMAT.log_debug("tearDown was called");
-		//This is where you would invoke actions to reset the viewContext after each test in this
-		//test Set
+		this.performActions([
+			["returnToHomeScreen"],
+			["swipeLeft"]
+		]);
 	},
 	
 	setUpTestSet: function()
 	{
-		IMAT.log_debug("setUpTestSet was called");
-		//This is where you would invoke actions to setup the right viewContext before any of the 
-		//tests in this test set are run.
-		
-		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new SAMPLE.StarterView();
-	},
-	
-	tearDownTestSet: function()
-	{
-		IMAT.log_debug("tearDownTestSet was called");		
-		//This is where you would invoke actions to setup the right viewContext after all of the 
-		//tests in this test set are run.
-	},
-	
-	doCleanup: function()
-	{
-		//Do nothing
-		IMAT.log_debug("doCleanup was called");	
+		this.viewContext = new SAMPLE.HomeScreenView();
 	},
 	
 	/**
 	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. This implementation does nothing and returns undefined. You must override this
-	 * in order to get test recovery working correctly. 
+	 * failure. 
 	 *
-	 * @return IMAT.LoginView which is considered the base view for all functional tests
+	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
 	 */
 	getBaseView: function() {
-		return new SAMPLE.StarterView();
+		return new SAMPLE.HomeScreenView();
 	},
 	
 	/**
 	 * Test all of the macros so that we have a clear definition of what they will allow.
 	 */
-	
 	testModifyFieldsInSettings : function()
 	{
+		var singleLineText = "single line comment";
+		var multiLineText = "multiline comments are much longer than single line comments so this will most likely take up more than one line";
 		this.performActions([
-			["wait"],
-			["swipeRight"],
-			["selectSettingsButton"],
-			["enterSingleLineComment", "single line comment"],
-			["enterMultiLineComment", "multiline comments are much longer than single line comments and hopefully this takes up more than one line"],
+			["enterSingleLineComment", singleLineText],
+			["enterMultiLineComment", multiLineText],
 			["toggleSwitch", "on"],
-			["adjustSliderToValue", 1],			
-			["validateAllFieldsEdited"], // validate that all fields, switches, and sliders have been edited
+			["adjustSliderToValue", 1],
+			["validateAllFields", singleLineText, multiLineText, 1, "100%"], 
 			["toggleSwitch", "off"],
-			["adjustSliderToValue", 0],
-			["returnToHomeScreen"],
+			["adjustSliderToValue", 0]
 		]);
 	},
 	
-	testManuallySettingsTestThatAlwaysPasses : function()
+	testManuallySomethingThatCurrentlyPasses : function()
 	{
-		/*
-			always passes
-		*/
+		//always passes
 		manualPass();
 	},
 	
-	testManuallySettingsTestThatAlwaysFails : function()
+	testManuallySomethingThatCurrentlyFails : function()
 	{
-		/*
-			always fails
-		*/
+		//always fails
 		manualFail();
-	},
-	
+	}
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.

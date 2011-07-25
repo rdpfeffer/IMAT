@@ -9,10 +9,10 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-//Import all of your views here.
+//Import all of your tests here.
 IMAT.log_debug("Importing all of the test sets...");
 
-#import "StarterTestSet.js"
+#import "HomeScreenTestSet.js"
 #import "EventsTestSet.js"
 #import "FeaturesTestSet.js"
 #import "InfoTestSet.js"

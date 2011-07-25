@@ -12,11 +12,12 @@
 #import "env/env.js"
 
 //declare any settings
-IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
+IMAT.settings.logLevel = IMAT.logLevels.LOG_INFO;
 
 var SAMPLE = {};
 
 //load the tests and their respective views
+#import "utils/Number-extensions.js"
 #import "tests/tests_inc.js"
 #import "views/views_inc.js"
 #import "suites/SuiteHandler.js"

@@ -11,7 +11,7 @@
 
 SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	
-	//All tests
+	
 	title: "IntuitTestSet",
 	/**
 	 * Initializes the MetaTest Class object.
@@ -28,10 +28,7 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	setUp: function()
 	{
-		//Do nothing
-		IMAT.log_debug("setUp was called");
-		//This is where you would invoke actions to setup the right viewContext before each test in
-		//this test set
+		this.performActions([["selectIntuitButton"]]);
 	},
 	
 	/**
@@ -40,20 +37,12 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	tearDown: function()
 	{
-		//Do nothing
-		IMAT.log_debug("tearDown was called");
-		//This is where you would invoke actions to reset the viewContext after each test in this
-		//test Set
+		this.performActions([["returnToHomeScreen"]]);
 	},
 	
 	setUpTestSet: function()
 	{
-		IMAT.log_debug("setUpTestSet was called");
-		//This is where you would invoke actions to setup the right viewContext before any of the 
-		//tests in this test set are run.
-		
-		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new SAMPLE.StarterView();
+		this.viewContext = new SAMPLE.HomeScreenView();
 	},
 	
 	tearDownTestSet: function()
@@ -63,21 +52,15 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		//tests in this test set are run.
 	},
 	
-	doCleanup: function()
-	{
-		//Do nothing
-		IMAT.log_debug("doCleanup was called");	
-	},
-	
 	/**
 	 * Return the base view which we consider to be the "Base State" when recovering from a test
 	 * failure. This implementation does nothing and returns undefined. You must override this
 	 * in order to get test recovery working correctly. 
 	 *
-	 * @return IMAT.LoginView which is considered the base view for all functional tests
+	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
 	 */
 	getBaseView: function() {
-		return new SAMPLE.StarterView();
+		return new SAMPLE.HomeScreenView();
 	},
 	
 	/**
@@ -87,39 +70,31 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	testLoadHomePageInIntuit : function()
 	{
 		this.performActions([
-			["selectIntuitButton"],
-			["waitForNetworkActivity"],
-			["validateCorrectPageLoaded", "Intuit Small Business - Website Builder, Quickbooks, Payroll & Payment Solutions"],
-			["returnToHomeScreen"],
+			["waitForActivity"],
+			["validateCorrectPageLoaded", "Intuit Small Business - Website Builder, Quickbooks, Payroll & Payment Solutions"]
 		]);
 	},	
 	
 	testScrollingWhileInIntuit : function()
 	{
 		this.performActions([
-			["selectIntuitButton"],
+			["waitForActivity"],
 			["scrollDown"],
-			["scrollUp"],
-			["returnToHomeScreen"],
+			["scrollUp"]
 		]);
 	},
 	
-	testManuallyIntuitTestThatAlwaysPasses : function()
+	testManuallySomethingThatCurrentlyPasses : function()
 	{
-		/*
-			always passes
-		*/
+		//always passes
 		manualPass("7/20/2011");
 	},
 	
-	testManuallyIntuitTestThatAlwaysFails : function()
+	testManuallySomethingThatCurrentlyFails : function()
 	{
-		/*
-			always fails
-		*/
+		//always fails
 		manualFail("7/20/2011");
-	},
-	
+	}
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.

@@ -19,7 +19,7 @@ IMAT.log_debug("Importing all of the views...");
 // Basic Views
 #import "BasicView.js"
 #import "ListView.js"
-#import "StarterView.js"
+#import "HomeScreenView.js"
 
 // Specific Views
 #import "EventsView.js"

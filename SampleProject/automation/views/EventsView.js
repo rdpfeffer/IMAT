@@ -19,12 +19,6 @@ SAMPLE.EventsView = Class.extend(SAMPLE.ListView, {
 	{
 		this.parent();
 		this.viewName = "EventsView";
-		this.backButton = this.getElement("backButton");
-		this.navBar = this.getElement("navBar");
-		this.navBarTitle = this.getElement("navBarTitle");
-		
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		//Validate the initial view state
 		this.validateInitialViewState();
 	},
 
@@ -35,8 +29,9 @@ SAMPLE.EventsView = Class.extend(SAMPLE.ListView, {
 	 */
 	validateInitialViewState : function()
 	{
+		this.parent();
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "EventsView");
+			assertEquals(that.getNavBar().name(), "Events");
 		});
 	},
 	

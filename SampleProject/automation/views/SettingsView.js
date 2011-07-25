@@ -19,14 +19,11 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "SettingsView";
-		this.backButton = this.getElement("backButton");
 		this.singleLineTextField = this.getElement("singleLineTextField");
 		this.multipleLineTextField = this.getElement("multipleLineTextField");
 		this.toggleSwitch = this.getElement("toggleSwitch");
 		this.slider = this.getElement("slider");
 				
-		IMAT.log_debug("initializing SAMPLE." + this.viewName);
-		
 		//Validate the initial view state
 		this.validateInitialViewState();
 	},
@@ -39,24 +36,20 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "SettingsView");
+			assertValid(that.singleLineTextField, "Single Line Text Field");
+			assertValid(that.multipleLineTextField, "Multi Line Text Field");
+			assertValid(that.toggleSwitch, "Toggle Switch");
+			assertValid(that.slider, "Slider");
 		});
 	},
 	
-	validateAllFieldsEditedAction : function()
+	validateAllFieldsAction : function(singleLineVal, multiLineVal, toggleVal, sliderVal)
 	{
 		this.validateState("Edited Preferences", false, this, function(that) {
-			IMAT.log_debug(that.singleLineTextField.value() + " == single line comment");
-			assertTrue(that.singleLineTextField.value() == "single line comment");
-			
-			IMAT.log_debug(that.multipleLineTextField.value() + " == multiline comments are much longer than single line comments and hopefully this takes up more than one line");
-			assertTrue(that.multipleLineTextField.value() == "multiline comments are much longer than single line comments and hopefully this takes up more than one line");
-			
-			IMAT.log_debug(that.toggleSwitch.value() + " == true");
-			assertTrue(that.toggleSwitch.value() == true);
-			
-			IMAT.log_debug(that.slider.value().toString() + " == 100%");
-			assertTrue(that.slider.value().toString() == "100%");
+			assertEquals(that.singleLineTextField.value(), singleLineVal);
+			assertEquals(that.multipleLineTextField.value(), multiLineVal);
+			assertEquals(that.toggleSwitch.value(), toggleVal);
+			assertEquals(that.slider.value().toString(), sliderVal);
 		});
 		return this;
 	},	
@@ -65,34 +58,38 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	
 	enterSingleLineCommentAction : function(text)
 	{
-		IMAT.log_debug("Enter single line comment.");
-		this.getElement("singleLineTextField").setValue(text);
+		var textField = this.getElement("singleLineTextField");
+		textField.scrollToVisible();
+		textField.setValue(text);
 		return this;
 	},
 	
 	enterMultiLineCommentAction : function(text)
 	{
-		IMAT.log_debug("Enter multiple line comment.");
-		this.getElement("multipleLineTextField").setValue(text);
+		var textField = this.getElement("multipleLineTextField")
+		textField.scrollToVisible();
+		textField.setValue(text);
 		return this;
 	},
 	
 	toggleSwitchAction : function(state)
 	{
-		IMAT.log_debug("Toggle the switch to state: " + state);
+		var toggle = this.getElement("toggleSwitch");
+		toggle.scrollToVisible();
 		if (state == "on") {
-			this.getElement("toggleSwitch").setValue(true);
+			toggle.setValue(true);
 		}
 		else if (state == "off") {
-			this.getElement("toggleSwitch").setValue(false);
+			toggle.setValue(false);
 		}
 		return this;
 	},
 	
 	adjustSliderToValueAction : function(value)
 	{
-		IMAT.log_debug("Adjust slider to full value.");
-		this.getElement("slider").dragToValue(value);
+		var slider = this.getElement("slider");
+		slider.scrollToVisible();
+		slider.dragToValue(value);
 		return this;
 	},
 

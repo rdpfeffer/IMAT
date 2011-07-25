@@ -63,7 +63,7 @@ IMAT.StemView = Class.extend(IMAT.BaseView, {
 				}
 			}
 			else {
-				return new SAMPLE.StarterView();
+				return new SAMPLE.HomeScreenView();
 			}
 			
 		}
