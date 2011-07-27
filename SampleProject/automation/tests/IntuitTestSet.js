@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.IntuitTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "IntuitTestSet",
@@ -18,8 +18,8 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
+		this.parent();
 		IMAT.log_debug("Initializing the Intuit Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
 	},
 	
 	/**
@@ -40,33 +40,6 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		this.performActions([["returnToHomeScreen"]]);
 	},
 	
-	setUpTestSet: function()
-	{
-		this.viewContext = new SAMPLE.HomeScreenView();
-	},
-	
-	tearDownTestSet: function()
-	{
-		IMAT.log_debug("tearDownTestSet was called");		
-		//This is where you would invoke actions to setup the right viewContext after all of the 
-		//tests in this test set are run.
-	},
-	
-	/**
-	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. This implementation does nothing and returns undefined. You must override this
-	 * in order to get test recovery working correctly. 
-	 *
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
-	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Test all of the macros so that we have a clear definition of what they will allow.
-	 */
-	
 	testLoadHomePageInIntuit : function()
 	{
 		this.performActions([
@@ -82,18 +55,6 @@ SAMPLE.IntuitTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["scrollDown"],
 			["scrollUp"]
 		]);
-	},
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass("7/20/2011");
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail("7/20/2011");
 	}
 });
 

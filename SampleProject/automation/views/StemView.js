@@ -43,29 +43,15 @@ IMAT.StemView = Class.extend(IMAT.BaseView, {
 		{
 			this.refreshAppContext();
 			var navBar = this.getElement("navBar");
-			if (navBar.checkIsValid()) {
-				var navBarName = this.getElement("navBar").name();
-				switch (navBarName) {
-					case "Events":
-						specializedView = new SAMPLE.EventsView();
-						break;
-					case "News":
-						specializedView = new SAMPLE.InfoView();
-						break;
-					case "Intuit Small Business - Website Builder, Quickbooks, Payroll & Payment Solutions":
-						specializedView = new SAMPLE.WebView();
-						break;
-					case "Features":
-						specializedView = new SAMPLE.FeaturesView();
-						break;
-					default:
-						specializedView = new SAMPLE.BasicView();
-				}
+			assertValid(navBar, "Navigation Bar");
+			var navBarName = this.getElement("navBar").name();
+			switch (navBarName) {
+				case "Sample App":
+					specializedView = new SAMPLE.HomeScreenView();
+					break;
+				default:
+					specializedView = new SAMPLE.BasicView();
 			}
-			else {
-				return new SAMPLE.HomeScreenView();
-			}
-			
 		}
 		catch(e)
 		{

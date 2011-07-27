@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.FeaturesTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "FeaturesTestSet",
@@ -18,6 +18,7 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
+		this.parent();
 		IMAT.log_trace("Initializing the Features Tests.");
 	},
 	
@@ -37,25 +38,6 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	tearDown: function()
 	{
 		this.performActions([["returnToHomeScreen"]]);
-	},
-	
-	setUpTestSet: function()
-	{
-		this.viewContext = new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure.
-	 *
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
-	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
-	},
-	
-	getBaseViewName: function() {
-		return "HomeScreenView";
 	},
 	
 	testZoomInAndOutInFeatures : function()
@@ -89,18 +71,6 @@ SAMPLE.FeaturesTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["swipeLeft"],
 			["validateImageSwitched", "pattern.jpg", "lego.jpg"]
 		]);
-	},
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass("7/20/2011");
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail("7/20/2011");
 	}
 });
 

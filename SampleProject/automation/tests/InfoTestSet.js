@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.InfoTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.InfoTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "InfoTestSet",
@@ -18,8 +18,8 @@ SAMPLE.InfoTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
+		this.parent();
 		IMAT.log_debug("Initializing the Info Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
 	},
 	
 	/**
@@ -40,44 +40,12 @@ SAMPLE.InfoTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		this.performActions([["returnToHomeScreen"]]);
 	},
 	
-	setUpTestSet: function()
-	{
-		IMAT.log_debug("setUpTestSet was called");
-		//This is where you would invoke actions to setup the right viewContext before any of the 
-		//tests in this test set are run.
-		
-		//A good thing to do here would be to initialize this.viewContext
-		this.viewContext = new SAMPLE.HomeScreenView();
-	},
-	
-	tearDownTestSet: function()
-	{
-		IMAT.log_debug("tearDownTestSet was called");		
-		//This is where you would invoke actions to setup the right viewContext after all of the 
-		//tests in this test set are run.
-	},
-	
-	/**
-	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. This implementation does nothing and returns undefined. You must override this
-	 * in order to get test recovery working correctly. 
-	 *
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
-	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Test all of the macros so that we have a clear definition of what they will allow.
-	 */
-	
 	testSelectListingInInfo : function()
 	{
 		this.performActions([
 			["selectListing"],
 			["waitForActivity"],
-			["validateCorrectPageLoaded", "Facebook Mobile"],
+			["validateCorrectPageLoaded", "Facebook"],
 			["returnToInfoScreen"]
 		]);
 	},	
@@ -88,18 +56,6 @@ SAMPLE.InfoTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["scrollDown"],
 			["scrollUp"]
 		]);
-	},
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass("7/20/2011");
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail("7/20/2011");
 	}
 });
 

@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.SettingsTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "SettingsTestSet",
@@ -18,8 +18,8 @@ SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
+		this.parent();
 		IMAT.log_debug("Initializing the Settings Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
 	},
 	
 	/**
@@ -46,24 +46,6 @@ SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		]);
 	},
 	
-	setUpTestSet: function()
-	{
-		this.viewContext = new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Return the base view which we consider to be the "Base State" when recovering from a test
-	 * failure. 
-	 *
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
-	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Test all of the macros so that we have a clear definition of what they will allow.
-	 */
 	testModifyFieldsInSettings : function()
 	{
 		var singleLineText = "single line comment";
@@ -77,18 +59,6 @@ SAMPLE.SettingsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["toggleSwitch", "off"],
 			["adjustSliderToValue", 0]
 		]);
-	},
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass();
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail();
 	}
 });
 

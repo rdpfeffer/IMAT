@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.HomeScreenTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.HomeScreenTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "HomeScreenTestSet",
@@ -18,20 +18,26 @@ SAMPLE.HomeScreenTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
-		IMAT.log_debug("Initializing the Starter Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
-	},
-	
-	setUpTestSet: function()
-	{
-		this.viewContext = new SAMPLE.HomeScreenView();
+		this.parent();
+		IMAT.log_debug("Initializing the Home Screen tests.");
 	},
 	
 	/**
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
+	 * setup the App to normalize the way tests are run. Initialize the view context and do whatever
+	 * we can to make sure that the next test runs in the right state.
 	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
+	setUp: function()
+	{
+		//override the BaseSampleTestSet to do nothing instead.
+	},
+	
+	/**
+	 * tearDown the App to normalize the way tests finish. Reset anything that might cause the next
+	 * test to fail.
+	 */
+	tearDown: function()
+	{
+		this.performActions([["swipeLeft"]]);
 	},
 	
 	testHomeScreenSwipeBetweenIconSets : function()
@@ -76,18 +82,6 @@ SAMPLE.HomeScreenTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		
 		//revert the alert handler back to its original state.
 		UIATarget.onAlert = defaultAlert;
-	},
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass("7/20/2011");
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail("7/20/2011");
 	}
 });
 

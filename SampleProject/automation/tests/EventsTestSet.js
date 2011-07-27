@@ -9,7 +9,7 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
+SAMPLE.EventsTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	title: "EventsTestSet",
 	/**
@@ -17,8 +17,8 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 	 */
 	initialize: function()
 	{
+		this.parent();
 		IMAT.log_debug("Initializing the Events Tests.");
-		IMAT.log_debug("Note: This is where you could declare your test fixtures.");
 	},
 	
 	/**
@@ -39,23 +39,6 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 		this.performActions([["returnToHomeScreen"]]);
 	},
 	
-	setUpTestSet: function()
-	{
-		//initialize the view context before any tests in this test set run.
-		this.viewContext = new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * @return SAMPLE.HomeScreenView which is considered the base view for all functional tests
-	 */
-	getBaseView: function() {
-		return new SAMPLE.HomeScreenView();
-	},
-	
-	/**
-	 * Test all of the macros so that we have a clear definition of what they will allow.
-	 */
-	
 	testSelectListingInEvents : function()
 	{
 		this.performActions([
@@ -73,18 +56,6 @@ SAMPLE.EventsTestSet = Class.extend(IMAT.BaseFunctionalTestSet, {
 			["scrollDown"],
 			["scrollUp"]
 		]);
-	},	
-	
-	testManuallySomethingThatCurrentlyPasses : function()
-	{
-		//always passes
-		manualPass("7/20/2011");
-	},
-	
-	testManuallySomethingThatCurrentlyFails : function()
-	{
-		//always fails
-		manualFail("7/20/2011");
 	}
 });
 
