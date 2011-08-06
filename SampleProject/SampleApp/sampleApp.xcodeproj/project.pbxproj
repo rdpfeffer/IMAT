@@ -22,6 +22,10 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		3554242913EDFAB700ACCABC /* sampleApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3554242813EDFAB600ACCABC /* sampleApp.png */; };
+		3554242B13EDFE4F00ACCABC /* sampleApp@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 3554242A13EDFE4E00ACCABC /* sampleApp@2X.png */; };
+		3554242D13EDFFFD00ACCABC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3554242C13EDFFFD00ACCABC /* Default.png */; };
+		3554242F13EE050B00ACCABC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3554242E13EE050B00ACCABC /* Default@2x.png */; };
 		35D5C1FF139CA9630095EC71 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 35D5C1FE139CA9630095EC71 /* home.png */; };
 		35D5C201139CAA4E0095EC71 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 35D5C200139CAA4E0095EC71 /* info.png */; };
 		35D5C203139CB8130095EC71 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 35D5C202139CB8130095EC71 /* star.png */; };
@@ -223,6 +227,10 @@
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* sampleApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = sampleApp_Prefix.pch; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3554242813EDFAB600ACCABC /* sampleApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleApp.png; sourceTree = "<group>"; };
+		3554242A13EDFE4E00ACCABC /* sampleApp@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sampleApp@2X.png"; sourceTree = "<group>"; };
+		3554242C13EDFFFD00ACCABC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3554242E13EE050B00ACCABC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		35D5C1FE139CA9630095EC71 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		35D5C200139CAA4E0095EC71 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		35D5C202139CB8130095EC71 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -344,6 +352,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3554242E13EE050B00ACCABC /* Default@2x.png */,
+				3554242C13EDFFFD00ACCABC /* Default.png */,
+				3554242A13EDFE4E00ACCABC /* sampleApp@2X.png */,
+				3554242813EDFAB600ACCABC /* sampleApp.png */,
 				35D5C204139CC1B50095EC71 /* lego.jpg */,
 				35D5C205139CC1B50095EC71 /* pattern.jpg */,
 				35D5C206139CC1B60095EC71 /* time.jpg */,
@@ -666,6 +678,10 @@
 				35D5C207139CC1B60095EC71 /* lego.jpg in Resources */,
 				35D5C208139CC1B60095EC71 /* pattern.jpg in Resources */,
 				35D5C209139CC1B60095EC71 /* time.jpg in Resources */,
+				3554242913EDFAB700ACCABC /* sampleApp.png in Resources */,
+				3554242B13EDFE4F00ACCABC /* sampleApp@2X.png in Resources */,
+				3554242D13EDFFFD00ACCABC /* Default.png in Resources */,
+				3554242F13EE050B00ACCABC /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
