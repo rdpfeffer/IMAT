@@ -8,7 +8,15 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
+/**
+ * This is a test set writen to test scenarios from the Settings section of the
+ * sample application. It demonstrates the following...
+ *
+ *			1) How to effectively use setUp() and tearDown() functions to 
+ *			simplify your tests and reduce redundant lines of code.
+ *
+ *			2) The proper way to set up a "run-of-the-mill" test set.
+ */
 SAMPLE.SettingsTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	

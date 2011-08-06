@@ -1,12 +1,14 @@
-/**
- * This file is really more for running reports on our manual tests.
- *
- * @creator Ryan Pfeffer. 06/08/2010
- *
- * Copyright 2011 Intuit Inc. All rights reserved. 
- * Unauthorized reproduction is a violation of applicable law. 
- * This material contains certain confidential and proprietary information and trade secrets of Intuit Inc.
- */
+/*******************************************************************************
+* Copyright (c) 2011 Intuit, Inc.
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.opensource.org/licenses/eclipse-1.0.php
+* 
+* Contributors:
+*     Intuit, Inc - initial API and implementation
+*******************************************************************************/
+
 //declare the platform this suite will be testing
 var IMAT_TARGET_PLATFORM = "ios";
 
@@ -28,6 +30,7 @@ IMAT.settings.SKIP_SET_UP_TEST_SET = true;
 IMAT.settings.SKIP_TEAR_DOWN_TEST_SET = true;
 IMAT.settings.SKIP_SET_UP_TEST_CASE = true;
 IMAT.settings.SKIP_TEAR_DOWN_TEST_CASE = true;
+IMAT.settings.SKIP_DO_CLEANUP = true;
 
 //"run" the tests. NOTE: since these are all manual, it will just log out the last known status.
 IMAT.suiteRunner.runTests(new SAMPLE.SuiteHandler());

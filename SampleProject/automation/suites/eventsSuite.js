@@ -15,8 +15,11 @@ var IMAT_TARGET_PLATFORM = "ios";
 
 /**
  * The following filter will only run automated tests in the Events test set.
+ *
+ * Note, the "|Fail" portion below is for demo purposes. You would never need this filter 
+ * modification in a real project.
  */
-IMAT.suiteRunner.addFilters(["^EventsTestSet\\.test(?!Manually)"]);
+IMAT.suiteRunner.addFilters(["^EventsTestSet\\.test(?!Manually|Fail)"]);
 
 // uncomment the following two lines and comment out the call to "runTests()" to get a preview of
 // what tests we are filtering for.

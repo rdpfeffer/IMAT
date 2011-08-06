@@ -34,15 +34,6 @@ SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 		});
 	},
 	
-	validateCorrectPageLoadedAction : function(page)
-	{
-		this.validateState("Correct Page Loaded", false, this, function(that) {
-			var pageNmae = that.getNavBar().name();
-			assertTrue(pageNmae.indexOf(page) >= 0, page + " was not a substrng of " + pageNmae);
-		});
-		return this;
-	},
-	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	returnToHomeScreenAction : function()
@@ -54,10 +45,7 @@ SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 	
 	escapeAction : function()
 	{
-		this.returnToHomeScreenAction();
-		//we return this in the case of the escape action so that we will continue hitting the back 
-		//button until we get to the home screen.
-		return this;
+		return this.returnToHomeScreenAction();
 	},
 	
 	waitForActivityAction : function()

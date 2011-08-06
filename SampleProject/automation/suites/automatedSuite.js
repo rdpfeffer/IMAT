@@ -14,11 +14,15 @@ var IMAT_TARGET_PLATFORM = "ios";
 #import "../project.js"
 
 /**
- * The following filter will only run tests that do not start with the name "testManually". By
- * following the convention of prefixing all non-automated tests as such, you can create suites that
- * only run automated tests.
+ * The following filter will only run tests that do not start with the name "testManually" or 
+ * "testFail". By following the convention of prefixing all non-automated tests as such, you can 
+ * create suites that only run automated tests.
+ *
+ * Note, the "|Fail" portion below is for demo purposes. You would never need this filter 
+ * modification in a real project.
  */
-IMAT.suiteRunner.addFilters(["test(?!Manually)"]);
+IMAT.suiteRunner.addFilters(["test(?!Manually|Fail)"]);
+
 
 // uncomment the following two lines and comment out the call to "runTests()" to get a preview of
 // what tests we are filtering for.

@@ -41,21 +41,24 @@ IMAT.StemView = Class.extend(IMAT.BaseView, {
 		var specializedView = null;
 		try
 		{
+			IMAT.log_info("Stem View beginning specialization.");
 			this.refreshAppContext();
-			var navBar = this.getElement("navBar");
+			var navBar = this.getElementFromView("navBar", "BasicView");
 			assertValid(navBar, "Navigation Bar");
-			var navBarName = this.getElement("navBar").name();
+			var navBarName = navBar.name();
 			switch (navBarName) {
 				case "Sample App":
+					IMAT.log_info("Specializing to HomeScreenView");
 					specializedView = new SAMPLE.HomeScreenView();
 					break;
 				default:
+					IMAT.log_info("Specializing to BasicView when navBarName was: " + navBarName);
 					specializedView = new SAMPLE.BasicView();
 			}
 		}
 		catch(e)
 		{
-			IMAT.log_warning("There was an issue trying to recover the view after an error. " + e);
+			IMAT.log_warning("Failed trying to recover the StemView after an error: " + e);
 			IMAT.log_state();
 		}
 		return specializedView;

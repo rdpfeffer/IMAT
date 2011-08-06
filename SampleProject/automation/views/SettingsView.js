@@ -19,12 +19,6 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "SettingsView";
-		this.singleLineTextField = this.getElement("singleLineTextField");
-		this.multipleLineTextField = this.getElement("multipleLineTextField");
-		this.toggleSwitch = this.getElement("toggleSwitch");
-		this.slider = this.getElement("slider");
-				
-		//Validate the initial view state
 		this.validateInitialViewState();
 	},
 
@@ -36,20 +30,20 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertValid(that.singleLineTextField, "Single Line Text Field");
-			assertValid(that.multipleLineTextField, "Multi Line Text Field");
-			assertValid(that.toggleSwitch, "Toggle Switch");
-			assertValid(that.slider, "Slider");
+			assertValid(that.getElement("singleLineTextField"), "Single Line Text Field");
+			assertValid(that.getElement("multipleLineTextField"), "Multi Line Text Field");
+			assertValid(that.getElement("toggleSwitch"), "Toggle Switch");
+			assertValid(that.getElement("slider"), "Slider");
 		});
 	},
 	
 	validateAllFieldsAction : function(singleLineVal, multiLineVal, toggleVal, sliderVal)
 	{
 		this.validateState("Edited Preferences", false, this, function(that) {
-			assertEquals(that.singleLineTextField.value(), singleLineVal);
-			assertEquals(that.multipleLineTextField.value(), multiLineVal);
-			assertEquals(that.toggleSwitch.value(), toggleVal);
-			assertEquals(that.slider.value().toString(), sliderVal);
+			assertEquals(that.getElement("singleLineTextField").value(), singleLineVal);
+			assertEquals(that.getElement("multipleLineTextField").value(), multiLineVal);
+			assertEquals(that.getElement("toggleSwitch").value(), toggleVal);
+			assertEquals(that.getElement("slider").value().toString(), sliderVal);
 		});
 		return this;
 	},	

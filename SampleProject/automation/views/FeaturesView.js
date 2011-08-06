@@ -19,7 +19,6 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.parent();
 		this.viewName = "FeaturesView";
-		this.detailsAndCloseButton = this.getElement("detailsAndCloseButton");
 		this.validateInitialViewState();
 	},
 

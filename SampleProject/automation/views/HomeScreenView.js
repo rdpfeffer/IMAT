@@ -19,19 +19,13 @@ SAMPLE.HomeScreenView = Class.extend(IMAT.BaseView, {
 	{
 		this.parent();
 		this.viewName = "HomeScreenView";
-		
-		this.eventsButton = this.getElement("eventsButton");
- 		this.infoButton = this.getElement("infoButton");
- 		this.intuitButton = this.getElement("intuitButton");
- 		this.featuresButton = this.getElement("featuresButton");
- 		this.settingsButton = this.getElement("settingsButton");
 		//Validate the initial view state
 		this.validateInitialViewState();
 	},
 	
 	escapeAction : function()
 	{
-		this.swipeLeftAction();
+		return this.swipeLeftAction();
 	},
 	
 	waitForActivityAction : function()
@@ -48,10 +42,10 @@ SAMPLE.HomeScreenView = Class.extend(IMAT.BaseView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertValid(that.eventsButton, "Events Button");
-			assertValid(that.infoButton, "Info Button");
-			assertValid(that.intuitButton, "Intuit Button");
-			assertValid(that.featuresButton, "Features Button");
+			assertValid(that.getElement("eventsButton"), "Events Button");
+			assertValid(that.getElement("infoButton"), "Info Button");
+			assertValid(that.getElement("intuitButton"), "Intuit Button");
+			assertValid(that.getElement("featuresButton"), "Features Button");
 		});
 	},
 	

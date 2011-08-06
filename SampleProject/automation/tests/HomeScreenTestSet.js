@@ -8,32 +8,33 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
+/**
+ * This is a test set writen to test scenarios from the Home screen of the
+ * sample application. It demonstrates the following...
+ *
+ *			1) How to use setUp() and tearDown() functions, even when you want
+ *			to ensure that they don't do anything (see: setup() below).
+ *
+ *			2) How to write test cases that deal with alerts showing up on
+ *			the screen. See: testAboutAlertAndSaveMessage() below.
+ */
 SAMPLE.HomeScreenTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
 	title: "HomeScreenTestSet",
-	/**
-	 * Initializes the MetaTest Class object.
-	 */
+	
 	initialize: function()
 	{
 		this.parent();
-		IMAT.log_debug("Initializing the Home Screen tests.");
 	},
 	
-	/**
-	 * setup the App to normalize the way tests are run. Initialize the view context and do whatever
-	 * we can to make sure that the next test runs in the right state.
-	 */
 	setUp: function()
 	{
 		//override the BaseSampleTestSet to do nothing instead.
 	},
 	
 	/**
-	 * tearDown the App to normalize the way tests finish. Reset anything that might cause the next
-	 * test to fail.
+	 * Swipe to the leftmost part of the view on the home screen.
 	 */
 	tearDown: function()
 	{
@@ -80,7 +81,9 @@ SAMPLE.HomeScreenTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 			["wait", 2] //wait for the alert to be handled.
 		]);
 		
-		//revert the alert handler back to its original state.
+		//revert the alert handler back to its original state. This is an important thing to do in 
+		//cases where you override the default alert handler unilaterally but still have special 
+		//cases in your tests that you need to handle.
 		UIATarget.onAlert = defaultAlert;
 	}
 });

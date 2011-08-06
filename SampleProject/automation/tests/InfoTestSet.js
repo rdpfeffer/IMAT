@@ -8,7 +8,20 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
+/**
+ * This is a test set writen to test scenarios from the info section of the
+ * sample application. It demonstrates the following...
+ *
+ *			1) How to effectively use setUp() and tearDown() functions to 
+ *			simplify your tests and reduce redundant lines of code.
+ *
+ *			2) The proper way to set up a "run-of-the-mill" test set.
+ *
+ *			3) When this test set is run using the troublesomeSuite.js suite
+ *			file, this test set will show the flow of execution as the 
+ *			IMAT.BaseFunctionalTestSet#doCleanup() function recovers from a 
+ *			test failure (see testFailureExample() below)
+ */
 SAMPLE.InfoTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
@@ -48,6 +61,20 @@ SAMPLE.InfoTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 			["validateCorrectPageLoaded", "Facebook"],
 			["returnToInfoScreen"]
 		]);
+	},
+	
+	/**
+	 * When this test case is run, it will throw an exception and force the framework to recover.
+	 * This is an intentional failure to show that the framework can recover from failtures quickly
+	 * if set up correctly.
+	 */
+	testFailureExample: function() {
+		this.performActions([
+			["selectListing"],
+			["waitForActivity"]
+		]);
+		//This is our intentional failure
+		assertTrue(false);
 	},	
 	
 	testScrollingWhileViewingInfoList : function()

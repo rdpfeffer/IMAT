@@ -35,6 +35,15 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 			assertValid(that.getElement("scrollView"), "Scroll View");
 		});
 	},
+	
+	validateCorrectPageLoadedAction : function(page)
+	{
+		this.validateState("Correct Page Loaded", false, this, function(that) {
+			var pageNmae = that.getNavBar().name();
+			assertTrue(pageNmae.indexOf(page) >= 0, page + " was not a substrng of " + pageNmae);
+		});
+		return this;
+	},
 
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	

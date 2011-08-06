@@ -8,7 +8,15 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
+/**
+ * This is a test set writen to test scenarios from the Intuit section of the
+ * sample application. It demonstrates the following...
+ *
+ *			1) How to effectively use setUp() and tearDown() functions to 
+ *			simplify your tests and reduce redundant lines of code.
+ *
+ *			2) The proper way to set up a "run-of-the-mill" test set.
+ */
 SAMPLE.IntuitTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	
 	
@@ -19,12 +27,10 @@ SAMPLE.IntuitTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	initialize: function()
 	{
 		this.parent();
-		IMAT.log_debug("Initializing the Intuit Tests.");
 	},
 	
 	/**
-	 * setup the App to normalize the way tests are run. Initialize the view context and do whatever
-	 * we can to make sure that the next test runs in the right state.
+	 * navigate to the Intuit section of the application
 	 */
 	setUp: function()
 	{
@@ -32,8 +38,7 @@ SAMPLE.IntuitTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	},
 	
 	/**
-	 * tearDown the App to normalize the way tests finish. Reset anything that might cause the next
-	 * test to fail.
+	 * Navigate back to the home screen.
 	 */
 	tearDown: function()
 	{
