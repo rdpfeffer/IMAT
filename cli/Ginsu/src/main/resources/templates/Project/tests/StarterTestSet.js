@@ -52,12 +52,6 @@
 		//tests in this test set are run.
 	},
 	
-	doCleanup: function()
-	{
-		//Do nothing
-		IMAT.log_debug("doCleanup was called");		
-	},
-	
 	/**
 	 * Return the base view which we consider to be the "Base State" when recovering from a test
 	 * failure. This implementation does nothing and returns undefined. You must override this
@@ -67,6 +61,17 @@
 	 */
 	getBaseView: function() {
 		return new @GLOBAL_OBJECT@.StarterView();
+	},
+	
+	/**
+	 * Returns the veiwName property of the Base view state that all tests in this test set should 
+	 * start from. The doCleanUp() function defined within IMAT.BaseFunctionalTestSet will try to 
+	 * escape until the value returned from this function matches the current view.
+	 *
+	 * @return string - The viewName property of the Base view.
+	 */
+	getBaseStateViewName: function() {
+		return "StarterView";
 	},
 	
 	/**

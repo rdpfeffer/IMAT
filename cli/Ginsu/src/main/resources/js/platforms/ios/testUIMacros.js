@@ -16,7 +16,8 @@
  * @param description (optional) The description to log if the element is not valid.
  */
 function assertValid(elem, description) {
-	assertTrue(elem.checkIsValid(), (description ? description : "") + " was not valid: " + elem + " type: " + typeof elem);
+	assertTrue((elem ? elem.checkIsValid():false), (description ? description : "") + 
+		" was not valid: " + elem + " type: " + typeof elem);
 }
 
 /**
@@ -26,5 +27,6 @@ function assertValid(elem, description) {
  * @param description (optional) The description to log if the element is valid.
  */
 function assertInvalid(elem, description) {
-	assertFalse(elem.checkIsValid(), (description ? description : "") + " was valid: " + elem + " type: " + typeof elem);
+	assertFalse((elem? elem.checkIsValid():false), (description ? description : "") + 
+		" was valid: " + elem + " type: " + typeof elem);
 }

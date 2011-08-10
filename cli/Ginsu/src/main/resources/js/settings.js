@@ -54,3 +54,10 @@ IMAT.settings.SKIP_SET_UP_TEST_CASE = false;
  * @type Boolean
  */
 IMAT.settings.SKIP_TEAR_DOWN_TEST_CASE = false;
+
+/**
+ * Flag used to skip the test cleanup portion of the Test execution 
+ * lifecycle.
+ * @type Boolean
+ */
+IMAT.settings.SKIP_DO_CLEANUP = false;

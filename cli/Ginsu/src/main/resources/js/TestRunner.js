@@ -198,8 +198,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			//first log an error
 			IMAT.log_error(e);
 			//then print out the current view tree
-			if (testSet.logOnFailure) 
-			{
+			if (testSet.logOnFailure) {
 				IMAT.log_state();
 			}
 			//finally log that the test has failed.
@@ -207,7 +206,9 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			
 			//Invoke the cleanup process so that we can make an attempt at starting the next test 
 			//fresh
-			testSet.doCleanup();
+			if (!IMAT.settings.SKIP_DO_CLEANUP) {
+				testSet.doCleanup();
+			}
 		}
 	},
 	
