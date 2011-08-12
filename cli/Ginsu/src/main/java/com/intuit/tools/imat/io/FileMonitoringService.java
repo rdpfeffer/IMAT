@@ -25,6 +25,14 @@ import com.intuit.tools.imat.IFileMonitoringService;
  */
 public class FileMonitoringService implements IFileMonitoringService {
 
+	/*
+	 * The period the Timer waits between checking the file's modified timestamp 
+	 */
+	private static long TIMER_INTERVAL_IN_MILISECONDS = 5000;
+	
+	/*
+	 * The timer that keeps track of when to check the file
+	 */
 	private final Timer timer;
 
 	/**
@@ -41,7 +49,9 @@ public class FileMonitoringService implements IFileMonitoringService {
 		// TODO Auto-generated method stub
 		assert interval > 0 : "The interval over which files are monitored must"
 				+ " be positive. Given: " + String.valueOf(interval);
-		timer.schedule(new FileNotifier(listener, file), 0, interval);
+		FileNotifier notifier = new FileNotifier(listener, file);
+		notifier.setMinimumInterval(interval);
+		timer.schedule(notifier, 0, TIMER_INTERVAL_IN_MILISECONDS);
 	}
 
 	/* (non-Javadoc)

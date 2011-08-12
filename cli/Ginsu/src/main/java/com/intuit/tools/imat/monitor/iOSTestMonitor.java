@@ -129,5 +129,4 @@ public class iOSTestMonitor implements ITestMonitor {
 		}
 		return ranToCompletion;
 	}
-
 }

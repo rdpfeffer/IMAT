@@ -1,0 +1,18 @@
+The Intuit Mobile Automation Toolkit (IMAT) makes automating your iOS App 
+easier.
+
+Apple's UI Automation framework is great. Yet, we felt there were some gaps that 
+needed to be filled. 
+
+Using IMAT you can... 
+
+-Generate a new automation project from scratch.
+-Follow patterns to help minimize test script maintenance.
+-Slice and dice your test suites with a couple of lines of code.
+-Enumerate manual test cases along side your automated tests.
+-Run your tests from the Command Line (Device and Simulator both!).
+-Generate Junit Style XML that you can integrate with the CI Build server of your 
+choice.
+
+More usage information and help can be found at: 
+https://code.intuit.com/sf/projects/ginsu/

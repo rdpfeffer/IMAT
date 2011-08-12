@@ -20,9 +20,19 @@ import java.io.File;
  * 
  */
 public interface IFileMonitoringService {
-
+	/**
+	 * Monitors a file with the given listener, asking for notifications at minimum once per 
+	 * interval
+	 * 
+	 * @param file The file to monitor
+	 * @param interval The minimum amount of time in milliseconds to wait between being notified.
+	 * @param listener The object to be notified of file changes.
+	 */
 	public void monitorFile(File file, long interval, IFileListener listener);
 
+	/**
+	 * Stop monitoring the file.
+	 */
 	public void stopMonitoring();
 
 }

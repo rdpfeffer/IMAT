@@ -11,6 +11,7 @@
 package com.intuit.tools.imat.cli.converters;
 
 import java.io.File;
+import java.io.IOException;
 
 import com.beust.jcommander.IStringConverter;
 
@@ -34,6 +35,13 @@ public class FileConverter implements IStringConverter<File> {
 		if (value.contains("~")) {
 			value = value.replaceAll("~", System.getProperty("user.home"));
 		}
-		return new File(value);
+		File result = null;
+		try {
+			result = new File(value).getCanonicalFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

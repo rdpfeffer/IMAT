@@ -24,12 +24,12 @@ import com.intuit.tools.imat.IApplicationResourceService;
 import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IFileListener;
 import com.intuit.tools.imat.IFileMonitoringService;
-import com.intuit.tools.imat.IProjectResourceService;
 import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.ITestMonitor;
 import com.intuit.tools.imat.MisconfigurationException;
 import com.intuit.tools.imat.cli.converters.FileConverter;
 import com.intuit.tools.imat.reporting.IReportingService;
+import com.intuit.tools.imat.validators.CanonicalFileValidator;
 import com.intuit.tools.imat.validators.JavaScriptFileValidator;
 import com.intuit.tools.imat.validators.TemplateFileValidator;
 
@@ -43,13 +43,10 @@ import com.intuit.tools.imat.validators.TemplateFileValidator;
 @Parameters(commandDescription = "Use this command to run your tests.")
 public class CommandRunTests extends ScriptedCommand implements ICommand, IFileListener{
 
-	private static final long MONITORING_INTERVAL = 3000;
-	private static final String AUTOMATION_RESULTS_PATH = "logs" + File.separator +
-		"runs";
+	private static final String AUTOMATION_RESULTS_PATH = "logs" 
+		+ File.separator + "runs";
 	private static final String AUTOMATION_RESULTS_FILE = AUTOMATION_RESULTS_PATH + 
-		File.separator + "Run 1" + File.separator + "Automation Results.plist";
-	private static final String TEST_REPORT_PATH = "reports";
-		
+		File.separator + "Run 1" + File.separator + "Automation Results.plist";		
 	
 	/**
 	 * The suite we will run in our tests
@@ -64,22 +61,38 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	/**
 	 * The template file we will use in our tests.
 	 */
-	public static final String BOGUS_TEMPLATE_FILE_CHANGEME = "env/required.tracetemplate";
+	public static final String BOGUS_TEMPLATE_FILE_CHANGEME = "env" + 
+		File.separator + "required.tracetemplate";
 	public static final String TEMPLATE_FILE = "-template";
 	@Parameter(names = {TEMPLATE_FILE, "-t"},
 			description = "The filename of the template to run. It must end in " +
 					".tracetemplate This option is required.",
 			converter = FileConverter.class, 
-			validateWith = TemplateFileValidator.class
-			)
+			validateWith = TemplateFileValidator.class)
 	public File template = null;
+	
+	public static final String DEFAULT_REPORT_PATH_SUFFIX = "reports";
+	public static final String REPORT_PATH = "-reportPath";
+	@Parameter(names = {REPORT_PATH, "-r"}, description = "The path to the " +
+			"directory where the xml reports will be written to should the " +
+			"tests run to completion.", 
+			validateWith = CanonicalFileValidator.class,
+			converter = FileConverter.class)
+	public File reportsDir = new File(DEFAULT_REPORT_PATH_SUFFIX);
+	
+	private static final long MINIMUM_INTERVAL = 10000;
+	public static final String INTERVAL = "-minInterval";
+	@Parameter(names = {INTERVAL, "-i"}, description = "The minimum ammount of" +
+			" time in milliseconds to wait to be notified that the tests have " +
+			"completed.")
+	public long minInterval = MINIMUM_INTERVAL;
+	
 	
 	public static final String NAME = "run-tests";
 	private static final int MAX_ATTEMPTS_TO_FIND_LOG = 5;
 	private static final long WAIT_PERIOD_FOR_LOG_IN_MILLISECONDS = 5000;
 	
 	private final IApplicationResourceService applicationResourceService;
-	private final IProjectResourceService projResourceService;
 	private final IFileMonitoringService fileMonitoringService;
 	private final ITestMonitor testMonitor;
 	private final IReportingService reportingService;
@@ -88,20 +101,17 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	 * @param printwriter
 	 * @param logger
 	 * @param scriptLauncher
-	 * @param projResourceService
 	 */
 	CommandRunTests(PrintWriter printwriter, 
 			Logger logger, 
 			IScriptLauncher scriptLauncher, 
 			IApplicationResourceService applicationResourceService,
-			IProjectResourceService projResourceService,
 			IFileMonitoringService fileMonitoringService,
 			ITestMonitor testMonitor,
 			IReportingService reportingService
 			) {
 		super(printwriter, logger, scriptLauncher);
 		this.applicationResourceService = applicationResourceService;
-		this.projResourceService = projResourceService;
 		this.fileMonitoringService = fileMonitoringService;
 		this.testMonitor = testMonitor;
 		this.reportingService = reportingService;
@@ -197,7 +207,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			throw ex;
 		}
 		logger.debug("Monitoring Log file...");
-		fileMonitoringService.monitorFile(testResultLog, MONITORING_INTERVAL, this);
+		fileMonitoringService.monitorFile(testResultLog, MINIMUM_INTERVAL, this);
 	}
 	
 	/**
@@ -226,15 +236,11 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	private void generateReport() {
 		try {
 			logger.info("Generating XML reports...");
-			File junitXmlResultPath = new File(projResourceService
-					.getProjectResourceFile("").getPath()
-					+ File.separator
-					+ TEST_REPORT_PATH);
 			File testResultLog = applicationResourceService.getAppResourceFile(
 					AUTOMATION_RESULTS_FILE, true);
-			reportingService.setJunitXMLResultPath(junitXmlResultPath);
+			reportingService.setJunitXMLResultPath(new File(this.reportsDir.getPath() + File.separator));
 			logger.debug("converting test result log: " + testResultLog + 
-					" to jUnit report for path: " + junitXmlResultPath);
+					" to jUnit report for path: " + this.reportsDir);
 			reportingService
 					.convertTestOutputFileToJunitXMLResultFormat(testResultLog);
 		} catch (FileNotFoundException e) {

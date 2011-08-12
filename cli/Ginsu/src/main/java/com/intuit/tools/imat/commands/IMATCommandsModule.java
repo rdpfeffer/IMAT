@@ -89,15 +89,14 @@ public class IMATCommandsModule extends AbstractModule {
 	@Provides CommandRunTests provideCommandRunTests(PrintWriter printwriter, 
 			@AppleScript IScriptLauncher scriptLauncher, 
 			IApplicationResourceService applicationResourceService,
-			IProjectResourceService projectResourceService,
 			IFileMonitoringService fileMonitoringService,
 			@iOS ITestMonitor testMonitor,
 			IReportingService reportingService)
 	{
 		Logger logger = Logger.getLogger(CommandRunTests.class);
 		return new CommandRunTests(printwriter, logger, scriptLauncher, 
-				applicationResourceService, projectResourceService, 
-				fileMonitoringService, testMonitor, reportingService);
+				applicationResourceService, fileMonitoringService, 
+				testMonitor, reportingService);
 	}
 	
 	@Provides SynchronousCommandDispatchService provideDispatchService()

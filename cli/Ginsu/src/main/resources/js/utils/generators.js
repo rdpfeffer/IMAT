@@ -37,8 +37,8 @@ IMAT.randomXToY = function(minVal, maxVal, floatVal)
 };
 
 /**
- * Get the current time in miliseconds.
- * @return {number} The number of miliseconds since Jan 1, 1970 (Unix Epoch) 
+ * Get the current time in milliseconds.
+ * @return {number} The number of milliseconds since Jan 1, 1970 (Unix Epoch) 
  */
 IMAT.getTime = function()
 {
