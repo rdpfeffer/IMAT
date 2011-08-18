@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>All Samples</key>
+	<array>
+		<dict>
+			<key>Message</key>
+			<string>IMAT: Loading Platform: iOS...</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:30:21Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Exception raised while running script: ReferenceError: Can't find variable: jones
+3675:  
+3676: //run the tests 
+3677:  
+3678: //assertTrue(false); 
+3679: jones.print(); &lt;-----
+3680:  
+3681: IMAT.suiteRunner.runTests(new SAMPLE.SuiteHandler()); 
+3682:  
+</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:30:21Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Script completed.</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:30:21Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

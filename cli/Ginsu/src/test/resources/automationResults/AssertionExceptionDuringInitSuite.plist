@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>All Samples</key>
+	<array>
+		<dict>
+			<key>Message</key>
+			<string>IMAT: Loading Platform: iOS...</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:32:06Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:32:06Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Exception raised while running script: [object Object]
+457:     if (!message){ 
+458:     	message = "Assertion failed when expression was: " + expression +  
+459:     		" type:" + typeof expression; 
+460:     }  
+461:     throw new IMAT.AssertionException(message); &lt;-----
+462:   } 
+463: } 
+464:  
+465: /** 
+466:  * Checks that the expression evaluates to false. 
+</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:32:06Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Script completed.</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:32:06Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

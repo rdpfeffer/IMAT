@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>All Samples</key>
+	<array>
+		<dict>
+			<key>Message</key>
+			<string>IMAT: Loading Platform: iOS...</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:39:57 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.testScrollingWhileInIntuit()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectIntuitButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:57Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Sun Aug 14 2011 11:39:58 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: INITIAL state. Sun Aug 14 2011 11:39:58 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: waitForActivity()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollDown()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollUp()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:39:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:39:59 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.testScrollingWhileInIntuit()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>IntuitTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:39:59 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectInfoButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:00Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Sun Aug 14 2011 11:40:01 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:01Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollDown()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollUp()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:40:02 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:40:02 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.testScrollingInFeatures()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectFeaturesButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:02Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE FeaturesView: INITIAL state. Sun Aug 14 2011 11:40:03 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:03Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: swipeRight()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:03Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: validateImageSwitched( lego.jpg pattern.jpg)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:05Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 11:40:04 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:05Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: swipeRight()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:05Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: validateImageSwitched( pattern.jpg time.jpg)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:06Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 11:40:06 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:06Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: swipeLeft()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:06Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: validateImageSwitched( time.jpg pattern.jpg)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:08Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 11:40:07 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:08Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: swipeLeft()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:08Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: validateImageSwitched( pattern.jpg lego.jpg)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:09Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 11:40:09 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:09Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:09Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:40:10 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.testScrollingInFeatures()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>FeaturesTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:40:10 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectEventsButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:11Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Sun Aug 14 2011 11:40:11 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:12Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Sun Aug 14 2011 11:40:11 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:12Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE EventsView: INITIAL state. Sun Aug 14 2011 11:40:11 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:12Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollToBottom()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:12Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollToTop()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:13Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollDown()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:14Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollUp()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:14Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:14Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 11:40:15 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>EventsTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.cleanUpSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Exception raised while running script: [object Object]
+457:     if (!message){ 
+458:     	message = "Assertion failed when expression was: " + expression +  
+459:     		" type:" + typeof expression; 
+460:     }  
+461:     throw new IMAT.AssertionException(message); &lt;-----
+462:   } 
+463: } 
+464:  
+465: /** 
+466:  * Checks that the expression evaluates to false. 
+</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Script completed.</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T18:40:15Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

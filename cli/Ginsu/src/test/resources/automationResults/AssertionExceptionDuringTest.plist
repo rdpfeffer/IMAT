@@ -1,0 +1,2842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>All Samples</key>
+	<array>
+		<dict>
+			<key>Message</key>
+			<string>IMAT: Loading Platform: iOS...</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:51:49 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectInfoButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:49Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Sun Aug 14 2011 12:51:50 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:50Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectListing()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:50Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Sun Aug 14 2011 12:51:50 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:50Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: INITIAL state. Sun Aug 14 2011 12:51:50 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:50Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: waitForActivity()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:50Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: validateCorrectPageLoaded( Facebook)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:52Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: Correct Page Loaded state. Sun Aug 14 2011 12:51:52 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:52Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToInfoScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:52Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Sun Aug 14 2011 12:51:52 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:52Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:52Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:51:53 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:53Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:53Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:53Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectInfoButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:53Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Sun Aug 14 2011 12:51:54 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:55Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectListing()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Sun Aug 14 2011 12:51:54 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:55Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE WebView: INITIAL state. Sun Aug 14 2011 12:51:54 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:55Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: waitForActivity()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Assertion failed when expression was: false type:boolean</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>1) UIATarget [name:iPhone Simulator value:(null) rect:{{x:0, y:0}, {width:-2, height:0}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>2) UIAApplication [name:sampleApp value:(null) rect:{{x:0, y:20}, {width:320, height:460}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>3) UIAWindow [name:(null) value:(null) rect:{{x:0, y:0}, {width:320, height:480}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>4) UIANavigationBar [name:Facebook value:(null) rect:{{x:0, y:20}, {width:320, height:44}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAButton [name:News value:(null) rect:{{x:5, y:27}, {width:52, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAStaticText [name:Facebook value:(null) rect:{{x:113, y:28}, {width:95, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAActivityIndicator [name:In progress value:1 rect:{{x:295, y:32}, {width:20, height:20}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>4) UIAScrollView [name:(null) value:(null) rect:{{x:0, y:64}, {width:320, height:372}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAWebView [name:(null) value:(null) rect:{{x:0, y:63}, {width:320, height:4450}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:0, y:64}, {width:63, height:43}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:(null) value: rect:{{x:0, y:64}, {width:43, height:43}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>8) UIALink [name:Photo value: rect:{{x:16, y:77}, {width:10, height:17}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Intuit value: rect:{{x:51, y:75}, {width:40, height:20}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:257, y:64}, {width:63, height:43}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:(null) value: rect:{{x:277, y:64}, {width:43, height:43}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>8) UIALink [name:Photo value: rect:{{x:290, y:77}, {width:17, height:17}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Wall value: rect:{{x:0, y:108}, {width:106, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Wall value: rect:{{x:38, y:118}, {width:29, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Info value: rect:{{x:106, y:108}, {width:107, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Info value: rect:{{x:146, y:118}, {width:26, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Photos value: rect:{{x:213, y:108}, {width:107, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photos value: rect:{{x:242, y:118}, {width:48, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Intuit is on Facebook.  value: rect:{{x:8, y:154}, {width:140, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Sign Up value: rect:{{x:148, y:149}, {width:71, height:29}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Sign Up value: rect:{{x:161, y:156}, {width:45, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name: or  value: rect:{{x:219, y:154}, {width:21, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Log In value: rect:{{x:245, y:149}, {width:64, height:29}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Log In value: rect:{{x:259, y:156}, {width:36, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:to connect with Intuit. value: rect:{{x:8, y:178}, {width:134, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:8, y:196}, {width:100, height:100}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Intuit value: rect:{{x:112, y:196}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:24,929 people like this. value: rect:{{x:8, y:296}, {width:146, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:24,929 people like this. value: rect:{{x:8, y:296}, {width:146, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Intuit value: rect:{{x:8, y:326}, {width:30, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:353}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:353}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:353}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Congrats to Corelytics value: rect:{{x:85, y:353}, {width:139, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​, the winner of the first Intuit Apps Showcase, and runners-up value: rect:{{x:46, y:353}, {width:252, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ Bill.com, Postcard Services and Profitably value: rect:{{x:46, y:389}, {width:244, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​. Learn how to do more with QuickBooks value: rect:{{x:46, y:407}, {width:262, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ by checking out all the innovative value: rect:{{x:46, y:425}, {width:221, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ apps featured at today’s event value: rect:{{x:110, y:443}, {width:195, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://bit​.ly/showca​sefinalist​s value: rect:{{x:46, y:461}, {width:178, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit Apps Showcase 2011 value: rect:{{x:55, y:485}, {width:155, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit Apps Showcase 2011 value: rect:{{x:55, y:485}, {width:155, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:appcenter.intui value: rect:{{x:55, y:502}, {width:79, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​t.com value: rect:{{x:134, y:502}, {width:30, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Thursday at 5:56pm value: rect:{{x:46, y:523}, {width:109, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:19 people value: rect:{{x:46, y:540}, {width:93, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:584}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:584}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:584}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Today the Intuit Partner Platform is hosting its first Apps Showcase and giving away $100,000 to the most innovate apps for QuickBooks value: rect:{{x:46, y:584}, {width:265, height:72}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​. Tune in to watch the developers value: rect:{{x:46, y:638}, {width:232, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ present their apps, vote on your favorite and discover how to do more with QuickBooks value: rect:{{x:46, y:656}, {width:265, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ bit.ly/int value: rect:{{x:150, y:692}, {width:52, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​uitshowcas value: rect:{{x:202, y:692}, {width:70, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​e value: rect:{{x:272, y:692}, {width:8, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit Apps Showcase 2011 Finalists value: rect:{{x:55, y:716}, {width:207, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit Apps Showcase 2011 Finalists value: rect:{{x:55, y:716}, {width:207, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:appcenter.intui value: rect:{{x:55, y:733}, {width:79, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​t.com value: rect:{{x:134, y:733}, {width:30, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 11 at 9:42am value: rect:{{x:46, y:754}, {width:97, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:14 people7 comments value: rect:{{x:46, y:771}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:23, y:815}, {width:16, height:16}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:815}, {width:31, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:815}, {width:31, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name: commented on  value: rect:{{x:77, y:815}, {width:102, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Anna Paek value: rect:{{x:179, y:815}, {width:69, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Anna Paek value: rect:{{x:179, y:815}, {width:69, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:'s  value: rect:{{x:248, y:815}, {width:14, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:photo value: rect:{{x:262, y:815}, {width:36, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:photo value: rect:{{x:262, y:815}, {width:36, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:. value: rect:{{x:298, y:815}, {width:4, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 11 at 9:36am value: rect:{{x:46, y:837}, {width:97, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:863}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:863}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:863}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Complete this thought: "If I had to decide between using an Android or an iPhone, I would choose _______."  value: rect:{{x:46, y:863}, {width:249, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/r7E​eju value: rect:{{x:46, y:935}, {width:133, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:959}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:959}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:iPhone vs. Android: Which Is Best for Your Business? value: rect:{{x:113, y:959}, {width:197, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:iPhone vs. Android: Which Is Best for Your Business? value: rect:{{x:113, y:959}, {width:197, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:991}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 10 at 9:50am value: rect:{{x:46, y:1025}, {width:97, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:5 people74 comments value: rect:{{x:46, y:1042}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:1086}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:1086}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:1086}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Yes/No: "I have won a contest before!"  value: rect:{{x:46, y:1086}, {width:229, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/qCY​HEF value: rect:{{x:46, y:1140}, {width:148, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:1164}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:1164}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:5 Small Business Contests Worth Entering This Summer value: rect:{{x:113, y:1164}, {width:193, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:5 Small Business Contests Worth Entering This Summer value: rect:{{x:113, y:1164}, {width:193, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:1196}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 9 at 10:34am value: rect:{{x:46, y:1230}, {width:96, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:8 people19 comments value: rect:{{x:46, y:1247}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:1291}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:1291}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:1291}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Winner of July's Love A Local Business contest receives $25,000! value: rect:{{x:46, y:1291}, {width:226, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/o3q​pL0 value: rect:{{x:46, y:1327}, {width:140, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:. value: rect:{{x:186, y:1327}, {width:4, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:It's still not too late to nominate your favorite business to win $25,000 in August. Nominate HERE! ...  value: rect:{{x:46, y:1363}, {width:228, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/nse​t1C value: rect:{{x:46, y:1399}, {width:229, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:1441}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:1441}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Marie’s Bed and Biscuits of Charlotte, Michigan Wins $25,000 value: rect:{{x:113, y:1441}, {width:192, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Marie’s Bed and Biscuits of Charlotte, Michigan Wins $25,000 value: rect:{{x:113, y:1441}, {width:192, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:1473}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 8 at 8:32am value: rect:{{x:46, y:1507}, {width:90, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:17 people3 comments value: rect:{{x:46, y:1524}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:1568}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:1568}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:1568}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Nilda - welcome to Intuit's Inner Circle! value: rect:{{x:46, y:1568}, {width:237, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name: — via  value: rect:{{x:86, y:1586}, {width:44, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Nilda Bozan value: rect:{{x:130, y:1586}, {width:76, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Nilda Bozan value: rect:{{x:130, y:1586}, {width:76, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:1610}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:1610}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:I joined Intuit’s Inner Circle value: rect:{{x:113, y:1610}, {width:156, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:I joined Intuit’s Inner Circle value: rect:{{x:113, y:1610}, {width:156, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:1627}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 5 value: rect:{{x:46, y:1676}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:13 people value: rect:{{x:46, y:1693}, {width:93, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:1737}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:1737}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:1737}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Complete this thought: "When i'm searching for inspiratio value: rect:{{x:46, y:1737}, {width:248, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​n for my business, I usually go to _________ for advice."  value: rect:{{x:46, y:1755}, {width:259, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/rdM​ZoD value: rect:{{x:46, y:1809}, {width:144, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:1833}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:1833}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:5 Advice Blogs by Famous Entrepreneurs value: rect:{{x:113, y:1833}, {width:155, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:5 Advice Blogs by Famous Entrepreneurs value: rect:{{x:113, y:1833}, {width:155, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:1865}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 5 value: rect:{{x:46, y:1899}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:9 people11 comments value: rect:{{x:46, y:1916}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:1960}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:1960}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:1960}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Where does your business fall in this infographi value: rect:{{x:46, y:1960}, {width:245, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​c?  value: rect:{{x:134, y:1978}, {width:19, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/rbp​XYP value: rect:{{x:46, y:2014}, {width:142, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:2038}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:2038}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:What Are the Hardest Small Businesses to Own? value: rect:{{x:113, y:2038}, {width:159, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:What Are the Hardest Small Businesses to Own? value: rect:{{x:113, y:2038}, {width:159, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:2070}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 4 value: rect:{{x:46, y:2104}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:8 people6 comments value: rect:{{x:46, y:2121}, {width:184, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:2165}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:2165}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:2165}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Answer this question on Quora!  value: rect:{{x:85, y:2165}, {width:201, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://www​.quora.com​/How-do-yo​u-learn-mo​re-by-gett​ing-a-job-​after-coll​ege-or-by-​starting-y​our-own-bu​siness value: rect:{{x:46, y:2201}, {width:266, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:2261}, {width:50, height:50}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:2261}, {width:50, height:50}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:How do you learn more: by getting a job after college, or by starting your own business? value: rect:{{x:103, y:2261}, {width:209, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:How do you learn more: by getting a job after college, or by starting your own business? value: rect:{{x:103, y:2261}, {width:209, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:quora.com value: rect:{{x:103, y:2308}, {width:57, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 3 value: rect:{{x:46, y:2329}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:7 people6 comments value: rect:{{x:46, y:2346}, {width:184, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:2390}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:2390}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:2390}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Complete this thought: "Some of the places I use Facebook check-ins for are ________." value: rect:{{x:46, y:2390}, {width:266, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/qLO​lrE value: rect:{{x:46, y:2462}, {width:137, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:2486}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:2486}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:How One Small Doctors’ Office Uses Facebook value: rect:{{x:113, y:2486}, {width:179, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:How One Small Doctors’ Office Uses Facebook value: rect:{{x:113, y:2486}, {width:179, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:2518}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 3 value: rect:{{x:46, y:2552}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:12 people7 comments value: rect:{{x:46, y:2569}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:2613}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:2613}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:2613}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Would you franchise your business? Comment below.  value: rect:{{x:46, y:2613}, {width:199, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/n51​nkz value: rect:{{x:46, y:2667}, {width:138, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:2691}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:2691}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Want to Franchise Your Business? Ask Yourself These Four Important Questions value: rect:{{x:113, y:2691}, {width:178, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Want to Franchise Your Business? Ask Yourself These Four Important Questions value: rect:{{x:113, y:2691}, {width:178, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:2738}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 3 value: rect:{{x:46, y:2759}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:4 people2 comments value: rect:{{x:46, y:2776}, {width:184, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:2820}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:2820}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:2820}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:If you were to become a "foodprene value: rect:{{x:85, y:2820}, {width:225, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ur", what would you specialize value: rect:{{x:46, y:2838}, {width:190, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ in? value: rect:{{x:236, y:2838}, {width:23, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/oKw​VaG value: rect:{{x:46, y:2892}, {width:149, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://intuit.m​e/oKwVaG value: rect:{{x:55, y:2916}, {width:137, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:intuit.me value: rect:{{x:55, y:2933}, {width:46, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 2 value: rect:{{x:46, y:2954}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:8 people24 comments value: rect:{{x:46, y:2971}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:3015}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:3015}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:3015}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Complete this thought: "Instead of using Google AdWords, I would _______ to increase my business's value: rect:{{x:46, y:3015}, {width:258, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ online presence." value: rect:{{x:46, y:3051}, {width:203, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​  value: rect:{{x:113, y:3069}, {width:4, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/pik​QmU value: rect:{{x:46, y:3123}, {width:143, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:3147}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:3147}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Boosting Online Traffic without Google AdWords value: rect:{{x:113, y:3147}, {width:179, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Boosting Online Traffic without Google AdWords value: rect:{{x:113, y:3147}, {width:179, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:3179}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Aug 1 value: rect:{{x:46, y:3213}, {width:32, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:10 people20 comments value: rect:{{x:46, y:3230}, {width:198, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:3274}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:3274}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:3274}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Multiple Choice: Which ManCans candle scent would you choose: A) Baseball mitt, B) Bacon, C) Coffee, D) Freshly cut grass, or E) Grandpa's pipe? value: rect:{{x:46, y:3274}, {width:255, height:72}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:3352}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:3352}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Teenpreneur Cashes in with Manly Candle Business value: rect:{{x:113, y:3352}, {width:198, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Teenpreneur Cashes in with Manly Candle Business value: rect:{{x:113, y:3352}, {width:198, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:3384}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 29 value: rect:{{x:46, y:3418}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:23 people48 comments value: rect:{{x:46, y:3435}, {width:198, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:3479}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:3479}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:3479}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Yes/No: Will the government value: rect:{{x:85, y:3479}, {width:179, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ raise the debt ceiling before August 2nd? value: rect:{{x:46, y:3479}, {width:253, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:3521}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:3521}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:How Would a Failure to Raise the U.S. Debt Ceiling Impact Small Businesses? value: rect:{{x:113, y:3521}, {width:191, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:How Would a Failure to Raise the U.S. Debt Ceiling Impact Small Businesses? value: rect:{{x:113, y:3521}, {width:191, height:45}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:3568}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 28 value: rect:{{x:46, y:3589}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:9 people11 comments value: rect:{{x:46, y:3606}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:3650}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:3650}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:3650}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:To celebrate and support local businesses value: rect:{{x:46, y:3650}, {width:230, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​, we are holding an hour long Twitter Party TODAY! 4pm PST. It will be a fun hour filled with questions and prizes! Simply follow #lovelocal value: rect:{{x:46, y:3668}, {width:265, height:72}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ to participat value: rect:{{x:196, y:3722}, {width:77, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​e. No need to RSVP. value: rect:{{x:46, y:3722}, {width:261, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 27 value: rect:{{x:46, y:3762}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:15 people4 comments value: rect:{{x:46, y:3779}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:3823}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:3823}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:3823}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:5 TIPS on how to encourage customers to bring their own bags.  value: rect:{{x:46, y:3823}, {width:222, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/pcF​OW6 value: rect:{{x:46, y:3877}, {width:148, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:3901}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:3901}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:5 Ways to Encourage Customers to Bring Their Own Bags value: rect:{{x:113, y:3901}, {width:189, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:5 Ways to Encourage Customers to Bring Their Own Bags value: rect:{{x:113, y:3901}, {width:189, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:3933}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 27 value: rect:{{x:46, y:3967}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:12 people4 comments value: rect:{{x:46, y:3984}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:4028}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:4028}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:4028}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Complete this thought: “My small business would attract impulse buyers at a county fair by _______.” value: rect:{{x:46, y:4028}, {width:256, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/o7Z​CJJ value: rect:{{x:46, y:4100}, {width:142, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:4124}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:4124}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:How Small Businesses Cash in on County Fairs value: rect:{{x:113, y:4124}, {width:197, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:How Small Businesses Cash in on County Fairs value: rect:{{x:113, y:4124}, {width:197, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:blog.intuit.com value: rect:{{x:113, y:4156}, {width:78, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 27 value: rect:{{x:46, y:4190}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:5 people9 comments value: rect:{{x:46, y:4207}, {width:184, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAImage [name:Photo value: rect:{{x:5, y:4251}, {width:34, height:34}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:Intuit value: rect:{{x:46, y:4251}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Intuit value: rect:{{x:46, y:4251}, {width:35, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Do you know how to assess 401(k) costs/fees value: rect:{{x:46, y:4251}, {width:259, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​? Check out these great TIPS to understand value: rect:{{x:46, y:4269}, {width:251, height:36}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:​ and minimize hidden costs. value: rect:{{x:133, y:4287}, {width:176, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:http://int​uit.me/q3d​DcF value: rect:{{x:46, y:4323}, {width:142, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:(null) value: rect:{{x:46, y:4347}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:Photo value: rect:{{x:46, y:4347}, {width:60, height:60}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:The High (and Hidden) Costs of Your 401(k) value: rect:{{x:113, y:4347}, {width:181, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:The High (and Hidden) Costs of Your 401(k) value: rect:{{x:113, y:4347}, {width:181, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:nytimes.com value: rect:{{x:113, y:4379}, {width:68, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIAStaticText [name:Jul 26 value: rect:{{x:46, y:4413}, {width:33, height:15}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:10 people2 comments value: rect:{{x:46, y:4430}, {width:191, height:27}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>6) UIALink [name:See More Posts…
+ value: rect:{{x:0, y:4469}, {width:512, height:43}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>7) UIALink [name:(null) value: rect:{{x:8, y:4481}, {width:304, height:19}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>8) UIALink [name:See More Posts… value: rect:{{x:8, y:4481}, {width:120, height:18}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:320, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:1, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:1, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:54, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:54, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:54, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:63}, {width:54, height:54}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:313, y:64}, {width:7, height:372}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:-14, y:78}, {width:30, height:1}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:-14, y:78}, {width:30, height:1}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:405}, {width:320, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAImage [name:(null) value:(null) rect:{{x:0, y:429}, {width:320, height:7}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>4) UIAToolbar [name:(null) value:(null) rect:{{x:0, y:436}, {width:320, height:44}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAButton [name:backIcon value:(null) rect:{{x:7, y:441}, {width:26, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAButton [name:forwardIcon value:(null) rect:{{x:97, y:441}, {width:26, height:30}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAButton [name:Refresh value:(null) rect:{{x:188, y:440}, {width:28, height:33}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>5) UIAButton [name:Action value:(null) rect:{{x:280, y:442}, {width:33, height:29}}]</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>7</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:51:57 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:51:58Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Could not locate element: eventsButton in view: HomeScreenView</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:02Z</date>
+			<key>Type</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Stem View beginning specialization.</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:02Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Specializing to BasicView when navBarName was: News</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:02Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:52:03 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:03Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:52:03 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:03Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:03Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: selectInfoButton()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:03Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Sun Aug 14 2011 12:52:04 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:05Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollDown()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:05Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: scrollUp()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:05Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>ACTION: returnToHomeScreen()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:05Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:52:05 GMT-0700 (PDT)</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>InfoTestSet.tearDownTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.cleanUpSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>suiteHandler.cleanUpSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Message</key>
+			<string>Script completed.</string>
+			<key>Timestamp</key>
+			<date>2011-08-14T19:52:06Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
