@@ -24,6 +24,7 @@ import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IProjectResourceService;
 import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.MisconfigurationException;
+import com.intuit.tools.imat.cli.ExitStatus;
 import com.intuit.tools.imat.cli.converters.FileConverter;
 import com.intuit.tools.imat.validators.JavaScriptVariableValidator;
 
@@ -102,7 +103,7 @@ public class CommandNewProject extends ScriptedCommand implements ICommand {
 	 * 
 	 * @see com.intuit.tools.imat.commands.ICommand#run()
 	 */
-	public int run() throws MisconfigurationException {
+	public ExitStatus run() throws MisconfigurationException {
 		try {
 			// set up the propertes
 			LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();

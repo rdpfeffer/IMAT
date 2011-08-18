@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import org.apache.log4j.Logger;
 
 import com.intuit.tools.imat.IApplicationResourceService;
+import com.intuit.tools.imat.cli.ExitStatus;
 
 /**
  * @author rpfeffer
@@ -22,7 +23,7 @@ import com.intuit.tools.imat.IApplicationResourceService;
  * 
  *              This class launches AppleScripts as an external process. It
  *              enables the IMAT application to do things that are only
- *              accessible through the applescripting framework. This includes
+ *              accessible through the apple scripting framework. This includes
  *              things like launching Instruments, or any other application that
  *              can be scripted using the AppleScript language.
  * 
@@ -41,12 +42,15 @@ public class AppleScriptLauncher extends ExternallyScriptedProcessLauncher {
 	 * 
 	 * @see com.intuit.tools.imat.IScriptLauncher#runScript()
 	 */
-	public int runScript() {
-		int exitStatus = 1;
+	public ExitStatus runScript() {
+		ExitStatus exitStatus = ExitStatus.INTERNAL_ERROR;
 		try {
-			exitStatus = this.executeCommand(COMMAND + " "
+			int localStatus = this.executeCommand(COMMAND + " "
 					+ getScriptAsFile().getAbsolutePath()
 					+ getOrderedParamterString());
+			if (localStatus == 0) {
+				exitStatus = ExitStatus.SUCCESS;
+			}
 		} catch (FileNotFoundException e) {
 			logger.error("Could not find the appleScript.", e);
 		}

@@ -117,9 +117,9 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			}
 			catch (e)
 			{
-				//do nothing. We Expect to fail.
+				assertTrue(e instanceof IMAT.AssertionException);
 			}
-		}		
+		}
 		try
 		{
 			assertEquals(10/"foo", 10/"foo");
@@ -129,7 +129,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		}
 		catch (e2)
 		{
-			//do nothing. We Expect to fail.
+			assertTrue(e2 instanceof IMAT.AssertionException);
 		}
 		try
 		{
@@ -139,7 +139,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		}
 		catch (e3)
 		{
-			//do nothing. We Expect to fail.
+			assertTrue(e3 instanceof IMAT.AssertionException);
 		}
 		
 		//---------------------------------assertTrue---------------------------------------------//
@@ -166,7 +166,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			}
 			catch (e4)
 			{
-				//do nothing. We Expect to fail.
+				assertTrue(e4 instanceof IMAT.AssertionException);
 			}
 		}
 		
@@ -194,7 +194,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			}
 			catch (e5)
 			{
-				//do nothing. We Expect to fail.
+				assertTrue(e5 instanceof IMAT.AssertionException);
 			}
 		}
 
@@ -222,7 +222,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			}
 			catch (e6)
 			{
-				//do nothing. We Expect to fail.
+				assertTrue(e6 instanceof IMAT.AssertionException);
 			}
 		}
 	},
@@ -356,7 +356,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		var expectedMessage = "With message";
 		IMAT.log_debug("Testing with 1 argument");
 		latestException = this.manualfailHelper(function(){manualFail(expectedMessage);});
-		assertTrue((latestException.indexOf(expectedMessage) > -1), "The " +
+		assertTrue((latestException.message.indexOf(expectedMessage) > -1), "The " +
 			"exception did not contain the expected string. Exception: " +
 			latestException);
 		
@@ -364,10 +364,10 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		var unexpectedMessage  ="And Another";
 		IMAT.log_debug("Testing with 2 arguments");
 		latestException = this.manualfailHelper(function(){manualFail(expectedMessage, unexpectedMessage);});
-		assertTrue((latestException.indexOf(expectedMessage) > -1), "The " +
+		assertTrue((latestException.message.indexOf(expectedMessage) > -1), "The " +
 			"exception did not contain the expected string. Exception: " +
 			latestException);
-		assertTrue((latestException.indexOf(unexpectedMessage) == -1), "The " +
+		assertTrue((latestException.message.indexOf(unexpectedMessage) == -1), "The " +
 			"exception had the unexpected string. Exception: " +
 			latestException);
 	},
@@ -380,14 +380,14 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			func();
 			didThrowException = false; // we should never get here.
 		} catch (e){
-			assertTrue(typeof e == "string", "the exception thrown should have been of type string");
-			assertTrue((e.indexOf("MANUAL:") > -1), "The exception did not contain the expected string.");
+			assertTrue(e instanceof IMAT.AssertionException, "the exception thrown should have been of type IMAT.AssertionException");
+			assertTrue((e.message.indexOf("MANUAL:") > -1), "The exception did not contain the expected string.");
 			result = e;
 		}
 		assertTrue(didThrowException, 
 			"manualFail() did not throw an exception when it should have");
 		return result;
-	}
+	},
 	
 });
 

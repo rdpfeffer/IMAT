@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.intuit.tools.imat;
 
+import com.intuit.tools.imat.cli.ExitStatus;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 26, 2011
@@ -26,15 +28,15 @@ package com.intuit.tools.imat;
 public class NullCommand implements ICommand {
 
 	public static final String NAME = "null";
-	private static final int NULL_COMMAND_ERROR_CODE = 1;
+	private static final ExitStatus STATUS = ExitStatus.VALIDATION_ERROR;
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see com.intuit.tools.imat.commands.ICommand#run()
 	 */
-	public int run() {
-		return this.getExitStatus();
+	public ExitStatus run() {
+		return STATUS;
 	}
 
 	/*
@@ -63,7 +65,7 @@ public class NullCommand implements ICommand {
 	public int getExitStatus() {
 		// Always return an error code, as the null command only gets created in
 		// error states
-		return NULL_COMMAND_ERROR_CODE;
+		return STATUS.getStatus();
 	}
 
 	/*

@@ -27,6 +27,7 @@ import com.intuit.tools.imat.IFileMonitoringService;
 import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.ITestMonitor;
 import com.intuit.tools.imat.MisconfigurationException;
+import com.intuit.tools.imat.cli.ExitStatus;
 import com.intuit.tools.imat.cli.converters.FileConverter;
 import com.intuit.tools.imat.reporting.IReportingService;
 import com.intuit.tools.imat.validators.CanonicalFileValidator;
@@ -43,10 +44,13 @@ import com.intuit.tools.imat.validators.TemplateFileValidator;
 @Parameters(commandDescription = "Use this command to run your tests.")
 public class CommandRunTests extends ScriptedCommand implements ICommand, IFileListener{
 
+	
+	
 	private static final String AUTOMATION_RESULTS_PATH = "logs" 
 		+ File.separator + "runs";
 	private static final String AUTOMATION_RESULTS_FILE = AUTOMATION_RESULTS_PATH + 
-		File.separator + "Run 1" + File.separator + "Automation Results.plist";		
+		File.separator + "Run 1" + File.separator + "Automation Results.plist";	
+	private static final String HORIZONTAL_RULE = "-------------------------------------------------------";
 	
 	/**
 	 * The suite we will run in our tests
@@ -122,27 +126,29 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	/* (non-Javadoc)
 	 * @see com.intuit.tools.imat.ICommand#run()
 	 */
-	public int run() throws MisconfigurationException {
+	public ExitStatus run() throws MisconfigurationException {
 		if (suite != null && template != null) {
 			exitStatus = archiveTestResults();
-			if (exitStatus == 0) {
+			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = startTests();
 			}
-			if (exitStatus == 0) {
+			if (exitStatus == ExitStatus.SUCCESS) {
 				monitorTests();
 				exitStatus = stopTests();
 			}
-			logger.debug(testMonitor.testsDidRunToCompletion() ? "Tests ran to completion"
-					: "Tests did not complete successfully");
-			if (testMonitor.testsDidRunToCompletion() && exitStatus == 0) {
+			if (exitStatus == ExitStatus.SUCCESS) {
+				exitStatus = (testMonitor.testsDidRunToCompletion() ? ExitStatus.SUCCESS
+						: ExitStatus.TESTING_ERROR);
+			}
+			if (exitStatus == ExitStatus.SUCCESS) {
 				generateReport();
 			}
-			if (exitStatus == 0) {
+			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = archiveTestResults();
 			}
 		} else {
 			logger.error("Invalid Parameters: You must specify a suite as well as a template file. Run \"imat run-tests -help\" for more information.");
-			exitStatus = 1;
+			exitStatus = ExitStatus.VALIDATION_ERROR;
 		}
 		return exitStatus;
 	}
@@ -151,9 +157,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	/**
 	 * @throws MisconfigurationException
 	 */
-	private int startTests() throws MisconfigurationException {
+	private ExitStatus startTests() throws MisconfigurationException {
+		logger.info(HORIZONTAL_RULE +"\n"+
+					"Starting Tests...\n" +
+					HORIZONTAL_RULE);
 		String suiteFilePath = "";
-		int exitCode = 0;
+		ExitStatus exitCode = ExitStatus.SUCCESS;
 		try {
 			LinkedHashMap<String, String> arguments = new LinkedHashMap<String, String>();
 			suiteFilePath = (new File(suite)).getCanonicalPath();
@@ -183,6 +192,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	 */
 	private void monitorTests() throws MisconfigurationException
 	{
+		logger.info("Waiting for tests to complete...");
 		File testResultLog = null;
 		int tries = 0;
 		while (testResultLog == null & tries < MAX_ATTEMPTS_TO_FIND_LOG)
@@ -201,19 +211,18 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 			tries++;
 		}
 		if (testResultLog == null) {
-			MisconfigurationException ex = new MisconfigurationException(
-					"Could not find Automation Results file: "
+			logger.error("Could not find Automation Results file: "
 					+ AUTOMATION_RESULTS_FILE);
-			throw ex;
+		} else {
+			logger.debug("Monitoring Log file...");
+			fileMonitoringService.monitorFile(testResultLog, MINIMUM_INTERVAL, this);
 		}
-		logger.debug("Monitoring Log file...");
-		fileMonitoringService.monitorFile(testResultLog, MINIMUM_INTERVAL, this);
 	}
 	
 	/**
 	 * 
 	 */
-	private synchronized int stopTests()
+	private synchronized ExitStatus stopTests()
 	{
 		while(!testMonitor.isExecutionComplete())
 		{
@@ -235,7 +244,9 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	
 	private void generateReport() {
 		try {
-			logger.info("Generating XML reports...");
+			logger.info(HORIZONTAL_RULE +"\n"+
+						"Generating reports...\n" +
+						HORIZONTAL_RULE );
 			File testResultLog = applicationResourceService.getAppResourceFile(
 					AUTOMATION_RESULTS_FILE, true);
 			reportingService.setJunitXMLResultPath(new File(this.reportsDir.getPath() + File.separator));
@@ -250,9 +261,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 
 	}
 	
-	private int archiveTestResults() throws MisconfigurationException {
+	private ExitStatus archiveTestResults() throws MisconfigurationException {
+		logger.info(HORIZONTAL_RULE +"\n"+
+					"Cleaning up...\n" +
+					HORIZONTAL_RULE);
 		String runLogDirPath ="";
-		int exitCode = 0;
+		ExitStatus exitCode = ExitStatus.SUCCESS;
 		try {
 			LinkedHashMap<String, String> arguments = new LinkedHashMap<String, String>();
 			runLogDirPath = applicationResourceService.getAppResourceFile(
@@ -299,8 +313,6 @@ public class CommandRunTests extends ScriptedCommand implements ICommand, IFileL
 	{
 		return true;
 	}
-
-
 
 	public synchronized void fileChanged(File file) {
 		this.testMonitor.fileChanged(file);

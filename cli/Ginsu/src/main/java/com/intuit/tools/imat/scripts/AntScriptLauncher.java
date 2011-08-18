@@ -23,6 +23,7 @@ import org.apache.tools.ant.ProjectHelper;
 
 import com.intuit.tools.imat.IApplicationResourceService;
 import com.intuit.tools.imat.IScriptLauncher;
+import com.intuit.tools.imat.cli.ExitStatus;
 
 /**
  * @author rpfeffer
@@ -50,9 +51,9 @@ public class AntScriptLauncher extends ExternallyScriptedProcessLauncher
 	 * 
 	 * @see com.intuit.tools.imat.scripts.IScriptLauncher#runScript()
 	 */
-	public int runScript() {
+	public ExitStatus runScript() {
 		Project antProject = new Project();
-		int exitStatus = 1;
+		ExitStatus exitStatus = ExitStatus.INTERNAL_ERROR;
 		try {
 			File buildFile = this.getScriptAsFile();
 			this.preValidateScript(buildFile);
@@ -67,7 +68,7 @@ public class AntScriptLauncher extends ExternallyScriptedProcessLauncher
 			helper.parse(antProject, buildFile);
 			String defaultTarget = antProject.getDefaultTarget();
 			antProject.executeTarget(defaultTarget);
-			exitStatus = 0;
+			exitStatus = ExitStatus.SUCCESS;
 		} catch (BuildException e) {
 			antProject.fireBuildFinished(e);
 			logger.error(e.getMessage());

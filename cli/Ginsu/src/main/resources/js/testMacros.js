@@ -21,14 +21,12 @@
  * @param message (optional) The message to throw if expected did not match 
  * received
  *
- * @throws An exception string with the given parameter message if expected did 
- * not match received.
+ * @throws An exception string with the given parameter message if expected was 
+ * not strictly equal to received.
  */
  /*
  * TODO: Create an assertEqualObjects function that calls isEqual on the 
- * expected object.
- * TODO: Create an assertNotEquals function. This will prevent us from having to 
- * add unneccessary try/catch statements in places where we don't need them.
+ * expected object. Consider underscore.js
  */
 function assertEquals(received, expected, message) {
   if (received !== expected) {
@@ -37,9 +35,36 @@ function assertEquals(received, expected, message) {
     		" but received " + received + " (type:" + typeof received + 
     		"). Check for value and type.";
     }
-    throw message;
+    throw new IMAT.AssertionException(message);
   }
 }
+
+/**
+ * Checks for Strict inequality. Depending on if you are using objects or 
+ * primitives, this will work differently. JS is pass by reference for objects, 
+ * so if you are testing that two objects are not equal, this will throw an 
+ * exception if they are the same reference. For literals, this is strictly 
+ * checking to make sure they are different values.
+ *
+ * @param expected The expected value we are testing
+ * @param received The value we expected to see
+ * @param message (optional) The message to throw if expected matched received
+ *
+ * @throws An exception string with the given parameter message if expected  
+ * was strictly equal to received.
+ */
+function assertNotEquals(received, expected, message) {
+  if (received === expected) {
+    if (!message) {
+    	message = "Expected " + expected + " (type:" + typeof expected + ")" + 
+    		" but received " + received + " (type:" + typeof received + 
+    		"). Check for value and type.";
+    }
+    throw new IMAT.AssertionException(message);
+  }
+}
+
+
 
 /**
  * Checks that the expression evaluates to true.
@@ -56,7 +81,7 @@ function assertTrue(expression, message) {
     	message = "Assertion failed when expression was: " + expression + 
     		" type:" + typeof expression;
     } 
-    throw message;
+    throw new IMAT.AssertionException(message);
   }
 }
 
@@ -88,9 +113,9 @@ function assertFalse(expression, message) {
 function assertNotNull(thingie, message) {
   if (thingie === null || typeof thingie === "undefined" || thingie instanceof UIAElementNil) {
     if (!message) {
-    	message = "Expected not null object";
+    	message = "Expected a non null object. Object was " + thingie;
     }
-    throw message;
+    throw new IMAT.AssertionException(message);
   }
 }
 
@@ -106,7 +131,9 @@ function assertAscending(lowValue, highValue, msg)
 {
 	if (lowValue >= highValue)
 	{
-		throw msg + " Sorted values are not in ascending order. highValue " + highValue + " is not higher than lowValue " + lowValue;
+		var message = msg + " Sorted values are not in ascending order. highValue " + 
+			highValue + " is not higher than lowValue " + lowValue; 
+		throw new IMAT.AssertionException(message);
 	}
 }
 
@@ -122,7 +149,9 @@ function assertDescending(highValue, lowValue, msg)
 {
 	if (lowValue >= highValue)
 	{
-		throw msg + " Sorted values are not in descending order. lowValue " + lowValue + " is not lower than highValue " + highValue;
+		var message = msg + " Sorted values are not in descending order. lowValue " + 
+			lowValue + " is not lower than highValue " + highValue;
+		throw new IMAT.AssertionException(message);
 	}
 }
 
@@ -157,7 +186,7 @@ function manualFail()
 	if (arguments.length > 0) {
 		message = message + " " + arguments[0]; 
 	} 
-	throw message;
+	throw new IMAT.AssertionException(message);
 }
 
 /**
@@ -170,6 +199,3 @@ function toBeExecutedManually()
 {
 	IMAT.log_warning("MANUAL: To Be Executed.");
 }
-
-//TODO Create an assertValid function that will call checkIsValid on a UIAElement Passed in.
-//function assertValid(elem, description)...

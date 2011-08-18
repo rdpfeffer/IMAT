@@ -10,16 +10,15 @@
  *******************************************************************************/
 package com.intuit.tools.imat.reporting;
 
+import java.util.ArrayList;
+
+import com.intuit.tools.imat.monitor.iOSEndOfLogMsg;
+
 public class Dict {	
-	private String string;
-	private String date;
-	private String integer;	
-	
-	Dict (String string, String date, String integer){		
-		this.string = string;
-		this.date=date;
-		this.integer=integer;
-	}
+	private String string = "";
+	private String date = "";
+	private UIALoggerCode code;	
+	private ArrayList<Dict> dictList = new ArrayList<Dict>();
 
 	public String getString() {
 		return string;
@@ -37,12 +36,72 @@ public class Dict {
 		this.date = date;
 	}
 
-	public String getInteger() {
-		return integer;
+	public UIALoggerCode getCode() {
+		return code;
 	}
 
-	public void setInteger(String integer) {
-		this.integer = integer;
-	}	
+	public void setCode(UIALoggerCode code) {
+		this.code = code;
+	}
+	
+	public void setCode(String code) {
+		this.code = UIALoggerCode.values()[Integer.valueOf(code).intValue()];
+	}
+
+	/**
+	 * @param dict the dict to set
+	 */
+	public void addDict(Dict dict) {
+		this.dictList.add(dict);
+	}
+
+	/**
+	 * @return the dict
+	 */
+	public Dict getDictAtIndex(int index) {
+		return dictList.get(index);
+	}
+	
+	public void clearDictList() {
+		this.dictList.clear();
+	}
+	
+	public int countSubDicts()
+	{
+		return dictList.size();
+	}
+	
+	public boolean isExceptionLogEntry() {
+		boolean isException = false;
+		for (iOSEndOfLogMsg msg : iOSEndOfLogMsg.values()) {
+			if(this.getString().contains(msg.getMessage())) {
+				isException = true;
+				break;
+			}
+		}
+		return isException;
+	}
+	
+	public boolean isStartLogEntry() {
+		boolean isStart = false;
+		if (	this.getCode() == UIALoggerCode.TESTSTART) {
+			isStart = true;
+		}
+		return isStart;
+	}
+	
+	public boolean isCompletionLogEntry() {
+		boolean isComplete = false;
+		if (	this.getCode() == UIALoggerCode.FAIL ||
+				this.getCode() == UIALoggerCode.ISSUE ||
+				this.getCode() == UIALoggerCode.PASS) {
+			isComplete = true;
+		}
+		return isComplete;
+	}
+	
+	public boolean showsScriptWasHalted() {
+		return this.getCode() == UIALoggerCode.STOPPED; 
+	}
 
 }

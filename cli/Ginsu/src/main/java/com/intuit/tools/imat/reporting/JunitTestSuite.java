@@ -14,8 +14,9 @@ import java.util.ArrayList;
 
 public class JunitTestSuite {	
 	private String errors = "0";
-	private String failures;
+	private String failures = "0";
 	private int errorCount;
+	private int failureCount;
 	private String hostName;
 	private String id;
 	private String name;
@@ -24,10 +25,16 @@ public class JunitTestSuite {
 	private String time;
 	private String timeStamp;
 	private ArrayList<JunitTestCase> testCaseList;
+	private boolean moreReportsExist = true;
 	
 	void incrementErrorCount () {
 		errorCount++;		
 		errors = Integer.toString(errorCount);		
+	}
+	
+	void incrementFailureCount() {
+		failureCount++;
+		failures = Integer.toString(failureCount);
 	}
 	
 	public String getErrors() {
@@ -89,6 +96,20 @@ public class JunitTestSuite {
 	}
 	public void setTestcaseList(ArrayList<JunitTestCase> testCaseList) {
 		this.testCaseList = testCaseList;
+	}
+
+	/**
+	 * @param moreReportsExist the moreReportsExist to set
+	 */
+	public void setMoreReportsExist(boolean moreReportsExist) {
+		this.moreReportsExist = moreReportsExist;
+	}
+
+	/**
+	 * @return the moreReportsExist
+	 */
+	public boolean moreReportsExist() {
+		return moreReportsExist;
 	}
 
 }

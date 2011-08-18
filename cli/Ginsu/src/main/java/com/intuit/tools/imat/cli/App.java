@@ -44,7 +44,6 @@ public class App {
 	public static final String APP_NAME_LOWERCASE = APP_NAME_NORMAL.toLowerCase();
 	public static final String APP_NAME_UPPERCASE = APP_NAME_NORMAL.toUpperCase();
 	private static final int APP_HOME_ARGS_INDEX = 1;
-	private static final int ABNORMAL_EXIT_STATUS = -1;
 
 	/**
 	 * @TODO DocMe
@@ -52,7 +51,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		// Application initialization starts
-		int exitStatus = ABNORMAL_EXIT_STATUS;
+		int exitStatus = ExitStatus.UNSET.getStatus();
 		AppContext appContext = App.initAppContext(args);
 		Injector injector = appContext.getInjector();
 		Logger logger = injector.getInstance(Logger.class);
@@ -65,7 +64,7 @@ public class App {
 		IConfigurationService configService = injector
 				.getInstance(IConfigurationService.class);
 
-		// If we have a runnable command and the applicaiton is not
+		// If we have a runnable command and the application is not
 		// initialized...
 		if (command.isRunnable()
 				&& configService.isNotInitialized(appContext

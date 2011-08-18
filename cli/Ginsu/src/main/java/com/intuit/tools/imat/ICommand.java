@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.intuit.tools.imat;
 
+import com.intuit.tools.imat.cli.ExitStatus;
+
 /**
  * @author rpfeffer
  * @dateCreated Mar 25, 2011
@@ -21,23 +23,24 @@ package com.intuit.tools.imat;
 public interface ICommand {
 
 	/**
-	 * Execute the command. The implementer is required to return an exit status
-	 * of 0 when the execution ran normally, and a positive, non-zero integer
-	 * when the command exited abnormally. By contract of implementing this
-	 * interface, calling getExitStatus() or getErrorMessage() a before run()
-	 * has finished executing should result in an exception, therefore run
-	 * should also maintain some sort of internal representation of the run
-	 * state of the command as well, setting the state to return 0 when it has
-	 * completed.
+	 * Execute the command. The implementer is required to return an
+	 * {@link ExitStatus#SUCCESS} when the execution ran normally, and an
+	 * appropriate {@link ExitStatus} when the command exited abnormally. By
+	 * contract of implementing this interface, calling getExitStatus() or
+	 * getErrorMessage() a before run() has finished executing should result in
+	 * an exception, therefore run should also maintain some sort of internal
+	 * representation of the run state of the command as well, setting the state
+	 * to return 0 when it has completed.
 	 * 
-	 * @return int 0, when the command has completed normally and and a positive
-	 *         non-zero integer when it has completed abnormally.
+	 * @return ExitStatus SUCCESS, when the command has completed normally.
+	 *         Abnormal status codes can be found in the {@link ExitStatus}
+	 *         enumeration
 	 * 
 	 * @throws MisconfigurationException
 	 *             When the command cannot run due to misconfiguration of either
 	 *             the application or the target project.
 	 */
-	public int run() throws MisconfigurationException;
+	public ExitStatus run() throws MisconfigurationException;
 
 	/**
 	 * Allows the Application to conditionally run different logic if

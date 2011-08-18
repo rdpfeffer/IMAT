@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-	Copyright (c) 2009 Intuit, Inc. * All rights reserved. This program 
-	and the accompanying materials * are made available under the terms of the 
-	Eclipse Public License v1.0 * which accompanies this distribution, and is 
-	available at * http://www.opensource.org/licenses/eclipse-1.0.php * * Contributors: 
+	Copyright (c) 2009 Intuit, Inc.
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0 
+	which accompanies this distribution, and is available at 
+	http://www.opensource.org/licenses/eclipse-1.0.php 
+	
+	Contributors: 
 	Intuit, Inc - initial API and implementation 
 -->
 
@@ -12,7 +15,7 @@
 	@author rpfeffer 
 	@dateCreated Apr 12, 2011
   -->
-<project default="execute" >
+<project default="execute">
 	<!-- 
 	Delete all files from the target dir. Attempt to set the permissions on the directory
 	first, to be sure that they can be deleted. Note, on UNIX systems, copied files
@@ -22,15 +25,15 @@
 	<target name="execute">
 		<chmod perm="777">
 			<fileset dir="${target.dir}">
-				<include name="**/*.js"/>
-				<include name="**/*.properties"/>
-				<include name="**/*.tracetemplate"/>
-				<include name="env"/>
-				<include name="suites"/>
-				<include name="tests"/>
-				<include name="views"/>
+				<include name="**/*.js" />
+				<include name="**/*.properties" />
+				<include name="**/*.tracetemplate" />
+				<include name="env" />
+				<include name="suites" />
+				<include name="tests" />
+				<include name="views" />
 			</fileset>
 		</chmod>
-		<delete dir="${target.dir}"/>
+		<delete dir="${target.dir}" />
 	</target>
 </project>

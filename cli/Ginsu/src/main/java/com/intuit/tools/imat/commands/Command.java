@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import com.beust.jcommander.Parameter;
 import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IncompleteCommandException;
+import com.intuit.tools.imat.cli.ExitStatus;
 
 /**
  * @author rpfeffer
@@ -28,14 +29,10 @@ import com.intuit.tools.imat.IncompleteCommandException;
  */
 public abstract class Command implements ICommand {
 
-	private static final int UNSET_EXIT_STATUS = -1;
-
-	private static final int PRINT_HELP_EXIT_STATUS = 0;
-
 	private static final String UNSET_ERROR_MESSAGE = "";
 	protected final PrintWriter printWriter;
 	protected final Logger logger;
-	protected int exitStatus;
+	protected ExitStatus exitStatus;
 	protected String errorMessage;
 
 	/**
@@ -52,7 +49,7 @@ public abstract class Command implements ICommand {
 	Command(PrintWriter printwriter, Logger logger) {
 		this.printWriter = printwriter;
 		this.logger = logger;
-		this.exitStatus = UNSET_EXIT_STATUS;
+		this.exitStatus = ExitStatus.UNSET;
 		this.errorMessage = UNSET_ERROR_MESSAGE;
 	}
 
@@ -63,7 +60,7 @@ public abstract class Command implements ICommand {
 	 */
 	public int getExitStatus() throws IncompleteCommandException {
 		this.assertCommandComplete();
-		return this.exitStatus;
+		return this.exitStatus.getStatus();
 	}
 
 	/*
@@ -82,7 +79,7 @@ public abstract class Command implements ICommand {
 	 * @see com.intuit.tools.imat.commands.ICommand#isCommandComplete()
 	 */
 	public boolean isCommandComplete() {
-		return (this.exitStatus != UNSET_EXIT_STATUS);
+		return (this.exitStatus != ExitStatus.UNSET);
 	}
 
 	/*
@@ -92,7 +89,7 @@ public abstract class Command implements ICommand {
 	 */
 	public boolean shouldRenderCommandUsage() {
 		if (this.help) {
-			this.exitStatus = PRINT_HELP_EXIT_STATUS;
+			this.exitStatus = ExitStatus.SUCCESS;
 		}
 		return this.help;
 	}

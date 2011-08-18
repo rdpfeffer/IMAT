@@ -18,21 +18,22 @@
 var IMAT = {};
 
 //import the default settings
-#import "settings.js"
+#import "./settings.js"
 
 // Declare the base inheritance framework
 #import "./inheritance-2.7.js"
 
 //Declare the constants
-#import "constants.js"
+#import "./constants.js"
 
 // Declare our test macros
+#import "./AssertionException.js"
 #import "./testMacros.js"
 
 //declare our utilities
+#import "./utils/String-extensions.js"
 #import "./utils/exceptions.js"
 #import "./utils/generators.js"
-#import "./utils/String-extensions.js"
 #import "./BaseTestSet.js"
 
 

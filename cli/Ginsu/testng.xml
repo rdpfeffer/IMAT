@@ -12,6 +12,7 @@
       <!-- <class name="com.intuit.tools.imat.commands.CommandInitEnvTest"/>-->
       <class name="com.intuit.tools.imat.scripts.AntScriptLauncherTest"/>
       <class name="com.intuit.tools.imat.validators.JavaScriptVariableValidatorTests" />
+      <class name="com.intuit.tools.imat.reporting.IOSAutomationResultsReaderTests" />
     </classes>
   </test>
 </suite>

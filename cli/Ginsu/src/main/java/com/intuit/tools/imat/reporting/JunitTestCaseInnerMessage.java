@@ -10,20 +10,18 @@
  *******************************************************************************/
 package com.intuit.tools.imat.reporting;
 
-public class JunitTestError {	
-	private String message;
-	private String type;
+public class JunitTestCaseInnerMessage {	
+	private String message = "";
 	
 	public String getMessage() {
 		return message;
 	}
+	
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
+	
+	public void appendToMessage(String appendix) {
+		this.message = this.message + appendix;
 	}
 }

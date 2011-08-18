@@ -134,7 +134,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 * @param {IMAT.BaseTestSet} testSet.
 	 * 					A testSet in our test harness
 	 *
-	 *  @returns {boolean} true if the testSet has runnable test cases.
+	 * @returns {boolean} true if the testSet has runnable test cases.
 	 */
 	containsRunnableTestCases: function(testSet)
 	{		
@@ -196,16 +196,19 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			IMAT.log_pass(testSignature);
 		} catch (e)  {
 			//first log an error
-			IMAT.log_error(e);
+			IMAT.log_error((e.message) ? e.message : e);
 			//then print out the current view tree
 			if (testSet.logOnFailure) {
 				IMAT.log_state();
 			}
-			//finally log that the test has failed.
-			IMAT.log_fail(testSignature);
-			
-			//Invoke the cleanup process so that we can make an attempt at starting the next test 
-			//fresh
+			//classify the test as having failed or needing attention
+			if (e instanceof IMAT.AssertionException) {
+				IMAT.log_fail(testSignature);
+			} else {
+				IMAT.log_issue(testSignature);
+			}
+			//Invoke the cleanup process so that we can make an attempt at  
+			//starting the next test fresh
 			if (!IMAT.settings.SKIP_DO_CLEANUP) {
 				testSet.doCleanup();
 			}
@@ -226,11 +229,11 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	{		
 		if(this.containsRunnableTestCases(testSet))
 		{
-			//NOTE: The Code which translates the Plist files over to Junit
-			//XML reports keys off these tokens to do the translation. 
-			//In terms of guaranteeing that the report can be generated it is
-			//important to ensure that these tokens are always printed out at
-			//the beginning and end of each testSet.
+			// NOTE: The Code which translates the Plist files over to Junit
+			// XML reports keys off these tokens to do the translation. 
+			// In terms of guaranteeing that the report can be generated it is
+			// important to ensure that these tokens are always printed out at
+			// the beginning and end of each testSet.
 			var setUpToken = testSet.title + ".setUpTestSet();";
 			var tearDownToken = testSet.title + ".tearDownTestSet();";
 			try {
@@ -245,8 +248,9 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			}
 			for(prop in testSet)
 			{
-				//NOTE: We do not check for hasOwnProperty() because that function does not check the 
-				//prototype of the object, just the object itself
+				// NOTE: We do not check for hasOwnProperty() because that  
+				// function does not check the prototype of the object, just the
+				// object itself
 				if (this.isPropRunnableTest(prop, testSet)) 
 				{
 					this.runTestCase(testSet, prop);

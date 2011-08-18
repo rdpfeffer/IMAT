@@ -20,7 +20,6 @@ import com.google.inject.Singleton;
 import com.intuit.tools.imat.IApplicationResourceService;
 import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IFileMonitoringService;
-import com.intuit.tools.imat.IProjectResourceService;
 import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.ITestMonitor;
 import com.intuit.tools.imat.annotations.AntScript;

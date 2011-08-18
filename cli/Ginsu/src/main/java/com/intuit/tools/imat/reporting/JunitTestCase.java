@@ -14,9 +14,12 @@ public class JunitTestCase {
 	private String classname;
 	private String testcasename;
 	private String time;
-	private String status;
-	private JunitTestError testerror;
-	private JunitTestFailure testfailure;
+	private STATUS status;
+	private String startTime;
+	private String endTime;
+	private JunitTestCaseInnerMessage message;
+	
+	public enum STATUS {PASS, FAIL, ERROR}
 	
 	public String getClassname() {
 		return classname;
@@ -36,23 +39,41 @@ public class JunitTestCase {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public JunitTestError getTesterror() {
-		return testerror;
+	public JunitTestCaseInnerMessage getInnerMessage() {
+		return message;
 	}
-	public void setTesterror(JunitTestError testerror) {
-		this.testerror = testerror;
-	}
-	public JunitTestFailure getTestfailure() {
-		return testfailure;
-	}
-	public void setTestfailure(JunitTestFailure testfailure) {
-		this.testfailure = testfailure;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setInnerMessage(JunitTestCaseInnerMessage message) {
+		this.message = message;
 	}
 	
+	public STATUS getStatus() {
+		return status;
+	}
+	public void setStatus(STATUS status) {
+		this.status = status;
+	}
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	/**
+	 * @return the startTime
+	 */
+	public String getStartTime() {
+		return startTime;
+	}
+	/**
+	 * @param endTime the endTime to set
+	 */
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	/**
+	 * @return the endTime
+	 */
+	public String getEndTime() {
+		return endTime;
+	}	
 }

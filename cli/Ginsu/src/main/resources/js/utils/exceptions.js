@@ -9,12 +9,10 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-#import "String-extensions.js"
-
 /**
- * This is a helper function to handle the fact that JavaScript will sometimes throw strings as 
- * exceptions while at other times throw full fledged exception objects. It determines if a message
- * is part of a given exception.
+ * This is a helper function to handle the fact that JavaScript will sometimes 
+ * throw strings as exceptions while at other times throw full fledged exception 
+ * objects. It determines if a message is part of a given exception.
  *
  * @param {mixed} e The exception we are handling.
  * @param {string} message The message to check for

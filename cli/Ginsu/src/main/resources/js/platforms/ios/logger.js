@@ -89,7 +89,7 @@ IMAT.log_start = function(message)
 };
 
 /**
- * Log a pass message
+ * Log a pass message to mark a test as passed.
  *
  * @param message string - The message to be logged
  */
@@ -99,13 +99,23 @@ IMAT.log_pass = function(message)
 };
 
 /**
- * Log a failure message
+ * Log a failure message to mark a test as failed.
  *
  * @param message string - The message to be logged
  */
 IMAT.log_fail = function(message)
 {
 	UIALogger.logFail(message);
+};
+
+/**
+ * Log an issue message to mark a test as needing attention.
+ *
+ * @param message string - The message to be logged
+ */
+IMAT.log_issue = function(message)
+{
+	UIALogger.logIssue(message);
 };
 
 /**

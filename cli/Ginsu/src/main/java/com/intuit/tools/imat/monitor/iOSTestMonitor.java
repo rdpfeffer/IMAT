@@ -28,10 +28,6 @@ import com.intuit.tools.imat.ITestMonitor;
  */
 public class iOSTestMonitor implements ITestMonitor {
 
-	private static String SCRIPT_COMPLETED = "Script completed.";
-	private static String SCRIPT_EXCEPTION = "An exception occurred while trying to run the script.";
-	private static String SCRIPT_TYPE_EXCEPTION = "Exception raised while running script: TypeError:";
-	private static String SCRIPT_STOPED_BY_USER = "Script was stopped by the user.";
 	private boolean executionComplete = false;
 	private boolean ranToCompletion = false;
 	private RandomAccessFile reader = null;
@@ -105,12 +101,12 @@ public class iOSTestMonitor implements ITestMonitor {
 	 */
 	private boolean lineContainsTerminator(String line) {
 		boolean containsTerminator = false;
-		if (line.contains(SCRIPT_EXCEPTION)
-				|| line.contains(SCRIPT_TYPE_EXCEPTION)
-				|| line.contains(SCRIPT_STOPED_BY_USER)
-				|| line.contains(SCRIPT_COMPLETED)) {
-			logger.debug("Found a script terminator: " + line);
-			containsTerminator = true;
+		for (iOSEndOfLogMsg msg : iOSEndOfLogMsg.values()) {
+			if (line.contains(msg.getMessage())) {
+				logger.debug("Found a script terminator: " + line);
+				containsTerminator = true;
+				break;
+			}
 		}
 		return containsTerminator;
 	}
@@ -121,11 +117,12 @@ public class iOSTestMonitor implements ITestMonitor {
 	 */
 	private boolean ranToCompletion(String line) {
 		boolean ranToCompletion = false;
-		if (line.contains(SCRIPT_COMPLETED)) {
-			logger.info("Script has fully completed execution successfuly.");
+		if (line.contains(iOSEndOfLogMsg.SCRIPT_COMPLETED.getMessage())) {
+			logger.info("***** Script has fully completed execution successfuly." +
+					"*****");
 			ranToCompletion = true;
 		} else {
-			logger.info("Script stopped running prematurely.");
+			logger.info("***** Script stopped running prematurely.*****");
 		}
 		return ranToCompletion;
 	}

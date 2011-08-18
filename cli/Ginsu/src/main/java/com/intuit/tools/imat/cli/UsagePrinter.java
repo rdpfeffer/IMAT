@@ -50,10 +50,9 @@ public class UsagePrinter implements ICommand {
 	 * 
 	 * @see com.intuit.tools.imat.commands.ICommand#run()
 	 */
-	public int run() {
+	public ExitStatus run() {
 		printWriter.println(this.usage);
-		int exitStatus = 0;
-		return exitStatus;
+		return ExitStatus.SUCCESS;
 	}
 
 	/*

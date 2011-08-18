@@ -14,6 +14,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 
+import com.intuit.tools.imat.cli.ExitStatus;
+
 /**
  * @author rpfeffer
  * @dateCreated Apr 12, 2011
@@ -91,5 +93,5 @@ public interface IScriptLauncher {
 	 * @return a non-zero positive integer when the script exits abnormally, and
 	 *         zero when it exits normally.
 	 */
-	public int runScript();
+	public ExitStatus runScript();
 }
