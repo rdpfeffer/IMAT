@@ -195,18 +195,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			//if we get here, the test has passed.
 			IMAT.log_pass(testSignature);
 		} catch (e)  {
-			//first log an error
-			IMAT.log_error((e.message) ? e.message : e);
-			//then print out the current view tree
-			if (testSet.logOnFailure) {
-				IMAT.log_state();
-			}
-			//classify the test as having failed or needing attention
-			if (e instanceof IMAT.AssertionException) {
-				IMAT.log_fail(testSignature);
-			} else {
-				IMAT.log_issue(testSignature);
-			}
+			this.logException(e, testSignature);
 			//Invoke the cleanup process so that we can make an attempt at  
 			//starting the next test fresh
 			if (!IMAT.settings.SKIP_DO_CLEANUP) {
@@ -243,8 +232,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 				} 
 				IMAT.log_pass(setUpToken);
 			} catch (setUpException) {
-				IMAT.log_error(setUpException);
-				IMAT.log_fail(setUpToken);
+				this.logException(setUpException, setUpToken);
 			}
 			for(prop in testSet)
 			{
@@ -263,8 +251,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 				}
 				IMAT.log_pass(tearDownToken);
 			} catch (tearDownException) {
-				IMAT.log_error(tearDownException);
-				IMAT.log_fail(tearDownToken);
+				this.logException(tearDownException, tearDownToken);
 			}
 		}
 	},
@@ -282,6 +269,58 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	addFilters : function(filtersArray)
 	{
 		this.filtersArray = this.filtersArray.concat(filtersArray);
-	}
+	},
 	
+	/**
+	 * Handle the exception from a failure in the execution of the test life-
+	 * cycle. Note, this is used internally by The testing framework and should
+	 * not be used directly in an automation project.
+	 * 
+	 * This function will extract the message from the exception object 
+	 * if it derives from the JavaScript Error object and do everything it can
+	 * to ensure that the exception is converted to a string before loging out 
+	 * to the results log. Furthermore, this function will handle the logging of
+	 * the current state of the application shown in view and mark the test as 
+	 * either failed or needing attention depending on the type of exception 
+	 * thrown. If the exception comes from one of the IMAT assertion APIs
+	 * (e.g. assertTrue()) then the test will be marked as failing. However, if
+	 * there is any other type of exception, the exception will be logged as an
+	 * issue so that the testing engineers known that there is a problem in the 
+	 * scripts.
+	 *
+	 * @param {mixed} exception 
+	 * 						The exception to be handled.
+	 * @param {srting} signature
+	 * 						the signature of the function where the exception  
+	 * 						came from.
+	 * 
+	 * @see {IMAT.settings.LOG_STATE_ON_ERROR} if you would like to turn off 
+	 * logging the state of the application when an error happens. 
+	 * @see {IMAT.AssertionException} for more information on the exception 
+	 *  object which will report as test failures.
+	 */
+	logException: function(exception, signature)
+	{
+		//first get the error string and log it out.
+		var errorString = "";
+		if (typeof exception == "string") {
+			errorString = exception;
+		} else if (exception.message) {
+			errorString = exception.message;
+		} else {
+			errorString = exception.toString();
+		}
+		IMAT.log_error(errorString);
+		
+		//then print out the current view tree
+		if (IMAT.settings.LOG_STATE_ON_ERROR) {
+			IMAT.log_state();
+		}
+		//classify the test as having failed or needing attention
+		if (exception instanceof IMAT.AssertionException) {
+			IMAT.log_fail(signature);
+		} else {
+			IMAT.log_issue(signature);
+		}
+	}
 });

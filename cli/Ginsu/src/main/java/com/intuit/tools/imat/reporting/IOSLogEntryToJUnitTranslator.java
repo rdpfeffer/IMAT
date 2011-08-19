@@ -56,12 +56,14 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 		try {
 			while (testLogQueueIsNotEmpty((dict = testLogQueue.take()))) {
 				logger.trace("processing dictionary entry: " + dict.toString());
-				translator.process(dict);
+				translator = translator.process(dict);
 			}
 		} catch (InterruptedException e) {
 			logger.error(e);
 		}
-		
+		String numReports = String.valueOf(reportQueue.size());
+		logger.info("report translation complete. Found " + numReports 
+				+ "reports");
 	}
 
 	private boolean testLogQueueIsNotEmpty(Dict dict) {
@@ -84,6 +86,7 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 	private void completeTestCase(JunitTestCase testCase, Dict dict,
 			String logBuffer) {
 		JunitTestCaseInnerMessage innerMessage = new JunitTestCaseInnerMessage();
+		testCase.setEndTime(dict.getDate());
 		// complete the setup of the test case based upon the status of the
 		// dictionary log entry.
 		switch (dict.getCode()) {

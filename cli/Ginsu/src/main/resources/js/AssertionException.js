@@ -9,6 +9,16 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
+/**
+ * 	Constructs an IMAT.AssertionException object which inherits from the 
+ *  JavaScript ERROR object. 
+ * @class The {@link IMAT.AssertionException} object is thrown any time the a
+ *  test failure is thrown due to an assertion API. Throwing this object will 
+ *  cause the current phase in the test execution lifecycle to be marked as a 
+ *  failure instead of an issue.
+ * @extends <a href=https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error>Error</a>
+ * @memberOf IMAT 
+ */
 IMAT.AssertionException = function(message)
 {
 	this.prototype = Error.prototype;

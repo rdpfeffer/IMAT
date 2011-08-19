@@ -31,8 +31,8 @@
 function assertEquals(received, expected, message) {
   if (received !== expected) {
     if (!message) {
-    	message = "Expected " + expected + " (type:" + typeof expected + ")" + 
-    		" but received " + received + " (type:" + typeof received + 
+    	message = "Expected " + expected + " (type: " + typeof expected + ")" + 
+    		" but received " + received + " (type: " + typeof received + 
     		"). Check for value and type.";
     }
     throw new IMAT.AssertionException(message);
@@ -56,8 +56,8 @@ function assertEquals(received, expected, message) {
 function assertNotEquals(received, expected, message) {
   if (received === expected) {
     if (!message) {
-    	message = "Expected " + expected + " (type:" + typeof expected + ")" + 
-    		" but received " + received + " (type:" + typeof received + 
+    	message = "Expected " + expected + " (type: " + typeof expected + ")" + 
+    		" but received " + received + " (type: " + typeof received + 
     		"). Check for value and type.";
     }
     throw new IMAT.AssertionException(message);
@@ -79,7 +79,7 @@ function assertTrue(expression, message) {
   if (!expression) {
     if (!message){
     	message = "Assertion failed when expression was: " + expression + 
-    		" type:" + typeof expression;
+    		" type: " + typeof expression;
     } 
     throw new IMAT.AssertionException(message);
   }

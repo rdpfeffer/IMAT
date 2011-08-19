@@ -59,7 +59,7 @@ public class IOSAutomationResultsReader implements Runnable{
 			
 			// start the loop from 1 instead of 0 (ignoring the root node) of 
 			//the dictionary
-			for (numDictionariesParsed = 1; numDictionariesParsed < nList.getLength(); /*Do nothing*/) {
+			for (numDictionariesParsed = 1; numDictionariesParsed < nList.getLength(); numDictionariesParsed++) {
 				Node nNode = nList.item(numDictionariesParsed);
 				Dict dictionaryEntry = parseDictionaryFromNode(nNode);
 				if (dictionaryEntry != null)
@@ -80,27 +80,30 @@ public class IOSAutomationResultsReader implements Runnable{
 
 	private Dict parseDictionaryFromNode(Node node) {
 		Dict dictionary = null;
-		if (node.getNodeType() == Node.ELEMENT_NODE) {
-			Element element = (Element) node;	
-			
-			dictionary = new Dict();
-			dictionary.setString(getTagValue(STRING_TAG_NAME, element));	//The message of the log entry
-			dictionary.setCode(getTagValue(INTEGER_TAG_NAME, element));	//The Type of the log entry
-			dictionary.setDate(getTagValue(DATE_TAG_NAME, element));		//The Timestamp of the log entry
-			
-			//Its possible for Dictionaries to be nested, we recursively add
-			//all sub dictionaries within.
-			NodeList nestedDictionaries = getNestedDictionaryNodeList(element);
-			
-			for (int i = 0; i < nestedDictionaries.getLength(); i++) {
-				Node nestedNode = nestedDictionaries.item(i);
-				Dict nestedDict = parseDictionaryFromNode(nestedNode);
-				dictionary.addDict(nestedDict);
+		try {
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) node;	
+				
+				dictionary = new Dict();
+				dictionary.setString(getTagValue(STRING_TAG_NAME, element));	//The message of the log entry
+				dictionary.setCode(getTagValue(INTEGER_TAG_NAME, element));	//The Type of the log entry
+				dictionary.setDate(getTagValue(DATE_TAG_NAME, element));		//The Timestamp of the log entry
+				
+				//Its possible for Dictionaries to be nested, we recursively add
+				//all sub dictionaries within.
+				NodeList nestedDictionaries = getNestedDictionaryNodeList(element);
+				
+				for (int i = 0; i < nestedDictionaries.getLength(); i++) {
+					Node nestedNode = nestedDictionaries.item(i);
+					Dict nestedDict = parseDictionaryFromNode(nestedNode);
+					dictionary.addDict(nestedDict);
+					numDictionariesParsed++;
+				}
 			}
+			
+		} catch (Exception e) {
+			logger.warn("Errors while pasring log entry. Skipping.", e);
 		}
-		//increment the number of dictionaries parsed
-		numDictionariesParsed++;
-		
 		return dictionary;
 	}
 	

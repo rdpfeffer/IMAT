@@ -17,14 +17,14 @@ public class JunitTestSuite {
 	private String failures = "0";
 	private int errorCount;
 	private int failureCount;
-	private String hostName;
-	private String id;
-	private String name;
-	private String packageName;
-	private String tests;
-	private String time;
-	private String timeStamp;
-	private ArrayList<JunitTestCase> testCaseList;
+	private String hostName = "";
+	private String id = "";
+	private String name = "";
+	private String packageName = "";
+	private String tests = "";
+	private String time = "";
+	private String timeStamp = "";
+	private ArrayList<JunitTestCase> testCaseList = new ArrayList<JunitTestCase>();
 	private boolean moreReportsExist = true;
 	
 	void incrementErrorCount () {

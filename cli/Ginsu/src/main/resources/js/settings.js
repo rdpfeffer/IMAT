@@ -61,3 +61,10 @@ IMAT.settings.SKIP_TEAR_DOWN_TEST_CASE = false;
  * @type Boolean
  */
 IMAT.settings.SKIP_DO_CLEANUP = false;
+
+/**
+ * Flag used to log out the state of the Application whenever an exception is
+ * thrown during the test execution lifecycle. 
+ * @type Boolean 
+ */
+IMAT.settings.LOG_STATE_ON_ERROR = true;

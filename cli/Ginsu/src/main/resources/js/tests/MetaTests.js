@@ -387,7 +387,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		assertTrue(didThrowException, 
 			"manualFail() did not throw an exception when it should have");
 		return result;
-	},
+	}
 	
 });
 
