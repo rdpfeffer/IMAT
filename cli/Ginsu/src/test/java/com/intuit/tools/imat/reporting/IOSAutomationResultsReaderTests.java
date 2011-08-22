@@ -8,11 +8,11 @@ public class IOSAutomationResultsReaderTests extends BaseIOSAutomationResultsTes
 	protected void verifyAgainstResultFile(String fileName,
 			HashMap<String, Object> props) {
 		int sizeForFile = ((Integer)props.get(LOG_QUEUE_SIZE_KEY)).intValue();
-		String sizeAsString = String.valueOf(sizeForFile);
+		sizeForFile++;//the log queue should include an additional closing message
 		reader.setPlistFile(getTestResourceAsFile(SUBDIR + fileName));
 		reader.run();
 		assert logQueue.size() == sizeForFile : "Queue was expected to have " 
-			+ sizeAsString + " results for the file named " + fileName 
+			+ sizeForFile + " results for the file named " + fileName 
 			+ " instead it had: " + logQueue.size();
 	}
 }

@@ -78,7 +78,7 @@ public abstract class BaseFunctionalTest {
 
 	/**
 	 * Reads each line in the given Text File, testing for sbstr. This method
-	 * does not search accross more than one line at a time for substr
+	 * does not search across more than one line at a time for substr
 	 * 
 	 * @param file
 	 * @param substr

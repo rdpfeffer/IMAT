@@ -28,7 +28,7 @@ public class FileMonitoringService implements IFileMonitoringService {
 	/*
 	 * The period the Timer waits between checking the file's modified timestamp 
 	 */
-	private static long TIMER_INTERVAL_IN_MILISECONDS = 5000;
+	private static long TIMER_INTERVAL_IN_MILISECONDS = 3000;
 	
 	/*
 	 * The timer that keeps track of when to check the file

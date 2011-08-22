@@ -11,6 +11,7 @@
 package com.intuit.tools.imat.reporting;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -84,9 +85,9 @@ public class JUnitReportWriter {
 				doc = docBuilder.newDocument();
 
 				Element suite = initSuiteElement(testSuite);
-				for (int j = 0; j < testSuite.getTestCaseList().size(); j++) {
-					JunitTestCase junittestCase = testSuite.getTestCaseList()
-							.get(j);
+				ArrayList<JunitTestCase> testCaseList = testSuite.getTestCaseList();
+				for (int j = 0; j < testCaseList.size(); j++) {
+					JunitTestCase junittestCase = testCaseList.get(j);
 					suite.appendChild(convertToTestCaseElement(junittestCase));
 				}
 				// write the content into xml file
@@ -94,26 +95,30 @@ public class JUnitReportWriter {
 						.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(doc);
-				String junitXMLFile = targetDir.toString() + File.separator
+				String junitXMLFile = getTargetDir().toString() + File.separator
 						+ "TEST-" + testSuite.getName() + ".xml";
+				if (!getTargetDir().exists()) {
+					getTargetDir().mkdirs();
+				}
 				StreamResult result = new StreamResult(junitXMLFile);
 				transformer.transform(source, result);
+				logger.info("Report Complete: " + junitXMLFile);
 			}
 		} catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
+			logger.error(pce);
 		} catch (TransformerException tfe) {
-			tfe.printStackTrace();
-		} catch (DOMException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (TransformerFactoryConfigurationError e) {
-			e.printStackTrace();
+			logger.error(tfe);
+		} catch (DOMException domEx) {
+			logger.error(domEx);
+		} catch (InterruptedException interuptedEx) {
+			logger.error(interuptedEx);
+		} catch (TransformerFactoryConfigurationError tfce) {
+			logger.error(tfce);
 		}
 	}
 
 	private boolean suiteIsNotEmpty(JunitTestSuite suite) {
-		return suite.getName() == "";
+		return suite.moreReportsExist();
 	}
 
 	private Element initSuiteElement(JunitTestSuite suite) {
@@ -147,19 +152,22 @@ public class JUnitReportWriter {
 	}
 	
 	private Element getInnerMessage(JunitTestCase junitTestCase) {
-		Element innerMessageElement;
+		Element innerMessageElement = null;
 		switch (junitTestCase.getStatus()) {
 		case FAIL:
 			innerMessageElement = doc.createElement(FAILURE);
+			break;
 		case ERROR:
-		default:
 			innerMessageElement = doc.createElement(ERROR);
+			break;
+		default:
+			assert false : "Test cases which pass should not have inner elements";
 		}
 		String innerMessage = "Error message not found for this testcase";
 		if (junitTestCase.getInnerMessage() != null) {
 			innerMessage = junitTestCase.getInnerMessage().getMessage();
 		}
-		innerMessageElement.setNodeValue(innerMessage);
+		innerMessageElement.setTextContent(innerMessage);
 		return innerMessageElement;
 	}
 
@@ -167,5 +175,20 @@ public class JUnitReportWriter {
 		Attr attr = doc.createAttribute(attrName);
 		attr.setValue(value);
 		elem.setAttributeNode(attr);
+	}
+
+	/**
+	 * @param targetDir
+	 *            The targetDir to set
+	 */
+	public void setTargetDir(File targetDir) {
+		this.targetDir = targetDir;
+	}
+
+	/**
+	 * @return the targetDir
+	 */
+	public File getTargetDir() {
+		return targetDir;
 	}
 }

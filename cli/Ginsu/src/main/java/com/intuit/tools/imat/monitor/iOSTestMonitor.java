@@ -30,25 +30,32 @@ public class iOSTestMonitor implements ITestMonitor {
 
 	private boolean executionComplete = false;
 	private boolean ranToCompletion = false;
+	private boolean logFoundAtLeastOnce = false;
 	private RandomAccessFile reader = null;
 	private long filePointer = 0;
 	private Logger logger = Logger.getLogger(iOSTestMonitor.class);
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.tools.imat.ITestMonitor#isExecutionComplete()
 	 */
 	public boolean isExecutionComplete() {
 		return executionComplete;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.tools.imat.ITestMonitor#testsDidRunToCompletion()
 	 */
 	public boolean testsDidRunToCompletion() {
 		return ranToCompletion;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.intuit.tools.imat.IFileListener#fileChanged(java.io.File)
 	 */
 	public void fileChanged(File file) {
@@ -68,12 +75,23 @@ public class iOSTestMonitor implements ITestMonitor {
 			filePointer = Math.max(0, reader.getFilePointer() - 27);
 			logger.debug("Setting file pointer to: "
 					+ String.valueOf(filePointer));
-			reader.close();
-			reader = null;
+			cleanUpReader();
 		} catch (IOException e) {
 			logger.fatal("Could not monitor log file: " + file, e);
 			executionComplete = true;
 			ranToCompletion = false;
+		} catch (FileInFluxException e) {
+			logger.debug("File was still in flux while trying to parse. Waiting"
+					+ "for next notification.");
+		}
+	}
+
+	private void cleanUpReader() {
+		try {
+			reader.close();
+			reader = null;
+		} catch (IOException e) {
+			logger.error("Error while discontinuing monitor", e);
 		}
 	}
 
@@ -81,16 +99,22 @@ public class iOSTestMonitor implements ITestMonitor {
 	 * @param file
 	 * @throws IOException
 	 */
-	private void initReader(File file) throws IOException {
+	private void initReader(File file) throws IOException, FileInFluxException {
 		if (reader == null) {
 			try {
 				reader = new RandomAccessFile(file, "r");
+				logFoundAtLeastOnce = true;
 			} catch (FileNotFoundException e) {
-				String reason = "could not find log file: " + file;
-				logger.debug(reason, e);
-				IOException ex = new IOException(reason);
-				ex.initCause(e);
-				throw ex;
+				logger.debug("could not find log file even though we were"
+						+ " notified of a change.");
+				logger.debug("log has been seen: " + logFoundAtLeastOnce);
+				if (logFoundAtLeastOnce == true) {
+					throw new FileInFluxException();
+				} else {
+					IOException ioex = new IOException();
+					ioex.initCause(e);
+					throw ioex;
+				}
 			}
 		}
 	}
@@ -118,8 +142,8 @@ public class iOSTestMonitor implements ITestMonitor {
 	private boolean ranToCompletion(String line) {
 		boolean ranToCompletion = false;
 		if (line.contains(iOSEndOfLogMsg.SCRIPT_COMPLETED.getMessage())) {
-			logger.info("***** Script has fully completed execution successfuly." +
-					"*****");
+			logger.info("***** Script has fully completed execution successfuly."
+					+ "*****");
 			ranToCompletion = true;
 		} else {
 			logger.info("***** Script stopped running prematurely.*****");

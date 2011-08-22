@@ -41,7 +41,6 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 	IOSLogEntryToJUnitTranslator(Logger logger,
 			BlockingQueue<Dict> testLogQueue,
 			BlockingQueue<JunitTestSuite> reportQueue) {
-
 		this.logger = logger;
 		this.testLogQueue = testLogQueue;
 		this.reportQueue = reportQueue;
@@ -55,15 +54,25 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 		IOSPhaseTranslator translator = new PreInitSuitePhaseTranslator();
 		try {
 			while (testLogQueueIsNotEmpty((dict = testLogQueue.take()))) {
-				logger.trace("processing dictionary entry: " + dict.toString());
+				logger.trace("Processing dictionary entry: " + dict.toString());
 				translator = translator.process(dict);
 			}
 		} catch (InterruptedException e) {
 			logger.error(e);
 		}
-		String numReports = String.valueOf(reportQueue.size());
-		logger.info("report translation complete. Found " + numReports 
-				+ "reports");
+		logger.info("Report translation complete. Found " + testSuiteCount 
+				+ " report(s).");
+		sendReportQueueClosingMessage();
+	}
+	
+	private void sendReportQueueClosingMessage() {
+		JunitTestSuite closingMessage = new JunitTestSuite();
+		closingMessage.setMoreReportsExist(false);
+		try {
+			reportQueue.put(closingMessage);
+		} catch (InterruptedException e) {
+			logger.error(e);
+		}
 	}
 
 	private boolean testLogQueueIsNotEmpty(Dict dict) {

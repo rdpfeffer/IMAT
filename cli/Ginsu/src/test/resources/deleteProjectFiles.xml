@@ -32,6 +32,7 @@
 				<include name="suites" />
 				<include name="tests" />
 				<include name="views" />
+				<include name="reports" />
 			</fileset>
 		</chmod>
 		<delete dir="${target.dir}" />

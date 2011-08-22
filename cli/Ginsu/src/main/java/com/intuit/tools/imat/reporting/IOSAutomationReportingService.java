@@ -42,13 +42,10 @@ public class IOSAutomationReportingService implements IReportingService {
 	public void convertTestOutputFileToJunitXMLResultFormat(File pList) {
 		logger.info("Starting conversion process of plist file: " + pList.toString());
 		reader.setPlistFile(pList);
+		writer.setTargetDir(getJunitXMLResultPath());
 		(new Thread(reader)).start();
 		(new Thread(translator)).start();
 		writer.write();
-	}
-
-	public File getJunitXMLResultPath() {
-		return junitXMLResultPath;
 	}
 
 	public ArrayList<Dict> getDictList() {
@@ -67,6 +64,10 @@ public class IOSAutomationReportingService implements IReportingService {
 		this.junitTestSuiteList = junitTestSuiteList;
 	}
 
+	public File getJunitXMLResultPath() {
+		return junitXMLResultPath;
+	}
+	
 	public void setJunitXMLResultPath(File junitXMLResultPath) {
 		this.junitXMLResultPath = junitXMLResultPath;
 	}

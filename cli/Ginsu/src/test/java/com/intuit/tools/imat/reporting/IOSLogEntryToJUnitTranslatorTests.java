@@ -11,9 +11,9 @@ public class IOSLogEntryToJUnitTranslatorTests extends BaseIOSAutomationResultsT
 		reader.run();
 		translator.run();
 		int suiteCount = ((Integer)props.get(REPORT_QUEUE_SIZE_KEY)).intValue();
-		String sizeAsString = String.valueOf(suiteCount);
+		suiteCount++;//there should be a closing message in the report queue as well.
 		assert reportQueue.size() == suiteCount : "Queue was expected to have " 
-			+ sizeAsString + " results for the file named " + fileName 
+			+ suiteCount + " results for the file named " + fileName 
 			+ " instead it had: " + reportQueue.size();
 	}
 }
