@@ -97,24 +97,27 @@ public class iOSTestMonitor implements ITestMonitor {
 
 	/**
 	 * @param file
-	 * @throws IOException
+	 * @throws FileInFluxException In cases where the scripts happen to be writing very
+	 * large amounts of text out to the log file at a given time. 
 	 */
-	private void initReader(File file) throws IOException, FileInFluxException {
+	private void initReader(File file) throws FileInFluxException {
 		if (reader == null) {
 			try {
 				reader = new RandomAccessFile(file, "r");
 				logFoundAtLeastOnce = true;
 			} catch (FileNotFoundException e) {
-				logger.debug("could not find log file even though we were"
-						+ " notified of a change.");
-				logger.debug("log has been seen: " + logFoundAtLeastOnce);
-				if (logFoundAtLeastOnce == true) {
-					throw new FileInFluxException();
-				} else {
-					IOException ioex = new IOException();
-					ioex.initCause(e);
-					throw ioex;
-				}
+				logger.debug("Could not find log file even though we were"
+						+ " notified of a change. Log has been seen by "
+						+ "monitor: " + logFoundAtLeastOnce);
+				//Note we throw a different exception to mask the fact that we
+				//get a FileNotFoundException when the framework is writing 
+				//large amounts of text to the logs. This is OK because our
+				//monitor is only being notified when the file being monitored
+				//has changed, which implies that it also exists, even if
+				//the call to read it says it does not. By throwing this 
+				//exception instead we will defer reading it until the next time
+				//we are notified.
+				throw new FileInFluxException();
 			}
 		}
 	}
