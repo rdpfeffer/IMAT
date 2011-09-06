@@ -142,7 +142,9 @@ public class PropertyFileConfigurationService implements IConfigurationService,
 	 */
 	private void loadProjectConfiguration(boolean expectsProjectConfig)
 			throws ProjectConfigurationNotFoundException {
-		logger.debug("Loading Project Configuration.");
+		if (expectsProjectConfig) {
+			logger.info("Loading Project Configuration.");
+		}
 		Properties props = this.projResourceService
 				.getProjectProperties("project.properties");
 		if (props.isEmpty()) {

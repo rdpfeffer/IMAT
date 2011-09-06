@@ -44,7 +44,11 @@ public class SynchronousCommandDispatchService implements
 	public void dispatch(ICommand command) throws MisconfigurationException {
 		logger.debug("Start Dispatching Command. Command Named: "
 				+ command.getName());
-		command.run();
+		if (command.isRunnable()) {
+			logger.info("Running Command...");
+			command.run();
+			logger.info("Command Completed.");
+		}
 		logger.debug("Finished Dispatching Command. Command Named: "
 				+ command.getName());
 	}

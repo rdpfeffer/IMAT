@@ -13,6 +13,8 @@ package com.intuit.tools.imat.cli;
 import java.util.Hashtable;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.MissingCommandException;
@@ -41,6 +43,7 @@ public class CommandLineParsingService implements IInputHandlingService {
 	private final JCommander jCommander;
 	private final MainArgs mainArgs;
 	private final Map<String, ICommand> supportedCommands;
+	private final Logger logger;
 	private StringBuilder stringBuilder;
 	private ICommand command;
 
@@ -51,10 +54,11 @@ public class CommandLineParsingService implements IInputHandlingService {
 	 * @param supportedCommands
 	 */
 	CommandLineParsingService(JCommander jCommander, MainArgs mainArgs,
-			SupportedCommandCollection supportedCommands) {
+			SupportedCommandCollection supportedCommands, Logger logger) {
 		this.mainArgs = mainArgs;
 		this.jCommander = jCommander;
 		this.supportedCommands = supportedCommands;
+		this.logger = logger;
 
 		// Setup The JCommander Object with the Supported Commands
 		this.loadSupportedCommands();
@@ -72,21 +76,23 @@ public class CommandLineParsingService implements IInputHandlingService {
 	public void handleInput(String[] input) {
 		stringBuilder = new StringBuilder();
 		ICommand parsedCommand = getParsedCommand(input);
-		if (parsedCommand.shouldRenderCommandUsage()) {
-			UsagePrinter usagePrinter;
-			if (parsedCommand.getName() == UsagePrinter.NAME) {
-				usagePrinter = getUsagePrinter();
-			} else {
-				stringBuilder.append("Explanation..."
-						+ System.getProperty("line.separator"));
-				jCommander.usage(parsedCommand.getName(), stringBuilder);
-				usagePrinter = (UsagePrinter) supportedCommands
-						.get(UsagePrinter.NAME);
-				usagePrinter.setUsage(stringBuilder.toString());
+		if (parsedCommand != null) {
+			if (parsedCommand.shouldRenderCommandUsage()) {
+				UsagePrinter usagePrinter;
+				if (parsedCommand.getName() == UsagePrinter.NAME) {
+					usagePrinter = getUsagePrinter();
+				} else {
+					stringBuilder.append("Explanation..."
+							+ System.getProperty("line.separator"));
+					jCommander.usage(parsedCommand.getName(), stringBuilder);
+					usagePrinter = (UsagePrinter) supportedCommands
+							.get(UsagePrinter.NAME);
+					usagePrinter.setUsage(stringBuilder.toString());
+				}
+				parsedCommand = usagePrinter;
 			}
-			parsedCommand = usagePrinter;
+			command = parsedCommand;
 		}
-		command = parsedCommand;
 	}
 
 	/*
@@ -136,8 +142,12 @@ public class CommandLineParsingService implements IInputHandlingService {
 				throw new MissingCommandException("Please enter at least one " +
 						"command.");
 			}
-		} catch (Throwable e) {
-			parsedCommand = getUsagePrinterForException(e);
+		} catch (MissingCommandException mce) {
+			stringBuilder.append(mce.getMessage()
+					+ System.getProperty("line.separator"));
+			parsedCommand = getUsagePrinter();
+		} catch (Throwable paramException) {
+			logger.fatal(paramException.getMessage());
 		}
 		return parsedCommand;
 	}
@@ -160,20 +170,6 @@ public class CommandLineParsingService implements IInputHandlingService {
 		return usagePrinter;
 	}
 
-	private UsagePrinter getUsagePrinterForException(Throwable e) {
-		UsagePrinter usagePrinterForException;
-		if (e.getClass() == MissingCommandException.class) {
-			stringBuilder.append(e.getMessage()
-					+ System.getProperty("line.separator"));
-			usagePrinterForException = getUsagePrinter();
-		} else {
-			usagePrinterForException = (UsagePrinter) supportedCommands
-					.get(UsagePrinter.NAME);
-			usagePrinterForException.setUsage(e.getMessage());
-		} 
-		return usagePrinterForException;
-	}
-
 	/**
 	 * load the commands that we support into the jCommander object.
 	 */
@@ -183,5 +179,4 @@ public class CommandLineParsingService implements IInputHandlingService {
 			jCommander.addCommand(entry.getKey(), entry.getValue());
 		}
 	}
-
 }

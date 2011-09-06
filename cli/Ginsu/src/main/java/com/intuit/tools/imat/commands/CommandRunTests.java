@@ -125,18 +125,13 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 				exitStatus = startTests();
 			}
 			if (exitStatus == ExitStatus.SUCCESS) {
-				monitorTests();
+				exitStatus = monitorTests();
+			}
+			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = stopTests();
 			}
 			if (exitStatus == ExitStatus.SUCCESS) {
-				exitStatus = (testMonitor.testsDidRunToCompletion() ? ExitStatus.SUCCESS
-						: ExitStatus.TESTING_ERROR);
-			}
-			if (exitStatus == ExitStatus.SUCCESS) {
 				generateReport();
-			}
-			if (exitStatus == ExitStatus.SUCCESS) {
-				exitStatus = archiveTestResults();
 			}
 		} else {
 			logger.error("Invalid Parameters: You must specify a suite as well as a template file. Run \"imat run-tests -help\" for more information.");
@@ -180,10 +175,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 	 * @throws MisconfigurationException
 	 * 
 	 */
-	private void monitorTests() throws MisconfigurationException {
+	private ExitStatus monitorTests() {
 		logger.info("Waiting for tests to complete...");
 		File testResultLog = null;
 		int tries = 0;
+		ExitStatus status = ExitStatus.SUCCESS;
+		//make multiple attempts at finding the automation results log
 		while (testResultLog == null & tries < MAX_ATTEMPTS_TO_FIND_LOG) {
 			try {
 				testResultLog = applicationResourceService.getAppResourceFile(
@@ -201,13 +198,18 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 			tries++;
 		}
 		if (testResultLog == null) {
-			throw new MisconfigurationException("Could not find Automation "
-					+ "Results file: " + AUTOMATION_RESULTS_FILE);
+			logger.fatal("Could not find Automation Results file: " 
+					+ AUTOMATION_RESULTS_FILE + " Stopping test suite.");
+			//Here, we stop the tests so that the environment was put back to 
+			//the way it started.
+			invokeStopScript();
+			status = ExitStatus.SETUP_ERROR;
 		} else {
 			logger.debug("Monitoring Log file...");
 			fileMonitoringService.monitorFile(testResultLog, MINIMUM_INTERVAL,
 					this);
 		}
+		return status;
 	}
 
 	/**
@@ -227,6 +229,19 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 		}
 		fileMonitoringService.stopMonitoring();
 		logger.debug("test execution is complete. Lauching Apple Script to stop Instruments.");
+		ExitStatus status = invokeStopScript();
+		if (status == ExitStatus.SUCCESS) {
+			status = (testMonitor.testsDidRunToCompletion() ? ExitStatus.SUCCESS
+					: ExitStatus.TESTING_ERROR);
+		}
+		return status;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private ExitStatus invokeStopScript() {
 		IScriptLauncher scriptLauncher = this.getScriptLauncher();
 		scriptLauncher.setScript("StopXCodeInstrument.scpt");
 		return scriptLauncher.runScript();
@@ -247,14 +262,13 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	private ExitStatus archiveTestResults() throws MisconfigurationException {
 		logger.info(HORIZONTAL_RULE + "\n" + "Cleaning up...\n"
 				+ HORIZONTAL_RULE);
 		String runLogDirPath = "";
-		ExitStatus exitCode = ExitStatus.SUCCESS;
+		ExitStatus exitStatus = ExitStatus.SUCCESS;
 		try {
 			LinkedHashMap<String, String> arguments = new LinkedHashMap<String, String>();
 			runLogDirPath = applicationResourceService.getAppResourceFile(
@@ -263,7 +277,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 			IScriptLauncher scriptLauncher = this.getScriptLauncher();
 			scriptLauncher.setProperties(arguments);
 			scriptLauncher.setScript("CleanUpXCodeInstrument.scpt");
-			exitCode = scriptLauncher.runScript();
+			exitStatus = scriptLauncher.runScript();
 		} catch (FileNotFoundException e) {
 			MisconfigurationException ex = new MisconfigurationException(
 					"Could not find run log directory: " + runLogDirPath);
@@ -275,7 +289,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand,
 			ex.initCause(e);
 			throw ex;
 		}
-		return exitCode;
+		return exitStatus;
 	}
 
 	/*

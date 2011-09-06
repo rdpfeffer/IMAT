@@ -36,7 +36,7 @@ public enum ExitStatus {
 
 	/**
 	 * The INTERNAL_ERROR exit status (value: 1) should be used in cases where
-	 * internal errors occur that are not at the fault of the imat user.
+	 * internal errors occur that are not at the fault of the IMAT user.
 	 * Normally there will be an exception which accompanies this error code.
 	 * This exception typically will be printed out to aide in debugging the
 	 * issue.
@@ -62,7 +62,8 @@ public enum ExitStatus {
 	 * The SETUP_ERROR exit status (value: 4) should be used in cases where the
 	 * user has failed to setup their environment correctly. An example of this
 	 * would be in cases where the user incorrectly sets the output path of the
-	 * Automation Results.plist file in Instruments.
+	 * Automation Results.plist file in Instruments or when the user is not 
+	 * correctly pointing to a valid automation project.
 	 */
 	SETUP_ERROR(4);
 

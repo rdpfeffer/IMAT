@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.apache.log4j.Logger;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -108,8 +109,9 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 			this.jCommander = injector.getInstance(JCommander.class);
 			SupportedCommandCollection cmdCollection = injector
 					.getInstance(SupportedCommandCollection.class);
+			Logger logger = Logger.getLogger(CommandLineParsingService.class);
 			CommandLineParsingService parsingService = new CommandLineParsingService(
-					this.jCommander, mainArgs, cmdCollection);
+					this.jCommander, mainArgs, cmdCollection, logger);
 			parsingService.handleInput(args);
 			AssertJUnit.assertEquals(expectedCommands[i].getName(),
 					parsingService.getCommand().getName());
@@ -133,8 +135,9 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 		this.jCommander = injector.getInstance(JCommander.class);
 		SupportedCommandCollection cmdCollection = injector
 				.getInstance(SupportedCommandCollection.class);
+		Logger logger = Logger.getLogger(CommandLineParsingService.class);
 		CommandLineParsingService parsingService = new CommandLineParsingService(
-				this.jCommander, mainArgs, cmdCollection);
+				this.jCommander, mainArgs, cmdCollection, logger);
 
 		StringBuilder exepectedUsageString = new StringBuilder();
 		this.jCommander.usage(exepectedUsageString);
@@ -206,8 +209,9 @@ public class CommandLineParsingServiceTest extends BaseFunctionalTest {
 			this.jCommander = injector.getInstance(JCommander.class);
 			SupportedCommandCollection cmdCollection = injector
 					.getInstance(SupportedCommandCollection.class);
+			Logger logger = Logger.getLogger(CommandLineParsingService.class);
 			CommandLineParsingService parsingService = new CommandLineParsingService(
-					this.jCommander, mainArgs, cmdCollection);
+					this.jCommander, mainArgs, cmdCollection, logger);
 			parsingService.handleInput(args);
 
 			ICommand command = parsingService.getCommand();

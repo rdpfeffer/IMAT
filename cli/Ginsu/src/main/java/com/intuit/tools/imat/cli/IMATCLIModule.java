@@ -17,6 +17,8 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URL;
 
+import org.apache.log4j.Logger;
+
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
 import com.google.inject.AbstractModule;
@@ -145,7 +147,8 @@ public class IMATCLIModule extends AbstractModule {
 	CommandLineParsingService provideCommandLineParsingService(
 			JCommander jCommander, MainArgs mainArgs,
 			SupportedCommandCollection supportedCommands) {
+		Logger logger  = Logger.getLogger(CommandLineParsingService.class);
 		return new CommandLineParsingService(jCommander, mainArgs,
-				supportedCommands);
+				supportedCommands, logger);
 	}
 }

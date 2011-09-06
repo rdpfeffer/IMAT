@@ -89,20 +89,17 @@ public class App {
 					+ configOverride.get(AppContext.PROJECT_HOME_KEY));
 
 			// load properties
-			logger.info("Loading Configuration.");
 			configService.loadConfiguration(command.expectsProject());
 			appContext.overrideProperties(configOverride);
 
 			// run the loaded command using the command dispatch service
 			ICommandDispatchService commandDispatchService = injector
 					.getInstance(ICommandDispatchService.class);
-			logger.info("Running Command...");
 			commandDispatchService.dispatch(command);
 			exitStatus = command.getExitStatus();
 			logger.debug("Command Named: " + command.getName()
 					+ " finished with an exit status of "
 					+ String.valueOf(exitStatus));
-			logger.info("Command Completed.");
 
 			// TODO RP: After the command has run, dispatch the update command
 			// in the background and exit.
@@ -120,6 +117,7 @@ public class App {
 			logger.fatal("A IMAT Automation project was not found. \nThe command: "
 					+ command.getName()
 					+ " expected a file called project.properties.\nPlease re-run this command from the same directory as your project home (where project.properties is) or alternatively, run the command setting the \"-p\" flag to the directory where the project.properties file is.");
+			exitStatus = ExitStatus.SETUP_ERROR.getStatus();
 		}
 		if (!configService.shouldSkipExitStatus()) {
 			System.exit(exitStatus);
