@@ -37,9 +37,11 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	validateImageSwitchedAction : function(previousImageName, currentImageName)
 	{
 		this.validateState("image switched", false, this, function(that) {
-			var oldImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(previousImageName);
-			var currentImage = UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(currentImageName);
-			assertFalse(that.isElementWithinViewRange(oldImage));
+			var previousImage = that.getElement("imageWithName", previousImageName);
+			var currentImage = 	that.getElement("imageWithName", currentImageName);
+			assertValid(previousImage, "previous Image");
+			assertValid(currentImage, "current Image");
+			assertFalse(that.isElementWithinViewRange(previousImage));
 			assertTrue(that.isElementWithinViewRange(currentImage));
 		});
 		return this;

@@ -15,7 +15,7 @@ var IMAT_TARGET_PLATFORM = "ios";
 #import "../project.js"
 
 /**
- * This suite will run all of the manual tests. Since manual tests really don't interacti with the 
+ * This suite will run all of the manual tests. Since manual tests really don't interact with the 
  * it is more expedient to turn off parts of the test lifecycle so that you don't have to wait for
  * setup and teardown functions to run in order to get the results.
  */

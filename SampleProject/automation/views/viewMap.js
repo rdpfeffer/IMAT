@@ -28,7 +28,7 @@ IMAT.viewMap = {
 	ListView : {	
 		table : 				".tableViews()[0]",
 		firstTableItem : 		".tableViews()[0].cells()[0]",
-		lastTableItem : 		function () {
+		lastTableItem : 		function() {
 			var tableViewCells = UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[0].cells();
 			return tableViewCells[tableViewCells.length - 1];
 		},
@@ -38,6 +38,9 @@ IMAT.viewMap = {
 		detailsAndCloseButton : ".navigationBar().rightButton()",
 		image : 				".images()[0]",
 		contentArea : 			".contentArea()",
+		imageWithName :			function(imageName) {
+			return UIATarget.localTarget().frontMostApp().mainWindow().images().firstWithName(imageName);
+		},
 	},
 	
 	SettingsView : {
