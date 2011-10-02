@@ -26,11 +26,14 @@ var IMAT_TARGET_PLATFORM = "ios";
 IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
 
 //load the tests
+#import "./MockView.js"
+#import "./MetaBaseViewTests.js"
+
 #import "./MockTests.js"
 #import "./MetaTests.js"
 #import "./SuiteHandler.js"
 
 
 //run the tests
-IMAT.suiteRunner.previewAllRunnableTests();
+//IMAT.suiteRunner.previewAllRunnableTests();
 IMAT.suiteRunner.runTests(new IMAT.SuiteHandler());

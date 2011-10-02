@@ -41,7 +41,8 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 		this.app = null;
 		this.mainWin = null;
 		this.refreshAppContext();
-		IMAT.log_trace("Base View initialized: " + this.target + " " + this.app + " " + this.mainWin);
+		IMAT.log_trace("Base View initialized: " + this.target + " " + this.app + 
+			" " + this.mainWin);
 		
 	},
 	
@@ -85,7 +86,9 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 	 * 					Optional. If defined, they will be passed to the 
 	 * 					validator function for dynamic state validation.
 	 *
-	 * @throws An exception of type {@type String} if the validation fails.
+	 * @throws An exception of type {@type String} if there is a script error.
+	 * @throws An exception of Type {@type IMAT.AssertionException} if an 
+	 * 		assertion does not pass. 
 	 */
 	validateState: function(stateName, isTransientState, view, validatorFunc, args)
 	{
@@ -100,13 +103,21 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 			}
 		} catch (e) {
 			if(isTransientState) {
-				IMAT.log_debug("Transient State Validation Failed, most likely due to an " +
-					"asynchronous state transition in the app. Exception is being ignored. " + e);
+				IMAT.log_debug("Transient State Validation Failed, most likely "+
+					"due to an asynchronous state transition in the app. "+
+					"Exception is being ignored. " + e);
 			} else {
-				throw "Validation Error: " + e;
+				var validationPrefix = "Validation Error: ";
+				if (e instanceof IMAT.AssertionException) {
+					throw new IMAT.AssertionException(validationPrefix + 
+						e.toString());
+				} else {
+					throw "Test Script Error (Please Fix)- " + e;
+				}
 			}
 		}
-		IMAT.log_trace("Validation on " + this.viewName + ": " + stateName + " state passed." );
+		IMAT.log_trace("Validation on " + this.viewName + ": " + stateName + 
+			" state passed." );
 	},
 	
 	/**
@@ -190,6 +201,55 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 			IMAT.log_state();
 		}
 	},
+	
+	//This function is not documented on purpose as it is not to be used 
+	//directly by a consuming project. Instead, the user should call one of the
+	//functions that indirectly uses _retrieveElement. See this.getElementFromView,
+	//this.getElement, this.isElementFromViewPresent and this.isElementPresent
+	_retrieveElement: function(elementID, viewID) {
+		var element = UIAElementNil;
+        if (IMAT.viewMap && IMAT.viewMapPrefix)
+        {
+            IMAT.log_trace("View name is: " + this.viewName + " viewID is: " + viewID);
+            IMAT.log_trace("Finding element: " + elementID);
+            if (!viewID) {
+                viewID = this.viewName;
+            }
+            this.target.pushTimeout(5);
+            var locator = IMAT.viewMap[viewID][elementID];
+            IMAT.log_trace("the view map returned the following locator: " + locator);
+            if (typeof locator == "function") {
+            	IMAT.log_trace("Locator for " + elementID + " was a function.");
+            	locatorArgs = [];
+            	for (var argInd = 2; argInd < arguments.length; argInd++) {
+            		locatorArgs.push(arguments[argInd]);
+            	}
+            	element = locator.apply(this, locatorArgs);
+            } else if (locator instanceof Array) {
+            	IMAT.log_trace("Locator for " + elementID + " was an array.");
+            	var tempElement = undefined;
+            	var i = 0;
+            	for (i = 0; i < locator.length; i++) {
+            		IMAT.log_trace("evaluating: " + IMAT.viewMapPrefix + locator[i]);
+                    tempElement = eval(IMAT.viewMapPrefix + locator[i]);
+            		if (tempElement && !(tempElement instanceof UIAElementNil)){
+            			element = tempElement;
+            			break;
+            		}
+                    IMAT.log_trace("array locator not found in loop: " + IMAT.viewMapPrefix + locator[i]);
+            	}
+            } else if (typeof locator == "string") {
+            	IMAT.log_trace("Locator for " + elementID + " was a string.");
+            	element = eval(IMAT.viewMapPrefix + locator);
+            }
+            this.target.popTimeout();
+            IMAT.log_debug("Found " + element + " when searching for " + elementID);
+        } else {
+            IMAT.log_warning("Both IMAT.viewMap and IMAT.viewMapPrefix must be defined to " +
+            	"use IMAT.BaseView.getElement(). Cannot get element.");
+        }
+        return element;
+	},
     
     /**
      * Get an element defined within the {@link IMAT.viewMap}. <b>Note</b>, the
@@ -243,66 +303,157 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
      *                      view and specify the viewID of the more generic set of
      *                      locators. This is an optional argument. When it is not
      *                      set, viewID takes the same value as <code>this.viewName<code>
+     *
+     * @returns {@type UIAElement}
      * 
      * @requires IMAT.viewMap, A map of locators defining elements on 
      * each view. IMAT.viewMapPrefix, the prefix to all string based locators. 
      */
-    getElementFromView: function (elementID, viewID){
-		var element = UIAElementNil;
-        if (IMAT.viewMap && IMAT.viewMapPrefix)
-        {
-            IMAT.log_trace("View name is: " + this.viewName + " viewID is: " + viewID);
-            IMAT.log_trace("Finding element: " + elementID);
-            if (!viewID) {
-                viewID = this.viewName;
-            }
-            this.target.pushTimeout(5);
-            var locator = IMAT.viewMap[viewID][elementID];
-            IMAT.log_trace("the view map returned the following locator: " + locator);
-            if (typeof locator == "function") {
-            	IMAT.log_trace("Locator for " + elementID + " was a function.");
-            	locatorArgs = [];
-            	for (var argInd = 2; argInd < arguments.length; argInd++) {
-            		locatorArgs.push(arguments[argInd]);
-            	}
-            	element = locator.apply(this, locatorArgs);
-            } else if (locator instanceof Array) {
-            	IMAT.log_trace("Locator for " + elementID + " was an array.");
-            	var tempElement = undefined;
-            	var i = 0;
-            	for (i = 0; i < locator.length; i++) {
-            		IMAT.log_trace("evaluating: " + IMAT.viewMapPrefix + locator[i]);
-                    tempElement = eval(IMAT.viewMapPrefix + locator[i]);
-            		if (tempElement && !(tempElement instanceof UIAElementNil)){
-            			element = tempElement;
-            			break;
-            		}
-                    IMAT.log_trace("array locator not found in loop: " + IMAT.viewMapPrefix + locator[i]);
-            	}
-            } else if (typeof locator == "string") {
-            	IMAT.log_trace("Locator for " + elementID + " was a string.");
-            	element = eval(IMAT.viewMapPrefix + locator);
-            }
-            this.target.popTimeout();
-            IMAT.log_debug("Found " + element + " when searching for " + elementID);
-        } else {
-            IMAT.log_warning("Both IMAT.viewMap and IMAT.viewMapPrefix must be defined to " +
-            	"use IMAT.BaseView.getElement(). Cannot get element.");
-        }
+    getElementFromView: function(elementID, viewID){
+		var element = this._retrieveElement.apply(this, arguments);
         if (element instanceof UIAElementNil) {
-        	IMAT.log_warning("Could not locate element: " + elementID + " in view: " + this.viewName);
+        	IMAT.log_warning("Could not locate element: " + elementID + 
+        		" in view: " + this.viewName);
         }
         return element;
 	},
-    
+	
+    /**
+     * Get an element defined within the {@link IMAT.viewMap}. <b>Note</b>, the
+     * view map is defined within the project when it is generated via the IMAT 
+     * command line utility and contains a set of key-value pairs mapping the 
+     * keys to locator values. These values can be one of three types:
+     * <ul>
+     * <li>A {@link String} representing the location of the element, like<br/> 
+     * <code>refreshButton : ".navigationBar().buttons()[\"Refresh\"]",</code><br/>
+     * In this case, the string is evaluated and the function simply returns the result.</li>
+     * <li>An {@link Array} of {@link String}s representing possible locations 
+     * of the element, like <br/><code>refreshButton : 
+     * [".navigationBar().buttons()[\"Refresh\"]", ".navigationBar().buttons()[0]"],</code><br/>
+     * In this case, each element in the array is evaluated until the first 
+     * element is found and does not contain an undefined result or UIAElementNil.</li>
+     * <li>A {@link function} which returns the desired element.</li>
+     * </ul>
+     * More concretely, see the following example of a viewMap for an imaginary
+     * project. Note the different types of locators. For the locators that are
+     * of type {@type string}, the IMAT.viewMapPrefix is appended before evaluating
+     * them.
+     * 
+     * @example
+     * //viewMap.js for an imaginary project..
+     * IMAT.viewMapPrefix = "UIATarget.localTarget().frontMostApp().mainWindow()";
+     * IMAT.viewMap = {	
+     * 	ItemListView : {
+     * 		searchBar :  ".toolbars()[0].searchBars()[0]",
+     * 		clearSearchButton :  [
+     * 			".toolbars()[0].searchBars()[0].buttons().firstWithName(\"Clear text\")",
+     * 			".toolbars()[0].searchBars()[0].buttons()[0]"],
+     * 		listButton :  ".toolbars()[0].buttons()[1]",
+     * 		itemWithName: function(name) {
+     * 			return UIATarget.localTarget().frontMostApp().mainWindow().tableViews[0].cells()[name];
+     * 		},
+     * 	},
+     * 	...
+     * };
+     * 
+     * @param {string} elementID
+     * 						The name of the property from the view map for the 
+     * 						current view. When the value assigned to this 
+     * 						property is evaluated, it should return the desired
+     *						element currently on screen.
+     * 
+     * @returns {@type UIAElement}
+     * 
+     * @requires IMAT.viewMap, A map of locators defining elements on 
+     * each view. IMAT.viewMapPrefix, the prefix to all string based locators. 
+     */
     getElement: function(elementID) {
         var locatorArgs = [elementID, this.viewName];
         for (var argInd = 1; argInd < arguments.length; argInd++) {
             IMAT.log_trace("Pushing Argument from getElement()");
             locatorArgs.push(arguments[argInd]);
         }
-        IMAT.log_trace("Locator Args for getElementFromView: [" + locatorArgs + "]");
+        IMAT.log_trace("Passing the following Locator Args to "+
+        	"getElementFromView([" + locatorArgs + "])");
         return this.getElementFromView.apply(this, locatorArgs);
+    },
+    
+    /**
+	 * 	Safely determine if an element is present within the view. This function
+	 *  uses locators the same way that {@link IMAT.BaseView#getElement} does to
+	 *  locate the element in question Also note that this function will not 
+	 *  throw an exception if the element does not exist or the locator 
+	 *  evaluates to some non-valid function.
+	 *	
+	 *  @param {string} elementID
+	 *						The element ID of the viewMap locator which we wish
+	 * 						To test for existence
+	 *
+	 *  @param {string} viewID
+     *                      The view within the view map to pull the element from.
+     *                      This is helpful during instances where you might want
+     *                      to inherit elements from a parent view, but don't want
+     *                      to repeat the elementID in every child view. Instead,
+     *                      you can call <code>getElement()</code> from the parent 
+     *                      view and specify the viewID of the more generic set of
+     *                      locators. This is an optional argument. When it is not
+     *                      set, viewID takes the same value as <code>this.viewName<code>
+	 * 
+	 *  @requires IMAT.viewMap 
+	 * 						A map of locators defining elements on each view. 
+	 * 						IMAT.viewMapPrefix, the prefix to all string based 
+     * 						locators.
+	 *
+	 *  @returns {@type boolean} true if the object mapped to the element within  
+	 * 		the view map evaluates to true and is not an instance of 
+	 * 		UIAElementNil.
+	 *  
+	 *  @see IMAT.BaseView#getElementFromView
+	 */
+    isElementFromViewPresent: function(elementID, viewID) {
+    	var isElementPresent = false;
+    	var element = undefined;
+    	try {
+    		element = this._retrieveElement.apply(this, arguments);
+    		if (element && !(element instanceof UIAElementNil)) {
+    			isElementPresent = true;
+    		}
+    	} catch (e) {
+    		IMAT.log_info("An exception was thrown when trying to get element:"+
+    			" " + elementID + " from view: " + viewID);
+    	}
+    	return isElementPresent;
+    },
+    
+    /**
+	 * 	Safely determine if an element is present within the view. This function
+	 *  uses locators the same way that {@link IMAT.BaseView#getElement} does to
+	 *  locate the element in question Also note that this function will not 
+	 *  throw an exception if the element does not exist or the locator 
+	 *  evaluates to some non-valid function.
+	 *	
+	 *  @param {string} elementID
+	 *						The element ID of the viewMap locator which we wish
+	 * 						To test for existence
+	 *  @requires IMAT.viewMap 
+	 * 						A map of locators defining elements on each view. 
+	 * 						IMAT.viewMapPrefix, the prefix to all string based 
+     * 						locators.
+	 *
+	 *  @returns {@type boolean} true if the object mapped to the element within  
+	 * 		the view map evaluates to true and is not an instance of 
+	 * 		UIAElementNil.
+	 *  
+	 *  @see IMAT.BaseView#getElement
+	 */
+    isElementPresent: function(elementID) {
+    	var isElementPresent = false;
+    	var locatorArgs = [elementID, this.viewName];
+        for (var argInd = 1; argInd < arguments.length; argInd++) {
+            IMAT.log_trace("Pushing Argument from isElementPresent()");
+            locatorArgs.push(arguments[argInd]);
+        }
+        return this.isElementFromViewPresent.apply(this, locatorArgs);
     },
 	
 	/**

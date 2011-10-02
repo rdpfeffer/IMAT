@@ -24,4 +24,7 @@ IMAT.AssertionException = function(message)
 	this.prototype = Error.prototype;
 	this.name = "AssertionException";
 	this.message = (message) ? message : "The assertion was not valid.";
+	this.toString = function() {
+		return this.message;
+	};
 };

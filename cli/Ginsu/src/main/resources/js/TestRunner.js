@@ -263,7 +263,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 *
 	 * @param {array} the Array of strings to use as filters.
 	 * 
-	 * @see {IMAT.SuiteRunner.previewAllRunnableTests} for the full set of 
+	 * @see IMAT.SuiteRunner#previewAllRunnableTests for the full set of 
 	 * documentation.
 	 */
 	addFilters : function(filtersArray)
@@ -294,9 +294,9 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	 * 						the signature of the function where the exception  
 	 * 						came from.
 	 * 
-	 * @see {IMAT.settings.LOG_STATE_ON_ERROR} if you would like to turn off 
+	 * @see IMAT.settings.LOG_STATE_ON_ERROR if you would like to turn off 
 	 * logging the state of the application when an error happens. 
-	 * @see {IMAT.AssertionException} for more information on the exception 
+	 * @see IMAT.AssertionException for more information on the exception 
 	 *  object which will report as test failures.
 	 */
 	logException: function(exception, signature)

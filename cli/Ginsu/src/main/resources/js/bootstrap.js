@@ -36,19 +36,23 @@ var IMAT = {};
 #import "./utils/generators.js"
 #import "./BaseTestSet.js"
 
+IMAT.platforms = {
+	ios:"ios"
+};
 
-if(IMAT_TARGET_PLATFORM)
-{
-	switch(IMAT_TARGET_PLATFORM)
-	{
-		case "ios":	
-#import "./platforms/ios/platform.js";
-			break;
-	}
+//First ensure that the target platform var is declared.
+if(typeof IMAT_TARGET_PLATFORM === "undefined") {
+	var IMAT_TARGET_PLATFORM = IMAT.platforms.ios;
 }
-else
+
+//Then ensure that even if it was declared, it should be set to something.
+if(!IMAT_TARGET_PLATFORM) {
+	IMAT_TARGET_PLATFORM = IMAT.platforms.ios;
+}
+
+if(IMAT_TARGET_PLATFORM === IMAT.platforms.ios)
 {
-	throw "IMAT_TARGET_PLATFORM not Set! Please set to one of the following: " + IMAT.platforms; 
+#import "./platforms/ios/platform.js";
 }
 
 // Declare the Runner Classes

@@ -71,7 +71,7 @@ IMAT.logLevels = {
 /**
  * 	@namespace Holds state constants for the framework to be used when validating
  *  common states of a given view class. 
- * 	@see {@link IMAT.BaseView.validate}
+ * 	@see IMAT.BaseView#validate
  */
 IMAT.states = {
 	/**

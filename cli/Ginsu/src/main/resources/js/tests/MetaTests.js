@@ -20,8 +20,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	/**
 	 * Initializes the MetaTest Class object.
 	 */
-	initialize: function()
-	{
+	initialize: function() {
 		this.types = [undefined, null, 0, 1, true, false, "", "val", {key:"val"}, [1,2,3], 
 			function(){}];
 		
@@ -51,39 +50,33 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	 * setup the App to normalize the way tests are run. Initialize the view context and do whatever
 	 * we can to clear out the old set of test data and set the right target server environment
 	 */
-	setUp: function()
-	{
+	setUp: function() {
 		//Do nothing
 	},
 	
 	/**
 	 * tearDown the App to normalize the way tests finish. Clear the cache if possible.
 	 */
-	tearDown: function()
-	{
+	tearDown: function() {
 		//Do nothing
 	},
 	
-	setUpTestSet: function()
-	{
+	setUpTestSet: function() {
 		//Do nothing.
 	},
 	
-	tearDownTestSet: function()
-	{
+	tearDownTestSet: function()	{
 		//Do nothing
 	},
 	
-	doCleanup: function()
-	{
+	doCleanup: function() {
 		//Do nothing
 	},
 	
 	/**
 	 * Test all of the macros so that we have a clear definition of what they will allow.
 	 */
-	testMacros: function()
-	{
+	testMacros: function() {
 		//---------------------------------assertEquals-------------------------------------------//
 		//-----------positive cases--------------//
 		var i;
@@ -231,8 +224,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	 * Make sure that we are finding all the functions we care about in a test test and ignoring
 	 * the ones we don't.
 	 */
-	testIsPropValidTestCase: function()
-	{
+	testIsPropValidTestCase: function()	{
 		var myRunner = new IMAT.TestRunner();
 		var mockTests = new IMAT.MockTests();
 		var i;
@@ -257,8 +249,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	/**
 	 * Make sure that we are filtering out all the tests we don't care about in a test set
 	 */
-	testTestCaseMatchesFilter: function()
-	{
+	testTestCaseMatchesFilter: function() {
 		var myRunner = new IMAT.TestRunner();
 		var mockTests = new IMAT.MockTests();
 		var i;
@@ -309,8 +300,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	/**
 	 * Make sure we are able to decipher one exception from the next.
 	 */
-	testExceptions: function()
-	{
+	testExceptions: function() {
 		//-----------positive cases--------------//
 		IMAT.log_debug("testing positive cases for Exceptions");
 		assertTrue(IMAT.exceptionStartsWithMessage(this.needleAtStart, this.needle));
@@ -325,8 +315,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	/**
 	 * Make sure that the extensions functions for strings work as expected.
 	 */
-	testStringExtensions: function()
-	{
+	testStringExtensions: function() {
 		//-----------positive cases--------------//
 		IMAT.log_debug("testing positive cases for stringExtensions");
 		assertTrue(this.needleByItself.startsWith(this.needle));
@@ -372,8 +361,7 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 			latestException);
 	},
 	
-	manualfailHelper: function(func)
-	{
+	manualfailHelper: function(func) {
 		var didThrowException = true;
 		var result = undefined;
 		try {
