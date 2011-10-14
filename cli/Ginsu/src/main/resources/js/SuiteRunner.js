@@ -174,4 +174,6 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 	}
 	
 });
-
+// Declare a global suite runner object that we can use to run our tests.
+IMAT.suiteRunner = new IMAT.SuiteRunner();
+IMAT.suiteRunner.setTestRunner(new IMAT.TestRunner());

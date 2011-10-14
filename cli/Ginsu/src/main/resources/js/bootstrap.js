@@ -9,13 +9,8 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-/**
- *  @namespace The IMAT namespace holds all of the formal classes of the Intuit
- *  Mobile Automation Toolkit(IMAT). If an object is part of the IMAT namespace,
- *  then it should provide some sort of common functionality applicable to all 
- *  types of consumers of this framework.
- */
-var IMAT = {};
+//Declare the Global object
+#import "./IMAT.js"
 
 //import the default settings
 #import "./settings.js"
@@ -36,29 +31,9 @@ var IMAT = {};
 #import "./utils/generators.js"
 #import "./BaseTestSet.js"
 
-IMAT.platforms = {
-	ios:"ios"
-};
-
-//First ensure that the target platform var is declared.
-if(typeof IMAT_TARGET_PLATFORM === "undefined") {
-	var IMAT_TARGET_PLATFORM = IMAT.platforms.ios;
-}
-
-//Then ensure that even if it was declared, it should be set to something.
-if(!IMAT_TARGET_PLATFORM) {
-	IMAT_TARGET_PLATFORM = IMAT.platforms.ios;
-}
-
-if(IMAT_TARGET_PLATFORM === IMAT.platforms.ios)
-{
+//import platform specific code.
 #import "./platforms/ios/platform.js";
-}
 
 // Declare the Runner Classes
 #import "./TestRunner.js"
 #import "./SuiteRunner.js"
-
-// Declare a global suite runner object that we can use to run our tests.
-IMAT.suiteRunner = new IMAT.SuiteRunner();
-IMAT.suiteRunner.setTestRunner(new IMAT.TestRunner());

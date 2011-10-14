@@ -9,23 +9,10 @@
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
-//bootstrap IMAT
-#import "../bootstrap.js"
-
-//load the tests
-#import "./MockView.js"
-#import "./MetaBaseViewTests.js"
-
-#import "./MockTests.js"
-#import "./MetaTests.js"
-#import "./SuiteHandler.js"
-
 /**
- * declare any settings
- * @ignore
+ *  @namespace The IMAT namespace holds all of the formal classes of the Intuit
+ *  Mobile Automation Toolkit(IMAT). If an object is part of the IMAT namespace,
+ *  then it should provide some sort of common functionality applicable to all 
+ *  types of consumers of this framework.
  */
-IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
-
-//run the tests
-//IMAT.suiteRunner.previewAllRunnableTests();
-IMAT.suiteRunner.runTests(new IMAT.SuiteHandler());
+var IMAT = {};

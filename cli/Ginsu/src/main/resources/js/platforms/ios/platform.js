@@ -8,7 +8,6 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-UIALogger.logDebug("IMAT: Loading Platform: iOS...");
 #import "./logger.js"
 #import "./testUIMacros.js"
 #import "./UIAElement-extensions.js"

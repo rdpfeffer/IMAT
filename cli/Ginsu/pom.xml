@@ -201,7 +201,7 @@ Intuit Inc - Initial contribution
 		<dependency>
 			<groupId>com.beust</groupId>
 			<artifactId>jcommander</artifactId>
-			<version>1.17</version>
+			<version>1.18</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>

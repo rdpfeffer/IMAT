@@ -52,7 +52,7 @@ public class CommandGenerateProjectTest extends BaseFunctionalTest {
 
 		// test to make sure that the Tokens were all matched
 		File[] targetDirFiles = this.command.targetDir.listFiles();
-		assert targetDirFiles.length == 6 : "The target directory did not have the right number of files. Instead it had: "
+		assert targetDirFiles.length == 7 : "The target directory did not have the right number of files. Instead it had: "
 				+ String.valueOf(targetDirFiles.length);
 		for (int i = 0; i < targetDirFiles.length; i++) {
 			if (targetDirFiles[i].getName() == "project.js") {
