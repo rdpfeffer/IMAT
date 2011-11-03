@@ -192,7 +192,9 @@ IMAT.BaseView = Class.create(/** @lends IMAT.BaseView# */{
 				throttle = 0.5;
 			}
 			this.target.pushTimeout(throttle);
+			this.app.keyboard().withValueForKey(1, "isVisible");
 			this.app.keyboard().buttons().firstWithName(buttonName).tap();
+			this.app.keyboard().waitForInvalid();
 			this.target.popTimeout();
 		}
 		catch (e)

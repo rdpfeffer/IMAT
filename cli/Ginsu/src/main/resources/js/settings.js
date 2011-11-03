@@ -17,6 +17,12 @@
 IMAT.settings = {};
 
 /**
+ * Sets the default log level for all of IMAT.
+ * @type String
+ */
+IMAT.settings.logLevel = IMAT.logLevels.LOG_INFO;
+
+/**
  * Flag used to skip the initialization of the suite durring the Test execution 
  * lifecycle.
  * @type Boolean

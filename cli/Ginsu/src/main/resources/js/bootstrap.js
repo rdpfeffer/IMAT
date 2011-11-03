@@ -12,14 +12,14 @@
 //Declare the Global object
 #import "./IMAT.js"
 
+//Declare the constants
+#import "./constants.js"
+
 //import the default settings
 #import "./settings.js"
 
 // Declare the base inheritance framework
 #import "./inheritance-2.7.js"
-
-//Declare the constants
-#import "./constants.js"
 
 // Declare our test macros
 #import "./AssertionException.js"
