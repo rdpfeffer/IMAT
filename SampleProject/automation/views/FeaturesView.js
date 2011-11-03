@@ -30,7 +30,10 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that) {
+			assertValid(that.getElementFromView("navBarWithTitle", "BasicView", "Features"), 
+				"Title of Nav Bar");
 			assertValid(that.getElement("detailsAndCloseButton"), "Details Button");
+			assertValid(that.getBackButton());
 		});
 	},
 	
@@ -38,7 +41,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	{
 		this.validateState("image switched", false, this, function(that) {
 			var previousImage = that.getElement("imageWithName", previousImageName);
-			var currentImage = 	that.getElement("imageWithName", currentImageName);
+			var currentImage = that.getElement("imageWithName", currentImageName);
 			assertValid(previousImage, "previous Image");
 			assertValid(currentImage, "current Image");
 			assertFalse(that.isElementWithinViewRange(previousImage));
@@ -68,7 +71,6 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 	zoomAction : function() {
 		var c = this.getElement("contentArea");
 		this.target.doubleTap(c);
-		this.target.delay(1);
 		return this;
 	},
 	
@@ -76,7 +78,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 		var p1 = { x: 200, y: 300 };
 		var p2 = { x: 0, y: 300 };
 		this.target.dragFromToForDuration(p1, p2, 0.5);
-		this.target.delay(1);
+		this.target.delay(0.5);
 		return this;
 	},
 	
@@ -84,7 +86,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 		var p1 = { x: 0, y: 300 };
 		var p2 = { x: 200, y: 300 };
 		this.target.dragFromToForDuration(p1, p2, 0.5);
-		this.target.delay(1);
+		this.target.delay(0.5);
 		return this;		
 	},
 	
@@ -112,7 +114,7 @@ SAMPLE.FeaturesView = Class.extend(SAMPLE.BasicView, {
 				var numberXVal = new Number(x);
 				var numberYVal = new Number(y);
 				return (numberXVal.isBetween(appUpperLeftX, appUpperRightX) && 
-					numberYVal.isBetween(appUpperLeftY, appLowerLeftY))
+					numberYVal.isBetween(appUpperLeftY, appLowerLeftY));
 			};
 			
 			//If any of the 4 points of the element fall within the range of the view of the 

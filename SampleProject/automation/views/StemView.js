@@ -46,14 +46,12 @@ IMAT.StemView = Class.extend(IMAT.BaseView, {
 			var navBar = this.getElementFromView("navBar", "BasicView");
 			assertValid(navBar, "Navigation Bar");
 			var navBarName = navBar.name();
-			switch (navBarName) {
-				case "Sample App":
-					IMAT.log_info("Specializing to HomeScreenView");
-					specializedView = new SAMPLE.HomeScreenView();
-					break;
-				default:
-					IMAT.log_info("Specializing to BasicView when navBarName was: " + navBarName);
-					specializedView = new SAMPLE.BasicView();
+			if (navBarName === "Sample App") {
+				IMAT.log_info("Specializing to HomeScreenView");
+				specializedView = new SAMPLE.HomeScreenView();
+			} else {
+				IMAT.log_info("Specializing to BasicView when navBarName was: " + navBarName);
+				specializedView = new SAMPLE.BasicView();
 			}
 		}
 		catch(e)

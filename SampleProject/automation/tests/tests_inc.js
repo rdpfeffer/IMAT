@@ -8,10 +8,6 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
-//Import all of your tests here.
-IMAT.log_debug("Importing all of the test sets...");
-
 #import "BaseSampleTestSet.js"
 #import "HomeScreenTestSet.js"
 #import "EventsTestSet.js"

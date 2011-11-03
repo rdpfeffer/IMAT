@@ -44,6 +44,7 @@ SAMPLE.HomeScreenTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	testHomeScreenSwipeBetweenIconSets : function()
 	{
 		this.performActions([
+			["validateScreenShowsLeftmostIcons"],
 			["swipeRight"],
 			["swipeLeft"]
 		]);

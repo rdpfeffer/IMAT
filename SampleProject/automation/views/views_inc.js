@@ -8,10 +8,6 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-
-//Import all of your views here.
-IMAT.log_debug("Importing all of the views...");
-
 // Included files
 #import "viewMap.js"
 #import "StemView.js"

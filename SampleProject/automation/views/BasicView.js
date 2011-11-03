@@ -38,8 +38,9 @@ SAMPLE.BasicView = Class.extend(IMAT.BaseView, {
 	
 	returnToHomeScreenAction : function()
 	{
-		this.getBackButton().tap();
-		this.target.delay(1);
+		var backButton = this.getBackButton()
+		backButton.tap();
+		backButton.withValueForKey(0, "isVisible");
 		return new SAMPLE.HomeScreenView();
 	},
 	

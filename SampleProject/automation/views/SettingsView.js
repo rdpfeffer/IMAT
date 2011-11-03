@@ -60,7 +60,7 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 	
 	enterMultiLineCommentAction : function(text)
 	{
-		var textField = this.getElement("multipleLineTextField")
+		var textField = this.getElement("multipleLineTextField");
 		textField.scrollToVisible();
 		textField.setValue(text);
 		return this;
@@ -85,6 +85,6 @@ SAMPLE.SettingsView = Class.extend(SAMPLE.BasicView, {
 		slider.scrollToVisible();
 		slider.dragToValue(value);
 		return this;
-	},
+	}
 
 });

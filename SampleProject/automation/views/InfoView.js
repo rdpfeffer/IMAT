@@ -31,9 +31,10 @@ SAMPLE.InfoView = Class.extend(SAMPLE.ListView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
-			assertTrue(that.viewName == "InfoView");
+			assertValid(that.getElementFromView("navBarWithTitle", "BasicView", "News"), 
+				"Title of Nav Bar");
 		});
-	},
+	}
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	

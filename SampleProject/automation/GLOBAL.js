@@ -8,11 +8,4 @@
 * Contributors:
 *     Intuit, Inc - initial API and implementation
 *******************************************************************************/
-#import "../project.js"
-
-// uncomment the following two lines and comment out the call to "runTests()" to get a preview of
-// what tests we are filtering for.
-//IMAT.settings.logLevel = IMAT.logLevels.LOG_DEBUG;
-//IMAT.suiteRunner.previewAllRunnableTests();
-
-IMAT.suiteRunner.runTests(new SAMPLE.SuiteHandler());
+var SAMPLE = {};

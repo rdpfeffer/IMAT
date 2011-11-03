@@ -49,13 +49,11 @@ SAMPLE.WebView = Class.extend(SAMPLE.BasicView, {
 	
 	returnToInfoScreenAction : function() {
 		this.getBackButton().tap();
-		this.target.delay(.5);
 		return new SAMPLE.InfoView();
 	},
 	
 	returnToEventsScreenAction : function() {
 		this.getBackButton().tap();
-		this.target.delay(.5);
 		return new SAMPLE.EventsView();
 	},
 	

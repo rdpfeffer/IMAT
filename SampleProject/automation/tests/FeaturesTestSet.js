@@ -124,7 +124,7 @@ SAMPLE.FeaturesTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 			was last executed.
 		 */
 		manualFail("7/20/2011");
-	},
+	}
 });
 
 //After a test is defined, add an instance of it to the global suiteRunner object.

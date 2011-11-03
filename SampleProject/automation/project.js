@@ -11,10 +11,7 @@
 
 #import "env/env.js"
 
-//declare any settings
-IMAT.settings.logLevel = IMAT.logLevels.LOG_INFO;
-
-var SAMPLE = {};
+#import "GLOBAL.js"
 
 //load the tests and their respective views
 #import "utils/Number-extensions.js"

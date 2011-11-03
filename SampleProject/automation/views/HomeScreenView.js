@@ -42,6 +42,8 @@ SAMPLE.HomeScreenView = Class.extend(IMAT.BaseView, {
 	validateInitialViewState : function()
 	{
 		this.validateState("INITIAL", false, this, function(that){
+			assertValid(that.getElementFromView("navBarWithTitle", "BasicView", "Sample App"), 
+				"Title of Nav Bar");
 			assertValid(that.getElement("eventsButton"), "Events Button");
 			assertValid(that.getElement("infoButton"), "Info Button");
 			assertValid(that.getElement("intuitButton"), "Intuit Button");
@@ -49,56 +51,83 @@ SAMPLE.HomeScreenView = Class.extend(IMAT.BaseView, {
 		});
 	},
 	
+	validateScreenShowsLeftmostIconsAction: function()
+	{
+		this.validateState("Screen shows Left-most icons", false, this, function(that){
+			//the variable rect is where the settings button should be 
+			//after swiping to the left
+			assertValid(that.getElement("eventsButton").withPredicate("rect.origin.x == 0"),
+				"settings button off the screen");
+		});
+		return this;
+	},
+	
+	validateScreenShowsRightmostIconsAction: function()
+	{
+		this.validateState("Screen shows Right-most icons", false, this, function(that){
+			//the variable rect is where the settings button should be 
+			//after swiping to the right
+			assertValid(that.getElement("settingsButton").withPredicate("rect.origin.x == 0"),
+				"settings button on the screen");
+		});
+		return this;
+	},
+	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	
 	selectEventsButtonAction : function() {
 		this.getElement("eventsButton").tap();
-		this.target.delay(1);
 		return new SAMPLE.EventsView();
 	},
 	
 	selectInfoButtonAction : function() {
 		this.getElement("infoButton").tap();
-		this.target.delay(1);
 		return new SAMPLE.InfoView();
 	},
 	
 	selectIntuitButtonAction : function() {
 		this.getElement("intuitButton").tap();
-		this.target.delay(1);
 		return new SAMPLE.WebView();
 	},
 	
 	selectFeaturesButtonAction : function() {
 		this.getElement("featuresButton").tap();
-		this.target.delay(1);
 		return new SAMPLE.FeaturesView();	
 	},
 	
 	selectSettingsButtonAction : function() {
 		this.getElement("settingsButton").tap();
-		this.target.delay(1);
 		return new SAMPLE.SettingsView();
 	},
 	
 	swipeRightAction : function() {
 		var p1 = { x: 200, y: 300 };
 		var p2 = { x: 0, y: 300 };
+		this.waitForNavigationToComplete();
 		this.target.dragFromToForDuration(p1, p2, 0.5);
-		this.target.delay(.5);
+		this.validateScreenShowsRightmostIconsAction();
 		return this;
 	},
 	
 	swipeLeftAction : function() {
 		var p1 = { x: 0, y: 300 };
 		var p2 = { x: 200, y: 300 };
+		this.waitForNavigationToComplete();
 		this.target.dragFromToForDuration(p1, p2, 0.5);
-		this.target.delay(.5);
+		this.validateScreenShowsLeftmostIconsAction();
 		return this;		
 	},
 	
 	selectAboutButtonAction : function() {
 		this.getElement("aboutButton").tap();
 		return this;
+	},
+	
+	waitForNavigationToComplete : function() {
+		this.target.pushTimeout(0.05);
+		if (this.isElementFromViewPresent("backButton", "BasicView")) {
+			this.getElementFromView("backButton", "BasicView").waitForInvalid();
+		}
+		this.target.popTimeout();
 	}
 });

@@ -31,9 +31,10 @@ SAMPLE.EventsView = Class.extend(SAMPLE.ListView, {
 	{
 		this.parent();
 		this.validateState("INITIAL", false, this, function(that){
-			assertEquals(that.getNavBar().name(), "Events");
+			assertValid(that.getElementFromView("navBarWithTitle", "BasicView", "Events"), 
+				"Title of Nav Bar");
 		});
-	},
+	}
 	
 	//////////////////////////////////    View Actions    //////////////////////////////////////////
 	

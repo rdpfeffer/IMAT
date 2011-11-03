@@ -6,7 +6,7 @@
 * http://www.opensource.org/licenses/eclipse-1.0.php
 * 
 * Contributors:
-*     Intuit, Inc - initial API and implementation
+*	  Intuit, Inc - initial API and implementation
 *******************************************************************************/
 
 /**
@@ -14,7 +14,7 @@
  * determines if a number object is between two numbers, x and y.
  *
  * @param x {Number} The first boundary number. x may be larger or smaller than 
- * 	the parameter y.
+ *	the parameter y.
  *
  * @param y {Number} The second boundary number. y may be larger or smaller than
  *	the parameter x.
@@ -28,4 +28,4 @@ Number.prototype.isBetween = function(x, y) {
 	} else {
 		return this >= y && this <= x;
 	}
-}
+};
