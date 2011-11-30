@@ -5,669 +5,1004 @@
 	<key>All Samples</key>
 	<array>
 		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
-			<string>IMAT: Loading Platform: iOS...</string>
+			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Automated Tests:	3</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Manual Tests:		0</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Percentage automated:		100%</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>****Expected Tests****</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>**********************</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
+			<key>Message</key>
+			<string>suiteHandler.initSuite();</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
+			<key>Message</key>
+			<string>InfoTestSet.setUpTestSet();</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
+			<key>Message</key>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:55 GMT-0800 (PST)")</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:55Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Screenshot</string>
 			<key>Message</key>
-			<string>suiteHandler.initSuite();</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:55 GMT-0800 (PST)</string>
+			<key>Screenshot</key>
+			<string>D93DBB0F-5654-42F6-9E74-BB947594678D</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>suiteHandler.initSuite();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:06 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
+			<date>2011-11-30T21:52:55Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
 		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.testScrollingWhileInIntuit()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: selectIntuitButton()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:06Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Sun Aug 14 2011 12:38:07 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:07Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: INITIAL state. Sun Aug 14 2011 12:38:07 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:07Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: waitForActivity()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:07Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollDown()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:07Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollUp()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:08Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: returnToHomeScreen()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:08Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:08 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.testScrollingWhileInIntuit()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>IntuitTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
 			<string>InfoTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:08 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>InfoTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
 			<key>Message</key>
-			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Error</string>
 			<key>Message</key>
-			<string>Assertion failed when expression was: false type:boolean</string>
+			<string>Assertion failed when expression was: false type: boolean</string>
+			<key>Screenshot</key>
+			<string>D56E9A78-FB1E-4D4A-9B92-68EDBFAA4BC8</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>3</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
 			<key>Message</key>
-			<string>1) UIATarget [name:iPhone Simulator value:(null) rect:{{x:0, y:0}, {width:-2, height:0}}]</string>
+			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
+			<key>Screenshot</key>
+			<string>A02EFACA-E7FD-4789-8F16-A29E0DB85A3D</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>0</integer>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>LogType</key>
+					<string>Debug</string>
+					<key>Message</key>
+					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
+					<key>Screenshot</key>
+					<string>82CCFDE9-71F0-45D9-B904-1E0832762CCF</string>
+					<key>Timestamp</key>
+					<date>2011-11-30T21:52:56Z</date>
+					<key>Type</key>
+					<integer>0</integer>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>LogType</key>
+							<string>Debug</string>
+							<key>Message</key>
+							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
+							<key>Screenshot</key>
+							<string>65800A75-8835-4171-8CB5-91FD83F9C05B</string>
+							<key>Timestamp</key>
+							<date>2011-11-30T21:52:56Z</date>
+							<key>Type</key>
+							<integer>0</integer>
+							<key>children</key>
+							<array>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
+									<key>Screenshot</key>
+									<string>0A34BC5D-699D-4103-A658-F9904CEFE318</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:56Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
+											<key>Screenshot</key>
+											<string>493D759E-F90A-4D89-A6AA-90DF6F6323CB</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
+											<key>Screenshot</key>
+											<string>8C57FA42-8E2A-4127-BFAF-DD93C7C5C6F4</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
+											<key>Screenshot</key>
+											<string>D8CFDA60-739E-44D3-AE00-C0F9BF8C1905</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
+											<key>Screenshot</key>
+											<string>400BBD5D-444A-4196-8F18-EC66B7FA04D6</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
+									<key>Screenshot</key>
+									<string>E89AEAB5-B813-4085-BD12-117051AD758E</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:56Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>49FDBB92-1DA0-406C-9AA3-31CE391927CB</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>330957A2-9212-4F12-A67D-0E5CB9E82A2A</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>DDD722DB-550E-4AE5-8E0E-222B009F82D5</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>529DDD22-07FF-4522-BDF4-75F10B7A46ED</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
 			<key>Message</key>
-			<string>2) UIAApplication [name:sampleApp value:(null) rect:{{x:0, y:20}, {width:320, height:460}}]</string>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
+			<key>Screenshot</key>
+			<string>ED39B5B6-E0BB-43A0-A436-7CF553A60FA8</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>3) UIAWindow [name:(null) value:(null) rect:{{x:0, y:0}, {width:320, height:480}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>4) UIANavigationBar [name:Sample App value:(null) rect:{{x:0, y:20}, {width:320, height:44}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAStaticText [name:Sample App value:(null) rect:{{x:101, y:28}, {width:118, height:27}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:About value:(null) rect:{{x:260, y:27}, {width:55, height:30}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>4) UIAScrollView [name:(null) value:(null) rect:{{x:0, y:64}, {width:320, height:396}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:Events value:(null) rect:{{x:0, y:64}, {width:107, height:132}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:Info value:(null) rect:{{x:107, y:64}, {width:107, height:132}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:Intuit value:(null) rect:{{x:214, y:64}, {width:107, height:132}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:Settings value:(null) rect:{{x:320, y:64}, {width:107, height:132}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>5) UIAButton [name:Features value:(null) rect:{{x:0, y:196}, {width:107, height:132}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>4) UIAElement [name:launcherPageDot: value:(null) rect:{{x:0, y:460}, {width:320, height:20}}]</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>7</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:09 GMT-0700 (PDT)</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Screenshot</string>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)</string>
+			<key>Screenshot</key>
+			<string>CE6989EB-3D31-426C-B7A2-DC734AFFD393</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:56Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:56Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Error</string>
+			<key>Message</key>
+			<string>Assertion failed when expression was: false type: boolean</string>
+			<key>Screenshot</key>
+			<string>050D482D-958A-43BF-B592-3A0A583F58D2</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:56Z</date>
+			<key>Type</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
+			<key>Message</key>
+			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
+			<key>Screenshot</key>
+			<string>83388DAC-AC50-41FD-BC68-43B3F9882254</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:56Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>LogType</key>
+					<string>Debug</string>
+					<key>Message</key>
+					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
+					<key>Screenshot</key>
+					<string>53D4BAF6-C596-4842-8040-FC4C6673369B</string>
+					<key>Timestamp</key>
+					<date>2011-11-30T21:52:56Z</date>
+					<key>Type</key>
+					<integer>0</integer>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>LogType</key>
+							<string>Debug</string>
+							<key>Message</key>
+							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
+							<key>Screenshot</key>
+							<string>806EAE57-8FAE-476C-B28C-8C3C457E674E</string>
+							<key>Timestamp</key>
+							<date>2011-11-30T21:52:56Z</date>
+							<key>Type</key>
+							<integer>0</integer>
+							<key>children</key>
+							<array>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
+									<key>Screenshot</key>
+									<string>7A42F546-1884-4259-9889-025FFBCC7CA2</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:56Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
+											<key>Screenshot</key>
+											<string>BD30B190-789E-4C37-99A7-BF2CB8C79853</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
+											<key>Screenshot</key>
+											<string>90FABB31-3ED2-4EBA-8C6E-A1025540E4ED</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
+											<key>Screenshot</key>
+											<string>D41C6C02-3E77-40A5-90AB-960301105904</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
+											<key>Screenshot</key>
+											<string>1DBC089E-0D18-47F9-86AF-5BC6122E28A6</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
+									<key>Screenshot</key>
+									<string>15727BE4-C006-4CC6-AA3D-1FCC49BAC220</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:56Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>C2160B7E-F432-48BB-BA66-1C8DE556B6E9</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>E4D1BCF9-3154-4055-8090-77F45D6AAAE3</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>CE977183-8764-43CE-B0E6-F38782B94D9E</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>DABF463C-6C89-4675-A48C-7632314DF800</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:56Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Screenshot</key>
+			<string>8BA6249B-A919-4797-B178-02B61380C6D9</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>7</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
+			<key>Message</key>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)")</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Screenshot</string>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)</string>
+			<key>Screenshot</key>
+			<string>CDC3D3E7-3F1D-4BC2-BE24-434748DC565B</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Error</string>
+			<key>Message</key>
+			<string>Assertion failed when expression was: false type: boolean</string>
+			<key>Screenshot</key>
+			<string>E2B54B91-A51D-47B8-B82F-136A23871311</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
+			<key>Message</key>
+			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
+			<key>Screenshot</key>
+			<string>617E0F52-406C-4178-B6B4-C52EBDF1C37A</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:57Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>LogType</key>
+					<string>Debug</string>
+					<key>Message</key>
+					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
+					<key>Screenshot</key>
+					<string>24D21C19-D694-4FCB-9D7F-E3EBF8A31735</string>
+					<key>Timestamp</key>
+					<date>2011-11-30T21:52:57Z</date>
+					<key>Type</key>
+					<integer>0</integer>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>LogType</key>
+							<string>Debug</string>
+							<key>Message</key>
+							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
+							<key>Screenshot</key>
+							<string>E8D82556-BB79-4736-B6C5-CBC7BEFFACA2</string>
+							<key>Timestamp</key>
+							<date>2011-11-30T21:52:57Z</date>
+							<key>Type</key>
+							<integer>0</integer>
+							<key>children</key>
+							<array>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
+									<key>Screenshot</key>
+									<string>A45F0831-A0B1-4E3F-BD7A-FF3BB894F4B9</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:57Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
+											<key>Screenshot</key>
+											<string>B71DA94E-30BE-4DA7-B5D3-59F47FA7EE87</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
+											<key>Screenshot</key>
+											<string>DC734D33-A0E1-4FEC-9050-3C85B70BDF8A</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
+											<key>Screenshot</key>
+											<string>62AAF807-D86A-468F-A228-0D23C17A7D1E</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
+											<key>Screenshot</key>
+											<string>733F2E12-A4ED-4751-9864-B774A95FFA46</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>LogType</key>
+									<string>Debug</string>
+									<key>Message</key>
+									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
+									<key>Screenshot</key>
+									<string>5650F027-D3A0-420E-9D62-3278C34A9BCE</string>
+									<key>Timestamp</key>
+									<date>2011-11-30T21:52:57Z</date>
+									<key>Type</key>
+									<integer>0</integer>
+									<key>children</key>
+									<array>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>981A8A82-B3E5-4818-A9BD-E4139F0ACB65</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>CB3BBBAE-8662-49AD-9990-7826CF9E2BEB</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>E5BE789C-0C89-4C94-899D-E5A2514AD01E</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+										<dict>
+											<key>LogType</key>
+											<string>Debug</string>
+											<key>Message</key>
+											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
+											<key>Screenshot</key>
+											<string>B6CDFB1E-08E4-4019-913A-50EA46B50CC7</string>
+											<key>Timestamp</key>
+											<date>2011-11-30T21:52:57Z</date>
+											<key>Type</key>
+											<integer>0</integer>
+											<key>children</key>
+											<array/>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Fail</string>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Screenshot</key>
+			<string>0B422DC2-944E-4BFE-BD2E-325E9881AF8A</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>7</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Debug</string>
+			<key>Message</key>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)")</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Screenshot</string>
+			<key>Message</key>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:56 GMT-0800 (PST)</string>
+			<key>Screenshot</key>
+			<string>8258095E-2596-46C3-931B-066E1AAE11DA</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:58Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
+			<date>2011-11-30T21:52:58Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
 		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:09 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.testScrollingInFeatures()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: selectFeaturesButton()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:09Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE FeaturesView: INITIAL state. Sun Aug 14 2011 12:38:10 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:10Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: swipeRight()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:10Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: validateImageSwitched( lego.jpg pattern.jpg)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:12Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 12:38:12 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:12Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: swipeRight()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:12Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: validateImageSwitched( pattern.jpg time.jpg)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:13Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 12:38:13 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:13Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: swipeLeft()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:13Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: validateImageSwitched( time.jpg pattern.jpg)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:15Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 12:38:15 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:15Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: swipeLeft()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:15Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: validateImageSwitched( pattern.jpg lego.jpg)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:17Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE FeaturesView: image switched state. Sun Aug 14 2011 12:38:16 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:17Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: returnToHomeScreen()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:17Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:17 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.testScrollingInFeatures()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>FeaturesTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:17 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.setUpTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: selectEventsButton()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:18Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Sun Aug 14 2011 12:38:19 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:19Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Sun Aug 14 2011 12:38:19 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:19Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: INITIAL state. Sun Aug 14 2011 12:38:19 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:19Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollToBottom()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:19Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollToTop()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:20Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollDown()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:21Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: scrollUp()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:21Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>ACTION: returnToHomeScreen()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:21Z</date>
-			<key>Type</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Sun Aug 14 2011 12:38:22 GMT-0700 (PDT)</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
-			<key>Type</key>
-			<integer>8</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
-			<key>Type</key>
-			<integer>4</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>EventsTestSet.tearDownTestSet();</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
-			<key>Type</key>
-			<integer>5</integer>
-		</dict>
-		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
+			<date>2011-11-30T21:52:58Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Tests passed:		0</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Tests failed:		3</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Tests with errors:	0</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Pass Percentage:			0%</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Completion Percentage:		100%</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:52:58Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Pass</string>
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
+			<date>2011-11-30T21:52:58Z</date>
 			<key>Type</key>
 			<integer>5</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>Script completed.</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T19:38:22Z</date>
-			<key>Type</key>
-			<integer>1</integer>
 		</dict>
 	</array>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

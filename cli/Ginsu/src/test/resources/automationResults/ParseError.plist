@@ -5,32 +5,17 @@
 	<key>All Samples</key>
 	<array>
 		<dict>
+			<key>LogType</key>
+			<string>Error</string>
 			<key>Message</key>
-			<string>Exception raised while running script: SyntaxError: Parse error
-3659: }); 
-3660:  
-3661:  
-3662:  
-3663: var hey+1243=7 &lt;-----
-3664:  
-3665: /** 
-3666:  * The following filter will only run tests that do not start with the name &quot;testManually&quot; or  
-3667:  * &quot;testFail&quot;. By following the convention of prefixing all non-automated tests as such, you can  
-3668:  * create suites that only run automated tests. 
-</string>
+			<string>Script threw an uncaught JavaScript error: Parse error</string>
 			<key>Timestamp</key>
-			<date>2011-08-15T18:52:52Z</date>
+			<date>2011-11-30T21:56:24Z</date>
 			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>Script completed.</string>
-			<key>Timestamp</key>
-			<date>2011-08-15T18:52:57Z</date>
-			<key>Type</key>
-			<integer>1</integer>
+			<integer>10</integer>
 		</dict>
 	</array>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

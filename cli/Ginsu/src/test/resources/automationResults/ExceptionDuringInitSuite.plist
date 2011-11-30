@@ -5,48 +5,117 @@
 	<key>All Samples</key>
 	<array>
 		<dict>
-			<key>Message</key>
-			<string>IMAT: Loading Platform: iOS...</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T18:38:36Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
+			<key>LogType</key>
+			<string>Error</string>
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T18:38:36Z</date>
+			<date>2011-11-30T21:55:01Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
 		<dict>
+			<key>LogType</key>
+			<string>Default</string>
 			<key>Message</key>
-			<string>Exception raised while running script: ReferenceError: Can't find variable: jones
-3646: 	initSuite: function() 
-3647: 	{ 
-3648: 		IMAT.log_trace("Initializing Suite"); 
-3649: 		//assertTrue(false); 
-3650: 		jones.print(); &lt;-----
-3651: 	}, 
-3652: 	 
-3653: 	/** 
-3654: 	 * Cleans up the suite after all testSets are run 
-3655: 	 */ 
-</string>
+			<string>Number of Automated Tests:	3</string>
 			<key>Timestamp</key>
-			<date>2011-08-14T18:38:36Z</date>
-			<key>Type</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Message</key>
-			<string>Script completed.</string>
-			<key>Timestamp</key>
-			<date>2011-08-14T18:38:36Z</date>
+			<date>2011-11-30T21:55:01Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Number of Manual Tests:		0</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>Percentage automated:		100%</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>****Expected Tests****</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testSelectListingInInfo()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testFailureExample()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Default</string>
+			<key>Message</key>
+			<string>**********************</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Error</string>
+			<key>Message</key>
+			<string>Script threw an uncaught JavaScript error: Can't find variable: jones</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>LogType</key>
+			<string>Stopped</string>
+			<key>Message</key>
+			<string>Script was stopped by the user</string>
+			<key>Timestamp</key>
+			<date>2011-11-30T21:55:01Z</date>
+			<key>Type</key>
+			<integer>9</integer>
+		</dict>
 	</array>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
