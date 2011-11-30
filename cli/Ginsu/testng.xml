@@ -15,9 +15,9 @@
       <class name="com.intuit.tools.imat.validators.CanonicalFileValidatorTests"/>
       <class name="com.intuit.tools.imat.validators.TemplateFileValidatorTests"/>
       <class name="com.intuit.tools.imat.validators.JavaScriptFileValidatorTests"/>
-      <class name="com.intuit.tools.imat.reporting.IOSAutomationResultsReaderTests" />
-      <class name="com.intuit.tools.imat.reporting.IOSLogEntryToJUnitTranslatorTests" />
-      <class name="com.intuit.tools.imat.reporting.JunitReportWriterTests" />
+      <!-- <class name="com.intuit.tools.imat.reporting.IOSAutomationResultsReaderTests" /> -->
+      <!-- <class name="com.intuit.tools.imat.reporting.IOSLogEntryToJUnitTranslatorTests" /> -->
+      <!-- <class name="com.intuit.tools.imat.reporting.JunitReportWriterTests" /> -->
     </classes>
   </test>
 </suite>
