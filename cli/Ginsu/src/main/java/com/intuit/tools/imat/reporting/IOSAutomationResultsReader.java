@@ -15,6 +15,10 @@ import java.util.concurrent.BlockingQueue;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
@@ -55,7 +59,12 @@ public class IOSAutomationResultsReader implements Runnable{
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(getPlistFile());
 			doc.getDocumentElement().normalize();
-			NodeList nList = doc.getElementsByTagName(DICT_TAG_NAME);
+			
+			XPathFactory xPathFactory = XPathFactory.newInstance();
+			XPath xPath = xPathFactory.newXPath();
+			XPathExpression expr = xPath.compile("/plist/dict/array/dict");
+			NodeList nList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+			logger.debug("The number of Dictionary nodes parsed is: " + nList.getLength());
 			
 			// start the loop from 1 instead of 0 (ignoring the root node) of 
 			//the dictionary
@@ -85,9 +94,9 @@ public class IOSAutomationResultsReader implements Runnable{
 				Element element = (Element) node;	
 				
 				dictionary = new Dict();
-				dictionary.setString(getTagValue(STRING_TAG_NAME, element));	//The message of the log entry
-				dictionary.setCode(getTagValue(INTEGER_TAG_NAME, element));	//The Type of the log entry
-				dictionary.setDate(getTagValue(DATE_TAG_NAME, element));		//The Timestamp of the log entry
+				dictionary.setString(getTagValue(STRING_TAG_NAME, element, 1));	//The message of the log entry
+				dictionary.setCode(getTagValue(INTEGER_TAG_NAME, element, 0));	//The Type of the log entry
+				dictionary.setDate(getTagValue(DATE_TAG_NAME, element, 0));		//The Timestamp of the log entry
 				
 				//Its possible for Dictionaries to be nested, we recursively add
 				//all sub dictionaries within.
@@ -107,11 +116,11 @@ public class IOSAutomationResultsReader implements Runnable{
 		return dictionary;
 	}
 	
-	private String getTagValue(String sTag, Element eElement) {
+	private String getTagValue(String sTag, Element eElement, int index ) {
 		String value = "";
 		NodeList tagNodeList = eElement.getElementsByTagName(sTag);
 		if (tagNodeList.getLength() > 0) {
-			NodeList nlList = tagNodeList.item(0).getChildNodes();
+			NodeList nlList = tagNodeList.item(index).getChildNodes();
 			if (nlList.getLength() > 0){
 				value = nlList.item(0).getNodeValue().trim();
 			}

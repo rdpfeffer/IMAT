@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2009 Intuit, Inc.
+ 																																																																										* Copyright (c) 2009 Intuit, Inc.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import com.intuit.tools.imat.IApplicationResourceService;
 import com.intuit.tools.imat.IScriptLauncher;
 import com.intuit.tools.imat.annotations.AntScript;
 import com.intuit.tools.imat.annotations.AppleScript;
+import com.intuit.tools.imat.annotations.Instruments;
 
 /**
  * @author rpfeffer
@@ -38,6 +39,7 @@ public class IMATScriptsModule extends AbstractModule {
 	protected void configure() {
 		bind(IScriptLauncher.class).annotatedWith(AntScript.class).to(AntScriptLauncher.class);
 		bind(IScriptLauncher.class).annotatedWith(AppleScript.class).to(AppleScriptLauncher.class);
+		bind(IScriptLauncher.class).annotatedWith(Instruments.class).to(InstrumentsLauncher.class);
 	}
 	
 	/**
@@ -78,4 +80,11 @@ public class IMATScriptsModule extends AbstractModule {
 		return appleScriptLauncher;
 	}
 
+	@Provides InstrumentsLauncher provideInstrumentsLauncher(PrintStream printStream,
+			IApplicationResourceService resourceService)
+	{
+		InstrumentsLauncher instrumentsLauncher = new InstrumentsLauncher(resourceService, Logger.getLogger(InstrumentsLauncher.class));
+		instrumentsLauncher.setPrintStream(printStream);
+		return instrumentsLauncher;
+	}
 }

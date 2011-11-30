@@ -35,5 +35,6 @@
 #import "./platforms/ios/platform.js";
 
 // Declare the Runner Classes
+#import "./TestReporter.js"
 #import "./TestRunner.js"
 #import "./SuiteRunner.js"

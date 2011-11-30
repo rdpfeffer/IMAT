@@ -38,7 +38,7 @@ public abstract class ExternallyScriptedProcessLauncher implements
 		IScriptLauncher {
 
 	private String script = "";
-	private LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
+	protected LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
 	private PrintStream printStream;
 	protected final Logger logger;
 	private final IApplicationResourceService resourceService;

@@ -375,8 +375,111 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 		assertTrue(didThrowException, 
 			"manualFail() did not throw an exception when it should have");
 		return result;
-	}
+	},
 	
+	testReportingAddTest: function() {
+		var reporter = new IMAT.TestReporter();
+		assertTrue(reporter.automatedTests.length == 0, "An empty test reporter should have no automated tests");
+		assertTrue(reporter.manualTests.length == 0, "An empty test reporter should have no manual tests");
+		
+		//add a manual test
+		var manualSignature = "testSomething.testManuallyFoobar";
+		reporter.addTest(manualSignature);
+		assertEquals(reporter.automatedTests.length, 0, "A reporter with one manual test should have 0 automated tests");
+		assertEquals(reporter.manualTests.length, 1);
+		assertFalse(reporter.manualTests[manualSignature].hasRun, "has run should be false");
+		assertEquals(typeof reporter.manualTests[manualSignature].result, "undefined");
+		
+		//Add an automated test
+		var automatedSignature = "testSomething.testFoobar";
+		reporter.addTest(automatedSignature);
+		assertTrue(reporter.automatedTests.length == 1, "After adding automated test should have 1 automated tests");
+		assertTrue(reporter.manualTests.length == 1, "After adding automated test should still have 1 manual test");
+		assertFalse(reporter.automatedTests[automatedSignature].hasRun, "has run should be false");
+		assertEquals(typeof reporter.automatedTests[automatedSignature].result, "undefined");
+	},
+	
+	testReportingMarkTestAsRanWithResult: function() {
+		var reporter = new IMAT.TestReporter();
+		var manualSignature = "testSomething.testManuallyFoobar";
+		var automatedSignature = "testSomething.testFoobar";
+		reporter.addTest(manualSignature);
+		reporter.addTest(automatedSignature);
+		assertFalse(reporter.manualTests[manualSignature].hasRun, "has run should be false");
+		assertEquals(typeof reporter.manualTests[manualSignature].result, "undefined");
+		assertFalse(reporter.automatedTests[automatedSignature].hasRun, "has run should be false");
+		assertEquals(typeof reporter.automatedTests[automatedSignature].result, "undefined");
+		
+		reporter.markTestAsRanWithResult(manualSignature, IMAT.TestReporter.RESULT_PASS);
+		assertTrue(reporter.manualTests[manualSignature].hasRun, "has run should be true for ran manual test");
+		assertEquals(reporter.manualTests[manualSignature].result,  
+			IMAT.TestReporter.RESULT_PASS, 
+			"result should be true for manual test");
+		
+		reporter.markTestAsRanWithResult(automatedSignature, IMAT.TestReporter.RESULT_PASS);
+		assertTrue(reporter.automatedTests[automatedSignature].hasRun, "has run should be true for ran automated test");
+		assertEquals(reporter.automatedTests[automatedSignature].result, 
+			IMAT.TestReporter.RESULT_PASS,
+			"result should be true for automated test");
+	},
+	
+	testReportingIsManualTest: function() {
+		var reporter = new IMAT.TestReporter();
+		var manualTestSignatures = ["foo.testManually1", "foo.testManuallyA", "foo.testManually_"];
+		var nonManualTestSignatures = ["foo.testSomething", "foo.test", "foo.", "foo", ".", ""];
+		var bogusValues = [false, 1, function(){}, {}, []];
+		
+		var i;
+		var sig = "";
+		for (i = 0; i < manualTestSignatures.length; i++) {
+			sig = manualTestSignatures[i];
+			assertTrue(reporter.isManualTest(sig), sig + " should be a manual test");
+		}
+		
+		for (i = 0; i < nonManualTestSignatures.length; i++) {
+			sig = nonManualTestSignatures[i];
+			assertFalse(reporter.isManualTest(sig), sig + " should not be a manual test");
+		}
+		
+		for (i = 0; i < bogusValues.length; i++) {
+			sig = bogusValues[i];
+			assertFalse(reporter.isManualTest(sig), sig + " should not be a manual test");
+		}		
+	},
+	
+	testReportingCollectResultsOfTests: function() {
+		var reporter = new IMAT.TestReporter();
+		var manualSignatures = ["testSomething.testManuallyPass", 
+			"testSomething.testManuallyError", 
+			"testSomething.testManuallyFailure"];
+			
+		var automatedSignatures = ["testSomething.testPass", 
+			"testSomething.testError", 
+			"testSomething.testFailure"];
+			
+		var resultTypes = [ IMAT.TestReporter.RESULT_PASS,
+			IMAT.TestReporter.RESULT_ERROR,
+			IMAT.TestReporter.RESULT_FAILURE
+		];
+		
+		var arrayOfArrays = [manualSignatures, automatedSignatures];
+		
+		for (var i = 0; i < arrayOfArrays.length; i++) {
+			var currentArray = arrayOfArrays[i];
+			for (var j = 0; j < currentArray.length; j++) {
+				reporter.addTest(currentArray[j]);
+				reporter.markTestAsRanWithResult(currentArray[j], resultTypes[j]);
+			}
+		}
+		reporter.addTest("testSomething.testManuallyIncomplete");
+		reporter.addTest("testSomething.testIncomplete");
+		
+		reporter.collectResultsOfTests();
+		assertEquals(reporter.numFailed, 2);
+		assertEquals(reporter.numPassed, 2);
+		assertEquals(reporter.numErrored, 2);
+		assertEquals(reporter.incompleteTests.length, 2);
+	}
 });
 
 IMAT.suiteRunner.addTestSet( new IMAT.MetaTests());

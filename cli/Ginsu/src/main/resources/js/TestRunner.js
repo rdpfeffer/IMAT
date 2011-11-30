@@ -151,6 +151,24 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 	},
 	
 	/**
+	 * Returns an array of the runnable tests in the testSet. 
+	 *
+	 * @param {IMAT.BaseTestSet} testSet.
+	 * 					A Test Set which we may execute against.
+	 */
+	collectRunnableTests: function(testSet, runnableTests)
+	{
+		if (!runnableTests) {
+			runnableTests = [];
+		}
+		for(prop in testSet) {
+			if (this.isPropRunnableTest(prop, testSet))  {
+				runnableTests.push(this.getTestCaseSignature(testSet, prop));
+			}
+		}
+	},
+	
+	/**
 	 * Logs out a list of the runnable tests in the testSet. This is a function 
 	 * written for test development convenience to see if your filters are 
 	 * including the appropriate tests.
@@ -194,6 +212,7 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 			}
 			//if we get here, the test has passed.
 			IMAT.log_pass(testSignature);
+			this.markTestAsRanWithResult(testSignature, IMAT.TestReporter.RESULT_PASS);
 		} catch (e)  {
 			this.logException(e, testSignature);
 			//Invoke the cleanup process so that we can make an attempt at  
@@ -319,8 +338,22 @@ IMAT.TestRunner = Class.extend(/** @lends IMAT.TestRunner# */{
 		//classify the test as having failed or needing attention
 		if (exception instanceof IMAT.AssertionException) {
 			IMAT.log_fail(signature);
+			this.markTestAsRanWithResult(signature, IMAT.TestReporter.RESULT_FAILURE);
 		} else {
 			IMAT.log_issue(signature);
+			this.markTestAsRanWithResult(signature, IMAT.TestReporter.RESULT_ERROR);
+		}
+	},
+	
+	setTestReporter: function(testReporter) 
+	{
+		this.reporter = testReporter;
+	},
+	
+	markTestAsRanWithResult: function(testSignature, testResult) 
+	{
+		if (this.reporter) {
+			this.reporter.markTestAsRanWithResult(testSignature, testResult);
 		}
 	}
 });

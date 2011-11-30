@@ -24,6 +24,7 @@ public enum iOSEndOfLogMsg {
 //	REFERENCE_ERROR		("Exception raised while running script: ReferenceError:"),
 //	SYNTAX_ERROR		("Exception raised while running script: SyntaxError:"),
 //	TYPE_ERROR			("Exception raised while running script: TypeError:"),
+	PARSE_ERROR			("Script threw an uncaught JavaScript error: Parse error"),
 	ERROR_PREFIX		("Exception raised while running script:"),
 	STOPPED_BY_USER		("Script was stopped by the user."),
 	SCRIPT_COMPLETED	("Script completed.");

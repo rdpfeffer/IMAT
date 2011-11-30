@@ -33,6 +33,10 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 	initialize: function()
 	{
 		this.testSetArray = [];
+		this.testReporter = new IMAT.TestReporter();
+		var testRunner = new IMAT.TestRunner();
+		testRunner.setTestReporter(this.testReporter);
+		this.setTestRunner(testRunner);
 	},
 	
 	/**
@@ -54,6 +58,9 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 			var initSuiteToken = "suiteHandler.initSuite();"; 
 			var cleanUpSuiteToken = "suiteHandler.cleanUpSuite();";
 			IMAT.log_start(initSuiteToken);
+			if (!IMAT.settings.SKIP_REPORT_PROJECTION) {
+				this.reportOnProjectedTests();
+			}
 			if (!IMAT.settings.SKIP_INIT_SUITE) {
 				suiteHandler.initSuite();
 			}
@@ -68,6 +75,9 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 			if (!IMAT.settings.SKIP_CLEAN_UP_SUITE) {
 				suiteHandler.cleanUpSuite();
 			}
+			if (!IMAT.settings.SKIP_REPORT_RETROSPECTIVE) {
+				this.testReporter.reportRetrospective();
+			}
 			IMAT.log_pass(cleanUpSuiteToken);
 		}
 		else
@@ -76,8 +86,28 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 		}
 	},
 	
+	reportOnProjectedTests: function() {
+		var tests = this.collectAllRunnableTests();
+		for (var i = 0; i < tests.length; i++) {
+			this.testReporter.addTest(tests[i]);
+		}
+		this.testReporter.reportProjection();
+	},
+	
+	
+	collectAllRunnableTests: function()
+	{
+		var runnableTests = [];
+		for(var i = 0; i < this.testSetArray.length; i++)
+		{
+			this.testRunner.collectRunnableTests(this.testSetArray[i], 
+				runnableTests);
+		}
+		return runnableTests;
+	},
+	
 	/**
-	 * Log out a list of testCases that will be run when 
+	 * Log a list of testCases that will be run when 
 	 * {@link IMAT.SuiteRunner.runTests} is called. Call this function after 
 	 * setting the filters. <b>NOTE:</b> Since this should be used to debug 
 	 * which tests are included in a filter, this should be run when 
@@ -176,4 +206,3 @@ IMAT.SuiteRunner = Class.create(/** @lends IMAT.SuiteRunner# */{
 });
 // Declare a global suite runner object that we can use to run our tests.
 IMAT.suiteRunner = new IMAT.SuiteRunner();
-IMAT.suiteRunner.setTestRunner(new IMAT.TestRunner());

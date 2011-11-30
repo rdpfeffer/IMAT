@@ -138,16 +138,10 @@ public class CommandLineParsingService implements IInputHandlingService {
 			jCommander.parse(input);
 			parsedCommand = supportedCommands
 					.get(jCommander.getParsedCommand());
-			if (parsedCommand == null) {
-				throw new MissingCommandException("Please enter at least one " +
-						"command.");
-			}
-		} catch (MissingCommandException mce) {
-			stringBuilder.append(mce.getMessage()
+		} catch (Throwable paramException) {
+			stringBuilder.append(paramException.getMessage()
 					+ System.getProperty("line.separator"));
 			parsedCommand = getUsagePrinter();
-		} catch (Throwable paramException) {
-			logger.fatal(paramException.getMessage());
 		}
 		return parsedCommand;
 	}
