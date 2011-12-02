@@ -37,7 +37,6 @@ public class IOSAutomationResultsReader implements Runnable{
 
 	private final Logger logger;
 	private final BlockingQueue<Dict> buffer;
-	private int numDictionariesParsed = 0;
 	private  File plistFile;
 	
 	IOSAutomationResultsReader(Logger logger, BlockingQueue<Dict> buffer) {
@@ -46,7 +45,7 @@ public class IOSAutomationResultsReader implements Runnable{
 	}
 	
 	// tag names in plist file.
-	private static final String DICT_TAG_NAME = "dict";
+	private static final String DICT_XPATH = "/plist/dict/array/dict";
 	private static final String STRING_TAG_NAME = "string";
 	private static final String DATE_TAG_NAME = "date";
 	private static final String INTEGER_TAG_NAME = "integer";
@@ -62,13 +61,11 @@ public class IOSAutomationResultsReader implements Runnable{
 			
 			XPathFactory xPathFactory = XPathFactory.newInstance();
 			XPath xPath = xPathFactory.newXPath();
-			XPathExpression expr = xPath.compile("/plist/dict/array/dict");
+			XPathExpression expr = xPath.compile(DICT_XPATH);
 			NodeList nList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 			logger.debug("The number of Dictionary nodes parsed is: " + nList.getLength());
 			
-			// start the loop from 1 instead of 0 (ignoring the root node) of 
-			//the dictionary
-			for (numDictionariesParsed = 1; numDictionariesParsed < nList.getLength(); numDictionariesParsed++) {
+			for (int numDictionariesParsed = 0; numDictionariesParsed < nList.getLength(); numDictionariesParsed++) {
 				Node nNode = nList.item(numDictionariesParsed);
 				Dict dictionaryEntry = parseDictionaryFromNode(nNode);
 				if (dictionaryEntry != null)
@@ -78,10 +75,6 @@ public class IOSAutomationResultsReader implements Runnable{
 			}
 			
 			sendReadingCompleteToBuffer();
-			
-			//reset the number of dictionaries parsed back to zero in case we
-			//reuse this class to parse again.
-			numDictionariesParsed = 0;
 		} catch (Exception e) {
 			logger.error("Error while converting pList to DictList", e);
 		}
@@ -92,24 +85,11 @@ public class IOSAutomationResultsReader implements Runnable{
 		try {
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 				Element element = (Element) node;	
-				
 				dictionary = new Dict();
 				dictionary.setString(getTagValue(STRING_TAG_NAME, element, 1));	//The message of the log entry
 				dictionary.setCode(getTagValue(INTEGER_TAG_NAME, element, 0));	//The Type of the log entry
 				dictionary.setDate(getTagValue(DATE_TAG_NAME, element, 0));		//The Timestamp of the log entry
-				
-				//Its possible for Dictionaries to be nested, we recursively add
-				//all sub dictionaries within.
-				NodeList nestedDictionaries = getNestedDictionaryNodeList(element);
-				
-				for (int i = 0; i < nestedDictionaries.getLength(); i++) {
-					Node nestedNode = nestedDictionaries.item(i);
-					Dict nestedDict = parseDictionaryFromNode(nestedNode);
-					dictionary.addDict(nestedDict);
-					numDictionariesParsed++;
-				}
 			}
-			
 		} catch (Exception e) {
 			logger.warn("Errors while pasring log entry. Skipping.", e);
 		}
@@ -126,10 +106,6 @@ public class IOSAutomationResultsReader implements Runnable{
 			}
 		}
 		return value;
-	}
-	
-	private NodeList getNestedDictionaryNodeList(Element element) {
-		return element.getElementsByTagName(DICT_TAG_NAME); 
 	}
 	
 	private void sendReadingCompleteToBuffer()

@@ -69,8 +69,7 @@ SAMPLE.InfoTestSet = Class.extend(SAMPLE.BaseSampleTestSet, {
 	 * if set up correctly.
 	 */
 	testFailureExample: function() {
-		
-	},	
+	},
 	
 	testScrollingWhileViewingInfoList : function()
 	{

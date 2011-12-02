@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 
 import com.beust.jcommander.IDefaultProvider;
 import com.beust.jcommander.JCommander;
-import com.beust.jcommander.MissingCommandException;
 import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IInputHandlingService;
 import com.intuit.tools.imat.NullCommand;

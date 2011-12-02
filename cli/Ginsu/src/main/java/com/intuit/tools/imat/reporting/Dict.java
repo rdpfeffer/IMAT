@@ -71,23 +71,12 @@ public class Dict {
 		return dictList.size();
 	}
 	
-	public boolean isExceptionLogEntry() {
-		boolean isException = false;
-		for (iOSEndOfLogMsg msg : iOSEndOfLogMsg.values()) {
-			if(this.getString().contains(msg.getMessage())) {
-				isException = true;
-				break;
-			}
-		}
-		return isException;
+	public boolean isUncaughtExceptionLogEntry() {
+		return this.getCode() == UIALoggerCode.UNCAUGHT_ERROR;
 	}
 	
 	public boolean isStartLogEntry() {
-		boolean isStart = false;
-		if (	this.getCode() == UIALoggerCode.TESTSTART) {
-			isStart = true;
-		}
-		return isStart;
+		return this.getCode() == UIALoggerCode.TESTSTART;
 	}
 	
 	public boolean isCompletionLogEntry() {

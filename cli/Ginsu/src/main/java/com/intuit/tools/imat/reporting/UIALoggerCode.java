@@ -28,7 +28,8 @@ public enum UIALoggerCode {
 	ISSUE			(6),
 	FAIL			(7),
 	SCREENSHOT		(8),
-	STOPPED			(9);
+	STOPPED			(9),
+	UNCAUGHT_ERROR	(10);
 	
 	private int code;
 	

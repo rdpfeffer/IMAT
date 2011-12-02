@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Intuit, Inc.
+0 * Copyright (c) 2009 Intuit, Inc.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ public class JunitTestSuite {
 	private String timeStamp = "";
 	private ArrayList<JunitTestCase> testCaseList = new ArrayList<JunitTestCase>();
 	private boolean moreReportsExist = true;
+	private boolean isSuiteCaptured = false;
 	
 	void incrementErrorCount () {
 		errorCount++;		
@@ -110,6 +111,20 @@ public class JunitTestSuite {
 	 */
 	public boolean moreReportsExist() {
 		return moreReportsExist;
+	}
+
+	/**
+	 * @param isSuiteCaptured the isSuiteCaptured to set
+	 */
+	public void setSuiteCaptured(boolean isSuiteCaptured) {
+		this.isSuiteCaptured = isSuiteCaptured;
+	}
+
+	/**
+	 * @return the isSuiteCaptured
+	 */
+	public boolean isSuiteCaptured() {
+		return isSuiteCaptured;
 	}
 
 }

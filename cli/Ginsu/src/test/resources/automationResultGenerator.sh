@@ -8,6 +8,9 @@ APP=$RESOURCES_DIR/sampleApp.app
 pushd automationProjects
 CWD=`pwd`
 FOLDERS=$CWD/*
+
+echo "Starting new report generation..." > $RESOURCES_DIR/generator.log
+
 for DIR in $FOLDERS
 do
 	pushd $DIR >> $RESOURCES_DIR/generator.log

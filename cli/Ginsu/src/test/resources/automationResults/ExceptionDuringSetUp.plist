@@ -10,7 +10,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -20,7 +20,7 @@
 			<key>Message</key>
 			<string>Number of Automated Tests:	3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>Message</key>
 			<string>Number of Manual Tests:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>Message</key>
 			<string>Percentage automated:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -50,7 +50,7 @@
 			<key>Message</key>
 			<string>****Expected Tests****</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -60,7 +60,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -70,7 +70,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -80,7 +80,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -90,7 +90,7 @@
 			<key>Message</key>
 			<string>**********************</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -100,7 +100,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -110,7 +110,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -118,9 +118,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:07 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:07Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -128,11 +128,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:07 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>F538325F-9E83-44C5-8E6A-70AC6D1E0D16</string>
+			<string>1CD59B45-E095-402F-8D70-A9AE0047A66E</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -142,7 +142,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -152,7 +152,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -162,9 +162,9 @@
 			<key>Message</key>
 			<string>Can't find variable: jones</string>
 			<key>Screenshot</key>
-			<string>62D54610-C383-4F81-A6A1-E3B42E6A9B3E</string>
+			<string>CF2ACB2E-0845-4FB1-9544-80D9697FDDD0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>3</integer>
 		</dict>
@@ -174,9 +174,9 @@
 			<key>Message</key>
 			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
 			<key>Screenshot</key>
-			<string>91133CF4-EEBF-4072-8435-E4F70C1A2BF3</string>
+			<string>BE9E9495-3A90-4B9F-8F59-1D8C276D953D</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:23Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 			<key>children</key>
@@ -187,9 +187,9 @@
 					<key>Message</key>
 					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
 					<key>Screenshot</key>
-					<string>6B972EB5-4DA0-4447-B34D-4312A2B4CEC0</string>
+					<string>8C7287B3-F78E-4277-8A65-A309E9EF1486</string>
 					<key>Timestamp</key>
-					<date>2011-11-30T21:55:08Z</date>
+					<date>2011-12-01T19:46:23Z</date>
 					<key>Type</key>
 					<integer>0</integer>
 					<key>children</key>
@@ -200,9 +200,9 @@
 							<key>Message</key>
 							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
 							<key>Screenshot</key>
-							<string>7C230472-4DEF-4FBD-8B61-51A2C1EB2A62</string>
+							<string>D8686DD4-E5F2-437A-91FD-2A42BBBEBB99</string>
 							<key>Timestamp</key>
-							<date>2011-11-30T21:55:08Z</date>
+							<date>2011-12-01T19:46:23Z</date>
 							<key>Type</key>
 							<integer>0</integer>
 							<key>children</key>
@@ -213,9 +213,9 @@
 									<key>Message</key>
 									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
 									<key>Screenshot</key>
-									<string>1B31FDCF-4F56-446E-8A66-B23247454FD4</string>
+									<string>00864897-4247-4C64-99A5-9EAD1D09B699</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:08Z</date>
+									<date>2011-12-01T19:46:23Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -226,9 +226,9 @@
 											<key>Message</key>
 											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
 											<key>Screenshot</key>
-											<string>7AAF2C4E-B8FD-459C-90F9-91FFD5ED9A16</string>
+											<string>84DB0900-9B62-4F0E-9BF5-9BD22A6114BF</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -240,9 +240,9 @@
 											<key>Message</key>
 											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
 											<key>Screenshot</key>
-											<string>A01EF815-3D1E-46E8-A076-F78B41DE9EEB</string>
+											<string>65CF19F4-E540-431E-8FE1-2BBD50AF1BC9</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -254,9 +254,9 @@
 											<key>Message</key>
 											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
 											<key>Screenshot</key>
-											<string>FBFE0679-B957-4B09-A2C7-F7A557A3A360</string>
+											<string>6A9E7C53-04B1-4A54-9250-1C7BDCFED2CF</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -268,9 +268,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
 											<key>Screenshot</key>
-											<string>2D665643-73AE-4881-AA38-688C90C33194</string>
+											<string>FAF6D56B-BE28-48B1-A408-762244292579</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -284,9 +284,9 @@
 									<key>Message</key>
 									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
 									<key>Screenshot</key>
-									<string>A6F285B4-8138-416F-99F8-DFA6F3A30AD1</string>
+									<string>2AAEA742-336E-403C-B50B-7734CF46B246</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:08Z</date>
+									<date>2011-12-01T19:46:23Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -297,9 +297,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>CD74AE5C-E660-4A40-A816-6419BAC58BE0</string>
+											<string>617AF4E1-832C-4E45-8F36-9AFE7B73F23D</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -311,9 +311,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>5008CF9F-3130-43F5-9617-C1D4CF0676BC</string>
+											<string>EFF58F06-B4FC-43ED-A871-5A8239DD1DAD</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -325,9 +325,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>0F34A692-957A-4460-80D0-094D832B8DD0</string>
+											<string>2D6B3355-83EB-4939-8370-C1E16F3343CF</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -339,7 +339,7 @@
 											<key>Message</key>
 											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -351,9 +351,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>6C98A5F2-085B-43EE-9F14-8CA6DFF7E342</string>
+											<string>49313141-6E85-4788-8D05-AF28B8CA4CF3</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:23Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -373,9 +373,9 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Screenshot</key>
-			<string>41B6617A-6C26-4A06-B3D9-F0C686E25BB0</string>
+			<string>049A0C6B-9BC2-4F10-BD29-56B60DDD0905</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>6</integer>
 		</dict>
@@ -383,9 +383,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -393,11 +393,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>A96EC2C5-A26C-43E1-A792-317442720A9A</string>
+			<string>68A34334-DC6F-4CFF-8C8F-C2BC52D6F9E2</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -407,7 +407,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -417,9 +417,9 @@
 			<key>Message</key>
 			<string>Can't find variable: jones</string>
 			<key>Screenshot</key>
-			<string>B1D41ED6-4F94-45D6-9844-ADA662333574</string>
+			<string>8CB11177-C206-4CF7-A292-67EB704A11C9</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>3</integer>
 		</dict>
@@ -429,9 +429,9 @@
 			<key>Message</key>
 			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
 			<key>Screenshot</key>
-			<string>8240E4BD-0452-4618-9E4B-0A95C2FCB756</string>
+			<string>6AEC2E2A-3851-4258-B21F-DBFCBCF1E1D9</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:08Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 			<key>children</key>
@@ -442,9 +442,9 @@
 					<key>Message</key>
 					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
 					<key>Screenshot</key>
-					<string>4E01AB44-46B9-4E62-9C9D-00603514A9EF</string>
+					<string>697BA3ED-84AA-4556-B9DB-19877ED4E70D</string>
 					<key>Timestamp</key>
-					<date>2011-11-30T21:55:08Z</date>
+					<date>2011-12-01T19:46:24Z</date>
 					<key>Type</key>
 					<integer>0</integer>
 					<key>children</key>
@@ -455,9 +455,9 @@
 							<key>Message</key>
 							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
 							<key>Screenshot</key>
-							<string>88C8B894-E6A0-430E-9E0B-D25DCA34237C</string>
+							<string>B53D1604-C3AB-457C-9AA3-1430C4A9E5F9</string>
 							<key>Timestamp</key>
-							<date>2011-11-30T21:55:08Z</date>
+							<date>2011-12-01T19:46:24Z</date>
 							<key>Type</key>
 							<integer>0</integer>
 							<key>children</key>
@@ -468,9 +468,9 @@
 									<key>Message</key>
 									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
 									<key>Screenshot</key>
-									<string>6DEA53A6-20A9-43F2-95F6-5D50066A4BFD</string>
+									<string>4A945347-4B8D-44B8-991C-3FF2B3F552A6</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:08Z</date>
+									<date>2011-12-01T19:46:24Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -481,9 +481,9 @@
 											<key>Message</key>
 											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
 											<key>Screenshot</key>
-											<string>60317AF6-1481-4ECB-9EEC-E894E52D6C49</string>
+											<string>05763E67-D544-46D6-9595-FF64E6B16B40</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -495,9 +495,9 @@
 											<key>Message</key>
 											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
 											<key>Screenshot</key>
-											<string>3BF88CBF-1D1D-46F9-87D4-47537E75BD4F</string>
+											<string>F5D00BFE-578D-4D5B-8A46-2500EB3F9417</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -509,9 +509,9 @@
 											<key>Message</key>
 											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
 											<key>Screenshot</key>
-											<string>D95E6408-0CC1-489F-97C9-353D23108D5F</string>
+											<string>D51B859E-0169-4FF3-B973-95CE73F41186</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -523,9 +523,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
 											<key>Screenshot</key>
-											<string>22FDE0F3-EBA4-412E-955F-AC635820F375</string>
+											<string>80C55E52-4F40-43D3-A79F-4DCEA6DA5B19</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:08Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -539,9 +539,9 @@
 									<key>Message</key>
 									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
 									<key>Screenshot</key>
-									<string>EA1E4B0C-9658-4D0C-A0F0-CD523A170E2F</string>
+									<string>60DA252A-7F83-4470-9429-B297C4B58D8D</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:08Z</date>
+									<date>2011-12-01T19:46:24Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -552,9 +552,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>7F5EB670-642F-4D37-BA06-DE146F5252CE</string>
+											<string>8ABEF20A-7CC3-4A06-A2B6-794B276BD2FD</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -566,9 +566,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>9133E106-D348-4A8F-AD8A-F850B94EDD36</string>
+											<string>8150F3B1-CA31-483E-BCDA-EE3D843C8F04</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -580,9 +580,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>11449BD1-B2C5-44D5-8612-4ADE6489DF6A</string>
+											<string>3B71D0B5-25BF-4A15-871A-DD934A843BAB</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -594,7 +594,7 @@
 											<key>Message</key>
 											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -606,9 +606,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>7A5B0A58-FDDD-4D57-9F9B-C19F6A60524A</string>
+											<string>46FD80ED-8F3D-4E81-8F8E-E64E14570B2D</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:24Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -628,9 +628,9 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Screenshot</key>
-			<string>01CD7D82-7442-40FC-98DC-90C55B1E5581</string>
+			<string>0EB722EA-036D-481E-8011-17847916B8EA</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:24Z</date>
 			<key>Type</key>
 			<integer>6</integer>
 		</dict>
@@ -638,9 +638,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -648,11 +648,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:23 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>1A746176-5037-49C6-8387-D6A74535C5AB</string>
+			<string>73198BF5-A38F-49BE-BAA9-9FBAB1DDEE93</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -662,7 +662,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -672,9 +672,9 @@
 			<key>Message</key>
 			<string>Can't find variable: jones</string>
 			<key>Screenshot</key>
-			<string>D126E013-FC8A-4F65-B307-6DB0326AB48C</string>
+			<string>5F503F09-40DA-4A4C-BF54-5B63076712F6</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>3</integer>
 		</dict>
@@ -684,9 +684,9 @@
 			<key>Message</key>
 			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
 			<key>Screenshot</key>
-			<string>632F3F45-F34D-4489-B1F1-A71640E1B730</string>
+			<string>752D3ED5-7F98-486F-8C3A-A336768F6206</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 			<key>children</key>
@@ -697,9 +697,9 @@
 					<key>Message</key>
 					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
 					<key>Screenshot</key>
-					<string>5F3515F9-0BFB-4160-B314-989E411A0294</string>
+					<string>4CA691E7-AB9C-4809-9C33-DB9AA2968F61</string>
 					<key>Timestamp</key>
-					<date>2011-11-30T21:55:09Z</date>
+					<date>2011-12-01T19:46:25Z</date>
 					<key>Type</key>
 					<integer>0</integer>
 					<key>children</key>
@@ -710,9 +710,9 @@
 							<key>Message</key>
 							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
 							<key>Screenshot</key>
-							<string>DDBF3675-7E58-427C-8690-F5E0E2199A44</string>
+							<string>DD449558-9F2A-4427-879C-CEE3083EA733</string>
 							<key>Timestamp</key>
-							<date>2011-11-30T21:55:09Z</date>
+							<date>2011-12-01T19:46:25Z</date>
 							<key>Type</key>
 							<integer>0</integer>
 							<key>children</key>
@@ -723,9 +723,9 @@
 									<key>Message</key>
 									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
 									<key>Screenshot</key>
-									<string>727911B2-C00E-4857-8018-D399AB3089B9</string>
+									<string>EBB2E0D2-0FF0-497C-8438-F93FFA830F95</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:09Z</date>
+									<date>2011-12-01T19:46:25Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -736,9 +736,9 @@
 											<key>Message</key>
 											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
 											<key>Screenshot</key>
-											<string>1686C3AE-AD42-44D6-AE2D-CBDE718778F6</string>
+											<string>6ED0F3D9-F5CC-47AE-B971-203A2E04E650</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -750,9 +750,9 @@
 											<key>Message</key>
 											<string>UIAButton: rect:{{5, 27}, {49, 30}}</string>
 											<key>Screenshot</key>
-											<string>4612D987-04AC-4540-83B9-A3062B28B6F1</string>
+											<string>EB9D389E-C566-47FE-A511-A618F72D5D35</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -764,9 +764,9 @@
 											<key>Message</key>
 											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
 											<key>Screenshot</key>
-											<string>6C84F867-D588-4122-A314-69382FAB3BF6</string>
+											<string>3AF2E9D2-2150-4B73-83D8-173826D6FFED</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -778,9 +778,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
 											<key>Screenshot</key>
-											<string>4ED5AA95-DFE2-4F2C-BE64-A96964003850</string>
+											<string>C7D0E9DC-44E0-4E7E-A67F-1C74A14A38F3</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -794,9 +794,9 @@
 									<key>Message</key>
 									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
 									<key>Screenshot</key>
-									<string>EE033CFA-86AC-4D87-BE71-DF253DC418FE</string>
+									<string>766D52C1-F088-4AE6-A2D7-A55D219A5612</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:55:09Z</date>
+									<date>2011-12-01T19:46:25Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -807,9 +807,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>98578C10-8CA0-4FDC-B548-50FF124FF9B6</string>
+											<string>DD84F154-17D4-4CC5-BE14-92FACCB9645B</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -821,9 +821,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>455AF03D-5A02-4E07-98D8-B1CA7347351D</string>
+											<string>E33E6B72-F55E-4845-89AF-2E14357248DD</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -835,9 +835,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>641F4FC5-D98A-4AC5-8FA0-0E98119FB61D</string>
+											<string>ACA0AC04-2252-4BD5-A3F4-F926EC54DFB5</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -849,7 +849,7 @@
 											<key>Message</key>
 											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -861,9 +861,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>B5051C5A-1EF0-4E19-A1A5-CB485A869AE9</string>
+											<string>7290F511-EBD7-44CE-9486-9F8DEE40E28B</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:55:09Z</date>
+											<date>2011-12-01T19:46:25Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -883,9 +883,9 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Screenshot</key>
-			<string>1612E3C7-0299-4CEA-B1FC-0F89B7E3ADE7</string>
+			<string>13831B75-71BC-4AF2-BA26-203480066ADC</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>6</integer>
 		</dict>
@@ -893,9 +893,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:24 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -903,11 +903,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:55:08 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:46:24 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>6AE19949-E35C-4981-852A-89387FABD26E</string>
+			<string>768FE753-ED9E-440D-9B0C-B66893C3A434</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -917,7 +917,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:09Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -927,7 +927,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -937,7 +937,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -947,7 +947,7 @@
 			<key>Message</key>
 			<string>Number of Tests passed:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -957,7 +957,7 @@
 			<key>Message</key>
 			<string>Number of Tests failed:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -967,7 +967,7 @@
 			<key>Message</key>
 			<string>Number of Tests with errors:	3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -977,7 +977,7 @@
 			<key>Message</key>
 			<string>Pass Percentage:			0%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -987,7 +987,7 @@
 			<key>Message</key>
 			<string>Completion Percentage:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -997,7 +997,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:55:10Z</date>
+			<date>2011-12-01T19:46:25Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>

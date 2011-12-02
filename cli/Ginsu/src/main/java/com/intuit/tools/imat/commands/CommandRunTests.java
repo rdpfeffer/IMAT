@@ -124,7 +124,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 				exitStatus = checkForTestExecution();
 			}
 			if (exitStatus == ExitStatus.SUCCESS) {
-				//TODO: Uncomment generateReport();
+				generateReport();
 			}
 		} else {
 			logger.error("Invalid Parameters: Run \"imat run-tests -help\" for more information.");

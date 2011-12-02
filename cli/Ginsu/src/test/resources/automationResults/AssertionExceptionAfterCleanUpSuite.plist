@@ -10,7 +10,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -20,7 +20,7 @@
 			<key>Message</key>
 			<string>Number of Automated Tests:	2</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>Message</key>
 			<string>Number of Manual Tests:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>Message</key>
 			<string>Percentage automated:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -50,7 +50,7 @@
 			<key>Message</key>
 			<string>****Expected Tests****</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -60,7 +60,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testSelectListingInEvents()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -70,7 +70,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -80,7 +80,7 @@
 			<key>Message</key>
 			<string>**********************</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -90,7 +90,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -100,7 +100,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -108,9 +108,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -118,11 +118,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>A1210FB7-C00B-4613-9D7B-B63DD5BF9A8C</string>
+			<string>78809796-7ED5-41F8-B5BA-C6C10AFF91A7</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -132,7 +132,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -142,7 +142,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testSelectListingInEvents()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -152,7 +152,7 @@
 			<key>Message</key>
 			<string>ACTION: selectEventsButton()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -162,7 +162,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().scrollViews()[0].buttons()["Events"].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -170,9 +170,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -180,11 +180,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>9C247BC8-662F-4332-9D8A-46B10DAE248E</string>
+			<string>5AF83271-28AC-42FC-B700-7D8CAC72DE31</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -192,9 +192,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:13Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -202,11 +202,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>C15713F6-E303-4D44-99FE-C62E47896B24</string>
+			<string>E6A1511B-C495-4D6C-8E83-78E038AB1F0A</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:14Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -214,9 +214,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:14Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -224,11 +224,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:16 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:13 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>16C9307F-E1EF-4AA7-84CE-2CE163118C27</string>
+			<string>17977317-943E-4B97-8F03-D8D9B6822FF2</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:16Z</date>
+			<date>2011-12-01T19:43:14Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -238,7 +238,7 @@
 			<key>Message</key>
 			<string>ACTION: selectListing()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -248,7 +248,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].cells()[0].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -256,9 +256,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Basic View INITIAL state. Wed Nov 30 2011 13:52:17 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Basic View INITIAL state. Thu Dec 01 2011 11:43:15 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -266,11 +266,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Wed Nov 30 2011 13:52:17 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Thu Dec 01 2011 11:43:15 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>F3413041-1571-42C0-8C61-9A1921711863</string>
+			<string>3419E8E4-84A8-46D4-9CF6-5DF391CDEC1D</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -278,9 +278,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: INITIAL state. Wed Nov 30 2011 13:52:17 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: INITIAL state. Thu Dec 01 2011 11:43:15 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -288,11 +288,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: INITIAL state. Wed Nov 30 2011 13:52:17 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE WebView: INITIAL state. Thu Dec 01 2011 11:43:15 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>09E6CC65-F38E-4A4A-95C8-B86986A7ABE1</string>
+			<string>E15B0B5E-5A22-4AEF-BA82-572C9E1E9AA3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -302,7 +302,7 @@
 			<key>Message</key>
 			<string>ACTION: waitForActivity()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:18Z</date>
+			<date>2011-12-01T19:43:15Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -312,7 +312,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToEventsScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:19Z</date>
+			<date>2011-12-01T19:43:17Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -322,7 +322,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:19Z</date>
+			<date>2011-12-01T19:43:17Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -330,9 +330,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:19 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:17Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -340,11 +340,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:19 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>841E771C-2F6A-4B5F-B2D7-19AA29073D4C</string>
+			<string>8B8E03E5-43EB-4E24-B5C7-E29B211D2058</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -352,9 +352,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:20 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -362,11 +362,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:20 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>60E5995B-B134-4990-83E8-592CB269C3A9</string>
+			<string>DC1C12DF-0999-4A84-B7A2-9215C819DAA5</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -374,9 +374,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:20 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -384,11 +384,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:20 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:17 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>B27CE529-0D96-4BE7-9C4E-5AE1A17B4335</string>
+			<string>DA02D3D1-1F2B-4BC2-B263-CC3C45130ED5</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -398,7 +398,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToHomeScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -408,7 +408,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:20Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -416,9 +416,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:18 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:18Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -426,11 +426,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:18 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>28949366-2E97-49BC-B3F6-6D5EA51EE5E4</string>
+			<string>205BC997-AEB4-4004-A617-5A4A9F3C020C</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -440,7 +440,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testSelectListingInEvents()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -450,7 +450,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -460,7 +460,7 @@
 			<key>Message</key>
 			<string>ACTION: selectEventsButton()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -470,7 +470,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().scrollViews()[0].buttons()["Events"].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -478,9 +478,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -488,11 +488,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: Basic View INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>E7D8A083-8E1E-44E7-AF23-3740AB055EC8</string>
+			<string>DDF8658C-77B4-499C-92E6-58EB0FE696C7</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -500,9 +500,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -510,11 +510,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: List View INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>39F7D6FC-3F09-4E90-931A-76EBEBAE4951</string>
+			<string>6985464C-7CA5-45EA-BAB1-FB87825E1EE0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -522,9 +522,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:21Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -532,11 +532,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE EventsView: INITIAL state. Wed Nov 30 2011 13:52:21 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE EventsView: INITIAL state. Thu Dec 01 2011 11:43:19 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>01300FEB-ADD6-416C-97CA-DBE7ED8FDE08</string>
+			<string>7CB0D9AF-CB19-4A04-89E3-9F0BB3B4E5C5</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:22Z</date>
+			<date>2011-12-01T19:43:19Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -546,7 +546,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollToBottom()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:20Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -556,7 +556,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].cells()[6].scrollToVisible()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -566,7 +566,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollToTop()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -576,7 +576,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].cells()[0].scrollToVisible()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -586,7 +586,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollDown()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -596,7 +596,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].scrollDown()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -606,7 +606,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollUp()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -616,7 +616,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].scrollUp()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -626,7 +626,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToHomeScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -636,7 +636,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -644,9 +644,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:23 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:21 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -654,11 +654,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:52:23 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:43:21 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>24CEBC25-B074-426A-BEFF-A456C74F67CD</string>
+			<string>9A58CEC7-2625-4EB3-96C1-05DCE4CC0277</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -668,7 +668,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.testScrollingWhileViewingEventsList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -678,7 +678,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -688,7 +688,7 @@
 			<key>Message</key>
 			<string>EventsTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -698,7 +698,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -708,7 +708,7 @@
 			<key>Message</key>
 			<string>Number of Tests passed:		2</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -718,7 +718,7 @@
 			<key>Message</key>
 			<string>Number of Tests failed:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -728,7 +728,7 @@
 			<key>Message</key>
 			<string>Number of Tests with errors:	0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -738,7 +738,7 @@
 			<key>Message</key>
 			<string>Pass Percentage:			100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -748,7 +748,7 @@
 			<key>Message</key>
 			<string>Completion Percentage:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -758,7 +758,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:21Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -768,7 +768,7 @@
 			<key>Message</key>
 			<string>Script threw an uncaught JavaScript error: Assertion failed when expression was: false type: boolean</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:23Z</date>
+			<date>2011-12-01T19:43:22Z</date>
 			<key>Type</key>
 			<integer>10</integer>
 		</dict>

@@ -10,7 +10,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -20,7 +20,7 @@
 			<key>Message</key>
 			<string>Number of Automated Tests:	3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>Message</key>
 			<string>Number of Manual Tests:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>Message</key>
 			<string>Percentage automated:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -50,7 +50,7 @@
 			<key>Message</key>
 			<string>****Expected Tests****</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -60,7 +60,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -70,7 +70,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -80,7 +80,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -90,7 +90,7 @@
 			<key>Message</key>
 			<string>**********************</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -100,7 +100,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -110,7 +110,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -118,9 +118,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:38 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:46 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:38Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -128,11 +128,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:38 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:46 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>9E5EAA0C-237F-4C44-AFF2-5213B6811755</string>
+			<string>28C0A629-D54D-4F28-AFBE-2C653040AD03</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -142,7 +142,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.setUpTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -152,7 +152,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -162,7 +162,7 @@
 			<key>Message</key>
 			<string>ACTION: selectInfoButton()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -172,7 +172,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().scrollViews()[0].buttons()["Info"].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -180,9 +180,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:39 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:46 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -190,11 +190,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:39 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:46 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>E910CE4C-2760-4D5E-ACBF-4F23A1CEB73C</string>
+			<string>79FCCD4D-349C-44FD-9F6B-F6229AA5D2E1</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:39Z</date>
+			<date>2011-12-01T19:44:46Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -204,7 +204,7 @@
 			<key>Message</key>
 			<string>ACTION: selectListing()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:47Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -214,7 +214,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].cells()[0].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:47Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -222,9 +222,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Basic View INITIAL state. Wed Nov 30 2011 13:53:40 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Basic View INITIAL state. Thu Dec 01 2011 11:44:47 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:47Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -232,11 +232,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Wed Nov 30 2011 13:53:40 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE WebView: Basic View INITIAL state. Thu Dec 01 2011 11:44:47 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>6602886F-D9BC-4C1D-95E5-D42E7594BC99</string>
+			<string>6D34FA7C-8057-400E-9CD8-92F594912061</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:47Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -244,9 +244,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: INITIAL state. Wed Nov 30 2011 13:53:40 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: INITIAL state. Thu Dec 01 2011 11:44:47 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:47Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -254,11 +254,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: INITIAL state. Wed Nov 30 2011 13:53:40 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE WebView: INITIAL state. Thu Dec 01 2011 11:44:47 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>54962AD5-F800-49D6-AA43-859533225535</string>
+			<string>AE3B6AEE-0A9E-49F5-86B1-74C98EC109AE</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:48Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -268,7 +268,7 @@
 			<key>Message</key>
 			<string>ACTION: waitForActivity()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:40Z</date>
+			<date>2011-12-01T19:44:48Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -278,7 +278,7 @@
 			<key>Message</key>
 			<string>ACTION: validateCorrectPageLoaded( Facebook)</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -286,9 +286,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Correct Page Loaded state. Wed Nov 30 2011 13:53:41 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE WebView: Correct Page Loaded state. Thu Dec 01 2011 11:44:52 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -296,11 +296,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE WebView: Correct Page Loaded state. Wed Nov 30 2011 13:53:41 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE WebView: Correct Page Loaded state. Thu Dec 01 2011 11:44:52 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>1BB6ECF5-7445-44A0-8B1B-C904824FB263</string>
+			<string>AE4ECE99-56F8-4902-8A3A-17E404A43B20</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -310,7 +310,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToInfoScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -320,7 +320,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -328,9 +328,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:41 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:52 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:41Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -338,11 +338,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:41 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:52 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>F0374F8A-BA17-4F17-A433-CCD4EF6CD9BF</string>
+			<string>CF3A3632-191C-4017-9250-905ED6775F91</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -352,7 +352,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToHomeScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -362,7 +362,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:52Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -370,9 +370,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:42 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:53 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -380,11 +380,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:42 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:53 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>7E1135C2-2AAC-4723-88B5-FB77C9028938</string>
+			<string>42040791-773F-4EE9-8651-B53E59BC381B</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -394,7 +394,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -404,7 +404,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -414,7 +414,7 @@
 			<key>Message</key>
 			<string>ACTION: selectInfoButton()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -424,7 +424,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().scrollViews()[0].buttons()["Info"].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:42Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -432,9 +432,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:43 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:53 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:43Z</date>
+			<date>2011-12-01T19:44:53Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -442,11 +442,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:43 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:53 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>085C3A15-038E-48FB-8579-0C56C09E7A4F</string>
+			<string>AFD9767F-F08F-4A9A-8DDB-E6722682E69F</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:43Z</date>
+			<date>2011-12-01T19:44:54Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -456,7 +456,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToHomeScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -466,7 +466,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -474,9 +474,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:44 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:55 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -484,11 +484,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:44 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:55 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>7EE062DE-2C35-4715-BF06-B0A2D2DAE0A3</string>
+			<string>873FD4C2-A4BB-48C4-98EE-F9CF64351D3B</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -498,7 +498,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -508,7 +508,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -518,7 +518,7 @@
 			<key>Message</key>
 			<string>ACTION: selectInfoButton()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -528,7 +528,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().scrollViews()[0].buttons()["Info"].tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -536,9 +536,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:44 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:55 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -546,11 +546,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE InfoView: INITIAL state. Wed Nov 30 2011 13:53:44 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE InfoView: INITIAL state. Thu Dec 01 2011 11:44:55 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>6DC4C27C-88F6-404B-A0CD-DD0983085F47</string>
+			<string>CE95D528-D537-4A98-A8CF-BC8D6AC43971</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:44Z</date>
+			<date>2011-12-01T19:44:55Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -560,7 +560,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollDown()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -570,7 +570,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].scrollDown()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -580,7 +580,7 @@
 			<key>Message</key>
 			<string>ACTION: scrollUp()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -590,7 +590,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().tableViews()[0].scrollUp()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -600,7 +600,7 @@
 			<key>Message</key>
 			<string>ACTION: returnToHomeScreen()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -610,7 +610,7 @@
 			<key>Message</key>
 			<string>target.frontMostApp().mainWindow().navigationBar().leftButton().tap()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -618,9 +618,9 @@
 			<key>LogType</key>
 			<string>Debug</string>
 			<key>Message</key>
-			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:46 GMT-0800 (PST)")</string>
+			<string>target.captureRectWithName("{origin:{x:0.00,y:0.00}, size:{height:480.00,width:320.00}}", "SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:57 GMT-0800 (PST)")</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 		</dict>
@@ -628,11 +628,11 @@
 			<key>LogType</key>
 			<string>Screenshot</string>
 			<key>Message</key>
-			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Wed Nov 30 2011 13:53:46 GMT-0800 (PST)</string>
+			<string>SCREEN: VALIDATE HomeScreenView: INITIAL state. Thu Dec 01 2011 11:44:57 GMT-0800 (PST)</string>
 			<key>Screenshot</key>
-			<string>5B9B825D-DBF1-4CE1-9BDC-D49CA79A5D3B</string>
+			<string>229D0E3C-69D1-4120-A552-63D1F9B6EB5D</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>8</integer>
 		</dict>
@@ -642,7 +642,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>
@@ -652,7 +652,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -662,9 +662,9 @@
 			<key>Message</key>
 			<string>Assertion failed when expression was: false type: boolean</string>
 			<key>Screenshot</key>
-			<string>1F66077B-B308-4C72-95CD-F14FF56218FC</string>
+			<string>571F5B02-0032-440C-869A-076A7032060A</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>3</integer>
 		</dict>
@@ -674,9 +674,9 @@
 			<key>Message</key>
 			<string>UIATarget: name:iPhone Simulator rect:{{0, 0}, {320, 480}}</string>
 			<key>Screenshot</key>
-			<string>E72DEA37-ADEA-42A6-9F2C-A0EFB353BD1F</string>
+			<string>ECD4BFBC-9E48-4C58-B80C-CF2AA29873B2</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>0</integer>
 			<key>children</key>
@@ -687,9 +687,9 @@
 					<key>Message</key>
 					<string>UIAApplication: name:sampleApp rect:{{0, 20}, {320, 460}}</string>
 					<key>Screenshot</key>
-					<string>4D1269F0-0ADF-400C-8935-7B1EE668A4CE</string>
+					<string>1340356F-11DA-4876-A675-EBF0B3AFCE1F</string>
 					<key>Timestamp</key>
-					<date>2011-11-30T21:53:46Z</date>
+					<date>2011-12-01T19:44:57Z</date>
 					<key>Type</key>
 					<integer>0</integer>
 					<key>children</key>
@@ -700,9 +700,9 @@
 							<key>Message</key>
 							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
 							<key>Screenshot</key>
-							<string>4299B0E8-984E-4BA7-B6E6-973B1CC46FE5</string>
+							<string>0B5472B4-7645-405F-B7B6-D4AE1E2AA32A</string>
 							<key>Timestamp</key>
-							<date>2011-11-30T21:53:46Z</date>
+							<date>2011-12-01T19:44:57Z</date>
 							<key>Type</key>
 							<integer>0</integer>
 							<key>children</key>
@@ -713,9 +713,9 @@
 									<key>Message</key>
 									<string>UIANavigationBar: name:Sample App rect:{{0, 20}, {320, 44}}</string>
 									<key>Screenshot</key>
-									<string>28123C5A-FE98-4AA5-99AF-DC74DE035BB7</string>
+									<string>7B925EF7-AE3E-4F60-8232-74942F3F433B</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:53:46Z</date>
+									<date>2011-12-01T19:44:57Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -726,9 +726,9 @@
 											<key>Message</key>
 											<string>UIAImage: rect:{{0, 20}, {320, 44}}</string>
 											<key>Screenshot</key>
-											<string>8E17E801-5596-40BA-ACFA-E4A6EE5F401D</string>
+											<string>81A50D18-9EA9-402D-8814-513FB6038019</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -740,7 +740,7 @@
 											<key>Message</key>
 											<string>UIAButton: rect:{{5, 27}, {0, 30}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -752,9 +752,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Sample App rect:{{89, 27}, {90, 30}}</string>
 											<key>Screenshot</key>
-											<string>46AB1762-62E4-4650-B192-46515689ECA5</string>
+											<string>433C8819-EE85-4280-8FCA-E2EE7393A488</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -766,9 +766,9 @@
 											<key>Message</key>
 											<string>UIAStaticText: name:Sample App value:Sample App rect:{{101, 28}, {117, 27}}</string>
 											<key>Screenshot</key>
-											<string>93AB75AC-0CBC-437D-B092-2B8929B50760</string>
+											<string>CE79D207-383B-4272-AC99-F791D67EDB27</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -780,9 +780,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:About rect:{{260, 27}, {55, 30}}</string>
 											<key>Screenshot</key>
-											<string>1CDE9861-DD94-45D7-AD13-0D7BF2AC3AA8</string>
+											<string>52D9D219-7036-42AC-9DB3-2AA1454724DA</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -794,7 +794,7 @@
 											<key>Message</key>
 											<string>UIAStaticText: name:News value:News rect:{{320, 28}, {54, 27}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -808,9 +808,9 @@
 									<key>Message</key>
 									<string>UIAScrollView: rect:{{0, 64}, {320, 396}}</string>
 									<key>Screenshot</key>
-									<string>AB910203-6AA2-44A7-B3AA-1433D150F7F0</string>
+									<string>E048DD82-CCCC-473F-B0B5-E6ACB2B5161F</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:53:46Z</date>
+									<date>2011-12-01T19:44:57Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -821,9 +821,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Events rect:{{0, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>A3E17D32-74E0-4910-B0B7-2081DE3D0EEA</string>
+											<string>34671F0A-C10E-47E1-B93C-B26577302369</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -835,9 +835,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Info rect:{{107, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>B31AFD76-0B84-4931-AED5-7156E36ABD12</string>
+											<string>7A87E3A2-C1C5-48FB-858F-1F0F42844822</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -849,9 +849,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Intuit rect:{{214, 64}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>E0C48064-DABF-427F-A92B-8C2C8674C0F0</string>
+											<string>8DEE794B-B2BE-4F5A-827A-34E3179324FC</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -863,7 +863,7 @@
 											<key>Message</key>
 											<string>UIAButton: name:Settings rect:{{320, 64}, {107, 132}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -875,9 +875,9 @@
 											<key>Message</key>
 											<string>UIAButton: name:Features rect:{{0, 196}, {107, 132}}</string>
 											<key>Screenshot</key>
-											<string>948D12AD-9F21-40C1-8E6A-DABB5F30F0FB</string>
+											<string>030B2562-062E-489C-8932-7E13D454A844</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -891,7 +891,7 @@
 									<key>Message</key>
 									<string>UIATableView: name:Empty list value:rows 1 to 4 of 4 rect:{{320, 64}, {320, 416}}</string>
 									<key>Timestamp</key>
-									<date>2011-11-30T21:53:46Z</date>
+									<date>2011-12-01T19:44:57Z</date>
 									<key>Type</key>
 									<integer>0</integer>
 									<key>children</key>
@@ -902,7 +902,7 @@
 											<key>Message</key>
 											<string>UIATableGroup: name:Social Media rect:{{320, 64}, {320, 22}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -913,7 +913,7 @@
 													<key>Message</key>
 													<string>UIAElement: name:Social Media rect:{{320, 63}, {320, 23}}</string>
 													<key>Timestamp</key>
-													<date>2011-11-30T21:53:46Z</date>
+													<date>2011-12-01T19:44:57Z</date>
 													<key>Type</key>
 													<integer>0</integer>
 													<key>children</key>
@@ -927,7 +927,7 @@
 											<key>Message</key>
 											<string>UIATableCell: name:Check out Intuit on Facebook, like it, and tell your friends!, Intuit on Facebook rect:{{320, 86}, {320, 90}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -938,7 +938,7 @@
 													<key>Message</key>
 													<string>UIAStaticText: name:Check out Intuit on Facebook, like it, and tell your friends!, Intuit on Facebook value:Check out Intuit on Facebook, like it, and tell your friends!, Intuit on Facebook rect:{{320, 86}, {320, 90}}</string>
 													<key>Timestamp</key>
-													<date>2011-11-30T21:53:46Z</date>
+													<date>2011-12-01T19:44:57Z</date>
 													<key>Type</key>
 													<integer>0</integer>
 													<key>children</key>
@@ -952,7 +952,7 @@
 											<key>Message</key>
 											<string>UIATableCell: name:Small Busines. Rejoice!, Intuit on Twitter rect:{{320, 176}, {320, 90}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -963,7 +963,7 @@
 													<key>Message</key>
 													<string>UIAStaticText: name:Small Busines. Rejoice!, Intuit on Twitter value:Small Busines. Rejoice!, Intuit on Twitter rect:{{320, 176}, {320, 90}}</string>
 													<key>Timestamp</key>
-													<date>2011-11-30T21:53:46Z</date>
+													<date>2011-12-01T19:44:57Z</date>
 													<key>Type</key>
 													<integer>0</integer>
 													<key>children</key>
@@ -977,7 +977,7 @@
 											<key>Message</key>
 											<string>UIATableCell: name:Keep up on the latest news from Intuit., Intuit in the Press rect:{{320, 266}, {320, 90}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -988,7 +988,7 @@
 													<key>Message</key>
 													<string>UIAStaticText: name:Keep up on the latest news from Intuit., Intuit in the Press value:Keep up on the latest news from Intuit., Intuit in the Press rect:{{320, 266}, {320, 90}}</string>
 													<key>Timestamp</key>
-													<date>2011-11-30T21:53:46Z</date>
+													<date>2011-12-01T19:44:57Z</date>
 													<key>Type</key>
 													<integer>0</integer>
 													<key>children</key>
@@ -1002,7 +1002,7 @@
 											<key>Message</key>
 											<string>UIATableCell: name:Run into an issue or want to see an update? Let us know, Feedback rect:{{320, 356}, {320, 90}}</string>
 											<key>Timestamp</key>
-											<date>2011-11-30T21:53:46Z</date>
+											<date>2011-12-01T19:44:57Z</date>
 											<key>Type</key>
 											<integer>0</integer>
 											<key>children</key>
@@ -1013,7 +1013,7 @@
 													<key>Message</key>
 													<string>UIAStaticText: name:Run into an issue or want to see an update? Let us know, Feedback value:Run into an issue or want to see an update? Let us know, Feedback rect:{{320, 356}, {320, 90}}</string>
 													<key>Timestamp</key>
-													<date>2011-11-30T21:53:46Z</date>
+													<date>2011-12-01T19:44:57Z</date>
 													<key>Type</key>
 													<integer>0</integer>
 													<key>children</key>
@@ -1031,9 +1031,9 @@
 							<key>Message</key>
 							<string>UIAWindow: rect:{{0, 0}, {320, 480}}</string>
 							<key>Screenshot</key>
-							<string>A72E92FD-FF15-4F74-98EB-A2674BF676FD</string>
+							<string>9E53158E-E628-4EEB-8E93-18F2C98C9E40</string>
 							<key>Timestamp</key>
-							<date>2011-11-30T21:53:46Z</date>
+							<date>2011-12-01T19:44:57Z</date>
 							<key>Type</key>
 							<integer>0</integer>
 							<key>children</key>
@@ -1049,9 +1049,9 @@
 			<key>Message</key>
 			<string>InfoTestSet.tearDownTestSet();</string>
 			<key>Screenshot</key>
-			<string>53F571A2-2090-4480-B9C0-67531F0BC63D</string>
+			<string>DBDEA4A7-8B97-4A57-B833-63A81C71D594</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>7</integer>
 		</dict>
@@ -1061,7 +1061,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -1071,7 +1071,7 @@
 			<key>Message</key>
 			<string>Number of Tests passed:		3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -1081,7 +1081,7 @@
 			<key>Message</key>
 			<string>Number of Tests failed:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -1091,7 +1091,7 @@
 			<key>Message</key>
 			<string>Number of Tests with errors:	0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -1101,7 +1101,7 @@
 			<key>Message</key>
 			<string>Pass Percentage:			100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -1111,7 +1111,7 @@
 			<key>Message</key>
 			<string>Completion Percentage:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -1121,7 +1121,7 @@
 			<key>Message</key>
 			<string>suiteHandler.cleanUpSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:53:46Z</date>
+			<date>2011-12-01T19:44:57Z</date>
 			<key>Type</key>
 			<integer>5</integer>
 		</dict>

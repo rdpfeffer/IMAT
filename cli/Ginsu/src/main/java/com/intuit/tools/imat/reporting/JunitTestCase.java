@@ -11,13 +11,14 @@
 package com.intuit.tools.imat.reporting;
 
 public class JunitTestCase {	
-	private String classname;
-	private String testcasename;
-	private String time;
+	private String classname = "";
+	private String testcasename = "";
+	private String time = "";
 	private STATUS status;
-	private String startTime;
-	private String endTime;
-	private JunitTestCaseInnerMessage message;
+	private String startTime = "";
+	private String endTime = "";
+	private JunitTestCaseInnerMessage message = new JunitTestCaseInnerMessage();
+	private boolean isIncomplete = true;
 	
 	public enum STATUS {PASS, FAIL, ERROR}
 	
@@ -75,5 +76,17 @@ public class JunitTestCase {
 	 */
 	public String getEndTime() {
 		return endTime;
+	}
+	/**
+	 * @param hasBeenCaptured the hasBeenCaptured to set
+	 */
+	public void setIsIncomplete(boolean isIncomplete) {
+		this.isIncomplete = isIncomplete;
+	}
+	/**
+	 * @return the hasBeenCaptured
+	 */
+	public boolean isIncomplete() {
+		return isIncomplete;
 	}	
 }

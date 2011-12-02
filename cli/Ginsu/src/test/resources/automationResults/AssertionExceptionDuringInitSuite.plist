@@ -10,7 +10,7 @@
 			<key>Message</key>
 			<string>suiteHandler.initSuite();</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>4</integer>
 		</dict>
@@ -20,7 +20,7 @@
 			<key>Message</key>
 			<string>Number of Automated Tests:	3</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>Message</key>
 			<string>Number of Manual Tests:		0</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>Message</key>
 			<string>Percentage automated:		100%</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -50,7 +50,7 @@
 			<key>Message</key>
 			<string>****Expected Tests****</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -60,7 +60,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testSelectListingInInfo()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -70,7 +70,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testFailureExample()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -80,7 +80,7 @@
 			<key>Message</key>
 			<string>InfoTestSet.testScrollingWhileViewingInfoList()</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -90,7 +90,7 @@
 			<key>Message</key>
 			<string>**********************</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>1</integer>
 		</dict>
@@ -100,19 +100,9 @@
 			<key>Message</key>
 			<string>Script threw an uncaught JavaScript error: Assertion failed when expression was: false type: boolean</string>
 			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
+			<date>2011-12-01T19:43:50Z</date>
 			<key>Type</key>
 			<integer>10</integer>
-		</dict>
-		<dict>
-			<key>LogType</key>
-			<string>Stopped</string>
-			<key>Message</key>
-			<string>Script was stopped by the user</string>
-			<key>Timestamp</key>
-			<date>2011-11-30T21:52:49Z</date>
-			<key>Type</key>
-			<integer>9</integer>
 		</dict>
 	</array>
 	<key>version</key>

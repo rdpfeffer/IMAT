@@ -68,45 +68,15 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testSyntaxError() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(2));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("ParseError.plist", props);
-	}
-
-	//@Test
-	//TODO Uncomment this test
-	public void testNestedDictionaries() {
-		String filename = "Nested.plist";
-		reader.setPlistFile(getTestResourceAsFile(SUBDIR + filename));
-		reader.run();
-		assert logQueue.size() == 5 : "Buffer was expected to have 5 results for"
-				+ " the file named "
-				+ filename
-				+ " instead it had: "
-				+ logQueue.size();
-
-		Dict currentDict = null;
-		currentDict = logQueue.remove();
-		assert currentDict.countSubDicts() == 0 : "the first element in the "
-				+ "queue should not have any nested dictionaries";
-
-		currentDict = logQueue.remove();
-		assert currentDict.countSubDicts() == 1 : "the second element in the "
-				+ "queue should have 1 nested dictionary";
-
-		currentDict = logQueue.remove();
-		assert currentDict.countSubDicts() == 2 : "the third element in the "
-				+ "queue should have 2 nested dictionaries";
-
-		currentDict = logQueue.remove();
-		assert currentDict.countSubDicts() == 0 : "the last element in the "
-				+ "queue should not have any nested dictionaries";
 	}
 
 	@Test
 	public void testAgainst300KbLogFile() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1313));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1690));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(6));
 		verifyAgainstResultFile("300KBOnTrace.plist", props);
 	}
@@ -114,8 +84,8 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testAgainstLogFileWithFailuresAfterCleanUpSuite() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(75));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(74));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionAfterCleanUpSuite.plist",
 				props);
 
@@ -123,15 +93,15 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(75));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(74));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionAfterCleanUpSuite.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresBeforeInitSuite() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(3));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("AssertionExceptionBeforeInitSuite.plist",
 				props);
@@ -140,7 +110,7 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(3));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("ExceptionBeforeInitSuite.plist", props);
 	}
@@ -148,8 +118,8 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testAgainstLogFileWithFailuresDuringCleanUpSuite() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(74));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(66));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionDuringCleanUpSuite.plist",
 				props);
 
@@ -157,15 +127,15 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(74));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(66));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringCleanUpSuite.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresDuringInitSuite() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(10));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("AssertionExceptionDuringInitSuite.plist",
 				props);
@@ -174,7 +144,7 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(11));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("ExceptionDuringInitSuite.plist", props);
 	}
@@ -182,8 +152,8 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testAgainstLogFileWithFailuresDuringSetUpTestSet() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(170));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(73));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionDuringSetUpTestSet.plist",
 				props);
 
@@ -191,48 +161,48 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(170));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(58));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringSetUpTestSet.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresDuringSetUp() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(83));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(41));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionDuringSetUp.plist", props);
 
 		logQueue.clear();
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(83));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(41));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringSetUp.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresDuringTearDown() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(92));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(80));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionDuringTearDown.plist", props);
 
 		logQueue.clear();
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(83));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(80));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringTearDown.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresDuringTearDownTestSet() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(130));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(73));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile(
 				"AssertionExceptionDuringTearDownTestSet.plist", props);
 
@@ -240,15 +210,15 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(130));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(73));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringTearDownTestSet.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithFailuresDuringTest() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(354));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(87));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("AssertionExceptionDuringTest.plist", props);
 
@@ -256,7 +226,7 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 		reportQueue.clear();
 
 		props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(354));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(87));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ExceptionDuringTest.plist", props);
 	}
@@ -264,7 +234,7 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testAgainstLogFileWithFailures() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(2));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(1));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(0));
 		verifyAgainstResultFile("ParseError.plist", props);
 	}
@@ -272,17 +242,25 @@ public abstract class BaseIOSAutomationResultsTests extends BaseFunctionalTest {
 	@Test
 	public void testAgainstLogFileWithCleanRun() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(74));
-		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(4));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(73));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("CleanRun.plist", props);
 	}
 
 	@Test
 	public void testAgainstLogFileWithManualRun() {
 		HashMap<String, Object> props = new HashMap<String, Object>();
-		props.put(LOG_QUEUE_SIZE_KEY, new Integer(30));
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(27));
 		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
 		verifyAgainstResultFile("ManualRun.plist", props);
+	}
+	
+	@Test
+	public void testAgainstLogFileWithExceptionDuringTestRecovery() {
+		HashMap<String, Object> props = new HashMap<String, Object>();
+		props.put(LOG_QUEUE_SIZE_KEY, new Integer(55));
+		props.put(REPORT_QUEUE_SIZE_KEY, new Integer(1));
+		verifyAgainstResultFile("ExceptionDuringTestRecovery.plist", props);
 	}
 
 	protected void verifyAgainstResultFile(String fileName,

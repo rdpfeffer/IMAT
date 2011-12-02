@@ -57,6 +57,12 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 				logger.trace("Processing dictionary entry: " + dict.toString());
 				translator = translator.process(dict);
 			}
+			// If we get interrupted in the middle of a test, or in the middle of
+			// cleaning up a test, we should try to recover and report as best
+			// as possible.
+			if (currentSuite != null && !currentSuite.isSuiteCaptured()) {
+				completeSuite(dict);
+			}
 		} catch (InterruptedException e) {
 			logger.error(e);
 		}
@@ -99,6 +105,9 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 		// complete the setup of the test case based upon the status of the
 		// dictionary log entry.
 		switch (dict.getCode()) {
+		case PASS:
+			testCase.setStatus(JunitTestCase.STATUS.PASS);
+			break;
 		case FAIL:
 			innerMessage.setMessage(logBuffer);
 			testCase.setInnerMessage(innerMessage);
@@ -106,18 +115,13 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			testCase.setStatus(JunitTestCase.STATUS.FAIL);
 			break;
 		case ISSUE:
+		default:
 			innerMessage.setMessage(logBuffer);
 			testCase.setInnerMessage(innerMessage);
 			//Isses show up as errors in the Junit Reports
 			currentSuite.incrementErrorCount();
 			testCase.setStatus(JunitTestCase.STATUS.ERROR);
 			break;
-		case PASS:
-			testCase.setStatus(JunitTestCase.STATUS.PASS);
-			break;
-		default:
-			assert false : "Tried to complete a testCase on an entry that "
-					+ "was not a completing entry";
 		}
 
 		// Compute the duration of the test case
@@ -132,6 +136,7 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 		}
 		currentSuiteExecutionTime += testCaseDuration;
 		testCase.setTime(String.valueOf(testCaseDuration));
+		testCase.setIsIncomplete(false);
 
 		// finally add the test case to the list of cases in this suite
 		currentSuite.getTestCaseList().add(testCase);
@@ -155,6 +160,7 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 		int inumTests = currentSuite.getTestCaseList().size();
 		currentSuite.setTests(Integer.toString(inumTests));
 		currentSuite.setTimestamp(dict.getDate());
+		currentSuite.setSuiteCaptured(true);
 		try {
 			reportQueue.put(currentSuite);
 		} catch (InterruptedException e) {
@@ -162,6 +168,12 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			e.printStackTrace();
 		}
 		testSuiteCount++;
+	}
+	
+	private JunitTestCase getEmptyCompletedTestCase() {
+		JunitTestCase testcase=  new JunitTestCase();
+		testcase.setIsIncomplete(false);
+		return testcase;
 	}
 	
 	/**
@@ -185,6 +197,10 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			}
 			return nextPhaseTranslator;
 		}
+		
+		public JunitTestCase getTestCase() {
+			return getEmptyCompletedTestCase();
+		}
 	}
 
 	private class InitSuitePhaseTranslator implements IOSPhaseTranslator {
@@ -196,10 +212,14 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 				nextPhase = new SetUpTestSetPhaseTranslator();
 			}
 			// if we see an exception jump to the end
-			if (dict.isExceptionLogEntry()) {
+			if (dict.isUncaughtExceptionLogEntry()) {
 				nextPhase = new PostCleanUpSuitePhaseTranslator();
 			}
 			return nextPhase;
+		}
+		
+		public JunitTestCase getTestCase() {
+			return getEmptyCompletedTestCase();
 		}
 	}
 
@@ -226,6 +246,10 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			}
 			return nextPhase;
 		}
+		
+		public JunitTestCase getTestCase() {
+			return this.testCase;
+		}
 	}
 
 	private class TestCasePhaseTranslator implements IOSPhaseTranslator {
@@ -243,6 +267,10 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 				logBuffer = logBuffer + dict.getString() + "\n";
 			}
 			return nextPhase;
+		}
+		
+		public JunitTestCase getTestCase() {
+			return this.testCase;
 		}
 	}
 
@@ -269,13 +297,19 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 				nextPhase = nextPhase.process(dict);
 			} else {
 				JunitTestCaseInnerMessage inner = previousTestCase.getInnerMessage();
-				if (!cleanupSeparatorAdded) {
-					inner.appendToMessage(separator);
-					cleanupSeparatorAdded = true;
+				if (inner != null) {
+					if (!cleanupSeparatorAdded) {
+						inner.appendToMessage(separator);
+						cleanupSeparatorAdded = true;
+					}
+					inner.appendToMessage(dict.getString() + "\n");
 				}
-				inner.appendToMessage(dict.getString() + "\n");
 			}
 			return nextPhase;
+		}
+		
+		public JunitTestCase getTestCase() {
+			return this.previousTestCase;
 		}
 	}
 
@@ -298,6 +332,10 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			
 			return nextPhase;
 		}
+		
+		public JunitTestCase getTestCase() {
+			return this.testCase;
+		}
 	}
 	
 	private class PostTestSetPhaseTranslator implements IOSPhaseTranslator {
@@ -313,21 +351,33 @@ public class IOSLogEntryToJUnitTranslator implements Runnable {
 			nextPhase = nextPhase.process(dict);
 			return nextPhase;
 		}
+		
+		public JunitTestCase getTestCase() {
+			return getEmptyCompletedTestCase();
+		}
 	}
 
 	private class CleanUpSuitePhaseTranslator implements IOSPhaseTranslator {
 		public IOSPhaseTranslator process(Dict dict) {
 			IOSPhaseTranslator nextPhase = this;
-			if (dict.isCompletionLogEntry() || dict.isExceptionLogEntry()) {
+			if (dict.isCompletionLogEntry() || dict.isUncaughtExceptionLogEntry()) {
 				nextPhase = new PostCleanUpSuitePhaseTranslator();
 			}
 			return nextPhase;
+		}
+		
+		public JunitTestCase getTestCase() {
+			return getEmptyCompletedTestCase();
 		}
 	}
 
 	private class PostCleanUpSuitePhaseTranslator implements IOSPhaseTranslator {
 		public IOSPhaseTranslator process(Dict dict) {
 			return this;
+		}
+		
+		public JunitTestCase getTestCase() {
+			return getEmptyCompletedTestCase();
 		}
 	}
 

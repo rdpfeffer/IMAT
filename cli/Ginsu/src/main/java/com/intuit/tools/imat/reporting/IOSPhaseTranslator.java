@@ -21,4 +21,6 @@ package com.intuit.tools.imat.reporting;
 public interface IOSPhaseTranslator {
 
 	public IOSPhaseTranslator process(Dict dict);
+	
+	public JunitTestCase getTestCase();
 }
