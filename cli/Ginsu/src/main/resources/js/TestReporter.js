@@ -26,7 +26,7 @@ IMAT.TestReporter = Class.extend(/** @lends IMAT.TestReporter# */{
 		this.automatedTests = [];
 		this.manualTests = [];
 		this.incompleteTests = [];
-		this.numFailed = 0
+		this.numFailed = 0;
 		this.numErrored = 0;
 		this.numPassed = 0;
 	},
@@ -141,7 +141,9 @@ IMAT.TestReporter = Class.extend(/** @lends IMAT.TestReporter# */{
 	{
 		for (testSignature in testArray) 
 		{
-			IMAT.log_info(testSignature);
+			if (testArray.hasOwnProperty(testSignature)) {
+				IMAT.log_info(testSignature);
+			}
 		}
 	},
 	
@@ -165,7 +167,7 @@ IMAT.TestReporter = Class.extend(/** @lends IMAT.TestReporter# */{
 				incompleteTests.length++;
 			}		
 		});
-		this.numFailed = numberFailed
+		this.numFailed = numberFailed;
 		this.numErrored = numberErrored;
 		this.numPassed = numberPassed;
 		this.incompleteTests = incompleteTests;
@@ -177,10 +179,14 @@ IMAT.TestReporter = Class.extend(/** @lends IMAT.TestReporter# */{
 	iterateOverTestsWithCallback: function(callback)
 	{
 		for (autoTest in this.automatedTests) {
-			callback(this.automatedTests[autoTest], autoTest);
+			if (this.automatedTests.hasOwnProperty(autoTest)) {
+				callback(this.automatedTests[autoTest], autoTest);
+			}
 		}
 		for (manualTest in this.manualTests) {
-			callback(this.manualTests[manualTest], manualTest);
+			if (this.manualTests.hasOwnProperty(manualTest)) {
+				callback(this.manualTests[manualTest], manualTest);
+			}
 		}
 	}
 });

@@ -379,8 +379,8 @@ IMAT.MetaTests = Class.extend(IMAT.BaseTestSet, {
 	
 	testReportingAddTest: function() {
 		var reporter = new IMAT.TestReporter();
-		assertTrue(reporter.automatedTests.length == 0, "An empty test reporter should have no automated tests");
-		assertTrue(reporter.manualTests.length == 0, "An empty test reporter should have no manual tests");
+		assertTrue(reporter.automatedTests.length === 0, "An empty test reporter should have no automated tests");
+		assertTrue(reporter.manualTests.length === 0, "An empty test reporter should have no manual tests");
 		
 		//add a manual test
 		var manualSignature = "testSomething.testManuallyFoobar";
