@@ -71,31 +71,25 @@ public class CommandNewProject extends ScriptedCommand implements ICommand {
 	public static final String GLOBAL_OBJECT_VAR = "-globalObjVar";
 	public static final String GLOBAL_OBJECT_VAR_DEFAULT_VAL = "AUTO";
 
-	@Parameter(names = { GLOBAL_OBJECT_VAR, "-g" }, validateWith = JavaScriptVariableValidator.class, description = "The variable  name of the global object which will hold "
-			+ "reference to all objects that are created within the JavaScript "
-			+ "source of your automation project. In JavaScript, it is good "
-			+ "practice to nest all functions within your own global namespace "
-			+ "so that none of your objects collide with third party code. "
-			+ "It is a good idea to name this variable using a abreviation "
-			+ "that somehow represents your project.                       "
-			+ "                                                            "
-			+ "For example, if you had an application under test called "
-			+ "\"FooBar\" your global variable might be \"FB\".                  "
-			+ "bash$ imat new-project -g FB                                "
-			+ "                                                            "
-			+ "Finally, you should also know that the variable IMAT is "
-			+ "taken, and should not be used. If it is used, an error will ocurr "
-			+ "and the command will not be run. If you do not supply a "
-			+ "value for this, a default value of \""
-			+ GLOBAL_OBJECT_VAR_DEFAULT_VAL
-			+ "\" will be used "
-			+ "instead. It is a good idea for this letter to be in ALL_CAPS and "
-			+ "contain \"_\" characters to represent spaces. If any of the "
-			+ "following conditions are met when entering this string, a "
-			+ "validatoin error will occur:                                      "
-			+ "1) anything that starts with a number                       "
-			+ "2) text that has anything but alphanumeric characters and the"
-			+ "   characters \"$\", \"_\" and/or \"-\".                   ")
+	@Parameter(names = { GLOBAL_OBJECT_VAR, "-g" }, validateWith = JavaScriptVariableValidator.class, description = "The variable  name of the global object which will hold " +
+			"reference to all objects that are created within the JavaScript " +
+			"source of your automation project. In JavaScript, it is good " +
+			"practice to nest all functions within your own global namespace so " +
+			"that none of your objects collide with third party code. It is a " +
+			"good idea to name this variable using a abreviation that somehow " +
+			"represents your project. For example, if you had an application " +
+			"under test called \"FooBar\" your global variable might be \"FB\"." +
+			"\"bash$ imat new-project -g FB\"" +
+			"Finally, you should also know that the variable IMAT is taken, and " +
+			"should not be used. If it is used, an error will ocurr and the " +
+			"command will not be run. If you do not supply a value for this, a " +
+			"default value of \"" + GLOBAL_OBJECT_VAR_DEFAULT_VAL + "\" will be " +
+			"used instead. It is a good idea for this letter to be in ALL_CAPS " +
+			"and contain \"_\" characters to represent spaces. If any of the " +
+			"following conditions are met when entering this string, a " +
+			"validation error will occur: 1) anything that starts with a number " +
+			"2) text that has anything but alphanumeric characters and the " +
+			"characters \"$\", \"_\" and/or \"-\".")
 	String globalObjectVar = GLOBAL_OBJECT_VAR_DEFAULT_VAL;
 
 	/*

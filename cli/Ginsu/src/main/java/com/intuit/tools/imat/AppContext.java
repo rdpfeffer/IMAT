@@ -36,7 +36,7 @@ public enum AppContext {
 	 * The main home key for the application to be used when getting the Home
 	 * directory of the application.
 	 * <p>
-	 * To get the path to the home directory of the applicaiton, the user should
+	 * To get the path to the home directory of the application, the user should
 	 * call
 	 * <code>AppContext.getInstance().getProperty(AppContext.APP_HOME_KEY);</code>
 	 * </p>

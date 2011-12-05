@@ -12,8 +12,6 @@ package com.intuit.tools.imat.reporting;
 
 import java.util.ArrayList;
 
-import com.intuit.tools.imat.monitor.iOSEndOfLogMsg;
-
 public class Dict {	
 	private String string = "";
 	private String date = "";

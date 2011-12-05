@@ -77,10 +77,14 @@ public class MainArgs {
 				+ "an internal error that needs attention. Please submit a bug for this issue.";
 
 		logger.debug("APP_HOME_KEY is: " + this.appHome);
-		config.put(AppContext.APP_HOME_KEY, this.appHome);
+		if (this.appHome != null) {
+			config.put(AppContext.APP_HOME_KEY, this.appHome);
+		}
 
 		logger.debug("PROJECT_HOME_KEY is: " + this.projectHome);
-		config.put(AppContext.PROJECT_HOME_KEY, this.projectHome);
+		if (this.projectHome != null) {
+			config.put(AppContext.PROJECT_HOME_KEY, this.projectHome);
+		}
 
 		logger.debug("SKIP_EXIT_STATUS is: " + String.valueOf(skipExit));
 		if (skipExit) {

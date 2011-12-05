@@ -59,9 +59,6 @@ public class CommandLineParsingService implements IInputHandlingService {
 		this.supportedCommands = supportedCommands;
 		this.logger = logger;
 
-		// Setup The JCommander Object with the Supported Commands
-		this.loadSupportedCommands();
-
 		// until we successfully call parse, this will be the object we get back
 		this.command = new NullCommand();
 	}
@@ -133,7 +130,11 @@ public class CommandLineParsingService implements IInputHandlingService {
 	 */
 	private ICommand getParsedCommand(String[] input) {
 		ICommand parsedCommand = null;
+		logger.debug("Parsing Args: " + input.toString());
 		try {
+			// Setup The JCommander Object with the Supported Commands
+			this.loadSupportedCommands();
+			
 			jCommander.parse(input);
 			parsedCommand = supportedCommands
 					.get(jCommander.getParsedCommand());

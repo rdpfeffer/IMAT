@@ -31,7 +31,9 @@ import com.intuit.tools.imat.cli.converters.FileConverter;
 import com.intuit.tools.imat.monitor.iOSEndOfLogMsg;
 import com.intuit.tools.imat.reporting.IReportingService;
 import com.intuit.tools.imat.scripts.InstrumentsLauncher;
+import com.intuit.tools.imat.system.SystemReflectionService;
 import com.intuit.tools.imat.validators.CanonicalFileValidator;
+import com.intuit.tools.imat.validators.InstrumentsVersionValidator;
 import com.intuit.tools.imat.validators.JavaScriptFileValidator;
 import com.intuit.tools.imat.validators.TemplateFileValidator;
 
@@ -86,9 +88,16 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 	 */
 	@Parameter(names = { InstrumentsLauncher.APPLICATION_UNDER_TEST, "-a" }, description = "The the application under test. When running against the simulator this should be a path to the App. However, when running against a device supplying the App name like \"sampleApp.app\" should suffice.")
 	public String app = null;
+	
+	/*
+	 * Hidden Parameter which will check the minimum version
+	 */
+	@Parameter(names = {"-instrumentsVersion"}, hidden=true, description="This hidden parameter is used to leverage the validator", validateWith=InstrumentsVersionValidator.class)
+	public String instrumentsVersion = "";
 
 	private final IScriptLauncher instrumentsLauncher;
 	private final IApplicationResourceService applicationResourceService;
+	private final IScriptLauncher antScriptLauncher;
 	private final IReportingService reportingService;
 	private boolean isDevice = false;
 
@@ -100,12 +109,16 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 	CommandRunTests(PrintWriter printwriter, Logger logger,
 			IScriptLauncher scriptLauncher,
 			IScriptLauncher instrumentsLauncher,
+			IScriptLauncher antScriptLauncher,
 			IApplicationResourceService applicationResourceService,
-			IReportingService reportingService) {
+			IReportingService reportingService,
+			SystemReflectionService reflectionService) {
 		super(printwriter, logger, scriptLauncher);
 		this.applicationResourceService = applicationResourceService;
 		this.reportingService = reportingService;
 		this.instrumentsLauncher = instrumentsLauncher;
+		this.instrumentsVersion = reflectionService.getSystemInstrumentsVersion();
+		this.antScriptLauncher = antScriptLauncher;
 	}
 
 	/*
@@ -119,6 +132,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 			exitStatus = archiveTestResults();
 			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = startTests();
+				captureTrace();
 			}
 			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = checkForTestExecution();
@@ -172,6 +186,18 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 			throw ex;
 		}
 		return exitCode;
+	}
+
+	private void captureTrace() {
+		LinkedHashMap<String, String> properties = new LinkedHashMap<String, String>();
+		String suffix = File.separator + "instrumentscli0.trace";
+		File fromPath = new File("." + suffix);
+		properties.put("src", fromPath.getAbsolutePath());
+		File toPath = new File(this.reportsDir + suffix);
+		properties.put("target", toPath.getAbsolutePath());
+		antScriptLauncher.setScript("moveResource.xml");
+		antScriptLauncher.setProperties(properties);
+		antScriptLauncher.runScript();
 	}
 
 	/**

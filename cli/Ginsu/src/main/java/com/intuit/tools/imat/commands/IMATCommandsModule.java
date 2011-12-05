@@ -21,13 +21,12 @@ import com.intuit.tools.imat.IApplicationResourceService;
 import com.intuit.tools.imat.ICommand;
 import com.intuit.tools.imat.IFileMonitoringService;
 import com.intuit.tools.imat.IScriptLauncher;
-import com.intuit.tools.imat.ITestMonitor;
 import com.intuit.tools.imat.annotations.AntScript;
 import com.intuit.tools.imat.annotations.AppleScript;
 import com.intuit.tools.imat.annotations.Instruments;
 import com.intuit.tools.imat.annotations.UsageRenderer;
-import com.intuit.tools.imat.annotations.iOS;
 import com.intuit.tools.imat.reporting.IReportingService;
+import com.intuit.tools.imat.system.SystemReflectionService;
 
 /**
  * @author rpfeffer
@@ -44,7 +43,7 @@ public class IMATCommandsModule extends AbstractModule {
 	 */
 	@Override
 	protected void configure() {
-
+		bind(SystemReflectionService.class);
 	}
 	
 	/**
@@ -89,14 +88,16 @@ public class IMATCommandsModule extends AbstractModule {
 	@Provides CommandRunTests provideCommandRunTests(PrintWriter printwriter, 
 			@AppleScript IScriptLauncher scriptLauncher,
 			@Instruments IScriptLauncher instrumentsLauncher,
+			@AntScript IScriptLauncher antScriptLauncher,
 			IApplicationResourceService applicationResourceService,
 			IFileMonitoringService fileMonitoringService,
-			@iOS ITestMonitor testMonitor,
-			IReportingService reportingService)
+			IReportingService reportingService,
+			SystemReflectionService reflectionService)
 	{
 		Logger logger = Logger.getLogger(CommandRunTests.class);
 		return new CommandRunTests(printwriter, logger, scriptLauncher, 
-				instrumentsLauncher, applicationResourceService, reportingService);
+				instrumentsLauncher, antScriptLauncher, 
+				applicationResourceService, reportingService, reflectionService);
 	}
 	
 	@Provides SynchronousCommandDispatchService provideDispatchService()
