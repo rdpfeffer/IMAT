@@ -88,17 +88,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 	 */
 	@Parameter(names = { InstrumentsLauncher.APPLICATION_UNDER_TEST, "-a" }, description = "The the application under test. When running against the simulator this should be a path to the App. However, when running against a device supplying the App name like \"sampleApp.app\" should suffice.")
 	public String app = null;
-	
-	/*
-	 * Hidden Parameter which will check the minimum version
-	 */
-	@Parameter(names = {"-instrumentsVersion"}, hidden=true, description="This hidden parameter is used to leverage the validator", validateWith=InstrumentsVersionValidator.class)
-	public String instrumentsVersion = "";
 
 	private final IScriptLauncher instrumentsLauncher;
 	private final IApplicationResourceService applicationResourceService;
 	private final IScriptLauncher antScriptLauncher;
 	private final IReportingService reportingService;
+	private final SystemReflectionService reflectionService;
 	private boolean isDevice = false;
 
 	/**
@@ -117,7 +112,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 		this.applicationResourceService = applicationResourceService;
 		this.reportingService = reportingService;
 		this.instrumentsLauncher = instrumentsLauncher;
-		this.instrumentsVersion = reflectionService.getSystemInstrumentsVersion();
+		this.reflectionService = reflectionService;
 		this.antScriptLauncher = antScriptLauncher;
 	}
 
@@ -128,7 +123,7 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 	 */
 	public ExitStatus run() throws MisconfigurationException {
 		//TODO: Add a parameter validation mechanism.
-		if (validateSimulatorArgs() || validateDeviceArgs()) {
+		if (validate()) {
 			exitStatus = archiveTestResults();
 			if (exitStatus == ExitStatus.SUCCESS) {
 				exitStatus = startTests();
@@ -295,6 +290,12 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 			isDevice = true;
 		}
 		return isValid;
+	}
+	
+	private boolean validate() {
+		InstrumentsVersionValidator versionValidator = new InstrumentsVersionValidator();
+		versionValidator.validate("", reflectionService.getSystemInstrumentsVersion());
+		return (validateSimulatorArgs() || validateDeviceArgs());
 	}
 
 	/*

@@ -28,6 +28,10 @@ public class InstrumentsVersionValidator implements IParameterValidator {
 	 * @see com.beust.jcommander.IParameterValidator#validate(java.lang.String, java.lang.String)
 	 */
 	public void validate(String name, String value) throws ParameterException {
+		if (value == null || value.equals("")) {
+			throw new ParameterException("IMAT could not find instruments on " +
+					"your system. Please install the latest version of XCode.");
+		}
 		if (value.compareTo(MIN_INSTRUMENTS_VERSION) < 0) {
 			throw new ParameterException("The minimum supported version of " +
 					"instruments is "+ MIN_INSTRUMENTS_VERSION + ". The installed " +
