@@ -73,9 +73,6 @@ public class MainArgs {
 		Hashtable<String, String> config = new Hashtable<String, String>();
 		config.put(MainArgs.AUTO_UPDATE_OFF, String.valueOf(this.autoUpdateOff));
 
-		assert this.appHome != null : "MainArgs.appHome must not be null. There is "
-				+ "an internal error that needs attention. Please submit a bug for this issue.";
-
 		logger.debug("APP_HOME_KEY is: " + this.appHome);
 		if (this.appHome != null) {
 			config.put(AppContext.APP_HOME_KEY, this.appHome);
