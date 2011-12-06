@@ -163,6 +163,10 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 			if (template != null) {
 				arguments.put(InstrumentsLauncher.TEMPLATE_FILE, template.getCanonicalPath());
 			}
+			if (deviceID == null) {
+				//we must be running against the sim. Convert app to an absolute path
+				app = (new File(app)).getCanonicalPath();
+			}
 			arguments.put(InstrumentsLauncher.APPLICATION_UNDER_TEST, app);
 			arguments.put(InstrumentsLauncher.SUITE_FILE, suiteFilePath);
 			arguments.put(InstrumentsLauncher.RESULTS_PATH, runLogDirPath);
@@ -279,6 +283,15 @@ public class CommandRunTests extends ScriptedCommand implements ICommand {
 		boolean isValid = false;
 		if (suite != null && app != null && template != null && deviceID == null) {
 			isValid = true;
+		}
+		if (isValid) {
+			//Then the App should be a path to a file.
+			isValid = (new File(app)).exists();
+			if (!isValid) {
+				logger.error("The App could not be found at the given location: " + 
+						app + " - Please check the path to the app and try " +
+						"again.");
+			}
 		}
 		return isValid;
 	}
